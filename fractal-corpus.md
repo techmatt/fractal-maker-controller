@@ -22,6 +22,9 @@ Changes when: labeling happens, a batch is registered, coverage moves. Spec + th
 | `anchor_class4_v1` (60) | cross-family class-4 anchor; 52 rows are revisions |
 | `minibrot_roster_v2` (487) | WINDOW corpus — 3-way string classes |
 | `interior_band_v1` (80) | uniform-sampled high-interior; train-side hard negatives |
+| supply-crawl `…_uniform_v1` (90) | UNBIASED draw over the crawl's recorded candidates; registered TRAIN (eval-eligibility = a separate decision); the only leg estimating the crawl's base rate |
+| supply-crawl `…_strat_a/b_v1` (290+290) | train; degree × operator × composite-bin round-robin, spans every bin — the negative class's footing |
+| supply-crawl `…_exemplar_v1` (60) | train; top-by-exemplar-similarity; WEAKEST leg (exemplars partly derivation, not verdicts) — read only through the stratified fit (fractal-discovery) |
 
 - **★★ The disqualifying bias for an EVAL set is MODEL-DRIVEN SELECTION, not non-randomness** — a systematic grid, ladder or base-rate draw is eval-eligible; candidates kept because a model scored them well are not.
 - **★ `assign_split` is FAIL-CLOSED** — an unregistered batch classifies as biased/train; a contradiction against the `label_store` registration hard-aborts. ⇒ **register a new generation method BEFORE its batch is built, or it silently lands train-side.**

@@ -1,45 +1,46 @@
-# fractal-state — ckpt 24, 2026-08-01
+# fractal-state — ckpt 25, 2026-08-01
 
 **Rewritten in full at EVERY distillation — the only doc guaranteed to be.** Holds NO FACTS: status, plan, flags, open/parked, manifest. A fact that needs recording forces its owner doc onto the touched list (fractal-operating).
 
-**This checkpoint = the restructure.** The 4-doc set (ckpt 23) is retired into this 10-doc set; CC-facing practice paged into the repo (`verification_practice.md`, `measurement_practice.md`, `retired.md` + patches — commits `cee8f97`, `72c7ffe`).
+**This checkpoint = the maneuver-exploration era closed.** Dry run → view screen v2/v3 (v4 measured and rejected) → the supply crawl → four label batches built, verified, UNLABELED. First distillation under the CC-applied-diffs mechanism (fractal-operating).
 
-## THE GOAL (Matt, stated plainly)
-Two learned functions: **(a) find good minibrots** — a SCREENING problem over maneuver targets, not a search for a source — and **(b) find the q4 within a neighbourhood**, the GUIDED-DESCENT function, learning how Matt defines a beautiful descent location ("nothing specific to do with minibrots"). Full automation stays the target; manual isolation of q4s is scaffolding to collect examples, not the product.
+## THE GOAL (Matt, stated plainly — unchanged)
+Two learned functions: **(a) find good minibrots** — a SCREENING problem over maneuver targets — and **(b) find the q4 within a neighbourhood** (guided descent, "nothing specific to do with minibrots"). Full automation the target; manual isolation is scaffolding.
 
 ## THE PLAN
-**(1) ~~v8~~ · (2) ~~re-render + retrain~~ v9 SHELVED · (3) ~~maneuvers built + shaken down~~ · (4) ~~maneuver improvements + per-degree probe~~ · (5) THE 4 h MANEUVER SUPPLY RUN ← next · (6) label its output; retrain (v10) — THE FLIP · (7) evaluate the maneuvers · (8) THE HUNT · (9) guided descent (harness resumes) · (10) one production campaign.**
-- Campaign stays last (a new generation type enters as a partition; a campaign now spends its eye-hours twice). Nothing is urgent — no early deliverables. The harness is SHELVED until step 9 (Matt, explicit).
+**(1–5) ~~done~~ (v8 · re-render/retrain · maneuvers · probe · THE CRAWL) · (6) Matt LABELS the four batches ← next · (7) the linear neighborhood-quality fit + v10 retrain on the new labels — THE FLIP; re-derive t_good + keeper cuts + τ_h together · (8) evaluate the maneuvers (now readable) · (9) THE HUNT — relights emission · (10) guided descent (harness resumes) · (11) one production campaign.**
+- Labeling order when Matt sits down: strat_a → strat_b → uniform → exemplar (the confound reads depend on strat coverage; see fractal-corpus/discovery).
+- Nothing urgent, no early deliverables. Harness stays SHELVED until step 10.
 
 ## STATUS
-- **EMISSION IS DARK** — every ledger row went non-current at the v8 flip; the hunt relights it. Library 1387 admitted / 1268 clusters, six ledgers stale-decode.
-- Discovery last ran: campaign 2 + julia parent probe + maneuver shakedown + per-degree probe. Emission last ran: first release (FINE) + q4-harvest probe.
-- Suite 860 Python + 73 Rust, green. Repo 30,236 files / 7.93 GB.
-- `main` is ahead of `origin/main`, unpushed (SSH auth fails on this machine).
+- **EMISSION IS DARK** (unchanged since the v8 flip) — the hunt relights it; scheduler-off until a v8-era run rebuilds the seed.
+- Discovery last ran: the supply crawl (this checkpoint's run; results in fractal-discovery). Batches: 730 rows / 4 registered methods, crops rendered and verified, awaiting labels.
+- Suite 1,025 Python + 73 Rust, green. `main` ahead of `origin/main`, unpushed (SSH auth fails on this machine).
 
 ## STALENESS FLAGS
-- **thresholds:** everything derived pre-cap-raise sits on a moved distribution — `t_good` + keeper cuts + τ_h re-derive TOGETHER at step 6 (`deferred_recalibration.md`).
+- **thresholds:** everything pre-cap-raise still on a moved distribution — `t_good` + keeper cuts + τ_h re-derive TOGETHER at step 7 (`deferred_recalibration.md`).
 - **discovery:** economics EMA stale until a v8-era run refreshes it; ring scores pre-2026-07-31 on the old maxiter scale.
-- **orchestration:** library seed unavailable in principle until the next discovery run's admissions — scheduler-off meanwhile.
+- **orchestration:** library seed unavailable in principle — scheduler-off stands.
+- **models:** v8 on maneuver views is measured non-separating (fractal-models) — no head reads that population until v10.
 
 ## OPEN ITEMS — recorded, not scheduled
-Sheet 3 produced only 22 atoms while rating very highly — supply limit or budget cap decides source vs curiosity · the ~285 MiB v8/v9 deletion — approved, blocked on preconditions (→ `storage_classes.md`) · `coevo/`'s retirement verdict in `tools/README.md` — Matt's call · `scratch/maneuver_degree_report.md` Part 3 content has no owner yet (its §2.6 half is stale against the tree; extract-or-delete pending).
+`scratch/view_screen_v2_report.md` + `REPORT_composite_v3.md` still in scratch; both justified durable decisions — extract-and-delete pending · the framing sweep never ran on the crawl population · the exemplar labeling leg is the weakest (derivation, not verdict — fractal-corpus) · depth lever = `M_CAP` + root supply, not budget (fractal-discovery) · `coevo/` retirement verdict — Matt's call · `scratch/maneuver_degree_report.md` Part 3 extract-or-delete pending.
 
 ## PARKED — named, not half-open
-The variety measure (within-source AND within-release — one answer with emission diversity; span-vs-oscillation the standing candidate) · composition (no instrument sees interior fraction, placement, balance) · Douady tuning (unblocked, unbuilt) · perturbation in `render-one` (the gate on any deep location being a candidate) · probe as a standing audit · the recolor-batching executor (next cache rebuild) · the wall display's `id_map` rewiring (only if Matt scans the wall) · the deferred-recalibration cluster (`deferred_recalibration.md`) · wider aug palette set (32–64, next rebuild).
+The variety measure (one answer with emission diversity) · composition (the screen's known ceiling; the learned fit inherits the question) · Douady tuning (unblocked, unbuilt) · perturbation in `render-one` · probe as a standing audit · the recolor-batching executor (next cache rebuild) · the wall display's `id_map` rewiring · the deferred-recalibration cluster · wider aug palette set (next rebuild) · mining-gate calibration.
 
-## MANIFEST — replace only the files listed as touched at each distillation
+## MANIFEST — replace only files listed as touched; ceilings never increase without Matt
 | doc | last touched | wc -c | ceiling |
 |---|---|---|---|
-| fractal-operating | ckpt 24 | 12,871 | 13,000 |
-| fractal-state | ckpt 24 | (this file) | 6,000 |
+| fractal-operating | ckpt 25 (hunks) | 12,871 | 13,000 |
+| fractal-state | ckpt 25 (rewrite) | 4,370 | 6,000 |
 | fractal-engine | ckpt 24 | 10,513 | 11,000 |
 | fractal-storage | ckpt 24 | 5,759 | 6,000 |
-| fractal-orchestration | ckpt 24 | 3,335 | 4,000 |
-| fractal-models | ckpt 24 | 7,355 | 8,000 |
+| fractal-orchestration | ckpt 25 (hunks) | 3,599 | 4,000 |
+| fractal-models | ckpt 25 (hunks) | 7,503 | 8,000 |
 | fractal-thresholds | ckpt 24 | 4,716 | 5,000 |
-| fractal-corpus | ckpt 24 | 7,318 | 8,000 |
-| fractal-discovery | ckpt 24 | 12,718 | 13,000 |
+| fractal-corpus | ckpt 25 (hunks) | 7,863 | 8,000 |
+| fractal-discovery | ckpt 25 (rewrite) | 9,032 | 13,000 |
 | fractal-emission | ckpt 24 | 5,598 | 6,000 |
 
-Total ceiling 80,000 B (vs 116.9 KB at ckpt 23). Ceilings never increase without Matt. fractal-discovery is the largest and the hottest — the first candidate for a split if it presses its ceiling.
+⟨FILL⟩ = measured by the apply-prompt after it applies; it replaces each token with `wc -c` of the file it just wrote. fractal-discovery remains the hottest doc and first split candidate at ceiling pressure.
