@@ -1,0 +1,27 @@
+# fractal-emission — stage 2: colorize, gate, release
+
+Changes when: emission work. **Currently DARK — nothing is admissible until a v8-stamped discovery run writes rows** (the hunt relights it). First release judged FINE (review-and-reweight ran with NO reweight).
+
+**The diversity formulation — one descriptor, one measure, one deficit.** Descriptor = **(fractal_type, morph_cluster, palette_flavor, render_style)** — type+cluster fixed at intake, flavor+style at colorize. **Joint counts over product cells, never per-axis marginals.** Target measure = uniform over feasible cells × hand-placed `weight_overrides`. LIVE: julia twins 2.5 each · mandelbrot 1.2 · mb3/mb5 0.8 · mb4 0.25 · phoenix 0.21 · classic = solved `target_share` 0.02. **Compute-aware targets = a NON-TASK; never patch a scoring problem through the measure.**
+
+**★ The 2D drop-vs-recolor rule (load-bearing, Matt):** hi-morph+hi-colored = drop · **lo-morph+hi-colored = RECOLOR** · hi-morph+lo-colored = keep · lo+lo = diverse. **Geometry is precious; palette is reassignable.** τ = "how close before the colorizer reassigns," never a drop threshold.
+
+**The five stages** (`tools/emission/`, resume-safe, kill-proven): **1 Intake** — admitted = `is_current_decoded ∧ decoded_class ≥ 3 ∧ guard_pass ∧ distinct` (`q4_harvest` FLOOR-admits); morph-CLIP per location; medoid clustering within type at cos 0.974; ranker-ordered colorize queue (ORDER, don't filter). **2 Cells/deficit. 3 Colorize** — conditional deficit picks, pool res 960×540 ss2. **4 Gate+pool** — TWO-head routing (smooth → wallpaper v3 / strange → mining v1, never mixed); pool floors 0.75/0.25; append-only `pool_log.jsonl` = truth. **5 Select** — greedy max-marginal-gain within render-mode slots; RELEASE floor 0.90.
+- **★ Intake clustering SEEDS FROM THE LIBRARY** — existing rows never re-assign, seeded medoids frozen, a verifier raises rather than rewriting. The old behaviour cost only 0.8% because the library has exactly ONE un-deduped seam — **the error is proportional to seams, and a campaign adds seams.**
+- **★ Gate and release leave a DURABLE record** (`data/emission/release_records/`) — a render error records a reason with a NULL score, not 0.0, keeping a crash distinguishable from a bad score. Not retro-filled.
+
+**Heads** (beyond fractal-models): **pref v3-gvo** = palette/param choice WITHIN-location · **quality v3 (wallpaper)** = finished SMOOTH render (pool 0.75 / release 0.90), collapses STRANGE to ≈0.000 and never gates them · **mining v1** = finished STRANGE render (CORN marginal, LOCKED), UNCALIBRATED on strange, not blind to it — the eye beats it, calibration parked.
+
+**★ MINING GATE IS REPORT-ONLY (live).** Both sites admit every scored strange row and log instead of cutting; smooth still gates. Rationale: emission will eventually be MACHINE-curated — an override that works only because a human performs it every release is a silent failure waiting for the first unattended run. `gate_report.py` accumulates what-the-gate-would-have-cut against actual selection — that pairing is the calibration signal, accrued free at every release. **These sites live on `deploy_tail`, NOT the discovery orchestrators.** ⚠ Strange ungated inflates `release_eligible`, so `target_gated` can be hit early and under-build smooth surplus — bump `--target-gated` if smooth short-fills.
+
+**Morphology (verbatim producer — DO NOT LOSE):**
+```
+t = ½·(1 + tanh( (v − median) / (2 · 1.4826 · MAD) ))
+```
+super-res exterior; interior → black; linear box-downsample. Tag `robustz_tanh_k2_v1`, pinned in pytest; `render_candidate` CANNOT express it → `library_annotate.morph_gray_image`. morph_clip = per-location palette-BLIND; colored_clip = per-candidate palette-AWARE. **Cheap-JPG steering embeddings are a DIFFERENT substrate — never compare against morph_clip yardsticks.** Yardsticks: median pairwise ≈0.851 · intra-phoenix ≈0.938 · strict near-dup 0.974 · perceptual 0.95. CLIP-cone: relative ordering only; clustering counts differ by method ±3–5% — name which. Coord-dedup ≠ morph-dedup; **NEVER a morph gate at discovery.** Flavor axis → `render_coloring_surface.md`; dedup → `morphology_dedup.md`.
+
+**★ Era gate — the release-review rule.** Review a sheet → distribution off ⇒ dictate reweights (a prompt applies them) → fine ⇒ PARK the deferred cluster. **A skew is a reweight signal only if it's in the distribution the MEASURE produced, not a selection-/gate-stage artifact — never reweight off a broken gauge.** Cheap hypothesis for the 987-palette pool: the classifier loses ranking agreement on compressed-lightness-range colormaps (fractal-models) — a ramp that never bottoms out may also look flat to a human.
+
+**q4 harvest → emission probe** [record → `docs/design/q4_harvest_emission.md`]: **floor-not-gate WORKED** — 75 admitted of 108 vs q3's 27, rescuing 48 while still rejecting 33 clearly-bad; its bypass of discovery-time coord dedup is intentional. The automated gate is unreliable here — **judge q4 by EYE off the sheets. VALIDATED (Matt's eye, N≥15 ship-as-is): the emit vein is rich enough that a learned q4 filter earns its build — the pattern the maneuvers' output should reuse.**
+
+**Library** — 1387 admitted / 1268 clusters, six ledgers (all stale-decode until the hunt), source-tagged. Cell reachability [measured]: 632/1268 feasible (type,cluster) pairs produced ≥1 gated wallpaper (49.8%). Store shard-per-cycle: immutable base `embeddings.npz` (768-d) + regenerable shards.
