@@ -31,7 +31,7 @@ Working tree clean before applying. One commit per distillation, message `ckpt N
 Never rebase, amend, or rewrite history.
 
 ## Reports
-Short: per file applied/failed + final `wc -c` vs ceiling, failed hunks verbatim,
+Short: per file applied/failed, any size overage noted, failed hunks verbatim,
 check outcomes. Nothing else.
 
 ## `prompts/` — ignored, never edited
