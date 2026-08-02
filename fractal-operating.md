@@ -77,9 +77,9 @@ One CC prompt at a time; wait for results. Progress through delivery over method
 - **★ CC's honest spec-deviations with stated reasons are consistently right — read before overriding.** Supply claims to be CHECKED, not text to transcribe, and ask for the corrections list back.
 - **★★ SPECIFY THE REPORT (Matt, firm). Paste into every prompt:** *Report (HARD CAP ~60 lines, `scratch/`). Filter for every line: does it change what claude.ai decides next? If not, it goes in the repo (commit message or design doc), pointed to by path. (1) per item: outcome + commit, ≤1 line — no mechanism, no rationale for settled decisions; (2) corrections to the prompt: every one, ONE line each; (3) unrequested decisions needing attention: one line each; settled implementation choices: names/paths only; (4) results that move decisions: each number once, with population + basis; confounds; costs that change future sizing; (5) suite: two lines max — counts, newly-red vs pre-existing, "N proved red by injection, M test defects fixed"; (6) NOT done / not covered: one line each. Over the cap: cut content, never compress wording.*
 - **★ AFTER A REPORT, DO NOT SUMMARIZE IT BACK.** Say only what it CHANGES, what Claude got WRONG, and what's next.
-- **★ CC WRITES ITS REPORT TO A `.md` UNDER `scratch/`, NEVER THE TERMINAL** — TUI copy-out mangles at wrap boundaries. Screenshot = fine fallback; paste = not.
+- **★ CC WRITES ITS REPORT TO A `.md` UNDER `scratch/`, NEVER THE TERMINAL** — TUI copy-out mangles at wrap boundaries. Screenshot = fine fallback.
 - **★ NEVER EDIT A PROMPT ALREADY HANDED OVER** — addendums as separate paste-able files. Not-yet-run → edit. If an outputs file diverges from what ran, restore it.
-- Matt does NOT hand-edit JSON/config — he dictates values, the prompt applies them. Acceptance BY EYE except classifier/ranker evals. He commits his own work — never flag his uncommitted state. **★ CC commits to `main` ONLY.**
+- Matt does NOT hand-edit JSON/config — he dictates values, the prompt applies them. Acceptance BY EYE except classifier/ranker evals. He commits his own work; git — commits, push, remotes, auth — is his entirely: never flag, track, or mention its state. **★ CC commits to `main` ONLY.**
 - **★ A FIX WITH A SHAPE NEEDS THE PROMPT, NOT A "YES"** (derive-from-data vs hardcode, relational vs literal).
 - **★ BUILD ≠ FLIP.** Built and staged in one prompt, adopted in another against a pre-registered bar. Standing exceptions bought by disasters: pre-registered eval bars · blind human reads as adjudicator of any model-selected population · reject autopsy + identity round-trips.
 - **★ A SHAKEDOWN BEFORE A LONG UNATTENDED RUN PAYS FOR ITSELF.** A cap that never fired is untested, not working.
@@ -87,7 +87,7 @@ One CC prompt at a time; wait for results. Progress through delivery over method
 
 **Labeling.**
 - **★★ LABELING IS FAST — ~10 min per ~290-row batch.** Never argue a batch is too expensive; size for statistical power, not Matt's time. **Renders, not labeling, price a batch build** [measured]: ~6.3 rows/min at label fidelity (two crops/row), decelerating on deep tails — budget construction around render time and bound it.
-- **★★ NEVER add calibration duplicates, drift probes, repeat rows, or ANY calibration aid to a labeling batch (firm)** — anchor/exemplar panels beside the rig explicitly dropped by Matt. **"Noise is expected at all boundaries" (Matt)** — never re-raise adjacent-category disagreement or bar drift.
+- **★★ NEVER add calibration duplicates, drift probes, repeat rows, or ANY calibration aid to a labeling batch (firm)** **"Noise is expected at all boundaries" (Matt)** — never re-raise adjacent-category disagreement or bar drift.
 - **★ Don't editorialize on a sheet the human is about to label blind.** Pre-labeling sheets get design commentary only; an INSPECTION sheet inverts one rule — literal cached bytes, parameters captioned, no vivid substitution.
 - **★ A prompt running while Matt labels conflicts on GIT, not CPU** — commit only your own files by explicit path.
 
