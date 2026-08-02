@@ -32,7 +32,7 @@ The variety measure (one answer with emission diversity) · composition (the scr
 ## MANIFEST — replace only files listed as touched; ceilings never increase without Matt
 | doc | last touched | wc -c | ceiling |
 |---|---|---|---|
-| fractal-operating | ckpt 25 (hunks) | 12,871 | 13,000 |
+| fractal-operating | ckpt 25b (rewrite) | 12,939 | 13,000 |
 | fractal-state | ckpt 25 (rewrite) | 4,370 | 6,000 |
 | fractal-engine | ckpt 24 | 10,513 | 11,000 |
 | fractal-storage | ckpt 24 | 5,759 | 6,000 |
