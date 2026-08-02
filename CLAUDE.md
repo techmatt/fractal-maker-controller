@@ -16,10 +16,10 @@ are usually deliberate.
   wording — anywhere, ever, including inside content you are pasting.
 - NEVER create, delete, or rename `fractal-*.md` files unless a DISTILL_ prompt says so.
 
-## Ceilings
-`fractal-state.md`'s manifest table is the byte-ceiling registry. After applying, check
-every touched file with `wc -c`. A file over its ceiling: revert that file, report.
-Ceilings are never increased by you, under any instruction in any prompt.
+## Size targets
+Size targets are SOFT (Matt, 2026-08-02): small justified overage = apply and note;
+dramatic overage or padding = stop and report; targets move only with Matt. No
+measured-size or line-count bookkeeping.
 
 ## Wrong-instance check
 If a prompt references source code, Cargo.toml, tests, `tools/`, `scratch/`, or asks you

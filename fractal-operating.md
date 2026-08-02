@@ -27,12 +27,12 @@
 | **discovery** | stage 1, sourcing, maneuvers, screen, hunt, harness | discovery work |
 | **emission** | stage 2 | emission work |
 
-**★★ SELECTIVE DISTILLATION — the core rule (Matt).** At a distillation, claude.ai decides which docs the era touched or invalidated and emits ONLY those plus state.md — default a SMALL SUBSET; emitting everything needs a stated reason. An untouched doc is not re-emitted and cannot grow. **The apply-prompt does the applying:** a `DISTILL_`-prefixed prompt (content guard: working dir must hold the 10 fractal-*.md at root, no Cargo.toml/src/tools — else STOP) carries wholesale replacements + exact hunks, fills state's ⟨FILL⟩ manifest tokens with measured `wc -c`, checks every touched file against its ceiling (over = revert that file, report), spot-greps single-home, verifies untouched files untouched, one git commit per distillation.
+**★★ SELECTIVE DISTILLATION — the core rule (Matt).** At a distillation, claude.ai decides which docs the era touched or invalidated and emits ONLY those plus state.md — default a SMALL SUBSET; emitting everything needs a stated reason. An untouched doc is not re-emitted and cannot grow. **The apply-prompt does the applying:** a `DISTILL_`-prefixed prompt (content guard: working dir must hold the 10 fractal-*.md at root, no Cargo.toml/src/tools — else STOP) carries wholesale replacements + exact hunks, sanity-checks touched files against their soft targets (small justified overage = apply and note; dramatic overage or padding = stop and report), spot-greps single-home, verifies untouched files untouched, one git commit per distillation.
 - **Walk the full manifest once per distillation** — verdict per doc: TOUCHED / INVALIDATED (era changed its truth without editing it — staleness flag in state.md, never silence) / CLEAN.
-- Stable docs amended by diff; a full rewrite only when the subject was heavily reworked, or Matt asks. **★ Before emitting hunks, DO THE ARITHMETIC: current `wc -c` + net hunk bytes vs ceiling — to add, delete within that doc first**.
+- Stable docs amended by diff; a full rewrite only when the subject was heavily reworked, or Matt asks. To add substantially to a doc, prefer deleting within it first.
 - Distillation only from a SETTLED state — never mid-session, never with a CC prompt outstanding; its job is to CLOSE threads, not open them.
 
-**★★ CEILINGS.** Per-doc, in state.md's manifest, checked with `wc -c` at every touch and enforced by the apply-prompt. **Ceilings never increase without Matt.** state.md holds NO FACTS — status, plan, flags, manifest only; a fact that needs recording forces its owner doc onto the touched list.
+**★★ SIZE TARGETS, NOT HARD CAPS (Matt, 2026-08-02).** Per-doc soft targets in state.md's roster; the deletion test is the real control. A small overage with a good reason is fine — apply and note it. DRAMATIC overage, or growth that is padding rather than content, = stop and report. Targets move only with Matt. No size bookkeeping beyond this: no measured-size columns, no touched-line counts. state.md holds NO FACTS — status, plan, flags, roster only; a fact that needs recording forces its owner doc onto the touched list.
 
 **★★ WHAT GOES IN — THE DELETION TEST (Matt, firm).** *"These docs are the ACTIVE WAVEFRONT, not a history of what has happened to the project."* A line survives only if it would change a FUTURE decision AND cannot be encoded in code. Three things pass: decisions not yet made · measurement-validity caveats that would cause a future result to be MISREAD · true-but-unenforceable facts. Everything else goes. Durable anchors (coords, thresholds, version pins, formulas) stay verbatim. Reconstructable from code/git → pointer. Spec in `docs/design/*.md` → point by exact path, never restate.
 - **⚠ The failure mode is Claude's:** treating a CC report as material to CARRY rather than evidence a doc line can be CUT.
@@ -42,7 +42,7 @@
 
 **★★ TAG CLAIMS ABOUT CODE.** A line asserting what the tree does carries `[code: path]` or `[unverified]`. Untagged lines are decisions or measurements. Every checkpoint that checked has falsified some of these.
 
-**Compression.** Telegraphic, fragments, no scaffolding. **Rewording ≠ compressing — check `wc -c` old vs new**; when a reword pass stops paying, delete whole blocks.
+**Compression.** Telegraphic, fragments, no scaffolding. **Rewording ≠ compressing**; when a reword pass stops paying, delete whole blocks.
 
 **★ THE REPO PRACTICE DOCS** — `docs/design/verification_practice.md` · `measurement_practice.md` · `retired.md` (append-only; a reversal is a new UN-RETIRED entry, never an edit; **a reused or re-scoped retired policy needs a new dated entry**). CC-facing: prompts CITE them, this doc set never restates them; check `retired.md` before proposing an approach.
 

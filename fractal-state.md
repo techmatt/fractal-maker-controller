@@ -31,18 +31,5 @@ Matt owes: the julia-near-minibrots eyeball test — now load-bearing for the lo
 ## PARKED — named, not half-open
 The variety measure (one answer with emission diversity) · composition (the fit inherits the question) · Douady tuning (unblocked, unbuilt) · perturbation in `render-one` · probe as a standing audit · the recolor-batching executor (unless v10's cache-extend estimate forced it) · wider aug palette set (re-parked at v10: labels were the single variable) · mining-gate calibration (accrues free at releases) · the ~2,004 ranked harvest-queue rows (more label chunks = a build, not a re-run) · fw-scaled precanon radius for dives.
 
-## MANIFEST — replace only files listed as touched; ceilings never increase without Matt
-| doc | last touched | wc -c | ceiling |
-|---|---|---|---|
-| fractal-operating | ckpt 26 (hunks) | 12,918 | 13,000 |
-| fractal-state | ckpt 26 (rewrite) | 5,537 | 6,000 |
-| fractal-engine | ckpt 24 | 10,513 | 11,000 |
-| fractal-storage | ckpt 24 | 5,759 | 6,000 |
-| fractal-orchestration | ckpt 25 | 3,599 | 4,000 |
-| fractal-models | ckpt 25 | 7,503 | 8,000 |
-| fractal-thresholds | ckpt 24 | 4,716 | 5,000 |
-| fractal-corpus | ckpt 26 (hunks) | 8,033 | 8,000 |
-| fractal-discovery | ckpt 26 (rewrite) | 10,753 | 13,000 |
-| fractal-emission | ckpt 26 (hunks) | 5,902 | 6,000 |
-
-⟨FILL⟩ = measured by the apply-prompt after it applies (`wc -c` of the file it just wrote).
+## ROSTER — soft size targets (small justified overage = fine; dramatic overage = stop; targets move only with Matt)
+operating 13k · state 6k · engine 11k · storage 6k · orchestration 4k · models 8k · thresholds 5k · corpus 8k · discovery 13k · emission 6k
