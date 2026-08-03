@@ -1,6 +1,6 @@
 # fractal-emission — stage 2: colorize, gate, release
 
-Changes when: emission work. **Currently DARK — nothing is admissible until a v8-stamped discovery run writes rows** (the hunt relights it). First release judged FINE (review-and-reweight ran with NO reweight).
+Changes when: emission work. **DARK but SEEDED (2026-08-03): the library seed is rebuilt** — 322 human-labeled rows / 168 looks admitted via the q4_harvest floor-admit precedent, plus the v2 proving run's 67 admissions; the relight rides the continuous launch. First release judged FINE (review-and-reweight ran with NO reweight).
 
 **The diversity formulation — one descriptor, one measure, one deficit.** Descriptor = **(fractal_type, morph_cluster, palette_flavor, render_style)** — type+cluster fixed at intake, flavor+style at colorize. **Joint counts over product cells, never per-axis marginals.** Target measure = uniform over feasible cells × hand-placed `weight_overrides`. LIVE: julia twins 2.5 each · mandelbrot 1.2 · mb3/mb5 0.8 · mb4 0.25 · phoenix 0.21 · classic = solved `target_share` 0.02. **Compute-aware targets = a NON-TASK; never patch a scoring problem through the measure.**
 

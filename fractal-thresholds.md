@@ -11,7 +11,7 @@ q3 = the served predicate (below). One instrument per partition, never pooled.
 | julia:multibrot3 | F2 | **0.27** | 0.594 | 1.000 | 0.841 | 6 steps |
 | julia:multibrot4 | F2 | **0.03** | 0.533 | 1.000 | 0.791 | 2 steps |
 | julia:multibrot5 | F2 | **0.06** | 0.704 | 0.864 | 0.789 | 4 steps |
-| julia:mandelbrot · phoenix | — | 0.50 | — | — | — | UNCALIBRATED (zero eval rows) |
+| julia:mandelbrot · phoenix | — | 0.50 | — | — | — | UNCALIBRATED — eval instruments exist since 2026-08-03 (fractal-corpus); calibrate at the next version |
 | multibrot3/4/5 | — | 0.50 | — | — | — | UNCALIBRATED (unbiased rows exist, ZERO keeper positives — stamped as its own case) |
 
 - **★★ The objective principle (protocol §4): recall where supply is scarce, precision where abundant** — re-chosen per flip from CURRENT supply, never copied.
