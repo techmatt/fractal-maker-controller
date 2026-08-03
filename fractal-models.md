@@ -1,44 +1,39 @@
 # fractal-models — the instruments
 
-Changes when: retrains, ranker/screen work, aug-recipe changes. Thresholds live in fractal-thresholds; label corpus in fractal-corpus.
+Changes when: retrains, ranker/screen work, aug-recipe changes. Thresholds live in fractal-thresholds; label corpus in fractal-corpus; the view-fit sourcing screen in fractal-discovery.
 
 ## Division of labor
 | model | judges | scope |
 |---|---|---|
-| **v8** location head | location potential, pre-color, classes 1–4 | within-family STEER + FLOOR + decode-admission; NEVER ranks, NEVER allocates cross-family |
+| **v10** location head | location potential, pre-color, classes 1–4 | within-family STEER + FLOOR + decode-admission; NEVER ranks, NEVER allocates cross-family |
 | **`pref_loc_v1`** ranker | ranking of admitted locations | ORDERS (keeper / emission-intake / dive-result); never steers, never allocates |
-| **q4 stage-1 screen (G)** | window-level sourcing screen | a coarse GATE only — superseded at sourcing |
+| **`view_fit_v1.1`** | maneuver-candidate sourcing order | fractal-discovery owns it |
 
 The steer/rank/select split is load-bearing — winner's curse recurs at instance, family AND selection level (`measurement_practice.md`). **"q4" names the artist-quality look = class 4 on the label scale; there is no separate q4 network and will not be one.**
 
-## v8 — the only deployed location head
-MobileNetV4 (`mobilenetv4_conv_medium`, 1280-D penultimate), CORN ordinal, multi-family, **K=4 ⇒ three cutpoint logits** — K is per-version, read off the checkpoint's own `config`, never hardcoded. Deploy: 384×224 stretch from 640×360 ss2 `twilight_shifted`, via `active_ckpt.py`; score via `score_lib.py::Scorer`; transform pinned bit-for-bit. Method = `classifier_retrain_protocol.md`; role/reading = `aesthetic_scoring.md`. v4–v7 corpora/manifests/caches are gone and stay gone.
+## v10 — the deployed location head (flipped 2026-08-02)
+MobileNetV4 (`mobilenetv4_conv_medium`, 1280-D penultimate), CORN ordinal, multi-family, K=4 — K is per-version, read off the checkpoint's own `config`, never hardcoded. Deploy: 384×224 stretch from 640×360 ss2 `twilight_shifted`, via the pins module; transform pinned bit-for-bit. Method = `classifier_retrain_protocol.md`; role/reading = `aesthetic_scoring.md`. Trained on the v9-cache extension (201,168 tiles) + 1,310 new labels (730 crawl incl. 81 rule-provenance / 580 harvest); uniform-90 held out of training AND of model selection.
 
-- **Certification (unselected, within-family):** primary = julia:mb census-144 [65 pos] **0.751 CI[0.671,0.828] vs v7 re-scored 0.700, p=0.17 ⇒ NON-INFERIOR**, numerically ahead, not significant. Secondary = mandelbrot floor [n=526, 26 pos] 0.868 vs 0.885 non-inferior — and v7 trained on those rows, so its score is flattered. Class 4, descriptive only: census q4-vs-rest AUC 0.813 on 22 positives.
-- **★★ v8 was a NEW MODEL, not a controlled increment** — scale, manifest, split, augmentation all changed at once; attribute no movement to the ordinal scope change.
+- **Certification [pre-registered]:** census-144 **0.742 vs v8 re-scored 0.751, p=0.79 ⇒ NON-INFERIOR** · floor-526 0.872 vs 0.867 NON-INFERIOR · uniform-90 (NEW instrument: the only score-unconditioned maneuver-view draw; ≥2 boundary; non-gating first use) both heads separate, v10 0.828 / v8 0.848. Palette invariance ρ̄ 0.845, inside the 0.10 band.
+- **★★ THE GAIN WAS ZERO** (p 0.69–0.84 everywhere): 1,310 labels bought non-regression. Structural reason, not mystery: appended labels are 100% native-plane while the primary instrument and ALL class-4 eval power are julia:multibrot — the instruments could not price the intervention. **Open corpus-mix consequence: the next labeling rounds must buy julia-side measurement power (per-family uniform draws), not just training rows.**
+- **★★ THE MODEL-SELECTION OBJECTIVE IS A CONTROLLED VARIABLE.** Attempt 1 was INFERIOR because promoting uniform-90 to eval silently moved the split the checkpoint pick selects on; `model_last` beat `model_best` on the census (+0.104, p=0.002). Fix: freeze selection to the baseline-comparable population; amendment committed BEFORE the re-run. Generalizable to every future retrain.
+- **★ CORRECTED CLAIM (was a population error):** "v8 non-separating on maneuver views" was `[machine-decode]` evidence at the ≥3 boundary, where the uniform leg has ZERO positives. At ≥2, v8 separates that population at 0.848. **The ≥3 boundary has no eval instrument anywhere — that, not v8-blindness, is the open measurement gap.**
+- **Class-4 WATCH (no gate):** descriptive AUC 0.813 → 0.728 [n=22, all julia:multibrot, inside label noise] — rides `cloud_diagnostic`, keyed on scorer version, self-retiring. First v10-era run gets a qualitative eye on q4 yield.
 - **Inherited role limits** [human n=81+298+500]: on selected output `p_good` is a badness filter; NEVER allocate across families (family-mean Spearman −0.57); over-separates seed fertility (machine ICC 0.90–0.965 vs human 0.72–0.82).
-- **UNCERTIFIED:** deeper zoom, minibrot neighbourhoods, phoenix, julia:mandelbrot, native multibrot (zero eval rows). **On maneuver-originated views it is MEASURED non-separating** [100 canonical decodes]: median p_good equal across the view screen's quintiles, only the sparse tail concentrates high — badness triage there is the view screen's job, not v8's, until v10 trains on that population.
-- **★★ THE FLIP NEARLY BROKE THE RANKER'S FROZEN FEATURES SILENTLY** — v8 shares the backbone, so a v8 penultimate is also 1280-D: every shape check succeeds while the head returns confident nonsense from v7-fit weights. Now pinned via `tools/ranker/scorer.PENULTIMATE_CKPT`, raises rather than falls back. **Generalizable: when checking whether a flip moves a frozen artifact, check the sites that BUILD its inputs, not just the loader.**
-- Kept deliberately: K=3 path byte-identical; `p_ge4` present-and-None on a K=3 trace. **The decode COUNTS thresholds met rather than chaining** — CORN cumulatives aren't guaranteed monotone; high `p_ge4` with `p_ge3` below `t_good` decodes to 3, not 4.
-- **Rollback ladder v7 → v6 → v5** — must also revert `T_GOOD_OVERRIDES` + `keeper_cuts.json` (v8's scale); the keeper-provenance test makes a forgetful rollback red.
+- **Rollback ladder v10 → v8 → v7 → v6 → v5** (recorded with the revert-together set beside the pin). **★ A rollback to v8 must RE-DERIVE its t_good table, not copy it** — fractal-thresholds owns why; the hazard is also written at the pins module.
+- **★★ Flip-era lesson kept: when checking whether a flip moves a frozen artifact, check the sites that BUILD its inputs, not just the loader** (the v8 flip nearly corrupted the ranker's frozen v7 features silently; now pinned via `tools/ranker/scorer.PENULTIMATE_CKPT`, raises rather than falls back).
 
-## v9 — built, measured, SHELVED (closed)
-The premise was false — **the aug cache never called `auto_maxiter` at all** (`v4-render-batch` renders every plan row at one `--maxiter`, historically flat 8000). The cap raise cut v8's own train/deploy skew 10.0% → 3.3% as a side effect (deploy win strongest in the shallow deciles); the pre-registered census bar was a null instrument (all 144 tiles byte-identical — julia:multibrot converges at 8000). **Shelved; the next retrain — after the supply run, on new labels — is the flip.** v9's cache is the forward asset (170,808 tiles, byte-identical manifest; the next build EXTENDS it rather than re-rendering); `keeper_cuts_v9.json` parked. Its mandelbrot `t_good` is a knife-edge its own derivation distrusts (0.29, OOF gap +0.263).
+## v9 — shelved (closed)
+Never deployed; its cache was the forward asset and v10 extended it byte-identically (170,760/170,760 prefix plan rows). `keeper_cuts_v9.json` deleted. Its lesson survives in the aug-recipe rules below.
 
 ## The augmentation recipe
-**24 crops/location: 4 palettes × 3 geometric samples × 2 AA levels.** Palettes per LOCATION with a per-location seed (per-crop would defeat multi-colormap batching): `twilight_shifted` always (deploy-matched) · `blue_orange` always (the map Matt's labels are formed on) · 2 from the 76 curated, **with 8 held out of training entirely as the invariance instrument.** Geometry: one identity framing + 2 jittered (shift ≤ 0.11 fw, scale ∈ [0.90,1.10]). AA: `ss1 box` + `ss2 lanczos3`. `data_v4.Loc.palette_renders()` derives the expected count from `aug_roster.json` — the next recipe change is data, not code.
-- **★★ Rule bought by the retired recipe: never augment in a way that destroys the evidence the label was based on** (off-structure crops inheriting the location's label corrupted exactly the positive classes; every model v4→v7 trained that way).
-- **⚠ Wanted, NOT done: a wider palette set (32–64 per location)** — excluded from the v9 rebuild to keep it single-variable. Next rebuild.
-
-## Palette invariance — earned, with a characterized boundary
-Census-144 under `twilight_shifted` vs the 8 held-out palettes: mean Spearman **0.896**, range 0.767–0.975. The boundary is **compressed OKLab lightness range** (the two low-ρ maps are the only two with L range 0.34–0.44 vs 0.77–1.00) **[measured, n=8, suggestive not established]**; overturned by a targeted draw of more low-L-range maps failing to score low. Forward use: a compressed ramp may also make wallpapers look flat — worth more to the emission palette pool than to the classifier.
+**24 crops/location: 4 palettes × 3 geometric samples × 2 AA levels.** Palettes per LOCATION with a per-location seed: `twilight_shifted` always (deploy-matched) · `blue_orange` always (the map Matt's labels are formed on) · 2 from the 76 curated, **with 8 held out of training entirely as the invariance instrument.** Geometry: one identity framing + 2 jittered (shift ≤ 0.11 fw, scale ∈ [0.90,1.10]). AA: `ss1 box` + `ss2 lanczos3`. `data_v4.Loc.palette_renders()` derives the expected count from `aug_roster.json` — a recipe change is data, not code.
+- **★★ Never augment in a way that destroys the evidence the label was based on** (off-structure crops inheriting the location's label corrupted the positive classes for every model v4→v7).
+- **⚠ Wider palette set (32–64/location): wanted, now parked TWO consecutive builds** — genuinely next rebuild.
+- **Costs for sizing [measured, v10 extend]:** 30,408 tiles in 7.52 h (estimate missed 1.49× even sampled in run order) — **appended maneuver material runs ~9× v9's per-tile cost, driven by interior mass, not the cap.** Full rebuild at 8,382 locations ≈ 11–13 h; the recolor-batching executor (fractal-engine) would cut the appended half ~4×.
 
 ## `pref_loc_v1` — the ranker (`tools/ranker/`)
-Frozen **v7**-penultimate + colored-CLIP, logistic good-vs-rest. Certified [3-batch LOBO n=379]: pooled Spearman +0.279 CI[+0.185,+0.371] vs canon p_good +0.115, positive every family; phoenix transfer [n=500] adds nothing over raw p_good. **HARD SCOPE: never wired into frontier priority, dive-start, scheduling, or any discovery decision.** Corpus prior rejected (labels distribution-bound). **Not refit onto v8 — pinned.**
+Frozen **v7**-penultimate + colored-CLIP, logistic good-vs-rest. Certified [3-batch LOBO n=379]: pooled Spearman +0.279 CI[+0.185,+0.371] vs canon p_good +0.115, positive every family; phoenix transfer adds nothing. **HARD SCOPE: never wired into frontier priority, dive-start, scheduling, or any discovery decision.** Not refit onto v8 or v10 — pinned.
 
-## q4 stage-1 screen (G) — superseded at sourcing
-The ring measures replaced G as the sourcing instrument; their validity record = `docs/design/orbital_field_metrics.md` — point, don't restate. What still matters about G:
-- **★★ G is a weak gate and a dead ranker** [human n=487, blind]: pooled AUC 0.605 but 0.511 within its own accepts; within-degree at chance. **Use G to discard junk; never to order candidates; do not invest further** — the learned descent function replaces it. 11% of what it rejects is good.
-- **★★ The interior clause is inert as a quality filter — KEEP it as a 5.3× COMPUTE filter** [160/160 atoms: removing it hands the ranker ×5.3 candidates and the same picks].
-- **Invariants a successor inherits:** OOD-mask permanent (filter and field are one system) · p NOT calibrated — gate from LABELED precision · deterministic seed before any weight-stability claim · referee = minibrot-DISJOINT LOMO.
-- **⚠ Neither G nor the ring measures see within-source VARIETY or COMPOSITION** — open; no scalar settles a composition call.
+## q4 stage-1 screen (G) — superseded at sourcing (kept for its invariants)
+**★★ G is a weak gate and a dead ranker** [human n=487, blind]: AUC 0.605 pooled, 0.511 within its own accepts. Use to discard junk only; the interior clause is inert as a quality filter but **KEEP as a 5.3× COMPUTE filter** [160/160 atoms]. Invariants any successor inherits: OOD-mask permanent · p NOT calibrated — gate from LABELED precision · deterministic seed before any weight-stability claim · referee = minibrot-DISJOINT LOMO. ⚠ Neither G nor any ring measure sees within-source VARIETY or COMPOSITION — open; no scalar settles a composition call.

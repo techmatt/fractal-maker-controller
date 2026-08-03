@@ -28,7 +28,7 @@ Changes when: labeling happens, a batch is registered, coverage moves. Spec + th
 | supply-crawl `…_exemplar_v1` (60) | train; similarity RETIRED after two null reads (fractal-discovery) |
 
 - **★★ The disqualifying bias for an EVAL set is MODEL-DRIVEN SELECTION, not non-randomness** — a systematic grid, ladder or base-rate draw is eval-eligible; candidates kept because a model scored them well are not.
-- **★ `assign_split` is FAIL-CLOSED** — an unregistered batch classifies as biased/train; a contradiction against the `label_store` registration hard-aborts. ⇒ **register a new generation method BEFORE its batch is built, or it silently lands train-side.**
+- **★ `assign_split` is FAIL-CLOSED** — an unregistered batch classifies as biased/train; a contradiction against the `label_store` registration hard-aborts. ⇒ **register a new generation method BEFORE its batch is built, or it silently lands train-side.** Split-group unioning includes SHARED MINIBROT ATOM as a seed (2026-08-02, protocol seed rule) — k-variant views of one atom are invisible to the spatial 1.5×-fw union.
 - **★ Nominal splits are not realized splits** (a nominal 70/30 realized 17.2% eval) — check realized shares before quoting a CI. A forced-eval batch drops its biased neighbours (census-100%-eval + zero-biased-in-eval + zero-group-straddle can't all hold).
 
 ## What the corpus cannot tell you
