@@ -30,7 +30,7 @@ Changes when: renderer/kernel work, a new family, a new render axis. Owns the ma
 ---
 
 ## FAMILY SEAM & WALKER
-5 families, escape-time, all descendable; discovery/emission span **9 partitions** (base + julia twins of the c-plane degrees; phoenix = classic + varied in ONE partition). Degree in the name; `location.py` round-trips (decimal-string coords, lossless arbitrary precision). Descent geometry family-agnostic.
+5 families, escape-time, all descendable; discovery/emission span **10 partitions** (base + julia twins of the c-plane degrees; phoenix varied + **`phoenix:classic`**). **`phoenix:classic` = the pinned Ushiki parameter point c=(0.5667,0) p=(−0.5,0) z₋₁=0, a DERIVED partition** [code: `partitions.partition_of_row`]: resolved row-side by EXACT family_params match (no tolerance — a float-noise miss is a STOP); absent axes resolve classic for corpus/ledger rows, but the EVAL SLICE carries no parameter axes ⇒ the resolver REFUSES its rows and slice consumers stay pooled. Degree in the name; `location.py` round-trips (decimal-string coords, lossless arbitrary precision). Descent geometry family-agnostic.
 
 - **Julia identity = viewport AND `c`** (keyed + regression-tested; dedup seed-c-aware n-D; same-julia ε 1e-6). **★ TWO julia ledger schemas exist, keyed in `julia_ledger_schema.py`** — campaign-era and walk-era disagree which field holds `c` vs viewport; both writers stamp at birth; untagged = loud failure; `viewport_and_c` is the canonical resolver behind `descriptor.location_of`. **All new roots write CAMPAIGN schema.**
 - **★ Ledger coords may be STRINGS** — normalize at the READER, never by trusting writers; the standing pattern for every identity collision, including deduping duplicate rows rather than constraining the writer.

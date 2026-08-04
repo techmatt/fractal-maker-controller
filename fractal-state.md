@@ -1,33 +1,29 @@
-# fractal-state — ckpt 30, 2026-08-04
+# fractal-state — ckpt 31, 2026-08-04
 
 **Rewritten in full at EVERY distillation — the only doc guaranteed to be.** Holds NO FACTS: status, plan, flags, open/parked, roster.
 
-**This checkpoint = the launch era (~1 day): sitting machinery serve-proven → first v2 sitting labeled (bar read: NOT ADOPT) → q4-fields false-durable arc (born the 20 MB rule) → arm A (scheduler, accidental) + arm B (pop-quota, matched, sentinel-stopped early) → mid-run mechanism read found the SUPPLY LOOP, not allocation, binding → prereg VOIDED, POP-QUOTA ADOPTED.** 428 admissions banked across two runs.
+**This checkpoint = the partition/allocator era (~1 day): supply-loop fixes landed → label census (falsified one corpus claim; surfaced the GATE-11 block) → score-unconditioned exemption + single split registry → `phoenix:classic` promoted to the tenth partition (all classic labels verified recovered) → the ratio table: release mix canonical, deficit targets ∝ ratio, calibration reservation in the sitting cutter.** No production run; smokes only.
 
 ## THE GOAL (Matt)
-Two learned functions: **(a) find good minibrots** (screening over maneuver targets) and **(b) find the q4 within a neighbourhood** (guided descent). Full automation. Steady state: CONTINUOUS deficit-driven harvest under **pop-quota** (scheduler retired — `retired.md`); periodic ≤1000-row sittings.
+Two learned functions: **(a) find good minibrots** (screening over maneuver targets) and **(b) find the q4 within a neighbourhood** (guided descent). Full automation. Steady state: CONTINUOUS deficit-driven harvest under **pop-quota with ratio-weighted targets** (fractal-discovery); periodic ≤1000-row sittings with the calibration reservation (fractal-corpus).
 
 ## THE PLAN
-**(…–13) ~~done~~ through the launch era · (14) SUPPLY-LOOP FIXES ← next** (per-partition low-water refill · price-sampling aggregation · twin hook/pool spacing — fractal-discovery owns all three) **then the steady-state relaunch — NEEDS MATT'S BUDGET; never a second full run without his sign-off · (15) sittings recur off run residue** (arm B's julia:mandelbrot-heavy vein is prime unlabeled q4 material) **· (16) descent harness resumes · (17) v11 retrain** (harvest labels + per-family eval instruments + the atom_key decision) **· (18) emission relight rides the steady-state run.**
+**(…–14) ~~done~~ through this era · (15) EMISSION EXAMINATION + RE-HOOKUP ← next checkpoint (Matt):** what stage 2 needs for the current state (10 partitions, v10, rebuilt seed) and re-hookup/test all of it — wire `release_mix`, reconcile the classic source_tag/partition dual-keying, library decode currency, gates/floors on v10's scale, the precanon-vs-top-tier question **· (16) sittings recur off run residue** (reservation live; arm B's julia:mandelbrot vein is prime q4 material) **· (17) the steady-state relaunch — NEEDS MATT'S BUDGET**; convergence at the new mix is unmeasured; one run per budget, never back-to-back **· (18) descent harness resumes · (19) v11 retrain** (eval 1050; per-family instruments; classic viewport-instrument decision; atom_key decision).
 
 ## STATUS
-- **v10 LIVE; `composite_v3` stays the sort key** (view_fit bar NOT MET — fractal-discovery).
-- **POP-QUOTA = the standing production allocator (Matt, 2026-08-04)**; scheduler retired as policy.
-- Runs banked: arm A 336 adm (8.66 h, wall-cap) · arm B 92 (stopped by design at b427) — both supply-degraded; ledgers committed.
-- First v2 sitting labeled + merged (1,000 rows); labels live in the deficit overlay.
-- Library seed at registered bulk, scratch refused at resolve time; suite 1,536 green.
+- **10 partitions; ratio-weighted pop-quota targets live; calibration reservation live** (active: `phoenix:classic` only).
+- Split registry unified (`batch_registry.py`); realized split eval 1050 / train 9263 / dropped 0; GATE 11 clear.
+- Classic ledger re-scored under v10; library seed still holds zero classic looks.
+- Suite 1,794 green; smokes clean at 10 partitions; no run banked this era.
 
 ## STALENESS FLAGS
-- **discovery:** the cost-to-mine price table is UNRELIABLE (sampling inversion measured) — do not allocate or size from it until the fix lands.
-
-## PRE-FIX OPENS (the fixes prompt carries the first three)
-per-partition low-water refill · price-sampling aggregation · hook/pool spacing reconciliation · **admission path vs the top tier** — most sitting fours died `precanon_dup`; decide whether precanon dedup over-fires before the next intake (fractal-discovery) · verify the τ_h mb3/mb5 self-heal consumed the two new harvest logs (fractal-thresholds owns the claim).
+- **discovery:** the stored cost-to-mine price table is STALE (fix landed; the first steady-state run's aggregated telemetry regenerates it) — do not size from it.
 
 ## OPEN — recorded, not scheduled
-atom_key withheld from the sitting batch — decide before any v11 manifest (fractal-corpus) · label-reachability gap: opaque-keyed exports invisible to the guard (fractal-corpus) · `LS.FIELDS` parked at `bulk()` (Claude-recommended; stands unless Matt objects) · 6 frozen-record hazard sites swept, undecided (fractal-storage) · namespace-package migration (fractal-storage) · scratch cleanup pass: the allowlist's INPUT entries are mostly already-broken study deps (fractal-storage).
+τ_h mb3/mb5 self-heal: verify it consumed the two new harvest logs (fractal-thresholds owns the claim; never checked — ride an early emission-ckpt prompt) · precanon dedup vs the top tier — decide before the next intake (fractal-discovery) · eval slice lacks parameter axes ⇒ no phoenix-half cut derivable from it (fractal-thresholds) · classic viewport instrument NOT_DRAWN, fail-closed (fractal-corpus) · atom_key before any v11 manifest (fractal-corpus) · opaque-export guard gap stays STRUCTURAL (all current files reconciled 2026-08-04; future exports verify by row count) · 6 frozen-record hazard sites swept, undecided (fractal-storage) · namespace-package migration (fractal-storage) · scratch cleanup pass (fractal-storage) · `LS.FIELDS` parked at `bulk()` (stands unless Matt objects).
 
 ## PARKED — named, not half-open
-recolor-batching executor (next cache rebuild) · wider aug palette set (next rebuild) · variety measure · composition · Douady tuning · perturbation in `render-one` · probe as standing audit · mining-gate calibration (accrues free) · fw-scaled precanon radius · Rust-kernel profiling · ∂M-distance-scaled c-floor · **per-batch checkpoint cost grows with `morph_mem` node count — compact/rotate before multi-night runs** · lever-2 (blocked on 18/36 atom_id agreement).
+units-weighted EMA price step (let relaunch telemetry show whether lag matters) · refill knobs (`cooldown 10` / `share 0.25`) unexercised near their limits — read `root_draw_share` off the first real run · recolor-batching executor (next cache rebuild) · wider aug palette set (next rebuild) · variety measure · composition · Douady tuning · perturbation in `render-one` · probe as standing audit · mining-gate calibration (accrues free) · fw-scaled precanon radius · Rust-kernel profiling · ∂M-distance-scaled c-floor · per-batch checkpoint cost grows with `morph_mem` node count — compact/rotate before multi-night runs · lever-2 (blocked on 18/36 atom_id agreement).
 
 ## ROSTER — soft size targets (small justified overage fine; dramatic = stop; targets move only with Matt)
 operating 13k · state 6k · engine 11k · storage 6k · orchestration 4k · models 8k · thresholds 5k · corpus 8k · discovery 13k · emission 6k
