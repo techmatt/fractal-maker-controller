@@ -29,6 +29,7 @@
 
 **★★ SELECTIVE DISTILLATION — the core rule (Matt).** At a distillation, claude.ai decides which docs the era touched or invalidated and emits ONLY those plus state.md — default a SMALL SUBSET; emitting everything needs a stated reason. An untouched doc is not re-emitted and cannot grow. **The apply-prompt does the applying:** a `DISTILL_`-prefixed prompt (content guard: working dir must hold the 10 fractal-*.md at root, no Cargo.toml/src/tools — else STOP) carries wholesale replacements + exact hunks, sanity-checks touched files against their soft targets (small justified overage = apply and note; dramatic overage or padding = stop and report), spot-greps single-home, verifies untouched files untouched, one git commit per distillation.
 - **Walk the full manifest once per distillation** — verdict per doc: TOUCHED / INVALIDATED (era changed its truth without editing it — staleness flag in state.md, never silence) / CLEAN.
+- **State the scratch-preservation notice to Matt at every distillation** — what under `scratch/` must survive the wipe, read off the enforced allowlist; default NOTHING.
 - Stable docs amended by diff; a full rewrite only when the subject was heavily reworked, or Matt asks. To add substantially to a doc, prefer deleting within it first.
 - Distillation only from a SETTLED state — never mid-session, never with a CC prompt outstanding; its job is to CLOSE threads, not open them.
 
@@ -54,7 +55,7 @@
 
 - **★★ NO ARCHAEOLOGY; DELETION IS NORMAL.** Don't resurrect artifacts that don't match how things work now. Only the latest model matters. Matt holds retention outside the repo; in a genuine last-resort case ask once, otherwise move on.
 - **★★ USEFULNESS BEFORE RECOVERABILITY.** First question: will anything ever want it back? If nothing will, delete the regeneration machinery with the data. **Regenerability is not per-file when builds are chained** — rebuilding needs the ORDER, which nothing in code states.
-- **★★ NOTHING LOAD-BEARING LIVES IN `scratch/`, both ways.** Evidence leaves it the moment it justifies a durable decision; a proposal computed there never leaves it as a fact.
+- **★★ NOTHING LOAD-BEARING LIVES IN `scratch/`, both ways.** Evidence leaves it the moment it justifies a durable decision; a proposal computed there never leaves it as a fact. Deliberate exceptions are DECLARED in the enforced allowlist (fractal-storage) with owner + expected lifetime; **Matt wipes scratch between checkpoints — every distillation states what (if anything) he must preserve first; default NOTHING.**
 - **★★ A DURABLE RECORD WRITTEN AFTER A FALLIBLE STEP IS NOT DURABLE IN PRACTICE.** Write the irreplaceable record first, then the work that can fail.
 - **★ `docs/design/` ADMISSION:** something in the code owns it and it stays true as the code changes. A transient measurement lives in scratch, survivors extracted into the owning doc, then deleted — **an extraction that does not delete its source is the failure; a rule nothing enforces is not a rule — name the guard.** A surviving measurement carries date + command, re-derived at commit time.
 - **★ FRACTAL TYPES ARE PERMANENT DESIGN CONSTRAINTS** — phoenix and the 2% classic-phoenix case included. Retiring a generation METHOD is legitimate only when emission for that type is uncompromised.
@@ -63,7 +64,7 @@
 
 ## REASONING
 
-**Confidence convention.** Every verdict carries **basis** (`[human n=X]`·`[machine-decode]`·`[measured]`·`[inferred]`·`[by-eye]`), **population** (most falsified verdicts were population errors wearing a number), and **overturned-by**. A verdict with no falsifier is a belief; `[machine-decode]` is evidence about the MODEL, not the world.
+**Confidence convention.** Every verdict carries **basis** (`[human n=X]`·`[machine-decode]`·`[measured]`·`[inferred]`·`[by-eye]`), **population** (most falsified verdicts were population errors wearing a number), and **overturned-by**. A verdict with no falsifier is a belief; `[machine-decode]` is evidence about the MODEL, not the world. **★ A reproducibility test must re-run the writer the artifact came from, not a plausible neighbour** — and a prompt making classification mechanical must PIN the writer (the q4-fields false-durable arc). **★ Early reads of a slow-starting run: mechanism (mix conformance, queue states) is valid immediately; yield/funnel is warm-up, not the run** — this bit twice at ckpt 30.
 
 Measurement method → `measurement_practice.md`; verification → `verification_practice.md` — cite in prompts, don't transcribe.
 
@@ -71,7 +72,7 @@ Measurement method → `measurement_practice.md`; verification → `verification
 
 ## WORKING STYLE
 
-One CC prompt at a time; wait for results. Progress through delivery over methodological minutiae (Matt); scope narrow. Diagnosis-first is NOT a standing policy — case by case. **★ MATT'S N-HOUR BUDGET COVERS EVERYTHING** — build + shakedown + run + post done ≤N wall-clock; the run's own cap ~N−2, shaved further when build/post estimates grow; overlapping build/post with a running crawl is legitimate.
+One CC prompt at a time; wait for results. Progress through delivery over methodological minutiae (Matt); scope narrow. Diagnosis-first is NOT a standing policy — case by case. **★ MATT'S N-HOUR BUDGET COVERS EVERYTHING** — build + shakedown + run + post done ≤N wall-clock; the run's own cap ~N−2, shaved further when build/post estimates grow; overlapping build/post with a running crawl is legitimate. **One run per budget: a follow-up run of ANY length after one completes is a NEW budget question for Matt — never launch back-to-back on inference (2026-08-04).**
 
 - Prompts = short `.md` in `/mnt/user-data/outputs/`, presented, **never inline**. Scale length to risk; trust CC on mechanics. Prompts touching tests, guards, or measurements cite the repo practice docs by path.
 - **★ CC's honest spec-deviations with stated reasons are consistently right — read before overriding.** Supply claims to be CHECKED, not text to transcribe, and ask for the corrections list back.
@@ -79,7 +80,7 @@ One CC prompt at a time; wait for results. Progress through delivery over method
 - **★ AFTER A REPORT, DO NOT SUMMARIZE IT BACK.** Say only what it CHANGES, what Claude got WRONG, and what's next.
 - **★ CC WRITES ITS REPORT TO A `.md` UNDER `scratch/`, NEVER THE TERMINAL** — TUI copy-out mangles at wrap boundaries. Screenshot = fine fallback.
 - **★ NEVER EDIT A PROMPT ALREADY HANDED OVER** — addendums as separate paste-able files. Not-yet-run → edit. If an outputs file diverges from what ran, restore it.
-- Matt does NOT hand-edit JSON/config — he dictates values, the prompt applies them. Acceptance BY EYE except classifier/ranker evals. He commits his own work; git — commits, push, remotes, auth — is his entirely: never flag, track, or mention its state. **★ CC commits to `main` ONLY.**
+- Matt does NOT hand-edit JSON/config — he dictates values, the prompt applies them. Acceptance BY EYE except classifier/ranker evals. He commits his own work; git — commits, push, remotes, auth — is his entirely: never flag, track, or mention its state. **★ CC commits to `main` ONLY.** **★★ NO COMMIT ≥20 MB — single blob or aggregate, LFS counted — WITHOUT MATT'S EXPLICIT PRIOR CONFIRMATION (Matt, firm, 2026-08-04):** binds claude.ai prompts and CC alike; encoded in repo CLAUDE.md; stop and ask, never sanction implicitly.
 - **★ A FIX WITH A SHAPE NEEDS THE PROMPT, NOT A "YES"** (derive-from-data vs hardcode, relational vs literal).
 - **★ BUILD ≠ FLIP.** Built and staged in one prompt, adopted in another against a pre-registered bar. Standing exceptions bought by disasters: pre-registered eval bars · blind human reads as adjudicator of any model-selected population · reject autopsy + identity round-trips.
 - **★ A SHAKEDOWN BEFORE A LONG UNATTENDED RUN PAYS FOR ITSELF.** A cap that never fired is untested, not working.
