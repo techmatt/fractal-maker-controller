@@ -34,7 +34,7 @@ Per-partition **MINIMUM of the harvest-log quantile (left-truncated by construct
 | multibrot5 | 0.438 | **0.351** | | julia:multibrot5 | 0.199 | **0.070** |
 
 - **★★ THE POOLED CROSS-FAMILY FALLBACK WAS LIVE AND IS REMOVED** (`allow_pooled=False`): with native-multibrot pass counts collapsed under min_n=5, the old code served mb3/mb5 a pooled quantile ~9× looser than their own harvest estimates. An arm that lacks n is recorded UNAVAILABLE; the min is over arms that exist.
-- ⚠ mb3/mb5 rest on the harvest arm ALONE — an upper bound with nothing below it (sheds-admissions direction). **Self-heals: the first v10-era run's `harvest_log.jsonl` regenerates both curves.** The harvest arm excludes campaign1's 37,853 checks (pre-geometry, permanently un-re-scoreable).
+- ⚠ mb3/mb5 rest on the harvest arm ALONE — an upper bound with nothing below it (sheds-admissions direction). **Self-heals: the first v10-era run's `harvest_log.jsonl` regenerates both curves.** The harvest arm excludes campaign1's pre-geometry checks (fractal-orchestration owns the count).
 - `TAU_H_CAMPAIGN_FLOOR` stays retired and empty; mechanism tested by injection only.
 
 ## Keeper cuts (`data/atlas/keeper_cuts.json`, `model:"v10"`)
