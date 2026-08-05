@@ -11,14 +11,15 @@ q3 = the served predicate (below). One instrument per partition, never pooled.
 | julia:multibrot3 | F2 | **0.27** | 0.594 | 1.000 | 0.841 | 6 steps |
 | julia:multibrot4 | F2 | **0.03** | 0.533 | 1.000 | 0.791 | 2 steps |
 | julia:multibrot5 | F2 | **0.06** | 0.704 | 0.864 | 0.789 | 4 steps |
-| julia:mandelbrot · phoenix | — | 0.50 | — | — | — | UNCALIBRATED — eval instruments exist since 2026-08-03 (fractal-corpus); calibrate at the next version |
+| julia:mandelbrot · phoenix | — | 0.50 | — | — | — | UNCALIBRATED — the uniform instrument exists but is SHORT of `MIN_POS` (fractal-corpus owns counts); further uniform draws precede any calibration |
 | phoenix:classic | — | 0.50 | — | — | — | UNCALIBRATED — positives below `MIN_POS`; the sitting reservation accrues them (fractal-corpus); classic supply reads `t_good_for("phoenix:classic")` [code] |
-| multibrot3/4/5 | — | 0.50 | — | — | — | UNCALIBRATED (unbiased rows exist, ZERO keeper positives — stamped as its own case) |
+| multibrot3/4/5 | — | 0.50 | — | — | — | UNCALIBRATED — unbiased rows exist, ZERO positives; more ∂M-shell buys 0 expected positives — needs a DIFFERENT draw (fractal-corpus) |
 
 - **★★ The objective principle (protocol §4): recall where supply is scarce, precision where abundant** — re-chosen per flip from CURRENT supply, never copied.
 - **★★ MANDELBROT IS UNDECIDABLE AT THE TOP.** v10's F0.5 curve is flat and low (precision ≈0.35 everywhere below t=0.7); the argmax falls to the grid floor on a 1-step plateau; F0.5 and F2 pick the SAME t (under v8: 0.85 vs 0.14 — the objective was load-bearing and now is not). Paired on the identical 526 rows: admits 2.28% → 7.79%, precision 0.333 → 0.366 — **the cut has NEVER bought precision under either head. The failure mode runs BOTH directions: a high cut quietly stalls library growth; a low cut pollutes it.** Answer = MORE LABELS (the ranked harvest queue is the ready supply), never a hand-nudge.
 - ⚠ Small-n plateau flags stand on all three julia:multibrot cuts — OOF is the honest column.
 - **★ UNCALIBRATED IS STAMPED, NOT IMPLIED** (`t_good_status`) — a baseline 0.50 and a derived 0.50 are indistinguishable in a config file.
+- **★★ `MIN_POS` binds on the frozen EVAL SLICE, never corpus positives** [read 2026-08-05: all five uncal partitions clear corpus counts; none has eval-slice positives]. The v10 slice = `data/v10/eval_scores_v10.jsonl`, three frozen sources (loose0_v3_floor / prospect_census / maneuver_uniform_v1); `q4_uniform_eval_v1` is eval-eligible in the batch registry — the mechanism that admits it at the next version's slice build — but outside the frozen list. A staged cut derived on any biased population is NOT adoptable, whatever it reports.
 
 ## The served predicate — sweep and gate now agree (`5d866cc`)
 Production admits via `corn_decode`, which **COUNTS thresholds met** (CORN cumulatives aren't guaranteed monotone — 92/760 v10-slice rows have `p_ge4 > p_ge3`); since 2026-08-02 **the t_good sweep searches that same rule** (the old ∧-rule disagreed at 68/97 grid points; the adopted v10 table is byte-identical under alignment; a non-vacuity fixture pins the disagreement cases).
@@ -35,7 +36,7 @@ Per-partition **MINIMUM of the harvest-log quantile (left-truncated by construct
 | multibrot5 | 0.438 | **0.351** | | julia:multibrot5 | 0.199 | **0.070** |
 
 - **★★ THE POOLED CROSS-FAMILY FALLBACK WAS LIVE AND IS REMOVED** (`allow_pooled=False`): with native-multibrot pass counts collapsed under min_n=5, the old code served mb3/mb5 a pooled quantile ~9× looser than their own harvest estimates. An arm that lacks n is recorded UNAVAILABLE; the min is over arms that exist.
-- ⚠ mb3/mb5 rest on the harvest arm ALONE — an upper bound with nothing below it (sheds-admissions direction). **The "self-heals" claim was FALSE (falsified 2026-08-04): `tau_h_rederive.HARVEST_RUNS` is a 5-entry hand list (campaign1/2 + julia_parent_probe); no 2026-08-03+ log has ever entered a derivation.** Decided fix (Matt): log discovery from registered run dirs, built PRE-RELAUNCH — new logs improve n; the left-truncation confound stands regardless. The harvest arm excludes campaign1's pre-geometry checks (fractal-orchestration owns the count).
+- ⚠ mb3/mb5 rest on the harvest arm ALONE — an upper bound with nothing below it. **Log discovery LANDED (`8165555`): `harvest_log_registry` replaces the retired `HARVEST_RUNS` hand list — writing to the registered store IS registering [code: rests on `discovery_sinks` class resolution; scratch refused; campaign1 (all pre-geometry) and phoenix rows excluded by construction].** Discovered population ≈ 2× the pinned five (mb4 454→1,587, mb3 1,683→4,504); **the adopted arms will NOT reproduce on it (8.4% sample overlap) — a re-derivation is a NEW derivation + flip AND a full re-render (~2,400 harvest + 1,100 walk rows × 2 arms; the rederive cache is gone). DEFERRED deliberately (2026-08-05), not by omission.** New confound: each log left-truncates at ITS OWN live τ_h — the truncation level is non-uniform across the enlarged arm; the upper-bound direction holds.
 - `TAU_H_CAMPAIGN_FLOOR` stays retired and empty; mechanism tested by injection only.
 
 ## Keeper cuts (`data/atlas/keeper_cuts.json`, `model:"v10"`)
