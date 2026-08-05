@@ -41,7 +41,7 @@
 
 **★★ SINGLE-HOME.** One doc per subject; at a distillation, grep each bolded numeral across the emitted docs and assert single occurrence. Other docs may NAME a fact and cross-reference; never restate its value or mechanism.
 
-**★★ TAG CLAIMS ABOUT CODE.** A line asserting what the tree does carries `[code: path]` or `[unverified]`. Untagged lines are decisions or measurements. Every checkpoint that checked has falsified some of these.
+**★★ TAG CLAIMS ABOUT CODE.** A line asserting what the tree does carries `[code: path]` or `[unverified]`. Untagged lines are decisions or measurements. Every checkpoint that checked has falsified some of these. **A claim of AUTOMATIC FUTURE BEHAVIOR ("self-heals", "regenerates", "X will consume Y") requires `[code: path]` naming the enforcing mechanism — else it is not written (Matt, 2026-08-05; the τ_h "self-heal" was a hand list).**
 
 **Compression.** Telegraphic, fragments, no scaffolding. **Rewording ≠ compressing**; when a reword pass stops paying, delete whole blocks.
 
