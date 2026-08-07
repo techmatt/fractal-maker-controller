@@ -11,7 +11,7 @@ q3 = the served predicate (below). One instrument per partition, never pooled.
 | julia:multibrot3 | F2 | **0.27** | 0.594 | 1.000 | 0.841 | 6 steps |
 | julia:multibrot4 | F2 | **0.03** | 0.533 | 1.000 | 0.791 | 2 steps |
 | julia:multibrot5 | F2 | **0.06** | 0.704 | 0.864 | 0.789 | 4 steps |
-| julia:mandelbrot · phoenix | — | 0.50 | — | — | — | UNCALIBRATED — the uniform instrument exists but is SHORT of `MIN_POS` (fractal-corpus owns counts); further uniform draws precede any calibration |
+| julia:mandelbrot · phoenix | — | 0.50 | — | — | — | UNCALIBRATED — uniform instrument short of `MIN_POS`; **draws DEMOTED to contingency (Matt, 2026-08-06)** — v11 calibrates via randomized location-grouped split; buy uniform rows only on observed live miscalibration |
 | phoenix:classic | — | 0.50 | — | — | — | UNCALIBRATED — positives below `MIN_POS`; the sitting reservation accrues them (fractal-corpus); classic supply reads `t_good_for("phoenix:classic")` [code] |
 | multibrot3/4/5 | — | 0.50 | — | — | — | UNCALIBRATED — unbiased rows exist, ZERO positives; more ∂M-shell buys 0 expected positives — needs a DIFFERENT draw (fractal-corpus) |
 
@@ -19,7 +19,7 @@ q3 = the served predicate (below). One instrument per partition, never pooled.
 - **★★ MANDELBROT IS UNDECIDABLE AT THE TOP.** v10's F0.5 curve is flat and low (precision ≈0.35 everywhere below t=0.7); the argmax falls to the grid floor on a 1-step plateau; F0.5 and F2 pick the SAME t (under v8: 0.85 vs 0.14 — the objective was load-bearing and now is not). Paired on the identical 526 rows: admits 2.28% → 7.79%, precision 0.333 → 0.366 — **the cut has NEVER bought precision under either head. The failure mode runs BOTH directions: a high cut quietly stalls library growth; a low cut pollutes it.** Answer = MORE LABELS (the ranked harvest queue is the ready supply), never a hand-nudge.
 - ⚠ Small-n plateau flags stand on all three julia:multibrot cuts — OOF is the honest column.
 - **★ UNCALIBRATED IS STAMPED, NOT IMPLIED** (`t_good_status`) — a baseline 0.50 and a derived 0.50 are indistinguishable in a config file.
-- **★★ `MIN_POS` binds on the frozen EVAL SLICE, never corpus positives** [read 2026-08-05: all five uncal partitions clear corpus counts; none has eval-slice positives]. The v10 slice = `data/v10/eval_scores_v10.jsonl`, three frozen sources (loose0_v3_floor / prospect_census / maneuver_uniform_v1); `q4_uniform_eval_v1` is eval-eligible in the batch registry — the mechanism that admits it at the next version's slice build — but outside the frozen list. A staged cut derived on any biased population is NOT adoptable, whatever it reports.
+- **★★ `MIN_POS` binds on the frozen EVAL SLICE, never corpus positives** [read 2026-08-05: all five uncal partitions clear corpus counts; none has eval-slice positives]. The v10 slice = `data/v10/eval_scores_v10.jsonl`, three frozen sources (loose0_v3_floor / prospect_census / maneuver_uniform_v1); `q4_uniform_eval_v1` is eval-eligible in the batch registry — the mechanism that admits it at the next version's slice build — but outside the frozen list. The ckpt-33 rule "a staged cut derived on any biased population is NOT adoptable" is **superseded (Matt, 2026-08-06): randomized location-grouped splits are the calibration default at v11**; the frozen-slice machinery stays for instruments already built.
 
 ## The served predicate — sweep and gate now agree (`5d866cc`)
 Production admits via `corn_decode`, which **COUNTS thresholds met** (CORN cumulatives aren't guaranteed monotone — 92/760 v10-slice rows have `p_ge4 > p_ge3`); since 2026-08-02 **the t_good sweep searches that same rule** (the old ∧-rule disagreed at 68/97 grid points; the adopted v10 table is byte-identical under alignment; a non-vacuity fixture pins the disagreement cases).
@@ -41,6 +41,19 @@ Per-partition **MINIMUM of the harvest-log quantile (left-truncated by construct
 
 ## Keeper cuts (`data/atlas/keeper_cuts.json`, `model:"v10"`)
 REPORT-ONLY floor; ranker orders within eligible; a keeper is `label >= 3`. Recut: mandelbrot **0.03** (OOF 0.357) · j:mb3 **0.47** (0.528) · j:mb4 **0.55** (0.667) · j:mb5 **0.55** (0.667). **★ One-instrument rule now enforced in `keeper_cut.load_triples`** (generalizing the julia census-only rule): pooling 12 zero-positive mandelbrot rows had moved the cut 5 grid steps and collapsed OOF 0.357 → 0.100.
+
+## Stage-2 cuts — `floors.py` sole owner; ALL FOUR ENFORCING (2026-08-06)
+
+| floor | value | stamp | basis |
+|---|--:|---|---|
+| wallpaper_pool | 0.75 | v3 | module literal (permissive inventory bar) |
+| wallpaper_release | 0.90 | v3 | IS `wallpaper_pins.GATE_THRESHOLD` — imported, never copied |
+| mining_pool | 0.25 | v1 | measured: prec 75.7% [64.5–84.2] @ recall 84.1% |
+| mining_release | 0.50 | v1 | measured: prec **97.0%** [84.7–99.5] @ recall 50.8% — **ENFORCING** (report-only until 2026-08-06) |
+
+- Basis = `data/render_mode_head/v1/mining_gate_lock.json` [eval n=422, 15 modes, ≥3 base 14.9%]. **★ Every precision is a CEILING, not an estimate** — v1 trained at the sheet's 112 locations AND labels were prefill-anchored; inseparable, stated in the record. `read_lock` + `Floor.gate` refuse on pin/stamp mismatch [code: tools/emission/floors.py, tools/mining/lock_mining_gate.py]; the ladder is frozen WHOLE (both boundaries) so alternative cuts stay answerable without crops; none of the 70/80/90% precision targets clears its Wilson LOWER bound at n=422 — the reason nothing else moved. July's lock (0.548/0.195 @0.50, base .139, genuinely held-out, inputs gone) survives as prose in `fresh_sheet_reads.JULY_LOCK` — different population, NOT superseded.
+- **★★ A stage-2 flip re-derives its gate at a VOLUME-MATCHED operating point on the new head's own scale** — CORN marginals calibrate to the train prior (fractal-models). Never copy a threshold across heads.
+- First production run: realized fire rates 1.2–1.3× the lock's, inside CIs [unlabeled — no precision info].
 
 ## Decode-version predicate — version-general (HIGH-touch)
 `corpus_common`: `is_decoded_by`, `is_current_decoded`, `current_rows_only`, `require_current`, `StaleDecodeError`. **Mixed-decode readouts are poison.** Admissible pool = current-decoded ledgers; a t_good flip retro-re-decodes by arithmetic on stored raw probabilities — stale rows die by the predicate, nothing hand-deleted. **Firewall verified live at the v10 flip: 313 v8 rows would have admitted; `load_admitted` returns 0.**
