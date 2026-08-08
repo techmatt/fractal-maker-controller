@@ -11,7 +11,7 @@ q3 = the served predicate (below). One instrument per partition, never pooled.
 | julia:multibrot3 | F2 | **0.27** | 0.594 | 1.000 | 0.841 | 6 steps |
 | julia:multibrot4 | F2 | **0.03** | 0.533 | 1.000 | 0.791 | 2 steps |
 | julia:multibrot5 | F2 | **0.06** | 0.704 | 0.864 | 0.789 | 4 steps |
-| julia:mandelbrot · phoenix | — | 0.50 | — | — | — | UNCALIBRATED — uniform instrument short of `MIN_POS`; **draws DEMOTED to contingency (Matt, 2026-08-06)** — v11 calibrates via randomized location-grouped split; buy uniform rows only on observed live miscalibration |
+| julia:mandelbrot · phoenix | — | 0.50 | — | — | — | UNCALIBRATED — corpus positives now 809 / 368 (2026-08-07 sitting) but `derive_t_good` still gates on frozen-slice `MIN_POS`, which counts NONE of them; **v11's conformance item REWIRES it to the randomized location-grouped default (Matt, 2026-08-06)** — uniform draws stay contingency-only |
 | phoenix:classic | — | 0.50 | — | — | — | UNCALIBRATED — positives below `MIN_POS`; the sitting reservation accrues them (fractal-corpus); classic supply reads `t_good_for("phoenix:classic")` [code] |
 | multibrot3/4/5 | — | 0.50 | — | — | — | UNCALIBRATED — unbiased rows exist, ZERO positives; more ∂M-shell buys 0 expected positives — needs a DIFFERENT draw (fractal-corpus) |
 
