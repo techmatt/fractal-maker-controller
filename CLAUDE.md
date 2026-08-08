@@ -38,3 +38,20 @@ check outcomes. Nothing else.
 `prompts/` is gitignored and outside your write scope. Read prompts from it; never
 create, edit, delete, or rename anything inside it, and never commit it. Matt deletes
 prompts there once applied — only the `*.md` files at this folder's root matter.
+
+## `C:\Code\fractal-drive-sync\` — claude.ai exchange, read-only
+A Drive-synced folder outside this repo. Prompts may arrive in its `prompts\` subfolder as
+well as in local `prompts/`. When Matt references a prompt by name, look in both.
+Read-only input.
+
+NEVER write anywhere under the exchange folder — no reports, no outputs, no copies,
+nothing. Its `reports\` subfolder is not yours to write to either. Outcomes from this repo
+reach claude.ai verbally via Matt; there is no report-file convention here unless a
+specific prompt asks for one.
+
+The handoff documents in this repo are the single canonical version. They are never
+copied, synced, or mirrored into the exchange folder or anywhere else. One version, here,
+only.
+
+The folder is disposable scratch on Matt's side — it may be empty or absent at any time.
+That is normal, not an error.
