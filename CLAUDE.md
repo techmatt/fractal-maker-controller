@@ -31,23 +31,29 @@ Working tree clean before applying. One commit per distillation, message `ckpt N
 Never rebase, amend, or rewrite history.
 
 ## Reports
-Short: per file applied/failed, any size overage noted, failed hunks verbatim,
-check outcomes. Nothing else.
+Default is a SHORT IN-SESSION report to Matt, nothing written to disk: per file
+applied/failed, any size overage noted, failed hunks verbatim, check outcomes. Nothing else.
+
+**NEVER commit a report.** No report file at this repo's root, ever, and none in any commit.
+
+**Write a report file ONLY when something went wrong and might need addressing** — a failed or
+unappliable hunk, a missing source a prompt named, content dropped with no replacement, a
+contradiction you refused to reconcile. A clean apply gets no file. When one is warranted it
+goes to `C:\Code\fractal-drive-sync\reports\` and nowhere else.
 
 ## `prompts/` — ignored, never edited
 `prompts/` is gitignored and outside your write scope. Read prompts from it; never
 create, edit, delete, or rename anything inside it, and never commit it. Matt deletes
 prompts there once applied — only the `*.md` files at this folder's root matter.
 
-## `C:\Code\fractal-drive-sync\` — claude.ai exchange, read-only
+## `C:\Code\fractal-drive-sync\` — claude.ai exchange
 A Drive-synced folder outside this repo. Prompts may arrive in its `prompts\` subfolder as
 well as in local `prompts/`. When Matt references a prompt by name, look in both.
-Read-only input.
 
-NEVER write anywhere under the exchange folder — no reports, no outputs, no copies,
-nothing. Its `reports\` subfolder is not yours to write to either. Outcomes from this repo
-reach claude.ai verbally via Matt; there is no report-file convention here unless a
-specific prompt asks for one.
+`prompts\` and the folder root are READ-ONLY — never create, edit, delete, or rename anything
+there. `reports\` is the ONE place this repo may write, and only under the conditions in
+`## Reports` above: something went wrong and might need addressing. Outcomes otherwise reach
+claude.ai verbally via Matt.
 
 The handoff documents in this repo are the single canonical version. They are never
 copied, synced, or mirrored into the exchange folder or anywhere else. One version, here,
