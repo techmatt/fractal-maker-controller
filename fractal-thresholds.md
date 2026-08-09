@@ -47,7 +47,7 @@ Per-partition **MINIMUM of the harvest-log quantile (left-truncated by construct
 - **★ Each log left-truncates at ITS OWN live τ_h** — non-uniform across the enlarged arm; `truncation_record` stamps the per-run levels. The upper-bound direction holds regardless. The adoption-era artifact (3,492 rows) is stamped `record_status` **superseded**, not deleted; `TAU_H_CAMPAIGN_FLOOR` stays retired and empty. ⚠ `tau_h_retained_readout.py` NOT re-run against the enlarged base.
 
 ## Keeper cuts (`data/atlas/keeper_cuts.json`, recut at the v11 flip)
-REPORT-ONLY floor; a keeper is `label >= 3`; nothing ranks within eligible any more (ranker deleted). **★ The cut takes the DISCOVERY TABLE'S OWN POPULATION** — its `INSTRUMENT` rule ("a partition absent from the map takes every row it has") silently became a POOLED cut the moment the holdout gave those partitions rows (julia:mandelbrot on 302 = 254+48, phoenix on 211 = 113+98). "The precision-weighted twin" always meant the discovery population; it now is one. **★ One-instrument rule enforced in `keeper_cut.load_triples`**: pooling 12 zero-positive mandelbrot rows had moved the v10 cut 5 grid steps and collapsed OOF 0.357 → 0.100.
+Keeper cuts re-cut at the v11 flip; values live in `data/atlas/keeper_cuts.json` (`model:"v11"`) — REPORT-ONLY floor, one-instrument rule enforced.
 
 ## Stage-2 cuts — `floors.py` sole owner; ALL FOUR ENFORCING (2026-08-06)
 
