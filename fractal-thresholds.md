@@ -2,45 +2,52 @@
 
 Changes when: a flip, a re-derivation. **★ Cuts are expressed RELATIVE TO A REFERENCE, never as absolutes** — a float says nothing about which model it describes. **The cap-raise recalibration debt is PAID (2026-08-02): t_good + keeper cuts + τ_h re-derived TOGETHER on v10's scale; the procedure is recorded as a dated record in `docs/design/deferred_recalibration.md`.** Every cut moving down at the flip was calibration (v10's P(≥3) sits lower on the same rows), not quality.
 
-## t_good — ADOPTED on v10's scale (`db914df`)
-q3 = the served predicate (below). One instrument per partition, never pooled.
+## t_good — ADOPTED on v11's scale (`5438554`; natives `8d5e5e8`)
+q3 = the served predicate (below). One instrument per partition, never pooled. **`derive_t_good.select_population` is now the SHARED DEFAULT** — randomized location-grouped holdout, instrument fallback, never pooled (the v11 conformance item; the frozen-slice machinery is off the gate path, kept only for instruments already built).
 
-| partition | obj | t_good | prec | rec | F_OOF | plateau |
-|---|---|---|---|---|---|---|
-| mandelbrot | F0.5 | **0.03** | 0.366 | 0.577 | 0.357 | 1 step |
-| julia:multibrot3 | F2 | **0.27** | 0.594 | 1.000 | 0.841 | 6 steps |
-| julia:multibrot4 | F2 | **0.03** | 0.533 | 1.000 | 0.791 | 2 steps |
-| julia:multibrot5 | F2 | **0.06** | 0.704 | 0.864 | 0.789 | 4 steps |
-| julia:mandelbrot · phoenix | — | 0.50 | — | — | — | UNCALIBRATED — corpus positives now 809 / 368 (2026-08-07 sitting) but `derive_t_good` still gates on frozen-slice `MIN_POS`, which counts NONE of them; **v11's conformance item REWIRES it to the randomized location-grouped default (Matt, 2026-08-06)** — uniform draws stay contingency-only |
-| phoenix:classic | — | 0.50 | — | — | — | UNCALIBRATED — positives below `MIN_POS`; the sitting reservation accrues them (fractal-corpus); classic supply reads `t_good_for("phoenix:classic")` [code] |
-| multibrot3/4/5 | — | 0.50 | — | — | — | UNCALIBRATED — unbiased rows exist, ZERO positives; more ∂M-shell buys 0 expected positives — needs a DIFFERENT draw (fractal-corpus) |
+| partition | v10 | **v11** | cut on | obj | plateau |
+|---|---|---|---|---|---|
+| mandelbrot | 0.03 | **0.90** | holdout 797[90] | F0.5 | [0.90,0.90] ⚠ 1-step |
+| julia:mandelbrot | — | **0.85** | holdout 254[70] | F0.5 | [0.83,0.85] |
+| phoenix | — | **0.77** | holdout 113[55] | F0.5 | [0.73,0.77] |
+| julia:multibrot3 | 0.27 | **0.26** | **instrument** (census) 54[19] | F2 | [0.24,0.26] |
+| julia:multibrot4 | 0.03 | **0.10** | holdout 44[28] | F2 | [0.10,0.10] ⚠ 1-step |
+| julia:multibrot5 | 0.06 | **0.39** | holdout 58[28] | F2 | [0.38,0.39] ⚠ 2-step |
+| multibrot3/4/5 | UNCAL | **0.61 / 0.85 / 0.61** | holdout 196/151/164 [49/32/38] | F2 | withheld at the flip, ADOPTED 2026-08-08 byte-for-byte |
+| phoenix:classic | UNCAL | **UNCAL** (0.50) | 8[1] holdout, 0 instrument | — | below `MIN_POS`; `T_GOOD_UNCALIBRATED`'s last element |
 
-- **★★ The objective principle (protocol §4): recall where supply is scarce, precision where abundant** — re-chosen per flip from CURRENT supply, never copied.
-- **★★ MANDELBROT IS UNDECIDABLE AT THE TOP.** v10's F0.5 curve is flat and low (precision ≈0.35 everywhere below t=0.7); the argmax falls to the grid floor on a 1-step plateau; F0.5 and F2 pick the SAME t (under v8: 0.85 vs 0.14 — the objective was load-bearing and now is not). Paired on the identical 526 rows: admits 2.28% → 7.79%, precision 0.333 → 0.366 — **the cut has NEVER bought precision under either head. The failure mode runs BOTH directions: a high cut quietly stalls library growth; a low cut pollutes it.** Answer = MORE LABELS (the ranked harvest queue is the ready supply), never a hand-nudge.
-- ⚠ Small-n plateau flags stand on all three julia:multibrot cuts — OOF is the honest column.
+- **★★ READ EVERY MOVE AS POPULATION *AND* HEAD.** mandelbrot 0.03→0.90 says nothing about v11's scale: the cut moved from 526 instrument rows at a 4.9% keeper base to 797 holdout rows at 11.3%, and an F_beta argmax moves with prevalence. **`julia:multibrot3` is the ONE clean head-only read** (same census population as v10): 0.27 → 0.26.
+- **★★ THE HOLDOUT IS BIASED EXACTLY AS TRAINING IS** — these precisions are NOT what the gate delivers on a frontier. Accepted as the price of calibrating six previously-uncalibratable partitions; the new `Q4_WATCH` hangs on it (fractal-models).
+- **★★ MANDELBROT'S UNDECIDABLE-AT-THE-TOP ERA IS OVER** — the correction sitting's labels made the flat F0.5 curve DECIDABLE (interior argmax, precision 0.781 / recall 0.633, OOF 0.731). **Labels + population, not head drift** — exactly what the old rule predicted: the answer to an undecidable cut is MORE LABELS, never a hand-nudge. Both failure directions still stand (high cut stalls growth, low cut pollutes).
+- ⚠ Knife-edge plateaus (1–2 steps) on mandelbrot + julia:multibrot4/5; j:mandelbrot and phoenix are the wide ones. Adopted WITH the flags — run (25)'s release review judges them.
 - **★ UNCALIBRATED IS STAMPED, NOT IMPLIED** (`t_good_status`) — a baseline 0.50 and a derived 0.50 are indistinguishable in a config file.
-- **★★ `MIN_POS` binds on the frozen EVAL SLICE, never corpus positives** [read 2026-08-05: all five uncal partitions clear corpus counts; none has eval-slice positives]. The v10 slice = `data/v10/eval_scores_v10.jsonl`, three frozen sources (loose0_v3_floor / prospect_census / maneuver_uniform_v1); `q4_uniform_eval_v1` is eval-eligible in the batch registry — the mechanism that admits it at the next version's slice build — but outside the frozen list. The ckpt-33 rule "a staged cut derived on any biased population is NOT adoptable" is **superseded (Matt, 2026-08-06): randomized location-grouped splits are the calibration default at v11**; the frozen-slice machinery stays for instruments already built.
+- **★★ `MIN_POS` binds HOLDOUT-**or**-INSTRUMENT per partition, NEVER their union** — holdout-ONLY would have been a regression (j:mb3 has 3 holdout positives ⇒ UNCALIBRATED). **★ `FT2FAM` folds every DERIVED partition into its base** — harmless until the holdout carried phoenix rows, then it cut phoenix on 121 instead of 113 while stamping `phoenix:classic` "no eval rows" about rows in the same file. Both `derive_t_good` and `keeper_cut` now read the partition the eval freeze resolved.
+- **★★ The objective principle (protocol §4): recall where supply is scarce, precision where abundant** — re-chosen per flip from CURRENT supply, never copied.
+- **★ A built sheet's frozen population must NOT be re-derived from a live t_good table** — `SheetSpec.filter_version` pins it.
 
 ## The served predicate — sweep and gate now agree (`5d866cc`)
 Production admits via `corn_decode`, which **COUNTS thresholds met** (CORN cumulatives aren't guaranteed monotone — 92/760 v10-slice rows have `p_ge4 > p_ge3`); since 2026-08-02 **the t_good sweep searches that same rule** (the old ∧-rule disagreed at 68/97 grid points; the adopted v10 table is byte-identical under alignment; a non-vacuity fixture pins the disagreement cases).
-- **★★ v8'S LIVE MANDELBROT CUT WAS CHOSEN AGAINST A PREDICATE THE GATE NEVER RAN** — served-rule re-derivation moves it 0.85 → 0.14 (8/526 keepers entered on `p_ge4` alone). The v8 artifact is deliberately byte-identical (it records what v8 served). **★ A ROLLBACK TO v8 MUST RE-DERIVE ITS TABLE, NOT COPY IT** — hazard written beside the ladder in the pins module.
+- **★★ v8'S LIVE MANDELBROT CUT WAS CHOSEN AGAINST A PREDICATE THE GATE NEVER RAN** — served-rule re-derivation moves it 0.85 → 0.14 (8/526 keepers entered on `p_ge4` alone). The v8 artifact is deliberately byte-identical (it records what v8 served). **★ A ROLLBACK RE-DERIVES ITS TABLE, NEVER COPIES IT** — hazard written beside the ladder in the pins module.
+- **★ THE SERVED-vs-AND ALIGNMENT GAP STOPPED BEING ZERO** — 34/2,860 rows at the flip, all `served_only`; it was a fact about v10's loose cuts, not an invariant. Now **pinned per version**, with the impossible direction (`and_only`) asserted separately and empty. The native adoption moved it 34 → **39**, attributable to ONLY the two tightened partitions (multibrot3 4→5, multibrot4 2→6) — a pinned measurement is a tripwire that must be re-attributed, not just re-stamped.
 
-## τ_h — re-derived under v10 (`398d3cf`)
-Per-partition **MINIMUM of the harvest-log quantile (left-truncated by construction ⇒ an upper bound) and the untruncated walk-outcome derivation**, each arm cut on its OWN population (3,492 re-scored rows, keep=0.90):
+## τ_h — re-derived under v11 on the FULL REGISTRY POPULATION (`a03eb49`)
+Per-partition **MINIMUM of the harvest-log quantile (left-truncated by construction ⇒ an upper bound) and the untruncated walk-outcome derivation**, each arm cut on its OWN population (keep=0.90). Base = **every run `harvest_log_registry` discovers**, 64,365 rows re-rendered over 21,417 s (~6.0 h) — the registry population IS the population now; the pinned-five era and the ~2× deferral are both closed.
 
-| partition | v8 (retired) | **v10** | | partition | v8 | **v10** |
+| partition | v10 | **v11** | | partition | v10 | **v11** |
 |---|---|---|---|---|---|---|
-| mandelbrot | 0.704 | **0.023** | | julia:mandelbrot | 0.349 | **0.413** |
-| multibrot3 | 0.417 | **0.369** | | julia:multibrot3 | 0.381 | **0.282** |
-| multibrot4 | 0.550 | **0.409** | | julia:multibrot4 | 0.200 | **0.052** |
-| multibrot5 | 0.438 | **0.351** | | julia:multibrot5 | 0.199 | **0.070** |
+| mandelbrot | 0.023 | **0.626** | | julia:mandelbrot | 0.413 | **0.848** |
+| multibrot3 | 0.369 | **0.595** | | julia:multibrot3 | 0.282 | **0.241** |
+| multibrot4 | 0.409 | **0.825** | | julia:multibrot4 | 0.052 | **0.200** |
+| multibrot5 | 0.351 | **0.607** | | julia:multibrot5 | 0.070 | **0.361** |
 
-- **★★ THE POOLED CROSS-FAMILY FALLBACK WAS LIVE AND IS REMOVED** (`allow_pooled=False`): with native-multibrot pass counts collapsed under min_n=5, the old code served mb3/mb5 a pooled quantile ~9× looser than their own harvest estimates. An arm that lacks n is recorded UNAVAILABLE; the min is over arms that exist.
-- ⚠ mb3/mb5 rest on the harvest arm ALONE — an upper bound with nothing below it. **Log discovery LANDED (`8165555`): `harvest_log_registry` replaces the retired `HARVEST_RUNS` hand list — writing to the registered store IS registering [code: rests on `discovery_sinks` class resolution; scratch refused; campaign1 (all pre-geometry) and phoenix rows excluded by construction].** Discovered population ≈ 2× the pinned five (mb4 454→1,587, mb3 1,683→4,504); **the adopted arms will NOT reproduce on it (8.4% sample overlap) — a re-derivation is a NEW derivation + flip AND a full re-render (~2,400 harvest + 1,100 walk rows × 2 arms; the rederive cache is gone). DEFERRED deliberately (2026-08-05), not by omission.** New confound: each log left-truncates at ITS OWN live τ_h — the truncation level is non-uniform across the enlarged arm; the upper-bound direction holds.
-- `TAU_H_CAMPAIGN_FLOOR` stays retired and empty; mechanism tested by injection only.
+- **★★ THE DELTAS SPLIT IN TWO AND MUST NOT BE READ AS ONE NUMBER.** The five partitions at identical `t_good` across both derivations moved by pure population, and moved SMALL (|Δ| ≤ 0.041). The three natives moved 10–40× more and are **CONFOUNDED** — their `t_good` changed between the runs, so bar and population moved together; **not separable from the committed artifacts** (de-confound = a third derivation at the new `t_good` over the old 3,492-row sample; skipped deliberately).
+- **★ It fixed the arm it was aimed at:** mandelbrot's cut rested on **23** passing frames of 300, now **885**, and the value barely moved (0.6329 → 0.6257) — the reassurance a 23-frame quantile could not give. Passers now run 609–11,705 per partition.
+- **⚠⚠ multibrot4 LOST ITS WALK ARM** — t_good 0.50→0.85 cut walk passers 15/169 → **2**, under `min_n=5`. The walk ledger is the untruncated population, the only thing bounding the left-truncated harvest estimate from BELOW ⇒ mb4 is an upper bound with nothing under it, and took the table's largest move (0.4743 → 0.8245): the two facts are not independent. The condition the flip had recorded as CLOSED, reopened the same day for a different reason. Remedy = walk rows from the next run.
+- **★★ THE POOLED CROSS-FAMILY FALLBACK WAS LIVE AND IS REMOVED** (`allow_pooled=False`): an arm lacking n is recorded UNAVAILABLE and the min is over arms that exist (mb4 pooled would have been 0.292, ~3.5× looser than its own estimate).
+- **★ Each log left-truncates at ITS OWN live τ_h** — non-uniform across the enlarged arm; `truncation_record` stamps the per-run levels. The upper-bound direction holds regardless. The adoption-era artifact (3,492 rows) is stamped `record_status` **superseded**, not deleted; `TAU_H_CAMPAIGN_FLOOR` stays retired and empty. ⚠ `tau_h_retained_readout.py` NOT re-run against the enlarged base.
 
-## Keeper cuts (`data/atlas/keeper_cuts.json`, `model:"v10"`)
-REPORT-ONLY floor; ranker orders within eligible; a keeper is `label >= 3`. Recut: mandelbrot **0.03** (OOF 0.357) · j:mb3 **0.47** (0.528) · j:mb4 **0.55** (0.667) · j:mb5 **0.55** (0.667). **★ One-instrument rule now enforced in `keeper_cut.load_triples`** (generalizing the julia census-only rule): pooling 12 zero-positive mandelbrot rows had moved the cut 5 grid steps and collapsed OOF 0.357 → 0.100.
+## Keeper cuts (`data/atlas/keeper_cuts.json`, recut at the v11 flip)
+REPORT-ONLY floor; a keeper is `label >= 3`; nothing ranks within eligible any more (ranker deleted). **★ The cut takes the DISCOVERY TABLE'S OWN POPULATION** — its `INSTRUMENT` rule ("a partition absent from the map takes every row it has") silently became a POOLED cut the moment the holdout gave those partitions rows (julia:mandelbrot on 302 = 254+48, phoenix on 211 = 113+98). "The precision-weighted twin" always meant the discovery population; it now is one. **★ One-instrument rule enforced in `keeper_cut.load_triples`**: pooling 12 zero-positive mandelbrot rows had moved the v10 cut 5 grid steps and collapsed OOF 0.357 → 0.100.
 
 ## Stage-2 cuts — `floors.py` sole owner; ALL FOUR ENFORCING (2026-08-06)
 

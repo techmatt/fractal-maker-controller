@@ -51,6 +51,15 @@
 
 ---
 
+## TIER 0.5 — THE EXCHANGE FOLDER (2026-08-08)
+
+**`C:\Code\fractal-drive-sync\{prompts,reports}\`** — a Drive-synced folder outside both repos, live in BOTH directions: claude.ai writes prompts into `prompts\` via the Drive connector; CC copies its reports into `reports\`. **SCRATCH, and Matt deletes freely** — empty or absent is normal, never an error. **One writer per subfolder.** `scratch/` stays the canonical home of a report; the copy is best-effort.
+- **★★ THE STANDING PROMPT CONTRACT LIVES IN fractal-maker's `CLAUDE.md`** (`## Standing prompt contract`, commit `6634410`) — report shape, report delivery, runtime discipline, engine-subprocess helpers, commit gate. **Prompts no longer restate any of it**; a prompt that repeats a rule the repo already encodes is duplication, and the repo's version is the more precise one. Absorb by cross-reference, never by copy.
+- The controller repo's `CLAUDE.md` carries the mirror rules: read prompts from either location, **never write anywhere under the exchange folder**, and the handoff docs are single-sourced in the controller repo — never copied, synced, or mirrored anywhere.
+- `matt-claude-workflow.md` (exchange-folder root) documents the whole pattern for standing up a NEW project on it.
+
+---
+
 ## STANDING POSITIONS (Matt, firm)
 
 - **★★ NO ARCHAEOLOGY; DELETION IS NORMAL.** Don't resurrect artifacts that don't match how things work now. Only the latest model matters. Matt holds retention outside the repo; in a genuine last-resort case ask once, otherwise move on.
@@ -65,7 +74,7 @@
 
 ## REASONING
 
-**Confidence convention.** Every verdict carries **basis** (`[human n=X]`·`[machine-decode]`·`[measured]`·`[inferred]`·`[by-eye]`), **population** (most falsified verdicts were population errors wearing a number), and **overturned-by**. A verdict with no falsifier is a belief; `[machine-decode]` is evidence about the MODEL, not the world. **★ A reproducibility test must re-run the writer the artifact came from, not a plausible neighbour** — and a prompt making classification mechanical must PIN the writer (the q4-fields false-durable arc). **★ Early reads of a slow-starting run: mechanism (mix conformance, queue states) is valid immediately; yield/funnel is warm-up, not the run** — this bit twice at ckpt 30.
+**Confidence convention.** Every verdict carries **basis** (`[human n=X]`·`[machine-decode]`·`[measured]`·`[inferred]`·`[by-eye]`), **population** (most falsified verdicts were population errors wearing a number), and **overturned-by**. A verdict with no falsifier is a belief; `[machine-decode]` is evidence about the MODEL, not the world. **★ A reproducibility test must re-run the writer the artifact came from, not a plausible neighbour** — and a prompt making classification mechanical must PIN the writer (the q4-fields false-durable arc). **★★ A "BYTE-IDENTICAL REBUILD" CLAIM IS PROVEN BY RUNNING THE REAL COMMANDS, FIRST — before anything is de-tracked** (and run with the dependencies already gone, so the proof doesn't rest on them). It is also the step that finds what does NOT reproduce: a live disk probe frozen into a record has no guard and will differ. **★ Early reads of a slow-starting run: mechanism (mix conformance, queue states) is valid immediately; yield/funnel is warm-up, not the run** — this bit twice at ckpt 30.
 
 Measurement method → `measurement_practice.md`; verification → `verification_practice.md` — cite in prompts, don't transcribe.
 
