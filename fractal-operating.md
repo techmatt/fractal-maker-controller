@@ -55,6 +55,7 @@
 
 **`C:\Code\fractal-drive-sync\{prompts,reports}\`** — a Drive-synced folder outside both repos, live in BOTH directions: claude.ai writes prompts into `prompts\` via the Drive connector; CC copies its reports into `reports\`. **SCRATCH, and Matt deletes freely** — empty or absent is normal, never an error. **One writer per subfolder.** `scratch/` stays the canonical home of a report; the copy is best-effort.
 - **★★ THE STANDING PROMPT CONTRACT LIVES IN fractal-maker's `CLAUDE.md`** (`## Standing prompt contract`, commit `6634410`) — report shape, report delivery, runtime discipline, engine-subprocess helpers, commit gate. **Prompts no longer restate any of it**; a prompt that repeats a rule the repo already encodes is duplication, and the repo's version is the more precise one. Absorb by cross-reference, never by copy.
+- **★ ALL PROMPTS GO THROUGH `prompts\`** — CC code-work prompts and session/distillation prompts alike; one channel, no exceptions.
 - The controller repo's `CLAUDE.md` carries the mirror rules: read prompts from either location, **never write anywhere under the exchange folder**, and the handoff docs are single-sourced in the controller repo — never copied, synced, or mirrored anywhere.
 - `matt-claude-workflow.md` (exchange-folder root) documents the whole pattern for standing up a NEW project on it.
 
@@ -69,6 +70,7 @@
 - **★★ LOSING HAND-LABELED DATA IS A MAJOR FAILURE/BUG (Matt, firm, 2026-08-04).** Labels are irreplaceable: nothing rewrites, deletes, or re-keys stored label rows; re-attribution is reader-side only; verify every export merged BY ROW COUNT (the reachability guard cannot see opaque-keyed exports).
 - **★ `docs/design/` ADMISSION:** something in the code owns it and it stays true as the code changes. A transient measurement lives in scratch, survivors extracted into the owning doc, then deleted — **an extraction that does not delete its source is the failure; a rule nothing enforces is not a rule — name the guard.** A surviving measurement carries date + command, re-derived at commit time.
 - **★ FRACTAL TYPES ARE PERMANENT DESIGN CONSTRAINTS** — phoenix and the 2% classic-phoenix case included. Retiring a generation METHOD is legitimate only when emission for that type is uncompromised.
+- **★★ ENFORCING FROZEN THRESHOLDS WERE THE ROOT CAUSE OF THE IMPOSSIBLE-STATE FAILURES (Matt, 2026-08-09).** Derived per-partition cuts held as FROZEN STATE are what produced the recurring "zero supply / impossible by construction" pattern. **Prefer read-time rank + coarse semantic floors; a threshold change should be a READ-TIME CHOICE, never an event that invalidates populations.** The guard set that is explicitly KEPT: sink isolation · dedup · label-carries-its-join · seeded determinism.
 
 ---
 
