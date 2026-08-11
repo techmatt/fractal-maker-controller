@@ -29,8 +29,29 @@ Per-partition quantile of the WALK-OUTCOME arm alone (keep=0.90), "good" = canon
 Spread flattens to **0.20–0.55**. mb4 is now cut on its OWN 169-row / 15-good arm — the upper-bound-with-nothing-under-it condition is closed. ⚠ **multibrot5 (8), multibrot3 (12), multibrot4 (15) clear `MIN_N` by single digits — read those three as "roughly half", not four significant figures.**
 - **★★ NEVER POOL CROSS-FAMILY FOR A MISSING ARM** — mb4 pooled would have been 0.292, ~3.5× looser than its own estimate. The two-arm minimum, the per-run truncation records and `harvest_log_registry` are deleted code.
 
-## Keeper cuts + the four stage-2 floors — ANNOTATION-ONLY (2026-08-09)
-Keeper cuts (`data/atlas/keeper_cuts.json`, `model:"v11"`) and the four stamped stage-2 floors — pool wallpaper **0.75** / mining **0.25**, release wallpaper **0.90** / mining **0.50** — are recorded against every row and gate nothing; a `Floor` offers `annotates()` and cannot cut. Each keeps the head version it was set against: an annotation on the wrong probability scale is as unreadable as a gate on one. The gate-lock records stay TRACKED as provenance and as the scale-comparison input a volume-matched flip reads — `data/render_mode_head/v1/mining_gate_lock.{json,md}` [eval n=422, 15 modes, ≥3 base 14.9%], plus July's `fresh_sheet_reads.JULY_LOCK` (different population, NOT superseded). **★ Every precision in them is a CEILING, not an estimate** — v1 trained at the sheet's 112 locations AND labels were prefill-anchored; inseparable, stated in the record.
+## Every cut restated at the 2026-08-11 stage-2 flip (old → new)
+**⚠⚠ BASE-RATE BANNER — reads on ANY of these entries: absolute rates from PREFILLED correction sheets are AGREEMENT-INFLATED, not base rates** (measured anchoring prices: wallpaper **−0.224** AUC≥3, mining **−0.278** AUC≥2; the four-sheet base-rate comparison is fractal-corpus's). **Every precision column below, and every precision in the gate locks, is a CEILING, not an estimate. The base-rate audit is QUEUED (state §OPEN 1) — do not re-read any calibration here until it lands.**
 
-## ⚠ Sink isolation is the ONLY wall left against smoke contamination
-The decode-version firewall that retro-killed stale rows is gone BY DESIGN — with fixed cuts read off stored probabilities, "stale" is not a concept any more. Its blind spot was always freshly-written rows that are WRONG (smoke/test rows are admissible), and those are still sink isolation's job — a hard requirement, not hygiene. The rule lives in fractal-orchestration.
+Reference pools: wallpaper = the (28) six-batch eval union (1,337 rows / 527 locations); mining = the (28) deduplicated eval side (827 rows / 136 locations). Both re-scored under BOTH heads in one pass through the harness that gates with each.
+
+| owner | old | **new** | volume held | precision≥3 old → new |
+|---|---:|---:|---|---|
+| `wallpaper_pins.GATE_THRESHOLD` (= `floors.WALLPAPER_RELEASE`) | 0.90 | **0.6052** | 416/1337 (31.1%) | 0.798 → 0.748 |
+| `floors.WALLPAPER_POOL` | 0.75 | **0.4698** | 503/1337 (37.6%) | 0.748 → 0.706 |
+| `mining_pins.MINING_GATE_THRESHOLD` (= `floors.MINING_RELEASE`) | 0.50 | **0.6691** | 129/827 (15.6%) | 0.636 → 0.760 |
+| `floors.MINING_POOL` | 0.25 | **0.3402** | 322/827 (38.9%) | 0.534 → 0.525 |
+| `suggest_tier.CUTS` (686-row July slice) | (1.017, 2.615, 2.997) | **(1.2573, 2.4007, 2.91)** | prior-matched, n=686 | exact 0.414 → 0.427 |
+| `suggest_tier.INTAKE_CUTS` (1,140-row intake) | (1.0119, 2.4663, 3.0012) | **(1.2304, 2.4197, 2.9713)** | prior-matched, n=1140 | exact 0.687 → 0.665 |
+| `suggest_tier_mining.CUTS` (960-row fresh sheet) | (1.317, 1.8727) | **(1.6671, 2.352)** | prior-matched, n=960 | exact 0.800 |
+| `build_fresh_sheet.SCORE_BINS` top edge | 0.90 | **derived from the gate** | — | — |
+| `mining_pins.LOCK_PATH` | `…/v1/mining_gate_lock.json` | **`…/v3/mining_gate_lock.json`** | — | — |
+
+`realized_volume == matched_volume` on all four floors. The mining pair reproduces the committed (28) report exactly (0.636 → 0.760 at n=129), which is the cross-check.
+- **★ THE RETIRED FLOORS' ORDER REVERSED** — wallpaper release **0.6052 now sits BELOW** mining **0.6691**. Two tests encoded the old 0.90/0.50 order in a literal; both now DERIVE the straddle from the floors. Nothing about a head's quality follows from which number is larger.
+- **`suggest_tier.CUTS` finally has a live deriver (`derive_cuts`)** — its slice's readout had never been stamped anywhere, so the constant was only checkable against prose. BOTH `CUTS` and `INTAKE_CUTS` were re-derived (`build_fresh_sheet` imports `CUTS`, so a future correction sheet reads it).
+- **`JUNK_FLOOR` 0.20 was DELIBERATELY NOT RESTATED** — it is read on TWO heads' scales, so a single-head flip has no correct move: matching it to the flipped head corrupts the other reader. Recorded as a residual in protocol §5a and state §OPEN 5, not fixed.
+
+## Keeper cuts + the four stage-2 floors — ANNOTATION-ONLY (2026-08-09)
+**⚠⚠ The BASE-RATE BANNER above governs every entry in this section.** Keeper cuts (`data/atlas/keeper_cuts.json`, `model:"v11"`) and the four stamped stage-2 floors (values → the table above) are recorded against every row and gate nothing; a `Floor` offers `annotates()` and cannot cut. Each keeps the head version it was set against: an annotation on the wrong probability scale is as unreadable as a gate on one. The gate-lock records stay TRACKED as provenance and as the scale-comparison input a volume-matched flip reads — the live lock is now `data/render_mode_head/v3/mining_gate_lock.{json,md}`, derived from the flip's own `volume_match_mining.json`; **v1's lock STAYS at v1's path as the rollback record** [eval n=422, 15 modes, ≥3 base 14.9%], plus July's `fresh_sheet_reads.JULY_LOCK` (different population, NOT superseded). **★ Every precision in them is a CEILING, not an estimate** — v1 trained at the sheet's 112 locations AND labels were prefill-anchored; inseparable, stated in the record.
+
+⚠ Sink isolation remains the only wall against smoke contamination — the rule lives in fractal-orchestration.
