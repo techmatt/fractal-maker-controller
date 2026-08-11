@@ -1,29 +1,31 @@
-# fractal-state — checkpoint 38 (2026-08-11)
+# fractal-state — checkpoint 39 (2026-08-11)
 
 ## Where we are
-Ckpt 38 closes the correction/retrain era with BOTH stage-2 heads flipped to from-scratch, fully regenerable retrains, adopted on Matt's standard: comparable-plus-regenerable is sufficient, and the incumbents' anchored advantages were measured to be label-echo. The era's methodological export: blind eval slices + the eval-only pin + protocol §2a/§2b.
-
-## Heads and pins
-- Location head: v11 (unchanged this era).
-- Wallpaper head: **v4b** at `wallpaper_pins.HEAD_CKPT_REL` = **`data/wallpaper_head/v4b/seed_1/model_best.pt` — SEED 1**, picked on blind AUC≥4 **0.609** (band 0.567 ± 0.032); the TOP-LEVEL `v4b/model_best.pt` is seed 0 and byte-different. The pick SPENDS the 197-row selection; the band is the honest read. v3 = PREVIOUS. Adopted on the sheet-D blind read: v3 at chance on AUC≥4 (0.510) where the gated-minibrot population actually differs (48.7% tier-4); all five v4b seeds above it. 3-vs-4 discrimination is this head's main production job — it sees post-floor 3/4 material.
-- Mining (render_mode) head: **v3, dedup_weighted arm** at `mining_pins.ACTIVE_MINING_CKPT`; v1 = PREVIOUS. Four sibling arms (aug/augx/uniform/ap2) are untracked staged records. Adopted on: clause (a) passes blind (0/7 cells reproduce), anchor-broken slices favor it (busy_fp +0.142 anchored / +0.366 blind ≥2, rare_palette, v1_unseen), volume-matched release precision 0.636→0.760. Per-mode anchored comparisons are NOT ESTABLISHED either way; the correction loop is the safety net.
-- Library seed: v2 (v3 registered, not adopted — decision in queue).
-
-## The anchoring result (this era's headline)
-Correction sheets served with an incumbent's prefills measure agreement, not quality. Measured prices: wallpaper −0.224 AUC≥3 (v3: anchored 0.965 → blind 0.741, matching the pre-v3 batches 0.746/0.750); mining −0.278 AUC≥2 (v1: anchored 0.953 → blind 0.676). 38 of 40 anchored clause-(a) rejections of the mining arms did not reproduce blind. Governing rules: protocol §2a (contradicting stamped splits → global re-derivation; the mining batches disagreed on 33/91 locations) and §2b (anchored labels are train-side only; per-head; pre-incumbent batches fine). Blind eval-only batches: sheet D `2026-08-11_wallpaper_blind_minibrot_v1` (197 rows, whole eligible supply) and sheet E `2026-08-11_render_mode_blind_v1` (150 rows). The eval-only pin (`tools/corpus/eval_only.py`) is a third split constraint wired into every split pass, keyed on c-inclusive coordinates.
+Ckpt 39 is the COMPRESSION distillation: the set returns to roster targets. Reference-grade material now has repo homes — `docs/design/{crop_batch, exposure_hdr, corpus_batches, sitting_builder}.md`, `discovery_pipeline.md` §5, `verification_practice.md` §4+§11, `storage_classes.md` — and the handoff docs carry verdicts + paths, per operating's four compression rules. Both stage-2 heads run the 2026-08-11 from-scratch flips (wallpaper v4b, mining v3 — pins in fractal-models; floors in fractal-thresholds). Run 26 is the next production run and its era-gate sheet is the review point for both flips.
 
 ## OPEN (ordered)
-1. **Base-rate audit — next session's first prompt.** Blind ≥3 on unranked strange material at good locations is 4.0% vs 21–46% on anchored sheets (11× vs sheet C on the contested modes). t_good, the mining gate, and downstream keeper rates are calibrated on anchored labels and may be 5–11× off. Sheet E (150 rows) cannot settle it alone. The (29) flip volume-matched, so current volumes are preserved regardless.
-2. Blind-instrument boundary rule: sheet D has no negatives at ≥2, sheet E almost no positives at ≥3 — a blind sheet informs exactly one boundary, chosen by its draw's quality conditioning. The next wallpaper blind draw must reach below the location good floor or stratify 3-vs-4; a mining decision sheet needs a pre-declared motivating bucket drawn blind.
-3. Exposure/HDR future TODOs (Matt): (a) per-mode spec edits (histeq / rolloff reach / direct_trap_multiply start-color), gated on a ~20-example verification judged by in-mask chroma, never clip share; (b) general "auto-adjust" tone-mapping applied continuously ON THE PALETTE (LUT-side, resolution-independent). Run-25's two zero-yield modes are exposure class B — fix before the strange-mode demote crawl.
-4. **Doc-set size is a SET-WIDE problem, not orchestration's — Matt's call pending: raise the targets, or run a compression pass.** Eight of ten docs are over; the set grew **+24.5 KB at this checkpoint alone**. Worst: **corpus +189% · storage +182% · orchestration +139% · models +120%** (models grew **+63% this checkpoint**, almost entirely the three verbatim evidence tables). Only state is under. **The identified compression lever, recorded and NOT acted on:** those big verbatim tables already exist as TRACKED in-repo files (per-head `report.md` / `adoption_record.json`), so a doc could carry the VERDICT plus a repo path instead of the table itself. Two conditions if it is ever taken — pointers resolve to TRACKED REPO FILES ONLY, never into `fractal-drive-sync` (scratch Matt deletes freely), and a verdict without its numbers must still be readable on its own. Slot-guarantee governance concern stands (7/12 slots were guarantees on run-25's re-selection).
-5. Unscheduled: gate-passer universe refresh (frozen July artifact); direct_* 3×3 sweep-grid coarsening (631 self-dup pairs minted); exp_smoothing demote question (~100% smooth-equivalent); seed-v3 decision; next-sweep dead-code candidate (emit_v1.main / selector_montage / family_entropy_trace); **`JUNK_FLOOR` (0.20) is read on TWO heads' scales** (`ranked_intake` on location, `deploy_tail` on mining) so a single-head flip has no correct restatement — left alone, recorded in protocol §5a, and the real fix is deciding whether the constant becomes per-head; **`build_fresh_sheet` imports `suggest_tier.CUTS` while `INTAKE_CUTS` was fitted on the batches it produced** — a latent inconsistency, and choosing which cut set a builder serves is a decision, not a restatement.
+1. **Base-rate audit — FIRST prompt after this checkpoint.** Blind ≥3 on unranked strange material at good locations reads far below every anchored sheet (four-sheet table → fractal-corpus); t_good, the mining gate, and downstream keeper rates were calibrated on anchored labels and may be 5–11× off. Sheet E (150 rows) cannot settle it alone. The mining flip was volume-matched, so current volumes are preserved regardless of the audit's outcome.
+2. **Exposure/HDR TODOs (Matt, pending):** (a) per-mode spec edits gated on a ~20-example verification judged by in-mask chroma, never clip share; (b) continuous palette-LUT "auto-adjust" tone mapping. Record + measurements → `docs/design/exposure_hdr.md`. Run-25's two zero-yield strange modes are exposure class B — fix before any strange-mode demote crawl.
+3. **Gate-passer readers stay pinned to the v3 universe** (they say why at the constant); repointing them at the v4b universe is a queued CORPUS decision with its own sheet — never a side effect of a head flip.
+4. `wallpaper/rerender_bootstrap_ss2.py` scores dead-by-both in `tools/README.md`'s liveness index but was outside the closure sweep's list and is NOT evidence-checked — candidate deletion only.
+
+## CLOSED this era (verdict · record)
+- Doc-size → this checkpoint (compression pass; repo homes above).
+- `library_seed_v3` REJECTED, artifacts deleted → `aa5ac72`.
+- `JUNK_FLOOR` permanent shared-scale, no per-head split → `8496aec` (`test_floors.py` pins both declarations).
+- `build_fresh_sheet` serves `INTAKE_CUTS` explicitly, derivation stamped → `1ac30c5`.
+- `direct_*` grid self-dups 877 → 0 via one-cell-per-(location, direct mode) + 3×3→1×3 → `f7d0c54` (re-count basis `scratch/closure_sweep/direct_grid_reverify.txt`).
+- Attempt budget now SEATED-slots based; unplaceable guarantee recorded, not raised → `d9fb2f5`.
+- Units-weighted EMA step landed (`CostToMine.step`) → `8f87191`; `deficit_scheduler.PriceModel` keeps the old estimator on the retired scheduler path, deliberately.
+- Dead-code trio (`emit_v1.main` + render tail · `selector_montage` · `family_entropy_trace`) → `211979c`.
+- Classic ledger overlay deleted (intake classic 23 → 22) → `e83bec9`.
+
+## Carried notes
+- Sheet E's mode→cell map is now permuted per location (the fixed map made ring/lines collide everywhere — a systematic confound, fixed at the closure sweep); 9-cell-grid batches are no longer builder-reproducible — rows carry their own `mode_params`, crops unaffected.
+- Slot-guarantee governance concern stands (fractal-discovery owns it).
 
 ## Queue
-Base-rate audit prompt → run 26 (first with both new heads; its era-gate sheet is the review point for the flips) → convergence/tutorial turn.
+Base-rate audit → run 26 (first with both new heads; era-gate sheet reviews both flips) → convergence/tutorial turn.
 
-## Workflow (new this era)
-Context stewardship is part of the session contract: Claude tracks its own context budget (~100k soft ceiling), calls "checkpoint now" instead of proposing further prompts, and reports a token estimate for cross-session comparison (this session: ~175k; the big cost was base64-encoded report fetches — decode once, read selectively). Reports gain a ≤10-line VERDICT block at top that Matt pastes into chat. Drive connector base64-encodes all downloads regardless of file type; .txt is not an escape.
-
-## ROSTER — soft size targets (unchanged; targets move only with Matt)
+## ROSTER — soft size targets (move only with Matt)
 operating 13k · state 6k · engine 11k · storage 6k · orchestration 4k · models 8k · thresholds 5k · corpus 8k · discovery 13k · emission 6k
