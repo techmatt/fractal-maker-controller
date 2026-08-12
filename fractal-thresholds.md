@@ -4,7 +4,7 @@ Changes when: a flip, a re-derivation. **★ Cuts are expressed RELATIVE TO A RE
 
 ## The fixed-cut regime — `floors.py` sole owner (2026-08-09, `551643c`)
 ONE quality definition everywhere: fixed cuts on **stored raw P(≥3)**. The per-partition derived-threshold apparatus is deleted (record → fractal-storage).
-- **`JUNK_FLOOR` 0.20** — enforces at ONE site since 2026-08-11: `ranked_intake`, on the LOCATION head's scale. The mining-scale read at `deploy_tail` was REPOINTED at the gate (Matt's resolution of the crossover inversion) [code: `test_floors`' caller-census + source tests]. **PERMANENTLY SHARED-SCALE stands as a statement about what 0.20 MEANS** — never restated at any single-head flip — even with one live reader.
+- **`JUNK_FLOOR` 0.20** — enforces at ONE site since 2026-08-11: `ranked_intake`, on the LOCATION head's scale. **Fresh run-side supply always clears it** (run-side admission already requires `GOOD_FLOOR`) — it only ever bites the LEGACY ledgers. The mining-scale read at `deploy_tail` was REPOINTED at the gate (Matt's resolution of the crossover inversion) [code: `test_floors`' caller-census + source tests]. **PERMANENTLY SHARED-SCALE stands as a statement about what 0.20 MEANS** — never restated at any single-head flip — even with one live reader.
 - **`GOOD_FLOOR` 0.50** — run-side admission, and what "good" means to τ_h.
 - **`NOTBAD_CUT` / `GREAT_CUT` 0.50 each** — CORN's own natural cutpoints, never per-family calibrated. They NAME a frame; they never keep one.
 - **`THIN_SUPPLY_DIVISOR` 4 · `CLUSTER_CAP` 2 · `ATTEMPT_MULTIPLIER` 4** — emission's selection arithmetic (fractal-emission owns the rules they feed).

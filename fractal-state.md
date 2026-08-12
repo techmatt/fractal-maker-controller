@@ -1,21 +1,23 @@
-# fractal-state — checkpoint 40 (2026-08-11)
+# fractal-state — checkpoint 41 (2026-08-12)
 
 ## Where we are
-Ckpt 40 closes the BASE-RATE AUDIT era (same day as ckpt 39). Sheet F — a 200-row anchored correction sheet on a score-unconditioned draw — settled the four-sheet question: the anchored-vs-blind gap at the mining gate boundary dissolved under v3 (verdict → fractal-corpus). The mining gate is now HUMAN-DERIVED and genuinely filters the mining colorize pool at `deploy_tail`; `MINING_POOL` dropped to 0; the JUNK_FLOOR crossover inversion was resolved by repointing the reader (all → fractal-thresholds). Both stage-2 heads still run the 2026-08-11 from-scratch flips. Run 26 is next.
+Ckpt 41 closes the RUN-26 era. Run 26 — first production run with wallpaper v4b + mining v3 + the human-derived gate/pool + the palette autolevel — ran once, clean end to end, 12/12 released; **era-gate PASSED on Matt's review of the release set, the formal sheet WAIVED (Matt, 2026-08-12)**. The follow-up registered run 26's ledgers into the default intake, fixed the suite red by repointing the autolevel adoption evidence at committed reports, and ATTRIBUTED mandelbrot's post-midpoint collapse to a one-way price-estimator lockout (mechanism → fractal-discovery). The exposure arc is CLOSED: the autolevel is the adopted remedy; class A / direct-family white PARKED indefinitely. This checkpoint also ran a Matt-sanctioned compression pass over the doc set (anchoring-era evidence, q4 stage-1 screen, closed storage arcs, sourcing history, descent-harness detail — collapsed to verdicts + record pointers).
 
 ## OPEN (ordered)
-1. **Run 26** — first production run with both new stage-2 heads AND the human-derived gate (wider mining colorize pool). Its era-gate sheet is the pre-declared review point for: both flips · the new gate/pool · the palette-space narrowing watch.
-2. **Exposure/HDR TODOs (Matt, pending):** (a) per-mode spec edits gated on a ~20-example verification judged by in-mask chroma, never clip share; (b) continuous palette-LUT auto-adjust. Record → `docs/design/exposure_hdr.md`. Run-25's two zero-yield strange modes are exposure class B — fix before any strange-mode demote crawl.
-3. **Gate-passer readers stay pinned to the v3 universe** (they say why at the constant); repointing at the v4b universe is a queued CORPUS decision with its own sheet — never a side effect of a head flip.
+1. **Price-lockout fix before run 27** — smallest lever: a zero-yield served batch emits a price sample (mechanism + terminal state → fractal-discovery; the 118-batch trace sits in scratch until the fix lands).
+2. **What feeds `deploy_tail`** — its manifest producer (`emit_v1.main`) was deleted 2026-08-11; a queued decision, never a side effect of a head flip.
+3. **Gate-passer readers stay pinned to the v3 universe** — repointing at v4b is a CORPUS decision with its own sheet (fractal-corpus).
 
 ## CLOSED this era (verdict · record)
-- Base-rate audit (ckpt-39 §OPEN 1): anchoring gap at the ≥2 gate boundary DISSOLVED under v3; human-derived crossover cut adopted → `data/render_mode_head/v3/{baserate_audit,mining_gate_lock}_2026-08-11.*` · `2b956ad` `da5f156`.
-- JUNK_FLOOR crossover inversion: resolved by repointing `deploy_tail` at the gate; Matt's choice + refused alternatives in the lock's "What this cut forced elsewhere" → `a8c16aa`.
-- Sheet F registered + merged TRAIN-SIDE (correction-rate home = protocol §2b) → `5f47683` `2b956ad`.
-- ckpt-39 §OPEN 4: `tools/wallpaper/rerender_bootstrap_ss2.py` dead-by-evidence AND superseded — deleted → `93ddf0f` + `retired.md` entry.
+- Run 26 clean; era-gate PASSED, sheet waived · run records + `28e91db`, follow-up `5392c2b`.
+- Shakedown floor/quota pattern = small-sample artifact; no partition starved (floor-never-needed ≠ unserved, reported separately now) · run-26 report.
+- mandelbrot collapse ATTRIBUTED — price lockout, not root exhaustion, not saturation memory · follow-up report + `scratch/run26_followup_mandelbrot_trace.json`.
+- Exposure TODOs (ckpt-40 §OPEN 2) CLOSED — autolevel adopted, always-on, first production exercise healthy · `data/palettes/autolevel_adoption.json` + flip reports.
+- Run 26's ledgers registered (`LEDGERS` 10→12, union admitted 4,371) · `5392c2b`.
+- VERDICT-block rule absorbed into repo `CLAUDE.md` (2026-08-12) — prompts no longer state it.
 
 ## Queue
-Run 26 → convergence/tutorial turn.
+Price-lockout fix → run 27 → convergence/tutorial turn.
 
-## ROSTER — soft size targets (re-ratified at ckpt 40)
-operating 17k · state 6k · engine 12k · storage 8k · orchestration 5.5k · models 10k · thresholds 6k · corpus 8k · discovery 13k · emission 8k
+## ROSTER — soft size targets (re-ratified at ckpt 41)
+operating 17k · state 6k · engine 10.5k · storage 6.5k · orchestration 5.5k · models 7k · thresholds 6k · corpus 8k · discovery 11k · emission 6.5k
