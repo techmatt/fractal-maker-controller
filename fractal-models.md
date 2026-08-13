@@ -7,7 +7,7 @@ Changes when: retrains, screen work, aug-recipe changes. Thresholds/floors → f
 |---|---|---|
 | **v11** location head | location potential, pre-color, classes 1–4 | within-family STEER + `GOOD_FLOOR` semantics; NEVER ranks, NEVER allocates cross-family |
 | **wallpaper v4b** | finished SMOOTH renders | advisory scoring + annotation; collapses strange ≈0.000, never gates them |
-| **mining v3** | finished STRANGE renders, K=3 | advisory scoring + annotation, EXCEPT the mining GATE at `deploy_tail` (fractal-thresholds owns) |
+| **mining v3** | finished STRANGE renders, K=3 | advisory scoring + annotation ONLY — its gate lost its last acting site at `d73a6c6` (fractal-thresholds owns) |
 | **pref v3-gvo** | within-location palette preference | colorize-path palette pick; NEVER quality, never cross-location |
 | **`view_fit_v1.1`** | maneuver-candidate sourcing order | fractal-discovery owns it |
 
