@@ -1,27 +1,27 @@
-# fractal-state — checkpoint 46 (2026-08-15)
+# fractal-state — checkpoint 47 (2026-08-15)
 
 ## Where we are
-Ckpt 46 closes the tutorial era's first transfer cycle: FOUR slices landed in fractal-wallpapers, all green on main — strange modes (`63b310b`), discovery walk (`1a5fb49`), supply engine, labels+rig (`25afd2b`). The repo now holds a working engine (smooth + 15 strange modes + dump-field/recolor), the harvesting walk with reframing operators and seed pools, the full supply engine (allocator/deficit/prices/floor-carry/refill/τ_h/harvest loop), and a populated label store — 11,303 locations exported from the big corpus — with the minimal labeling rig. Details, deviations, cautions → fractal-tutorial §TRANSFER STATE; the four reports live in `fractal-drive-sync\reports\`.
-Big-repo side: untouched this era (read-only extraction only) — no runs, no flips. **Head training is the next slice and is GATED on two pending Matt decisions: GPU availability and the backbone_search_v1 verdict.** Standing direction (Matt): new work goes to fractal-wallpapers when possible; fractal-maker is mostly retired.
+Ckpt 47 closes the HEAD ERA: fractal-wallpapers now trains, evaluates, and ships its own judges. Landed this era — big repo: quantization recipe decided (`quant_recipe_v1`; **fp16 RATIFIED for everything, both repos, incl. pref** — Matt overrode the report's pref-fp32 exception). New repo: location head trained (`4a8e72f`, 3 seeds, BORDERLINE — ADOPTED on Matt's call: beats the incumbent's whole band at ≥4 (+0.012..+0.018), sits 0.004–0.009 under at ≥3 on a population that resolves only 0.012, against a yardstick generous to the incumbent) and both render heads (`292e3b7`: strange_render BORDERLINE-and-ahead, whole band above both prior heads; smooth_render ordering PASS / calibration-arm FAIL on an arm its own report proved unsatisfiable — sheet D is 3.95× enriched over the training distribution). **Matt: SHIP EVERYTHING** — smooth shipped as a policy call over the recorded FAIL; the bar record stays untouched. fp16 artifacts + `weights.json` entries staged for all heads; **cutting the `weights-v1` GitHub release is Matt's step**. Details, defects, lessons → fractal-tutorial §TRANSFER STATE; reports in `fractal-drive-sync\reports\`.
+Backbone verdict landed and closed: keep `mobilenetv4_conv_medium` (fastest AND smallest; nothing better outside noise) — facts + the conditional-sigmoid score caveat → fractal-models.
+Big-repo side: quant tooling only; **ARCHIVE TRAJECTORY (Matt): once fractal-wallpapers is operational, fractal-maker becomes an archive he won't actively maintain** — new work goes to fractal-wallpapers.
 
 ## OPEN (ordered)
-1. **`backbone_search_v1` STILL RUNNING — BUILD, not flip** (unchanged handling: when its report lands, read it, state what it changes and what the prompt got wrong; facts route to fractal-models at the next distillation). Its verdict now ALSO gates OPEN 2 and the quantization item in fractal-tutorial's queue.
-2. **Location-head training slice** — aug/tile build + training + acceptance bar only (the data half landed at `25afd2b`); gated on GPU + backbone. The acceptance bar must respect the realized 8.86% eval share and thin per-partition eval sides (fractal-tutorial).
-3. Run 28's emission leg = `--release-workers` first live run (unchanged; Matt's schedule).
-4. Gate-passer readers stay pinned to the v3 universe — rides the ~500-row sitting (unchanged).
-5. Allowlist-scanner flattening pass (unchanged, LOW).
-6. First-100hr-run unknowns — saturation convergence at scale unmeasured (unchanged).
-Transfer-project queue → fractal-tutorial.
+1. **`weights-v1` release cut (Matt)** — artifacts + manifest staged; one release can carry all four heads.
+2. **Palette-head distillation slice** — next transfer lane (design notes → fractal-tutorial §PLAN); the quantization check folds into its acceptance harness.
+3. **Curation slice** → then deep-zoom demo → the site repo ("fractals-website"; hosting decided → fractal-tutorial).
+4. **The ~500-row sitting — REDIRECTED to fractal-wallpapers** (Matt): output lands in the new repo's store via its rig; the accumulator list (fractal-corpus) keeps its value. Undated, Matt's schedule. Gate-passer v3→v4b repoint rides it IF it still matters under the archive trajectory.
+5. **Smooth_render's ≥3 boundary has NO blind instrument** (sheet D can't referee it — 6 rows below tier 3); joins phoenix:classic's missing score-unconditioned draw as future-sitting material.
+6. Run 28 / `--release-workers` first live run (big repo) — unchanged but likely mooted by the archive trajectory; Matt's call. First-100hr unknowns likewise; **the intended next long run is an 8hr TEST in fractal-wallpapers** once curation lands.
 
 ## CLOSED this era (verdict · record)
-- **Strange modes + recolor utility transferred, parity attributed per mode** (15 modes — the registry's truth; the doc's 13 was stale) · `63b310b` + `engine_strange_slice_report.md`.
-- **Discovery walk + reframing operators + pools + the single ledger schema** · `1a5fb49` + `discovery_walk_report.md`.
-- **Supply engine complete** (allocator, self-updating deficit, prices, floor-carry, refill, τ_h deriver, harvest loop; cold start measured) · `supply_engine_report.md`.
-- **Label store + flat export (11,303 locations) + minimal rig** · `25afd2b` + `labels_and_rig_report.md`.
-- **Doc erratum corrected**: fractal-discovery's `classic: true` description (real-P mode, not real-c) · this distill.
+- **backbone_search_v1: keep mnv4_conv_medium** · report + `data/backbone_search/`; conditional-sigmoid caveat → fractal-models.
+- **Quantization recipe: fp16 everything (Matt ratified)** · `quant_recipe_v1_report.md` + `data/quant/quant_recipe_v1.json`.
+- **Location head trained in-repo, ADOPTED** · `4a8e72f` + `location_head_slice_report.md`; 11,303/11,303 label join, ZERO disagreements.
+- **Both render heads trained in-repo, SHIPPED** · `292e3b7` + `render_heads_slice_report.md`.
+- **Decisions batch (Matt, 2026-08-15):** prompts stay OUT of the public repo (Drive holds them) · outline v2 = Plan v2 §7 as-is (no Matt edits) · hosting = dedicated site repo + GitHub Releases for the wallpaper corpus · audience = advanced-HS-with-calculus / college CS · exemption watch RATIFIED (keep the strict no-exemption rule) · article gets an "alternative rendering modes" section (discrete integer-band opener) · anchored/correction-sheet distinction stays OUT of the article.
 
 ## Queue
-Next: location-head training (on GPU/backbone verdicts) → then per fractal-tutorial's queue. Run 28 on Matt's schedule. The ~500-row sitting stays undated, fed by the corpus accumulator.
+Next: Matt cuts weights-v1 → palette-head distillation → curation → deep-zoom demo → site repo → rig polish. The sitting on Matt's schedule, aimed at fractal-wallpapers.
 
-## ROSTER — soft size targets (unchanged from ckpt 45)
+## ROSTER — soft size targets (unchanged)
 operating 17k · state 6k · engine 10.5k · storage 6.5k · orchestration 5.5k · models 7k · thresholds 6k · corpus 8k · discovery 11k · emission 6.5k · tutorial 20k
