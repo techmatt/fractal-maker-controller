@@ -12,7 +12,7 @@ Ckpt 48 closes the OPERATIONAL ERA: **fractal-wallpapers runs end-to-end.** All 
 6. **Watches:** render-head advisory predictiveness across runs · palette-space narrowing (inherited) · run-safety's accepted gaps (intake inside the clock but ungated ~1s; a torch-wedge caught only by pooled-path grace) — fine at 8h scale, revisit before 100h.
 
 ## CLOSED this era (verdict · record)
-- **Palette head: distilled 2-pass, floor cleared (0.383→0.461→0.533, all corpus-bought), SHIPPED** (Matt — control demoted to ceiling reference) · repo adoption note + three reports.
+- **Palette head: distilled 2-pass, floor CLEARED on corpus scale alone, SHIPPED** (Matt — control demoted to ceiling reference) · values → fractal-tutorial; repo adoption note + three reports.
 - **weights-v1: published + reader-path verified**; the release-completeness check caught smooth_render entirely unstaged (ckpt-47's "staged for all heads" was WRONG — corrected); base-install `--check` defect fixed (`2411dab`).
 - **Curation end-to-end** (`1aa0630`) · **run-safety** `--wall-budget`/`--resume` · **discrete render + phoenix framing** · **home views DERIVED + walk-root one-owner** (`94892e6`).
 - **Wrap-segment audit (fractal-maker): fold real, UNEXPOSED, NO FIX (Matt)** · report in Drive reports; dated notes in emission + engine.
