@@ -71,6 +71,8 @@
 
 **Confidence convention.** Every verdict carries **basis** (`[human n=X]`·`[machine-decode]`·`[measured]`·`[inferred]`·`[by-eye]`), **population** (most falsified verdicts were population errors wearing a number), **overturned-by**. No falsifier = a belief; `[machine-decode]` is evidence about the MODEL, not the world.
 - **★ A reproducibility test must re-run the writer the artifact came from**, not a plausible neighbour; a prompt making classification mechanical PINS the writer.
+- **★ NEVER CONSTRUCT A TEST'S EXPECTED VALUE WITH THE TRANSFORM UNDER TEST** — a guard that folds/normalizes its own reference encodes the bug as the expectation (the bake-fold audit); expectations come from an independent route, and a planted red proves the guard bites.
+- **★ A PRE-DECLARED BAR MUST OUT-RESOLVE ITS OWN INSTRUMENT** — a floor inside the instrument's margin returns a FAIL the sheet cannot confirm; and a control that is the teacher's SELF-AGREEMENT is a ceiling reference, never a bar.
 - **★★ A "BYTE-IDENTICAL REBUILD" CLAIM IS PROVEN BY RUNNING THE REAL COMMANDS, FIRST** — before anything is de-tracked, with the dependencies already gone. It is also the step that finds what does NOT reproduce (a live disk probe frozen into a record has no guard and will differ).
 - **★ Early reads of a slow-starting run:** mechanism (mix conformance, queue states) valid immediately; yield/funnel is warm-up, not the run.
 - **★★ A STAGE THAT CAN TRUNCATE ITS OWN INPUT ON THE WAY TO FAILING HIDES ITS OWN FAILURE** — refuse to write when the draw and the ledger share zero rows, BEFORE opening the output; fix any self-exclusion separately so the guard is not the only wall.

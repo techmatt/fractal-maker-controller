@@ -29,7 +29,7 @@ Changes when: renderer/kernel work, a new family, a new render axis. Owns the ma
 - **Development default = JUDGE QUALITY 1024×576 ss2** (also eval/emit). 2560×1440 ss4 Lanczos-3 wallpaper canon is HOURS — hand-picked favorites, never a batch. Full-res never as measurement; CLIP embeds at 224.
 - **Steering:** 384-wide ss1 colorized field from `--expand` — steering-only, never admission.
 - **Label-crop:** location corpus 1280×720 ss4 (frozen); stage-2 corpora 1280×720 ss2 Lanczos-3; blind-read/base-rate/grid 640×360 ss2 `twilight_shifted`.
-- **★ Evaluation sheets and labeling companions go VIVID** — the committed `blue_orange` map, never `twilight_shifted`; a crushing palette gets good sourcing deprecated. Read the map off the committed library, never re-derive — Matt's eye is calibrated on it.
+- **★ Evaluation sheets and labeling companions go VIVID** — the committed `blue_orange` map, never `twilight_shifted`; a crushing palette gets good sourcing deprecated. Read the map off the committed library, never re-derive — Matt's eye is calibrated on it. **⚠ Every historical `blue_orange` render (both languages) baked its stops through the `% 1.0` wrap fold** — last stop folded onto first, max Δ 0.095 linear over 1.59% of LUT entries [2026-08-16 audit; NO FIX — archive trajectory, Guard B rebuilds + LUT-seam oracles]. Matt's eye is calibrated on the FOLDED ramp; fold-free fractal-wallpapers renders the same map slightly differently.
 
 ---
 
