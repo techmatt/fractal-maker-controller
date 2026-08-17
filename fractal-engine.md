@@ -1,60 +1,18 @@
-# fractal-engine — renderer, render canon, families, identity
+# fractal-engine — archive stub: anchors + cross-repo render truths
 
-Changes when: renderer/kernel work, a new family, a new render axis. Owns the machine's durable anchors and identity rules.
+fractal-maker's renderer is ARCHIVE (fractal-storage). The live engine is fractal-wallpapers' `fractal-engine` crate — its canon lives in that repo. This stub keeps only what any future render work still needs. Full old canon: controller git history + maker `docs/design/{render_coloring_surface, crop_batch, auto_maxiter, exposure_hdr, orbital_field_metrics}.md`.
 
----
+## ANCHORS (verbatim — cheap insurance; also shipped as data in fractal-wallpapers)
+- julia known-good **c=(−0.07810228973371881, −0.6514609012382414)**
+- high-complexity **cx/cy=(0.4104135054546244, 0.20967482476903096), fw=0.5622541254857749**
+- phoenix Ushiki **c=0.5667,0 p=−0.5,0**
+- q4 interior-lake exemplar **julia c=(0.26103, −0.48932), center descent**
 
-## RENDER CANON (read before any render prompt)
-
-**Two coloring recipes, different images.** Recipe 1 `render-one --palette --colormaps` — canonical for location-corpus crops, fast, takes MULTIPLE colormaps per invocation. Recipe 2 `render-one --dump-field` + `colormap.render_candidate` — arbitrary-param coloring, slower, never for location-corpus crops.
-
-- **Field-cache reuse (load-bearing):** field invariant to colormap-tail params → one dump per (location × res × render-mode), recolor cheaply — smooth Recipe-2 only. **The field-cache key is one of only two byte-identity-critical seams** (the other: Rust↔Python LUT), pinned by frozen-literal oracles. Carries `field_mode_token` + `field_source_token` + eval-res geometry + the maxiter policy token. **★ Any new render axis must enter this key** — an absent axis collides silently with no crash while every downstream statistic shifts. **The rule means FIELD-side axes: the palette AUTOLEVEL (fractal-emission owns it) is a colormap-TAIL operator, deliberately OUTSIDE this key — its identity is the provenance stamp.**
-- `iterate_orbit` stays a byte-identical catch-all at `FieldNeeds::all()`; gated variant is the fast path. Mechanism → `docs/design/render_coloring_surface.md`.
-- **★ Smooth is RUST-BOUND under the ×8 cap [measured]:** dump ~83% of wall vs Python tail ~14% at pool geometry; the tail matters only ≥5.9 recolors/location. **At FULL-RES (2560×1440 ss4) the tail bit instead — its horizontal Lanczos leg was memory-bandwidth-bound gathers, fixed BIT-IDENTICAL (`4b9fe5c`: tail 47.7→14.8 s/image, RSS 8.3→1.5 GB; full-res now ≈54% engine / 46% tail, and the tail STAYS bandwidth-bound — concurrency inflates Σ row-seconds, → fractal-orchestration).** Composites never touch the Python tail (engine-side coloring). **Batched OKLab bit-identity form = the stacked `(N,1,3)` matmul** — plain `(N,3)@(3,3)` drifts ~1e-14 [code: tools/palettes/test_autolevel.py]. **Rust-side coloring REJECTED on measurement** (remaining prize does not pay the LUT-seam crossing); tail-parity RETIRED.
-- **★★ Recipe 3 `crop-batch` — THE CACHE-BUILD RECIPE FROM v11 ON.** One extended-field iteration pass per LOCATION, every tile crops out of it; fields stream-and-discard (NO field-cache interaction); all draws seeded, `--replay` byte-identical; canonical-frame maxiter per row (a real ~3% policy change vs v9/v10's per-slot rule, accepted). Containment formula, `field_ss 2` pin + grid fact, margin triple, and per-unit costs → **`docs/design/crop_batch.md`** (the doc is authoritative; the two contradicting Rust doc comments were fixed at the extraction).
-- Field-cache→recolor (~8×) = the durable fix for recurring re-colorize, LIVE library/emission work only. `render_candidate` expresses only pct/grad ⇒ **CANNOT express the morph_clip canonical transfer** (fractal-emission) — never route the canonical grayscale through it.
-- **Strange modes:** monolithic `--coloring`; cached-field recolor smooth-only; composites = two-field screen blends. `specs/modes_registry.json` `tier` = deploy source of truth; 13 strange modes, smooth = spine; `direct_trap` palette-indifferent ⇒ dedup palette to one-per-location.
-- **★★ TONE MAPPING — engine facts → `docs/design/exposure_hdr.md`; the arc is CLOSED (fractal-emission); rules that survive here:**
-  - **★★ NEVER GATE ON CLIP SHARE — use IN-MASK CHROMA.** Every compressive operator drives clip share to 0.000 by construction while the surface can stay visibly white and flat — the statistic lies exactly when an operator is present.
-  - The 6 pure-field modes never reach a rolloff operator; **`direct_trap_multiply` is UNREACHABLE by any tone operator** — its white is UNHIT BACKGROUND (`start_color: white` + multiply) ⇒ only opacity/threshold or a different start colour can fix it. Direct-family white PARKED indefinitely (Matt, ckpt 41).
-  - **★ `render-one --dump-field` REFUSES the direct family** (colour-valued composite, not a scalar) ⇒ any field-side arm splits: scalar renormalisation for pure-field modes, render-side knobs for direct/composite.
-- **★ UF shape names do not transfer by name** — several `DirectShape` variants compute different functions from the UF shapes of the same name; per-shape `direct_threshold` defaults are coverage-anchored. Catalog → `render_coloring_surface.md` §6.
-- **Palettes:** location corpus = 76 curated q3 (`score3_colormaps.json`); coloring/emission = 987 pool (`pool_colormaps.json`); `blue_orange` alone in `vivid_blue_orange.json` — in NEITHER library. `normal_map` OFF universally. **★ A plan row names a palette; something must record what that name resolved to** — `data/v8/colormaps.json` concatenates both sources verbatim for exactly this reason.
-
-**`auto_maxiter`:** production base 500 → **4000 (×8)**, k=0.30, clamp 67000 (non-binding). The adopted cap is **median-clean, not clean** — the most decorated material stays somewhat clipped. Record → `docs/design/auto_maxiter.md`; the "name the cap beside any field-derived number" rule → `orbital_field_metrics.md` §7. Score records carry `maxiter_policy_token`; cross-policy comparison raises; cache tiles stamp CANONICAL-FRAME policy from v11 on; **every orbital score committed before 2026-07-31 is on the old scale.** The enumeration (`screen_pool.jsonl`) is deliberately unstamped — nothing on that path renders a field.
-
-## RENDER RES PINS
-- **Deploy/canonical:** 640×360 ss2 16:9 Lanczos-3 (reframe, guard field, classifier → 384×224 stretch), palette `twilight_shifted` — the presentation EVERY ledger `p_good` refers to.
-- **Pool/scoring geometry (pin):** 960×540 ss2 — heads res-sensitive below this; don't drop without re-deriving pool/release floors.
-- **Development default = JUDGE QUALITY 1024×576 ss2** (also eval/emit). 2560×1440 ss4 Lanczos-3 wallpaper canon is HOURS — hand-picked favorites, never a batch. Full-res never as measurement; CLIP embeds at 224.
-- **Steering:** 384-wide ss1 colorized field from `--expand` — steering-only, never admission.
-- **Label-crop:** location corpus 1280×720 ss4 (frozen); stage-2 corpora 1280×720 ss2 Lanczos-3; blind-read/base-rate/grid 640×360 ss2 `twilight_shifted`.
-- **★ Evaluation sheets and labeling companions go VIVID** — the committed `blue_orange` map, never `twilight_shifted`; a crushing palette gets good sourcing deprecated. Read the map off the committed library, never re-derive — Matt's eye is calibrated on it. **⚠ Every historical `blue_orange` render (both languages) baked its stops through the `% 1.0` wrap fold** — last stop folded onto first, max Δ 0.095 linear over 1.59% of LUT entries [2026-08-16 audit; NO FIX — archive trajectory, Guard B rebuilds + LUT-seam oracles]. Matt's eye is calibrated on the FOLDED ramp; fold-free fractal-wallpapers renders the same map slightly differently.
-
----
-
-## FAMILY SEAM & WALKER
-5 families, escape-time, all descendable; discovery/emission span **10 partitions** (base + julia twins of the c-plane degrees; phoenix varied + **`phoenix:classic`**). **`phoenix:classic` = the pinned Ushiki point, a DERIVED partition** [code: `partitions.partition_of_row`]: resolved row-side by EXACT family_params match (no tolerance — a float-noise miss is a STOP); absent axes resolve classic for corpus/ledger rows, but the EVAL SLICE carries no parameter axes ⇒ the resolver REFUSES its rows and slice consumers stay pooled. Degree in the name; `location.py` round-trips (decimal-string coords, lossless arbitrary precision). Descent geometry family-agnostic.
-
-- **Julia identity = viewport AND `c`** (keyed + regression-tested; dedup seed-c-aware n-D; same-julia ε 1e-6). **★ TWO julia ledger schemas exist, keyed in `julia_ledger_schema.py`** — campaign-era and walk-era disagree which field holds `c` vs viewport; untagged = loud failure; `viewport_and_c` is the canonical resolver. **All new roots write CAMPAIGN schema.**
-- **★ Ledger coords may be STRINGS** — normalize at the READER, never by trusting writers; the standing pattern for every identity collision, including deduping duplicate rows rather than constraining the writer.
-- **Phoenix identity = the full point `(c,p,z₋₁)` AND viewport** (first-class, keyed); absent axes → legacy Ushiki defaults, byte-identical. Symmetry truth (measured): conjugation for all-real `(c,p,z₋₁)`, NOT 180° rotation at z₋₁=0; reduces to quadratic julia at p=0. Phoenix+julia z-plane dedup SCALE-AWARE (`min(fw)`-radius, never flat). Block builders REFUSE a family whose extra constants weren't supplied [code: fail-closed + non-vacuity]. **★ Phoenix cannot enter the gated f64 smooth lane** (memory-term recurrence, no interior bailout) — falls to `iterate_orbit`.
-- **★ Multibrot symmetry is keyed:** z^d+c has (d−1)-fold rotational symmetry ⇒ `canonical_nucleus_c` + `nucleus_dedup_key` (d=2 an explicit identity; working precision ≥ dps+15). Real-axis Newton noise fixed at READ: `snap_near_zero` + `snapped_dedup_key` + `collapse_population` at each selection consumer, first-row-wins; stored keys never move; conflicting human verdicts left uncollapsed and reported.
-- `F64Backend` degree-parametric, d=2 byte-identical (SHA); fast f64 smooth path gated Smooth AND no-texture AND normal_map-Off; nucleus Newton generalizes to z^d+c.
-- Per-rung machinery (Rust, reused by legacy walk + `--expand`) — constants in code; production entry = `guided-descend --expand`: JSONL nodes → one rung each → gate survivors as candidate rows + cheap JPG; per-node RNG (seed,node_id); dead nodes emit cause tags. Julia band Rust↔Python parity 1e-12.
-- **ANCHORS (verbatim):** julia known-good **c=(−0.07810228973371881, −0.6514609012382414)**; high-complexity **cx/cy=(0.4104135054546244, 0.20967482476903096), fw=0.5622541254857749**; phoenix Ushiki **c=0.5667,0 p=−0.5,0**; q4 interior-lake exemplar **julia c=(0.26103, −0.48932), center descent**. FW floor 1e-9 (not binding until ~depth 24); dive stop-margin 2e-9.
-
-## THE `A` INSTRUMENT
-`atom_instrument(c,n,d)` — atom size, orientation, required dps, and an a-priori f64 pixel-spacing wall predictor, ~zero cost off the recursion Newton already runs. Formula + derivation → `docs/design/atom_instrument.md` + `minibrot_sourcing.md`; identity locked by test, two routes. Two cautions survive here:
-- **★ The naïve degree-2 λ² law under-sizes the d≥3 atom by 4–2497× — do not reintroduce.** (A statement about the FORMULA, not a measured population effect — see the degree confounds in fractal-discovery before predicting availability.)
-- **★ The `A` feasibility cut is a safety rail, not a selector** — admit iff predicted f64 margin ≥ 1 decade at deploy. In production walking it has NEVER bound (material sits 7.5–8.5 decades above the wall).
-- **Divergence abort in `dcf.newton_nucleus`** — DERIVED bound, never fitted from a capped replay; production `NEWTON_STEPS=600`; precision is a non-lever [code: tools/sourcing/test_newton_divergence_abort.py — the guard is the memory]. A flat magnitude bound or a step-shrink test loses real convergers — do not reintroduce either.
+## Rules that transfer to any render work
+- **★★ NEVER GATE ON CLIP SHARE — use IN-MASK CHROMA.** Every compressive operator drives clip share to 0.000 by construction while the surface can stay visibly white and flat — the statistic lies exactly when an operator is present.
+- **★ UF shape names do not transfer by name** — variants of the same name compute different functions; per-shape thresholds are coverage-anchored. Bit during the original direct-family port; bites any future mode port.
+- **★ Any new FIELD-side render axis must enter the field-cache/replay identity key** — an absent axis collides silently with no crash while every downstream statistic shifts. Colormap-TAIL operators identify via provenance stamps instead.
+- Multibrot z^d+c has (d−1)-fold rotational symmetry; phoenix symmetry is conjugation for all-real constants (NOT 180° rotation); phoenix reduces to quadratic julia at p=0.
 
 ## DEEP RENDER TIER — PROVEN, PARKED
-Perturbation + rebasing to ~3×10²⁰, deg-2 Mandelbrot only; **it renders but cannot SCORE** (`--dump-field` and emission are f64) ⇒ a deep location is not a candidate. Spec + revival order → `docs/design/deep_zoom_sourcing.md`; the unparking case is a TAIL, not the once-claimed fifth of supply.
-
-## MACHINE GUARDS
-- **Canaries: regenerate the list with `pytest --collect-only` — don't carry it**; each non-obvious canary states its own why in its docstring. One-liner worth keeping: `tests/occupancy.rs` is fraction-of-TILES with strict `>` at floor 0.0 vs `guided_descend`'s `<` cull.
-- **Byte-identity bites in exactly two places** — the field-cache key and the Rust↔Python LUT; everywhere else, functional parity on the OUTPUT DECISION.
-- **Round-trip identity:** all stamped batches rebuild byte-perfect (Guard B), incl. the full phoenix `(c,p,z₋₁)` stamp; `test_deploy_transform_parity.py` pins the deploy transform bit-for-bit.
-- Suite cost record → `docs/design/pytest_suite_cost.md`.
+Perturbation + rebasing to ~3×10²⁰, deg-2 Mandelbrot only; renders but cannot SCORE (scoring paths are f64) ⇒ a deep location is not a candidate. Spec + revival order → maker `docs/design/deep_zoom_sourcing.md`; the website's Deep-zoom era extracts from there. The unparking case is a TAIL of supply, not a fifth of it.
