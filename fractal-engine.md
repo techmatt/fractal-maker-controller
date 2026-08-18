@@ -4,7 +4,7 @@ fractal-maker's renderer is ARCHIVE (fractal-storage). The live engine is fracta
 
 ## ANCHORS (verbatim — cheap insurance; also shipped as data in fractal-wallpapers)
 - julia known-good **c=(−0.07810228973371881, −0.6514609012382414)**
-- high-complexity **cx/cy=(0.4104135054546244, 0.20967482476903096), fw=0.5622541254857749**
+- high-complexity **cx/cy=(0.4104135054546244, 0.20967482476903096), fw=0.5622541254857749** — ⚠ goes FLAT below w≈1e-3 (smooth gradient by ×4,096); for deep-zoom figures use released **(−0.80384603878, 0.18284000541)**, structured to ×65,536
 - phoenix Ushiki **c=0.5667,0 p=−0.5,0**
 - q4 interior-lake exemplar **julia c=(0.26103, −0.48932), center descent**
 
@@ -13,6 +13,7 @@ fractal-maker's renderer is ARCHIVE (fractal-storage). The live engine is fracta
 - **★ UF shape names do not transfer by name** — variants of the same name compute different functions; per-shape thresholds are coverage-anchored. Bit during the original direct-family port; bites any future mode port.
 - **★ Any new FIELD-side render axis must enter the field-cache/replay identity key** — an absent axis collides silently with no crash while every downstream statistic shifts. Colormap-TAIL operators identify via provenance stamps instead.
 - Multibrot z^d+c has (d−1)-fold rotational symmetry; phoenix symmetry is conjugation for all-real constants (NOT 180° rotation); phoenix reduces to quadratic julia at p=0.
+- **fractional_multibrot** (render-only; range/reachability → fractal-tutorial): principal branch, cut on the negative real axis. **The real axis is NOT a seam on the parameter plane** — conjugate symmetry keeps escape time continuous (median jump 0.000); visible seams are loci where LATER iterates cross the cut.
 
 ## DEEP RENDER TIER — PROVEN, PARKED
 Perturbation + rebasing to ~3×10²⁰, deg-2 Mandelbrot only; renders but cannot SCORE (scoring paths are f64) ⇒ a deep location is not a candidate. Spec + revival order → maker `docs/design/deep_zoom_sourcing.md`; the website's Deep-zoom era extracts from there. The unparking case is a TAIL of supply, not a fifth of it.
