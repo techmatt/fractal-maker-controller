@@ -33,7 +33,7 @@
 
 **Compression.** Telegraphic, fragments, no scaffolding. **Rewording ≠ compressing**; when a reword pass stops paying, delete whole blocks.
 
-**★ THE REPO PRACTICE DOCS** — each repo's `verification_practice.md` / `measurement_practice.md` / `retired.md` equivalents (append-only; a reversal is a new UN-RETIRED entry, never an edit). Prompts CITE them, this doc set never restates them; check the retired record before proposing an approach.
+**★ THE REPO PRACTICE DOCS** — each repo's `verification_practice.md` / `measurement_practice.md` / `retired.md` equivalents (append-only; a reversal is a new UN-RETIRED entry, never an edit). Prompts CITE them, this doc set never restates them; check the retired record before proposing an approach. **fractal-wallpapers has NONE by decision (Matt, 2026-08-18):** its conventions live in CLAUDE.md; do not cite practice docs in its prompts; seed one only from a demonstrated incident, never preemptively.
 
 **Self-perpetuation.** Each future Claude knows only what these docs contain → carry this document forward, amended or preserved, never eroded.
 
@@ -88,7 +88,7 @@
 
 One CC prompt at a time PER REPO (Matt, ckpt 51) — different repos run concurrently by default; same-repo parallelism only when verified okay (e.g. the overnight wait-gate); wait for that repo's report before its next prompt. Progress-through-delivery over methodological minutiae (Matt); scope narrow; diagnosis-first is NOT a standing policy. **★ MATT'S N-HOUR BUDGET COVERS EVERYTHING** — build + shakedown + run + post done ≤N wall-clock; the run's own cap ~N−2, shaved further when build/post estimates grow; overlapping build/post with a running crawl is legitimate. **One run per budget: a follow-up run of ANY length is a NEW budget question for Matt — never launch back-to-back on inference.** **★ THE 100-HOUR POSTURE:** a run at that scale is bounded by disk and by unmeasured saturation convergence — never by a labeling cadence.
 
-- Prompts = short `.md` in `/mnt/user-data/outputs/`, presented, never inline; scale length to risk; trust CC on mechanics; prompts touching tests/guards/measurements cite the repo practice docs by path.
+- Prompts = short `.md` in `/mnt/user-data/outputs/`, presented, never inline; scale length to risk; trust CC on mechanics; prompts touching tests/guards/measurements cite the repo practice docs by path where the repo has them (fractal-wallpapers: none, by decision).
 - **★ CC's honest spec-deviations with stated reasons are consistently right — read before overriding.** Supply claims to be CHECKED, not text to transcribe; ask for the corrections list back. **★ AFTER A REPORT, DO NOT SUMMARIZE IT BACK** — say only what it CHANGES, what Claude got WRONG, and what's next. **★ NO "UNREVIEWED BY MATT" TRACKING (Matt, ckpt 51):** assume CC's calls and the current rendered state are fine until Matt says otherwise — reviewing is his job; flag only decisions that BLOCK upcoming work.
 - **★ NEVER EDIT A PROMPT ALREADY HANDED OVER** — addendums as separate paste-able files. Not-yet-run → edit. If an outputs file diverges from what ran, restore it.
 - Matt does NOT hand-edit JSON/config — he dictates, the prompt applies. Acceptance BY EYE except classifier evals. Git — commits, push, remotes, auth — is his entirely: never flag, track, or mention its state. **★ CC commits to `main` ONLY.** **★★ NO COMMIT ≥20 MB — single blob or aggregate, LFS counted — WITHOUT MATT'S EXPLICIT PRIOR CONFIRMATION (firm):** encoded in repo CLAUDE.md; stop and ask.

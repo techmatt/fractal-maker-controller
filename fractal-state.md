@@ -1,22 +1,27 @@
-# fractal-state — checkpoint 52 (2026-08-18)
+# fractal-state — checkpoint 53 (2026-08-18)
 
 ## Where we are
-Ckpt 52 closes the strange retrain arc, same declared focus: **TUTORIAL + LOOSE ENDS; run-3 LOW priority until explicitly needed** — no planning bundle without Matt's word. The era, in order: **promotion pass DONE** (accumulator item 1 spent; top-censoring cleared) → strange render cache COMPLETE → **strange_render retrained 4-class, winner-rule PASS, ADOPTED** (median-seed rule held; gain = calibration, not ordering) → **acting bar RESTATED by human-derived crossover, now a sha-stamped Restatement** → acceptance re-read **ACCEPT** (prereg amendments mechanism added; ship wart closed) → **threads + itinerary FLIPPED to production** (de niche permanently) → website **8/8 figures live, z_prev amendment placed** — Escape-time section COMPLETE. Matt's era verdicts: the 7 served strange rows below the restated bar STAY · weights-v2 staged locally, OPERATE AS IF PUBLISHED. Facts and cautions → fractal-tutorial §THE REPO + §THIS ERA; corpus/scale law → fractal-corpus.
+Ckpt 53: run-3 + loose ends + service, one day. **run3 SHIPPED on Matt's ask** (39/39 released; restated bar VALIDATED on fresh supply; threads+itinerary drew and took 3 of 9 strange seats) → release records repaired (KILLED verdict distinct; two false-killed rows re-rendered; backstop → per-leg HUNG_CEILING) → run-start friction closed (ledger binding · per-ledger score upsert · gate/release + palette stores sharded under the 1 MiB guard) → **mandelbrot `release_mix` call RESOLVED: keep price, fix service** → funnel readout verdict **SUPPLY** (serving bugs fixed anyway: served/rejection order = score_rank) → website **RESTYLED** (Vector-style left rail, Wikipedia metrics, index reword placed, 11 figures live). Facts → fractal-tutorial §THE REPO + §THE ARTICLE + §THIS ERA; mandelbrot sourcing truths → fractal-discovery.
+
+## OUTSTANDING at this checkpoint (Matt's explicit okay to distill around it)
+**mandelbrot_sourcing_run** — dedicated 2h sourcing leg (3h total), mandelbrot c-plane only, seeded+reframed+fresh-root, location-head rank excluded. Report lands at `scratch/mandelbrot_sourcing_run_report.md` → `reports\`. **FIRST ITEM next session: read it.** Its closing verdict — supply findable vs partition structurally thin at wallpaper framing — picks between (a) a mandelbrot sourcing channel in future runs and (b) falling back to repricing the mix down.
 
 ## OPEN (ordered)
-1. Next article sections under the editorial rules (fractal-tutorial §ARTICLE); index.html "Placeholder page" reword only on Matt's word.
-2. Smooth side parked, data banked: mix-pricing + 3-vs-4 labels ingested; render cache short (fractal-tutorial §THIS ERA); retrain only when a decision needs it. The mandelbrot `release_mix` call has its labels whenever run planning resumes.
-3. Inherited: `release.jsonl` 918 KiB vs the 1 MiB history-purity limit (bites before the next big run — low urgency under current focus) · migration commitment (label corpora + release-asset landing) · watches: smooth advisory predictiveness · palette-space narrowing · run-safety accepted gaps before 100h · floor-dominance/deficit simplification.
-4. Run-3 only on Matt's explicit ask (supply/bar context → fractal-tutorial §THE REPO release floors).
+1. Read the sourcing-run report (above).
+2. Next article sections under the editorial rules (fractal-tutorial §ARTICLE) — Rendering fundamentals is next in slug order; layout/rail baseline is new, prose workflow unchanged.
+3. Smooth side parked, data banked: 3-vs-4 labels ingested; smooth render cache short 188; retrain only when a decision needs it. (Mix-pricing labels are SPENT — they bought the funnel verdict.)
+4. Inherited: migration commitment (label corpora + release-asset landing) · twin refill: julia:multibrot3 pool EMPTY after run3 (accumulator item 2 feeds it) · watches: smooth advisory predictiveness · palette-space narrowing · run-safety accepted gaps before 100h · floor-dominance/deficit simplification.
+5. Next full production run on Matt's explicit ask — a NEW budget question; the strange side stays thin until threads/itinerary supply and twin refill arrive.
 
 ## CLOSED this era (verdict · record = Drive reports)
-- Promotion pass — sheet built, labeled, ingested; overlay revisions only; blind_modes 6 went the standard path by Matt's call (strange3_promotion_sheet · strange3_ingest_and_retrain; caveat → fractal-corpus).
-- 4-class retrain — winner-rule pass; seed 0 staged; RECIPES class count moved here as sanctioned (strange3_ingest_and_retrain).
-- Bar restatement + acceptance ACCEPT + tier flip (restate_bar_and_flip_tiers).
-- Website: escape-fractional-degrees live, registry owes no figures; z_prev amendment verbatim-verified (escape_fractional_figure_and_zprev).
+- run3 — 39/39 released; bar prediction held on a ledger that didn't exist when made; twin mb3 pool consumed to 0 (run3_launch · release_record_fixes).
+- Records + run-safety — RELEASED/KILLED/PASSED_OVER verdicts; HUNG_CEILING regime replaces longest-completed-so-far; resume-clobbers-run-summary caveat recorded (release_record_fixes).
+- Ledger binding + per-ledger score upsert + store sharding (run3_launch pre-flight · run_ledger_binding).
+- release_mix — RESOLVED keep-price-fix-service; funnel verdict SUPPLY; serving now score_rank end-to-end (mandelbrot_smooth_service).
+- Website restyle — derived left rail + contents check; Wikipedia metrics, families unchanged; index reword placed verbatim, Matt monitors it — do not track (site_layout_restyle).
 
 ## Queue
-Article sections → remaining loose ends → run-3 only on Matt's explicit ask.
+Sourcing-run report → article sections → remaining loose ends → next full run on Matt's ask.
 
 ## ROSTER — soft size targets
 operating 15k · state 6k · tutorial 18k · corpus 7k · discovery 5.5k · engine 3k · storage 1.5k — seven docs.
