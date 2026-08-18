@@ -19,7 +19,7 @@ Changes when: labeling happens, a batch is registered, judge method moves. The l
 - **★★ §2a — CONTRADICTING STAMPED SPLITS FORCE A GLOBAL RE-DERIVATION** (or a frozen authority protecting an incumbent's eval). **§2b — anchored correction-sheet labels are TRAIN-SIDE ONLY, per-head.**
 - **★★ THE EVAL-ONLY PIN — a split constraint OUTRANKING §2a's fixes**, wired at UNIT granularity; trainers assert on the c-INCLUSIVE coordinate, never `image_id`.
 - **★★ A BLIND SHEET INFORMS EXACTLY ONE BOUNDARY, AND ITS DRAW'S QUALITY CONDITIONING CHOOSES WHICH.** Blind sheets are eval-only forever. Anchored sheets measure AGREEMENT with the incumbent; a rate off any prefilled sheet is a CEILING.
-- Standing eval instruments (migrated as data): blind_minibrot (197, ≥4; its 97.0% ≥3 is the GATED intake's base rate) · blind_modes (150, ≥2 — **⚠ 6 rows' labels superseded by anchored promotion-pass revisions (Matt, 2026-08-18: simplest path); 144 remain blind; the ≥2/≥3 truths are byte-unchanged; the eval side now holds four 4s. Never read blind_modes at ≥4, and never count those 6 as blind**). OPEN instruments owed: smooth_render ≥3 blind · a phoenix:classic score-unconditioned VIEWPORT instrument.
+- Standing eval instruments (migrated as data): blind_minibrot (197, ≥4; its 97.0% ≥3 is the GATED intake's base rate) · blind_modes (150, ≥2 — **⚠ 6 rows' labels superseded by anchored promotion-pass revisions (Matt, 2026-08-18: simplest path); 144 remain blind; the ≥2/≥3 truths are byte-unchanged; the eval side now holds four 4s. Never read blind_modes at ≥4, and never count those 6 as blind**). Coverage caveat, NOT an obligation (Matt, 2026-08-18): no blind instrument covers smooth_render ≥3 or a phoenix:classic viewport base rate — build one WHEN a retrain/sourcing decision needs it, never before.
 
 ## Judge method (governs every retrain)
 - **★★ THE WINNER RULE:** candidate only if (a) no overall pre-declared metric significantly worse (95% paired bootstrap) AND (b) the motivating slice significantly better, none worse; declare slices before numbers.
@@ -35,8 +35,8 @@ Changes when: labeling happens, a batch is registered, judge method moves. The l
 Spent: the ckpt-51 sitting's four draws · the strange-3 PROMOTION PASS (ckpt 52; record = Drive reports). Remaining, by value-per-label:
 1. **Plane-channel deep admissions** — stratified by rung/width over run2's 474; no label has seen 1e-6..1e-8 widths; feeds the N=6 call whenever run planning resumes.
 2. **Twin top slices** — julia:multibrot3/4/5 standing demand retired by unreviewed machine rows (~30×/10×/9×); precedence leverage.
-3. **Paired threads-vs-itinerary draw** — CONTINGENCY, only if per-location mode comparison ever matters (current batches disjoint).
-4. **Carried maker-era items** (lower priority): phoenix machine-4s · human_q3plus floor-vein · maneuver-view ≥3 boundary · unclassed q4_harvest rows.
+3. **Mandelbrot q3+ labels are that partition's SUPPLY LEVER** (sourcing verdict → fractal-discovery): each new q3+ mandelbrot location expands the seeded channel's root pool; the current seed pool is mostly undrawn — no urgency.
+DELETED (Matt, 2026-08-18): the paired threads-vs-itinerary contingency (modes stay independent pooled channels FOREVER) · all carried maker-era items (re-add only on a demonstrated fractal-wallpapers need).
 
 ## Label noise — what it forbids
 Disagreement is adjacent-category only: a real ordinal scale with a fuzzy boundary, not a learnability ceiling. **Forbids reading small AUC differences on the ≥3 boundary.** Pre-register bars before computing; verify the instrument's inputs actually change. **Matt: "noise is expected at all boundaries" — do not re-raise.**
