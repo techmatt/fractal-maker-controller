@@ -1,24 +1,26 @@
-# fractal-state — checkpoint 56 (2026-08-18)
+# fractal-state — checkpoint 57 (2026-08-19)
 
 ## Where we are
-Ckpt 56: the audit-and-ship day. Label-corpus migration CLOSED by proof (all 20,242 maker human rows verified in-store; 808 unmappable rows stay in the maker archive by Matt's ruling — record migrate_label_corpus). Article section 4 **Rendering modes PLACED** with six figures (4 of 10 sections live) off a facts-only catalog audit — the audit-first workflow is now a standing rule (→ operating). Site polish landed (homepage link · body-size lead · first-mention italics + retro pass · `builder serve` for file:// zoom · topbar wrap fix). 2h profile: Python innocent, engine paint ~65% of a release row; the free LUT fix landed bit-identical; **ss4 is now a permanent rule** (retires every ss-reduction fix). `run8h_instrumented` handed off (wait-gated on LUT, gate satisfied) — **its report is OUTSTANDING and opens next era.** Records = Drive reports.
+Ckpt 57: the sitting-and-fixes day, all in one session. run8h/run9 intake inverted the time model (harvest 72% of wall; `--score-workers 1` settled). One 316-row sitting bought three decisions: grace 5 ratified for the 100h run · the mandelbrot never-rank rule OVERTURNED and restated · interior cliff found at ~0.10 (sheet screen shipped at 0.12). The focus-finder dedup LANDED bit-identical (−4.6%/run). The `proven` seeded channel PRODUCTIZED across all four planes (was an untracked scratch file). Section-5 audit COMPLETE — prose is next era's opener. The ss1/small-regime location retrain is SCHEDULED for next checkpoint; its data prep is RUNNING over this boundary. Records = Drive reports; verdicts → owner docs.
 
 ## OPEN (ordered)
-1. **run8h_instrumented out** — overnight production, forward-looking config: seeded mandelbrot channel ADOPTED for the run · plane dives aim ≥1e-6 width via existing knobs only · twin folds to parent (no refill) · releases 2560×1440 ss4 · time-ledger deliverable (spans, ≥95% attribution, per-task % table). Report intake = next era's first task; the per-mode timing TODO (article cost column) measures after it.
-2. Article: **Finding good locations** is next in slug order. Queued one-tag site fix: `<i>smooth</i>` italicized twice (fundamentals + Two judges). Mirror-fold hypothesis (→ engine rule) belongs in the next run-design conversation — mirrored non-cyclic maps may explain part of trap_circle/direct-trap judge deaths.
-3. Profile decisions PARKED, Matt's call each: #2 curve-from-attempt (or the predict-with-fallback variant discussed) kills the ~40%-unshipped-bytes overhang · #4 tone-stat stamp move · the steering-view/field-dump duplicate iteration pass (harvest throughput lever). ss4 rule retired #3/#6 permanently.
-4. Smooth side fully parked, preconditions met — retrain only when a decision needs it.
-5. Inherited: watches, all four KEPT · release-asset landing waits until collections exist.
-6. Next-run planning (Matt's budget question, informed by run8h): twin refill needs new distinct c's (julia:multibrot3 pool EMPTY) · mandelbrot q3+ labels remain that partition's supply lever (754/850 seeds undrawn — no urgency).
+1. **ss1_data_prep OUTSTANDING (running over the boundary — intake opens next era):** ss2 cache verify+top-up · two new regime caches (640×360 ss1, 384×216 ss1) for ALL stored rows · ~500-location flip-rate of the CURRENT head at the new regimes (per family, per acting threshold, flip depth) · INTERIOR_CAP comment annotation · ADDENDUM: rename proven_label → `proven` (confirm in its report before using the new name anywhere).
+2. **Article: Finding good locations prose** — draft in-session from `reports\audit_finding_locations_report.md` + its 689-row q4 appendix (paths live in the sync drive; re-fetch directly). Framing/guardrails/skeleton → fractal-tutorial §ARTICLE. Figure renders are a separate later prompt.
+3. **Location retrain (next checkpoint):** ONE regime-robust head; mix = all rows × three regimes; winner rule pre-declares — constraint: no significant loss at canonical 640×360 ss2; motivating slices: ss1 + 384×216 ss1. Cascade (ss2 rescore at boundaries) only if the flip-rate read demands it — measure-first. Known cost, priced in: a location retrain moves the CORN scale ⇒ junk floor, good floor, and the sidecar re-measured/restated against the new head. Endgame if the small regime holds: the head scores NODE FIELDS directly and most steering views (58.7% of a run) disappear.
+4. **100h budget question (Matt), config now largely settled:** grace 5 · `--score-workers 1` · `proven` channel on all four planes (2:1 interleave; mb3's 275 new roots are the interesting arm — 38.9% ≥3 in the depth draw) · twin demand folds to parent (the fold manufactures) · releases 2560×1440 ss4.
+5. Parked, Matt's call each: walk INTERIOR_CAP value (annotated 0.30 vs measured cliff 0.10 — waypoint effects unmeasured) · grace-off-for-proven-roots (own measurement) · smooth-attempt re-render (curation, 0.4%/run, priced) · find_foci/occupancy per-call efficiency (not duplication) · profile #2/#4 (release-side, now ~19% of clock).
+6. Inherited: watches all four KEPT · release-asset landing waits for collections · deep zoom parked.
 
 ## CLOSED this era (verdict · record = Drive reports)
-- Migration commitment — already complete de facto, now proven by key-level audit; ~1,879 rows + 6,600 palette tiers permanently orphaned (the join law's THIRD proof); 808 held-out rows stay in maker archive per Matt (migrate_label_corpus).
-- Rendering modes — v1→self-critique→v2→Matt commentary→catalog audit→v4 PLACED verbatim; six figures, weakest-panel rule, cmr.voltage all grids; figure-provenance convention established + backfilled (audit_rendering_modes · place_rendering_modes).
-- Site polish — homepage link, lead normalized to body size, first-mention italics convention (+retro), `builder serve`, topbar wrap fix (site_polish_and_terms).
-- Profile + free fix — attribution profile (Python linear and ~5%; paint dominates; ~40% of curation clock makes unshipped bytes); sRGB→linear LUT landed bit-identical, −31% autolevel measurement (profile_2h · oklab_linearize_lut).
+- run8h/run9 intake — time model inverted; seeded channel production-validated; twin fold works; grace-11 depth trade priced (run8h_instrumented).
+- Sitting built + ingested + read — 316 rows, both draws train-side; +115 q3+ seeds; grace/rank/threshold decisions all bought (label_sheets_depth_and_mandelbrot_body · ingest_run9_sitting).
+- Focus-finder dedup — foci::Frame, bit-identical, landed; the profile's steering-view/field-dump merge priced and DECLINED at 103 GB for 0.4% (dedup_iteration_pass).
+- Interior screen + rank-rule restatement shipped in-repo (fixes_interior_and_rank_rule).
+- `proven` channel productized — query-not-file, four planes, 0 lost vs scratch (productize_proven_label_channel).
+- Section-5 facts audit — walk/operators/floors/q4 lists/figure coordinates; 9 contradictions cataloged for honest prose (audit_finding_locations + appendix).
 
 ## Queue
-run8h report intake → Finding good locations prose → next-run budget question (Matt).
+ss1_data_prep intake → Finding good locations prose → retrain design → 100h budget question (Matt).
 
 ## ROSTER — soft size targets
-operating 15k · state 6k · tutorial 18k · corpus 7k · discovery 5.5k · engine 3k · storage 1.5k — seven docs. This distillation: state + corpus REPLACED; engine + storage EDITED; **tutorial + operating received APPEND blocks only** (their bodies were not in the session's context) — **integrate both appendices into their sections at ckpt 57**; discovery CLEAN.
+operating 15k · state 6k · tutorial 18k · corpus 7k · discovery 5.5k · engine 3k · storage 1.5k — seven docs. This distillation: state REPLACED; discovery + corpus + tutorial + operating EDITED by hunks (both ckpt-56 appendices INTEGRATED and deleted); engine + storage CLEAN. Discovery may land slightly over target this ckpt (two verdict-dense bullets grew) — trim candidate next distillation.
