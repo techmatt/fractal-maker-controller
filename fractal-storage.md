@@ -1,6 +1,0 @@
-# fractal-storage — archive stub
-
-- **★ ARCHIVE TRAJECTORY (Matt, 2026-08-15):** **fractal-maker** (`C:\Code\fractal-maker`; crate/binary still `fractal-generator`) is an ARCHIVE Matt won't actively maintain — new work lands in fractal-wallpapers; maker is the READ-ONLY extraction source until the migration commitment completes (state §OPEN 6: label corpora + anything living only in the old tree). Deliberate residue there: backbone_search's three red index-guard tests stand UNFIXED — Matt declined the allowlist edit; **do not re-raise.**
-- The old durability contract, tracked-bulk policy, weights retention, and every guard live on in maker's `docs/design/{storage_classes, artifacts_resolver}.md` + the controller git history — point there if archive surgery is ever needed. Label-corpus migration is COMPLETE (ckpt 56) — nothing further to pull; 808 unmappable rows deliberately remain here by Matt's ruling (q4 windows · abstract palette ratings · near-dup pairs · triage). Tracked records and PREVIOUS-rung weights stay intact.
-- **⚠⚠ Name full paths: "delete v7" is a dangerous instruction** — a version number is not a path. (General; bites in any repo.)
-- fractal-wallpapers' storage rules are its own (birth locks + guards → fractal-tutorial); the transferable storage principles live in fractal-operating §STANDING POSITIONS.
