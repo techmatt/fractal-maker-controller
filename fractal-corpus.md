@@ -34,6 +34,7 @@ Changes when: labeling happens, a batch is registered, judge method moves. **MIG
 ## ★★ THE ACCUMULATOR — things Matt needs to label (merge into one sitting; don't over-label)
 Spent: the ckpt-51 sitting's four draws · the strange-3 PROMOTION PASS (ckpt 52) · the ckpt-55 sitting, both draws (verdicts → fractal-discovery; records = Drive reports). Remaining:
 1. **Plane q3+ labels are the proven channel's SUPPLY LEVER — all four planes now** (sourcing verdict → fractal-discovery): the channel is a live store query, so new q3+ labels become roots automatically (the ckpt-57 sitting added 115: 89 offer-body incl. 10 fours + 26 depth). The offer body runs ~72% ≥3 in its top four fifths — deepen only when a decision needs it; no urgency.
+2. **Release-backing locations — ONLY if Matt wants the missing found-and-finished pairs:** 22/149 releases carry any human label; q4-by-Matt is absent behind the mandelbrot, multibrot3, phoenix, and degree-2-julia releases (record draw_figures). A handful of labels per family fills the gallery; zero urgency; Matt's call whether this is wanted at all.
 DELETED (Matt, 2026-08-18): the paired threads-vs-itinerary contingency (modes stay independent pooled channels FOREVER) · all carried maker-era items (re-add only on a demonstrated fractal-wallpapers need).
 
 ## Label noise — what it forbids
