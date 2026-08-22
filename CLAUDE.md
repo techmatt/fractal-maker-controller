@@ -41,6 +41,21 @@ unappliable hunk, a missing source a prompt named, content dropped with no repla
 contradiction you refused to reconcile. A clean apply gets no file. When one is warranted it
 goes to `C:\Code\fractal-drive-sync\reports\` and nowhere else.
 
+**NOT cause for concern, and NEVER grounds for a report file** — note each in-session and move on:
+- **Size overage.** Targets are soft (see `## Size targets`). Only dramatic overage or padding
+  stops the apply, and that stop is itself the report.
+- **A failed verify/grep check the prompt already scripted a handling for** (e.g. "report the
+  lines, do not edit"). Anticipated outcome, in-session line, no file.
+- **A malformed commit message, or any other slip of mine in this session.** Mine to state
+  plainly to Matt; claude.ai has no use for it.
+
+**End every in-session report with an explicit report-status line — always, no exceptions**,
+clean applies included. One of exactly:
+- `REPORT FILE: none written — <one-clause reason>.`
+- `REPORT FILE: written → C:\Code\fractal-drive-sync\reports\<name>.md — <one-clause reason>.`
+
+Never leave report status implied, and never let silence stand in for "none written."
+
 ## `prompts/` — ignored, never edited
 `prompts/` is gitignored and outside your write scope. Read prompts from it; never
 create, edit, delete, or rename anything inside it, and never commit it. Matt deletes
