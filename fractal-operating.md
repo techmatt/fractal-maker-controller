@@ -1,6 +1,6 @@
 # fractal-operating — the method
 
-**Amended by diff, never rewritten in full** (full rewrites only when Matt sanctions one; ckpt 50 and ckpt 65 were). Read first, every session. Ownership test: *would this still be true if the project weren't fractals at all?*
+**Amended by diff, never rewritten in full** (full rewrites only when Matt sanctions one; ckpt 50, 65 and 71 were). Read first, every session. Ownership test: *would this still be true if the project weren't fractals at all?*
 
 ---
 
@@ -19,6 +19,7 @@
 - State the scratch-preservation notice at every distillation — what under `scratch/` MUST survive; default nothing.
 - Distill only from a SETTLED state — never mid-session, never with a prompt outstanding; its job is to CLOSE threads. Do NOT write the distillation until the era's FINAL report is in.
 - **The claude.ai session AUTHORS all doc content; the apply prompt is mechanical** — it never asks CC to compose or condense prose.
+- **Hunk authoring rules (ckpt 70's failure):** within a file, no hunk's OLD text may overlap text a prior step of the same prompt deletes or moves — edits to moved content target the DESTINATION file; MOVE steps sort last within their file.
 
 **★★ SIZE TARGETS, NOT HARD CAPS (Matt).** Soft targets in state's roster; the deletion test is the real control; targets move only with Matt. state holds NO FACTS — status/plan/flags/roster only.
 
@@ -26,7 +27,7 @@
 
 **★★ SINGLE-HOME.** One doc per subject; grep each bolded numeral across emitted docs and assert single occurrence; other docs NAME a fact and cross-reference, never restate.
 
-**★★ TAG CLAIMS ABOUT CODE.** A line asserting what the tree does carries `[code: path]` or `[unverified]`; a claim of AUTOMATIC FUTURE BEHAVIOR names the enforcing mechanism or is not written. Every checkpoint that checked has falsified some untagged claim — ckpt 65 falsified five (a CORN claim, two counts, a file name, a duration's location).
+**★★ TAG CLAIMS ABOUT CODE.** A line asserting what the tree does carries `[code: path]` or `[unverified]`; a claim of AUTOMATIC FUTURE BEHAVIOR names the enforcing mechanism or is not written. Every checkpoint that checked has falsified some untagged claim (ckpt 65: five at once).
 
 **Compression.** Telegraphic; rewording ≠ compressing — delete whole blocks. **Repo practice docs:** fractal-wallpapers has NONE by decision (Matt, 2026-08-18) — conventions live in CLAUDE.md; seed one only from a demonstrated incident.
 
@@ -36,13 +37,22 @@
 
 ## TIER 0.5 — THE EXCHANGE FOLDER
 
-**`C:\Code\fractal-drive-sync\{prompts,reports,prose,preserve}\`** — Drive-synced, outside all repos. `preserve\` is DURABLE (Matt never deletes; use sparingly; cite by path). Everything else is SCRATCH — Matt deletes freely. One writer per subfolder; `scratch/` stays a report's canonical home. `matt-claude-workflow.md` (exchange root) documents the pattern for a NEW project; each repo's `CLAUDE.md` owns the standing prompt contract (report shape/path/delivery, runtime discipline, commit gate) — prompts never restate it.
+**`C:\Code\fractal-drive-sync\{prompts,reports,prose,preserve}\`** — Drive-synced, outside all repos. `preserve\` is DURABLE (Matt never deletes; use sparingly; cite by path; claude.ai may also edit it Drive-side — trash + recreate, never a same-named duplicate). Everything else is SCRATCH — Matt deletes freely. One writer per subfolder; `scratch/` stays a report's canonical home. `matt-claude-workflow.md` (exchange root) documents the pattern for a NEW project; each repo's `CLAUDE.md` owns the standing prompt contract (report shape/path/delivery, runtime discipline, commit gate) — prompts never restate it.
 - **★ ALL PROMPTS GO THROUGH `prompts\`** — code-work, addenda, and checkpoint prompts alike. **DELIVERY = a confirmed Drive create into `prompts\` in the same turn the prompt is authored; presenting a file is NOT delivery** (missed twice). Re-resolve each session by PARENT CHAIN: find `fractal-drive-sync` (title + folder mimeType), then the `prompts` folder whose parentId equals that id — never by title alone, a sibling-filename check, or a parentId lifted from a file search (misdelivered to the other `prompts` three times). Same for `prose\`, `reports\`, `preserve\`. **Drive files cannot be edited in place — a correction to a delivered prompt, run or not, is an ADDENDUM file** (`<prompt>_addendumN.md`, "paste with the original").
 - Every prompt opens with a TARGET-REPO guard (`fractal-wallpapers` / `fractal-website` / `fractal-maker` / `fractal-maker-controller`) with STOP-on-mismatch, and ends with an explicit "Commit when done." unless it states its reason not to.
 - **★★ CHECKPOINT NAMING (Matt):** `DISTILL_ckptXX_apply.md` = the controller-CC apply prompt; `continuation_ckptXX.md` = a hand-off WITHOUT distilling, against unchanged docs. **A checkpoint produces exactly ONE hand-off artifact** — session context a fresh session needs is written INTO state, never a side file.
 - CC MAY be pointed at the controller folder — READ-ONLY to code-work CC (Matt, 2026-08-11).
 - **★★ CONTEXT STEWARDSHIP IS PART OF THE SESSION CONTRACT.** Track the session's own budget against a **~150k soft ceiling**; on reaching it, call "checkpoint now" instead of proposing another prompt; report an estimate at the checkpoint.
 - **★ DRIVE FETCH: `read_file_content` returns plain text at 1× — use it for ALL text fetches.** `download_file_content` is base64 (~3×) — binary only.
+
+**PRESERVE INDEX** (audited ckpt 71; near-frozen — cite by path, never restate; claude.ai self-fetches via Drive; update whenever preserve changes):
+- `gallery_pass_design.md` 8.6k — the ruled two-phase design: steps, floors, embed spec, radius calibration, audit reuse map. §6 build order stale — the code is the record.
+- `sourcing_measurements.md` 7.7k — retired-head verdicts + run-era numbers, PRIORS only: family character, plane depth, deep-descent ruling, interior cliff, run10, julia ∂M, twin slice, mandelbrot offer, proven first serving, novelty smoke.
+- `audit_deep_descent_report.md` 17k — two-repo deep-surface audit: maker perturbation tier + S1/S2 anchors, `min_width` provenance, f64 sites, costs, head validity, 5 contradictions. Line refs = 2026-08-20; the maker's stay valid, the wallpapers' rot.
+- `deep_kernel_plan.md` 2.8k — the ruled perturbation arc, UNBUILT.
+- `visitor_explorer_design.md` 1.8k — explorer design record; BUILT ckpt 70 — live mechanics = `explorer/README.md`.
+- `parked.md` 1.5k — deliberately unscheduled items; re-enter only from a demonstrated repo need.
+- `maker_transfer_cautions.md` 1.9k — maker archive-read cautions + the old→new rename table.
 
 ---
 
@@ -58,8 +68,8 @@
 - **★★ ENFORCING FROZEN THRESHOLDS WERE THE ROOT CAUSE OF THE IMPOSSIBLE-STATE FAILURES.** Prefer read-time rank + coarse semantic floors; a threshold change is a READ-TIME CHOICE, never an event that invalidates populations. Kept guards: sink isolation · dedup · label-carries-its-join · seeded determinism.
 - **★★ THE 10,000-HOUR FRAME (Matt, 2026-08-22).** Judge every design decision by "what makes the best-framed, highest-quality, most beautiful, most diverse collection given 10,000 hours." Anything that discards and never revisits is generally wrong; err toward over-admitting whatever could be good and let the embedding + gallery pass reject near-duplicates. Lineage caps, saturation discount, spacing floors = PACING (new ground first), never rejection — a future session must not tighten them into gates. Don't over-think trivially small counts. **★ A DANGLING REFERENCE IS NOT A TASK** — "explore-the-set" and "phoenix seed-pool coverage" each survived two checkpoints with no referent in any repo; a line that sounds like a task but names nothing fails the deletion test (ckpt 69, twice).
 - **★ A RULE'S PURPOSE BOUNDS ITS SCOPE (ckpt 65).** Before refusing or redesigning on a rule, name what the rule protects; if that thing is not in play, the rule is not either. (The judges-figure lock-up: a figure-exemplar rule and a split rule were applied to a results grid neither governs.)
-- **★ TWO SPELLINGS OF ONE FACT IS A SILENT NULL (ckpt 70).** `_ledger`/`score` vs `ledger`/`location_p_ge3` lined up as "nothing" for 1,120 rows; a witness read on the wrong axis (`rank_key` vs `floor_key`) understated a gap. Same law as label-carries-its-join: one adapter, one key, and the reader asserts the spelling it expects.
-- **★ WRONG-GEOMETRY ESTIMATES (ckpt 70):** a 13 h projection was 56 min real because the prior was a deploy-view cost on gate survivors; cost tracks what the pixels do — pilot on the target population before sizing any leg (→ fractal-corpus has the labeling form of this).
+- **★ TWO SPELLINGS OF ONE FACT IS A SILENT NULL (ckpt 70).** One adapter, one key, and the reader asserts the spelling it expects — same law as label-carries-its-join (ckpt 70: two spellings of a ledger key read as "nothing" for 1,120 rows; a witness on the wrong axis understated a gap).
+- **★ WRONG-GEOMETRY ESTIMATES (ckpt 70):** cost tracks what the pixels do — pilot on the target population before sizing any leg (a 13 h projection was 56 min real: the prior was a deploy-view cost on gate survivors; labeling form → fractal-corpus).
 
 ---
 

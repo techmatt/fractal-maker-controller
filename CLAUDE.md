@@ -70,6 +70,10 @@ there. `reports\` is the ONE place this repo may write, and only under the condi
 `## Reports` above: something went wrong and might need addressing. Outcomes otherwise reach
 claude.ai verbally via Matt.
 
+DISTILL prompts may also create/edit files under `C:\Code\fractal-drive-sync\preserve\` (durable
+exchange). This reconciles the ckpt-70 conflict: `reports\` remains the destination for reports;
+`preserve\` is a sanctioned destination for content the docs evict.
+
 The handoff documents in this repo are the single canonical version. They are never
 copied, synced, or mirrored into the exchange folder or anywhere else. One version, here,
 only.
