@@ -42,15 +42,16 @@
 - Every prompt opens with a TARGET-REPO guard (`fractal-wallpapers` / `fractal-website` / `fractal-maker` / `fractal-maker-controller`) with STOP-on-mismatch, and ends with an explicit "Commit when done." unless it states its reason not to.
 - **★★ CHECKPOINT NAMING (Matt):** `DISTILL_ckptXX_apply.md` = the controller-CC apply prompt; `continuation_ckptXX.md` = a hand-off WITHOUT distilling, against unchanged docs. **A checkpoint produces exactly ONE hand-off artifact** — session context a fresh session needs is written INTO state, never a side file.
 - CC MAY be pointed at the controller folder — READ-ONLY to code-work CC (Matt, 2026-08-11).
-- **★★ CONTEXT STEWARDSHIP IS PART OF THE SESSION CONTRACT.** Track the session against a **~150k soft ceiling**; on reaching it, call "checkpoint now" instead of proposing another prompt; report the estimate.
+- **★★ CONTEXT STEWARDSHIP IS PART OF THE SESSION CONTRACT.** Track the session; **~150k is the WARN point, not a hard limit** — on reaching it, say so clearly with the estimate. **Matt ALWAYS decides when to distill**, weighing the live discussion context himself (ruled ckpt 79); never stop proposing work on the count alone.
+- **★ Session-side Drive edits VERIFY FROM SOURCE exactly as prompts do:** a number carried in state is a pointer, not a fact — ckpt 79 wrote "49 cells" into the floor doc from state's word and the next audit found 52. Recreate method for a preserve doc: create → verify size → trash the old; never leave a same-named duplicate.
 - **★ DRIVE FETCH: `read_file_content` returns plain text at 1× — use it for ALL text fetches.** `download_file_content` is base64 (~3×) — binary only.
 
 **★ BEFORE PROPOSING TO REOPEN, REVISIT, OR REDESIGN ANYTHING, GREP `preserve\settled_rulings.md`** — closed questions live there, not in these docs; re-entry is a question to Matt from a demonstrated repo need.
 
 **PRESERVE INDEX** (near-frozen — cite by path, never restate; claude.ai self-fetches via Drive; update whenever preserve changes):
-- `settled_rulings.md` ~9.5k — every "never re-raise / firm" ruling, one line each, by area. The docs drop their tombstones into it.
-- `gallery_pass_design.md` ~11k — the gallery pass as BUILT (steps 0–7, verified from source ckpt 75; ckpt-76 amendment: step 5a framing refinement, fifth sheet `refined_pairs`) + the truths its runs bought + decisions and why.
-- `color_coverage_floor_design.md` 7.1k — the ruled coverage-floor spec (cells, pixel laws, three enforcement mechanisms, recolor pool, precedence fold, build order), UNBUILT — build after gallery3.
+- `settled_rulings.md` ~13k — every "never re-raise / firm" ruling, one line each, by area. The docs drop their tombstones into it.
+- `gallery_pass_design.md` ~17k — the gallery pass as BUILT (steps 0–7, verified from source ckpt 75; ckpt-76 amendment: step 5a framing refinement, fifth sheet `refined_pairs`, its smoke truths SUPERSEDED in place; ckpt-78 amendment: per-pass candidates, seeded draw, picture identity, the node-view cache law, pricing off pass rows) + the truths its runs bought + decisions and why. Step 7 still says 2560 ss4 — session-side chore (fractal-state).
+- `color_coverage_floor_design.md` 12.1k — the ruled coverage-floor spec (cells, pixel laws, three enforcement mechanisms, recolor pool, precedence fold, build order), UNBUILT; ckpt-78 amendment + ckpt-79 corrections (`1/cells`; 52 cells, collapse UNBUILT; the measured candidate↔release law; nine zero cells; pairs are a RECIPE fact). Build gate open; the ceiling is listed as under discussion, not in the spec.
 - `sourcing_measurements.md` 12.5k — retired-head verdicts + run-era numbers (families, plane depth, deep descent, run10, julia/phoenix/twin math, motif saturation, deep_run1), PRIORS only.
 - `audit_deep_descent_report.md` 17k — two-repo deep-surface audit (perturbation tier, S1/S2 anchors, `min_width` provenance, f64 sites, 5 contradictions); wallpapers line refs rot, the maker's hold.
 - `deep_kernel_plan.md` 2.8k — the ruled perturbation arc, UNBUILT.
