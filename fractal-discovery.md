@@ -33,6 +33,12 @@ Changes when: discovery/sourcing knowledge moves. Frame: "is this NEIGHBORHOOD g
 - **★★ THE LAST GATE IS THE SOLVE (Matt, ckpt 83; BUILT ckpt 84):** a run only feeds the pool; diversity, colour and mode are decided ONCE, as constraints on the SET rather than filters on a seating order → `preserve\selection_design.md`. Cite, never restate. **★★ BREADTH BUYS CONSTRAINT SATISFACTION, DEPTH BUYS QUALITY** — a 644-candidate hunt into the unopened pool closed a colour shortage at 16.6 s a seat and did not move the n=20 gallery by a digit (median `P(≥4)` 0.00087, 9 clearing the bar). **Mining, not optimizing, is what raises the floor.** **The diversity radius becomes PARTITION-BLIND** — today it is never applied across partitions at all, and of gallery4's 31,125 pairs the 51 under 0.07 are ALL cross-partition, none same-partition. That closes the parked cross-partition-radius item.
 - Budget semantics: a run's budget is a TARGET, not a cap — re-seat rather than stop early (→ fractal-tutorial for `--finish-by`). DEPTH/DEEP vocabulary → settled_rulings.
 
+## Mining economics (MEASURED ckpt 85; records `reports\primed_supply_mine_report.md` · `field_sharing_report.md` · `depth_curve_report.md`)
+- **★★★ EVERY "PRIMED AT k" COUNT IS A MAXIMUM OVER k NOISY SCORES AND IS OPTIMISTIC.** Measured: the winning candidate loses 0.042 on re-score by k=40, a **×0.70 multiplier at the 0.90 bar**. Quote a prime count as RAW or CALIBRATED and never mix them; the gap grows with how hard we mine.
+- **★★ PALETTES ARE EXCHANGEABLE TO k=40** — the per-candidate clear rate is flat in k with no ordering effect, so the palette head's rank buys nothing at the boundary and k is bounded by cost, never by taste.
+- **★★ DEPTH SUBSTITUTES FOR RANK BUT DOES NOT REPLACE IT.** The location head's rank spreads the prime rate 4.0× end to end — top four bands 16.7% against the bottom six 7.0%, ~2.4× pooled — so draw the top half, not the whole range. **CHOOSING THE MODE ROSTER IS WORTH MORE THAN RANK (~2×).**
+- **★★ "CLEARED" MEANS A `P(≥4) ≥ 0.50` CROSSING AND SAYS NOTHING ABOUT HUMAN q3s.** Three modes cleared nothing at proven locations and only 11 of 49 mode-floor seats filled, but no instrument looks below that bar, so a mode's q3 supply is UNMEASURED. The judge-side reason → fractal-corpus §Judge method.
+
 ## Price method
 Owned by fractal-operating §REASONING — point, don't restate. One local law: **a zero-yield batch must price ITSELF** (ratio-of-EMAs, stepped per served batch), or its minutes land on whatever window closes next.
 

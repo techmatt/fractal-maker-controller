@@ -1,46 +1,49 @@
-# fractal-state — checkpoint 84 (2026-08-26)
+# fractal-state — checkpoint 85 (2026-08-27)
 
 ## Where we are
-**Propose-then-solve is BUILT and has run end to end.** The recipe type + candidate ledger (16,006 recipes over 1,439 places), the lexicographic solver, a 20-minute hunt that closed a colour shortage, and a scaling pass that reaches n=160. **The gallery pass is DELETED** — git log is the only copy. Design record → `preserve\selection_design.md` (cite, never restate). Six prompts closed this era: `test_speed` · `candidate_ledger` · `gallery_solve` · `candidate_hunt` · `atlas_page` (WEBSITE) · `solve_at_scale`.
+**The mining era opened, and it found the judge's ceiling.** Field sharing made a candidate ~5× cheaper, an overnight run took the ledger from 22,029 recipes over 1,439 places to **85,129 over 4,956**, and a 246-row calibration sheet established that the render judge does not order Matt's 3-vs-4 verdict at the top of its own scale. Eight prompts closed this era.
 
-**The ledger is 8% of what we own** — 1,078 of its places are q3+q4 against 18,097 admitted on named runs. Every quality number below is a statement about that sliver, not about the pipeline.
+**Primed locations: 718 at 0.90 and 1,254 at 0.50 — both RAW.** Raw counts are maxima over noisy scores and run ~0.70 of calibrated at the 0.90 bar (→ fractal-discovery §Mining economics). Every prime count in any record predates that correction unless it says otherwise.
 
 ## THE OPERATING RULE THIS ERA BOUGHT
-**The floor is a READOUT ON SUPPLY, NOT A SETTING.** "Floor" = stage 2 of the objective: the MINIMUM render-judge `P(≥4)` among seated candidates — the worst wallpaper in the set. Nothing to do with the harvest keeper/junk floors, the mode floors, or the breadth floor. Measured on today's pool: n=20 → 0.9931 · n=80 → 0.9410 · n=120 → 0.8637 · n=160 → 0.6134. **Ruled (Matt): a hard floor of 0.90, every seat clears it, N is whatever the pool supports — underfill is the signal.** If a solve at that bar runs past ~10 min, LOWER THE BAR rather than fight it; Matt adjusts on seeing results. The bar is on the render judge's `P(≥4)` and is strictly stronger than stage 1's 0.50, which therefore stops acting. **A judge retrain moves the scale under it — restate the number, never carry it across.**
+**The render judge is a GATE, not a top-end ranker.** It separates junk from keepers well and barely orders quality inside `P(≥4) ∈ [0.60, 0.95)`. Two things follow and govern the next era: hard optimization of the score in that band is optimizing noise, and **no bar is currently set** — 0.90 is retired, nothing replaces it. Matt's plan: mine, retrain, then set the cutoff from the quality the mining actually finds. Numbers and the resolvable composite-vs-colour offset → fractal-corpus §Judge method.
 
 ## OPEN (ordered)
-1. **Hunt expansion with the DEEPEN leg — the next prompt, discuss before writing.** Breadth into the unopened pool buys constraint satisfaction, not quality (644 candidates, median `P(≥4)` 0.00087, 9 clearing the bar, the n=20 gallery unmoved). A location counts as **PRIMED** at `P(≥4)` with reasonable confidence — DERIVED, never stored, so a retrain moves the boundary without a migration. Mining is the whole next era; N up to ~1000 is the target and supply is the binding thing.
-2. **The correction sheet on the first real solve.** The floor is a learned proxy whose bars were volume-matched, never crossed against eyes — until the sheet runs, a floor number compares two solves and means nothing absolute.
-3. **Collections.** Matt: gallery emission logs are not worth keeping officially; the old emission path is abandoned. Before deleting, one report on what actually reads them (the ledger backfilled 1,591 rows from the release store). **Website provenance is NOT a reason to keep anything** — Matt refreshes every figure by hand.
-4. **The gallery4 record fix.** `test_each_collection_holds_one_wallpaper_per_location` has been red for four reports: `group#225` in multibrot5 holds two gallery4 wallpapers of one location. One-per-location is now an absolute solver constraint. Matt: fix the record.
-5. **The signature cache.** 1,787 signatures for ~800 distinct candidates at n=160, 168 s of the 500; `SIGNATURE_CACHE` is 512. Next lever, not pulled.
-6. **Atlas (a) the wallpapers maker** — writes to the schema `atlas_page` defined (E: archive mounted) — **and (c) prose.** (b) is BUILT.
-7. run11 (proven channel ON) — UNSCHEDULED; a new budget question.
+1. **Ingest and fit `under_seen_modes`** — 504 rows LABELED and waiting, the first read of the next session. Matt labeled through ~250 and accepted the remainder as scored. It decides whether the nine under-represented modes are weak or the judge is blind to them; no demotion beyond `trap_circle` until it has run. Record `reports\mode_sheet_report.md`.
+2. **The retrain that can rank the top.** The calibration rows and the mode rows are its evidence, and it is the only thing that fixes the gate/ranker limit rather than working around it. Winner rule and restatement modes → fractal-corpus.
+3. **Set the bar.** After (1), (2) and more mining. Also unbuilt and required before any real solve: the floor must be re-scored at shipping geometry rather than read off the candidate column (→ `preserve\selection_design.md`).
+4. **`autolevel`'s Python half** — 33.5% of the candidate loop, 53.4% where the mode is held. The largest optimization left and worth building before another long mine. Record `reports\field_sharing_report.md`.
+5. **The two-layer composite dump.** Composites cannot share a field and are a permanent output requirement, so their cost is paid forever until this is built. Record `reports\depth_curve_report.md` §0.
+6. **The correction sheet on the first real solve** — ruled ckpt 83, still not run; the solver has never been crossed against eyes.
+7. **Collections · Atlas (a) maker and (c) prose · run11 (proven channel ON, UNSCHEDULED).** Unchanged from ckpt 84.
 
 ## RULINGS THIS ERA (Matt)
-- **One wallpaper per location is ABSOLUTE within a curation set**; a later gallery may reuse a location.
-- **`framing.MARGIN` stays at 2.0.** Framing is done FIRST and eventually BY THE RUNS, locations born already-framed — which dissolves most of the refinement migration rather than scheduling it. The frame is part of the recipe, so candidates hunted at 2.0 stay valid if it moves.
-- **The ~1.5N draw is not a solver parameter.** The hunt is decoupled and continuous; the solve ranges over the whole ledger.
-- **The cache stores recipes AND pictures** (archive tier, 2.53 GB / 15,488 JPEGs) so a judge adoption re-scores rather than re-renders. Dumped fields are the disposable half (8.17 GB) — they regenerate from recipes.
-- **A colour TARGET raises the allowance of the cells it structurally implies**, derived from the carrier table's MEASURED co-dominance, never a wheel adjacency.
-- **Colour targets are a PRODUCTION instrument.** A themed collection is mined then solved over a filtered pool, not forced out of a mixed one — the n=60 lime failure was supply, not structure. **Default design target: generally multichromatic with good colour distribution.** ⚠ Themed collections will need their own radius or a colour-invariant metric component — the diversity metric is over the colour cloud, so a monochrome set sits far closer together. Deal with it when it comes up.
-- **Lime scoring low is expected and accepted** — never build an algorithm that spends its time failing to optimize lime.
-- **Randomize location supply per gallery** so galleries don't all emit the same few rare-colour q4s. Design item, recorded not built.
-- `prose\Full pipeline v2.md` is PARKED — re-enter after the first solve at a real N, expect a rewrite of its selection and colour sections.
+- **`trap_circle` is DEMOTED TO NICHE**; composite modes are a HARD output requirement never cut on cost; nine modes are Q3-ADMITTED; the per-mode floor is ~N/100. All four → `preserve\settled_rulings.md` §ckpt 85.
+- **Hunting for labels draws the judge's own TOP, unfiltered.** The population's bad examples come along inside it; no spread or systematic draw for its own sake.
+- **Drive edits split by edit size** — wholesale by claude.ai, small and targeted by a trivial CC prompt (→ fractal-operating §Tier 0.5).
+- Depth runs on shareable field modes; composites get a reduced draw share, never zero.
 
-## SESSION-SIDE CHORES (claude.ai edits Drive `preserve\` — NOT the apply prompt's job)
-- `selection_design.md` — record: the floor rule and the 0.90 bar · targets as a production instrument + the themed-collection radius caveat · randomized supply per gallery as OPEN · what is now BUILT.
-- `atlas_design.md` — the record schema is DEFINED and is the maker's contract (`at` is a place not an identity; a partition names the plane its dots are drawn over; density sparse, a bin holds a whole place); `plates` is the shipped treatment; (b) BUILT.
-- `INDEX.md` and `parked.md` were both rewritten this session; sizes are current.
+## INVALIDATED WITHOUT AN EDIT
+- **Every "primed" count quoted before ckpt 85 is raw and optimistic.** Not wrong, uncorrected.
+- **`p_ge4_calibration_*` is not a clean-blind sheet** — the page carried the mode name and the score. Its near-null result is conservative rather than void (→ fractal-corpus).
+- The ~1,164 in-band candidate figure describes today's ledger, never the reachable pool: 18,097 admitted locations have no candidates because nothing has rendered them yet.
+
+## SESSION-SIDE CHORES
+None owed. `preserve\` edits now go through CC prompts; `selection_design.md` and `atlas_design.md` were brought current at ckpt 84 and are edited by hunk in this closeout.
 
 ## PARKED / SETTLED
-Parked → `preserve\parked.md`. Declined and never-re-raise → `preserve\settled_rulings.md`; the ckpt-84 block carries this era's.
+Parked → `preserve\parked.md`. Declined and never-re-raise → `preserve\settled_rulings.md`; the ckpt-85 block carries this era's.
 
 ## CLOSED (records = Drive `reports\`)
-test_speed · candidate_ledger · gallery_solve · candidate_hunt · atlas_page · solve_at_scale.
+preserve_chores_ckpt84 · primed_supply_mine · field_sharing · calibration_sheet · calibration_fit · depth_curve · mode_sheet · cleanup_batch.
 
 ## SCRATCH/ARTIFACT FLAGS
-KEEP: `artifacts/curation/candidate_ledger/` (rows 40.7 MB + scores 7.4 MB, untracked, tracked manifests) · the candidate JPEGs (2.53 GB, archive tier) · `artifacts/curation/` (HOT) · `artifacts/node_views/`. `frame_refit/scan.jsonl` (98 MB) stays UNTRACKED — regenerates in 3.4 h, resumable; `curate hunt frames` derives its index in 2 s.
+KEEP: `artifacts/curation/candidate_ledger/` (now 85,129 recipes) · the candidate JPEGs (archive tier — **the overnight run multiplied this; check free space before sizing another**) · `artifacts/curation/calibration/paired.jsonl` and `artifacts/curation/mode_sheet/paired.jsonl` (both readings per row, the only record of the regime pairing) · `artifacts/under_seen_modes/` until its drop is ingested · `artifacts/curation/` (HOT) · `artifacts/node_views/`.
 
-## ROSTER — sizes at ckpt 84
-state ~5.5k (wholesale) · tutorial, corpus, discovery, engine, operating edited by hunk. Preserve: `settled_rulings` APPEND (ckpt-84 block) by this apply prompt; `selection_design` and `atlas_design` are session-side chores above.
+Nothing else under `scratch/` must survive. `scratch/cleanup_batch_group225_contact_sheet.html` is Matt's to keep or wipe once he accepts or overrides the gallery4 choice.
+
+## LOOSE END
+`prompts\AUDIT_readme_homes (1).md` is NOT a conflict copy — it is a separate prompt whose name collides case-insensitively with `audit_readme_homes.md`, and fractal-discovery cites `AUDIT_readme_homes` for the julia ∂M-screen question. Renaming either breaks something; needs a name that is not a case-variant. Untouched deliberately.
+
+## ROSTER — sizes at ckpt 85
+state ~4.5k (wholesale) · tutorial, corpus, discovery, engine, operating edited by hunk. Preserve: `settled_rulings` APPEND (ckpt-85 block) and `selection_design` by hunk, both in this apply prompt.
