@@ -1,30 +1,46 @@
-# fractal-state — checkpoint 83 (2026-08-26)
+# fractal-state — checkpoint 84 (2026-08-26)
 
 ## Where we are
-gallery4 landed 249/250 and the colour ceiling worked — 48/48 cells, 12/12 families, green 1→24 with no targets set. The cost was rank, and diagnosing why led to a **redesign of selection**: propose-then-solve, ruled this era, NOTHING BUILT. Design record → `preserve\selection_design.md` (cite, never restate). Five prompts closed this era: `reason_codes`, `palette_mass_census`, `palette_mass_sweep`, `AUDIT_selection_redesign`, `cleanup_and_map`. **`frame_refit_scan` IS LIVE in fractal-wallpapers** — a 28k-location framing scan, record-only, with an addendum on resume identity and per-partition pricing. **Its report is the FIRST READ of the next era.** Website FREE.
+**Propose-then-solve is BUILT and has run end to end.** The recipe type + candidate ledger (16,006 recipes over 1,439 places), the lexicographic solver, a 20-minute hunt that closed a colour shortage, and a scaling pass that reaches n=160. **The gallery pass is DELETED** — git log is the only copy. Design record → `preserve\selection_design.md` (cite, never restate). Six prompts closed this era: `test_speed` · `candidate_ledger` · `gallery_solve` · `candidate_hunt` · `atlas_page` (WEBSITE) · `solve_at_scale`.
+
+**The ledger is 8% of what we own** — 1,078 of its places are q3+q4 against 18,097 admitted on named runs. Every quality number below is a statement about that sliver, not about the pipeline.
+
+## THE OPERATING RULE THIS ERA BOUGHT
+**The floor is a READOUT ON SUPPLY, NOT A SETTING.** "Floor" = stage 2 of the objective: the MINIMUM render-judge `P(≥4)` among seated candidates — the worst wallpaper in the set. Nothing to do with the harvest keeper/junk floors, the mode floors, or the breadth floor. Measured on today's pool: n=20 → 0.9931 · n=80 → 0.9410 · n=120 → 0.8637 · n=160 → 0.6134. **Ruled (Matt): a hard floor of 0.90, every seat clears it, N is whatever the pool supports — underfill is the signal.** If a solve at that bar runs past ~10 min, LOWER THE BAR rather than fight it; Matt adjusts on seeing results. The bar is on the render judge's `P(≥4)` and is strictly stronger than stage 1's 0.50, which therefore stops acting. **A judge retrain moves the scale under it — restate the number, never carry it across.**
 
 ## OPEN (ordered)
-1. **`frame_refit_scan` report → readout.** Per-partition coverage (it may not have finished all nine — a rate quoted off a partial population is wrong), the adoption rate at 28k against gallery4's 26.9% on 751, and the ×1.0 rung at scale (gallery4 saw 51 of 132 adoptions recentre-only). Do not rule on the rung; it is a design input.
-2. **Build propose-then-solve.** Three prompts in order, per `preserve\selection_design.md`: (a) the recipe type + the durable cache — **there is no recipe object today**, five shapes and three adapters, so defining the type IS the first step; (b) the proposal path, free/stratified split over cells; (c) the solver, scipy/HiGHS into the torch venv, lexicographic count-above-q4. Each stands on the audit's answers; do not re-derive them.
-3. **Refinement moves to HARVEST.** `walk.refine_framings` exists and HAS NEVER FIRED — zero `refined` rows in any ledger. Untested code, and the migration also needs a re-embed (29,051 rows; the embedding store keys on a viewport function, so refinement APPENDS keys rather than rewriting them). The interim ruling that greened `test_each_collection_holds_one_wallpaper_per_location` is superseded when this lands.
-4. **Website figures WAIT.** The first solver pass supersedes gallery4 as the gallery the article shows, so `gallery-output` and the four `gallery-*` makers stay held. `pipeline-yield-decay` off `artifacts/harvest_run10/` does NOT depend on that and can go whenever.
-5. **Full pipeline placement.** `prose\Full pipeline v2.md` awaits Matt's review → verbatim placement, verify list at its foot. Decide `pool-stages`: move it here or no second diagram. Note v2's colour section describes the CEILING, which propose-then-solve supersedes — one prose round after the first solve.
-6. **Fractal atlases** — unchanged from ckpt 82; (a) wallpapers maker / (b) website tool page / (c) prose → `preserve\atlas_design.md`. Order is Matt's.
-7. run11 (proven channel ON) — UNSCHEDULED; a new budget question; precedes any pass wanting new ground rather than a new selection.
+1. **Hunt expansion with the DEEPEN leg — the next prompt, discuss before writing.** Breadth into the unopened pool buys constraint satisfaction, not quality (644 candidates, median `P(≥4)` 0.00087, 9 clearing the bar, the n=20 gallery unmoved). A location counts as **PRIMED** at `P(≥4)` with reasonable confidence — DERIVED, never stored, so a retrain moves the boundary without a migration. Mining is the whole next era; N up to ~1000 is the target and supply is the binding thing.
+2. **The correction sheet on the first real solve.** The floor is a learned proxy whose bars were volume-matched, never crossed against eyes — until the sheet runs, a floor number compares two solves and means nothing absolute.
+3. **Collections.** Matt: gallery emission logs are not worth keeping officially; the old emission path is abandoned. Before deleting, one report on what actually reads them (the ledger backfilled 1,591 rows from the release store). **Website provenance is NOT a reason to keep anything** — Matt refreshes every figure by hand.
+4. **The gallery4 record fix.** `test_each_collection_holds_one_wallpaper_per_location` has been red for four reports: `group#225` in multibrot5 holds two gallery4 wallpapers of one location. One-per-location is now an absolute solver constraint. Matt: fix the record.
+5. **The signature cache.** 1,787 signatures for ~800 distinct candidates at n=160, 168 s of the 500; `SIGNATURE_CACHE` is 512. Next lever, not pulled.
+6. **Atlas (a) the wallpapers maker** — writes to the schema `atlas_page` defined (E: archive mounted) — **and (c) prose.** (b) is BUILT.
+7. run11 (proven channel ON) — UNSCHEDULED; a new budget question.
+
+## RULINGS THIS ERA (Matt)
+- **One wallpaper per location is ABSOLUTE within a curation set**; a later gallery may reuse a location.
+- **`framing.MARGIN` stays at 2.0.** Framing is done FIRST and eventually BY THE RUNS, locations born already-framed — which dissolves most of the refinement migration rather than scheduling it. The frame is part of the recipe, so candidates hunted at 2.0 stay valid if it moves.
+- **The ~1.5N draw is not a solver parameter.** The hunt is decoupled and continuous; the solve ranges over the whole ledger.
+- **The cache stores recipes AND pictures** (archive tier, 2.53 GB / 15,488 JPEGs) so a judge adoption re-scores rather than re-renders. Dumped fields are the disposable half (8.17 GB) — they regenerate from recipes.
+- **A colour TARGET raises the allowance of the cells it structurally implies**, derived from the carrier table's MEASURED co-dominance, never a wheel adjacency.
+- **Colour targets are a PRODUCTION instrument.** A themed collection is mined then solved over a filtered pool, not forced out of a mixed one — the n=60 lime failure was supply, not structure. **Default design target: generally multichromatic with good colour distribution.** ⚠ Themed collections will need their own radius or a colour-invariant metric component — the diversity metric is over the colour cloud, so a monochrome set sits far closer together. Deal with it when it comes up.
+- **Lime scoring low is expected and accepted** — never build an algorithm that spends its time failing to optimize lime.
+- **Randomize location supply per gallery** so galleries don't all emit the same few rare-colour q4s. Design item, recorded not built.
+- `prose\Full pipeline v2.md` is PARKED — re-enter after the first solve at a real N, expect a rewrite of its selection and colour sections.
 
 ## SESSION-SIDE CHORES (claude.ai edits Drive `preserve\` — NOT the apply prompt's job)
-- `color_coverage_floor_design.md` — SUPERSEDED by `selection_design.md`. Park or delete; it is the record of what gallery1–4 did and nothing forward-looking reads out of it. Same for `gallery_pass_design.md`'s forward-looking half.
-- `preserve\INDEX.md` — add `selection_design.md`, mark the two superseded files.
-- **`fractal-operating.md` was NOT edited this era** — it was outside the session's context. Two price-method lessons want a home there next era: an estimate off another population's rate ran **2.5× over** (composites scale superlinearly in maxiter — mandelbrot cost 9.6× julia:multibrot5 for 4.2× the iterations), and **a filename that encodes a split is not an identity** (a chunked resume must subtract measured identities; the sweep skipped 5,524 of 13,020 pairs per location while reporting success).
+- `selection_design.md` — record: the floor rule and the 0.90 bar · targets as a production instrument + the themed-collection radius caveat · randomized supply per gallery as OPEN · what is now BUILT.
+- `atlas_design.md` — the record schema is DEFINED and is the maker's contract (`at` is a place not an identity; a partition names the plane its dots are drawn over; density sparse, a bin holds a whole place); `plates` is the shipped treatment; (b) BUILT.
+- `INDEX.md` and `parked.md` were both rewritten this session; sizes are current.
 
 ## PARKED / SETTLED
-Parked → `preserve\parked.md`. **Cross-partition radius is UNPARKED and RULED** (partition-blind, in `selection_design.md`). Declined and never-re-raise → `preserve\settled_rulings.md`; the ckpt-83 block carries this era's.
+Parked → `preserve\parked.md`. Declined and never-re-raise → `preserve\settled_rulings.md`; the ckpt-84 block carries this era's.
 
 ## CLOSED (records = Drive `reports\`)
-reason_codes · palette_mass_census · palette_mass_sweep · AUDIT_selection_redesign (18 answers, four unanswerable without fresh measurement) · cleanup_and_map.
+test_speed · candidate_ledger · gallery_solve · candidate_hunt · atlas_page · solve_at_scale.
 
 ## SCRATCH/ARTIFACT FLAGS
-KEEP: `artifacts/curation/` (HOT) · `artifacts/node_views/` (90,548 stamped views) · the census artifact. The sweep log is ARCHIVED and its hot copy deleted — `curate mass-sweep restore` is its only rebuild, since it ran out of `scratch/palette_mass_sweep/` and no subcommand makes it again. `scratch/ceiling_replay.py` must still survive.
+KEEP: `artifacts/curation/candidate_ledger/` (rows 40.7 MB + scores 7.4 MB, untracked, tracked manifests) · the candidate JPEGs (2.53 GB, archive tier) · `artifacts/curation/` (HOT) · `artifacts/node_views/`. `frame_refit/scan.jsonl` (98 MB) stays UNTRACKED — regenerates in 3.4 h, resumable; `curate hunt frames` derives its index in 2 s.
 
-## ROSTER — sizes at ckpt 83
-state ~4.6k (wholesale) · tutorial, corpus, discovery, engine edited by hunk · operating UNCHANGED (see chores). Preserve: `selection_design.md` created session-side; `settled_rulings` APPEND (ckpt-83 block) by this apply prompt.
+## ROSTER — sizes at ckpt 84
+state ~5.5k (wholesale) · tutorial, corpus, discovery, engine, operating edited by hunk. Preserve: `settled_rulings` APPEND (ckpt-84 block) by this apply prompt; `selection_design` and `atlas_design` are session-side chores above.
