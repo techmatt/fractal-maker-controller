@@ -1,49 +1,45 @@
-# fractal-state — checkpoint 85 (2026-08-27)
+# fractal-state — checkpoint 86 (2026-08-27)
 
 ## Where we are
-**The mining era opened, and it found the judge's ceiling.** Field sharing made a candidate ~5× cheaper, an overnight run took the ledger from 22,029 recipes over 1,439 places to **85,129 over 4,956**, and a 246-row calibration sheet established that the render judge does not order Matt's 3-vs-4 verdict at the top of its own scale. Eight prompts closed this era.
+**THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE (Matt, ckpt 86):** (1) the high-quality LOCATION hunt · (2) the high-quality WALLPAPER hunt · (3) the final curation SOLVE + release render. This is the spine of the plan and of the website write-up. This era worked phase 2: the mode question closed, the candidate loop's largest optimization landed, the judge retrain was screened, and the exchange folder became wipeable. Seven prompts closed it.
 
-**Primed locations: 718 at 0.90 and 1,254 at 0.50 — both RAW.** Raw counts are maxima over noisy scores and run ~0.70 of calibrated at the 0.90 bar (→ fractal-discovery §Mining economics). Every prime count in any record predates that correction unless it says otherwise.
-
-## THE OPERATING RULE THIS ERA BOUGHT
-**The render judge is a GATE, not a top-end ranker.** It separates junk from keepers well and barely orders quality inside `P(≥4) ∈ [0.60, 0.95)`. Two things follow and govern the next era: hard optimization of the score in that band is optimizing noise, and **no bar is currently set** — 0.90 is retired, nothing replaces it. Matt's plan: mine, retrain, then set the cutoff from the quality the mining actually finds. Numbers and the resolvable composite-vs-colour offset → fractal-corpus §Judge method.
+**The judge's ceiling is NARROWER than ckpt 85 said.** Unbanded, over rows a human called 3 or 4, the head orders at AUC 0.650 out-of-sample — 3-vs-4 is not irreducible from the picture. What resists is ordering inside the head's OWN uncertainty band, and a band-restricted AUC strips most of the variance it reads. → fractal-corpus §Judge method.
 
 ## OPEN (ordered)
-1. **Ingest and fit `under_seen_modes`** — 504 rows LABELED and waiting, the first read of the next session. Matt labeled through ~250 and accepted the remainder as scored. It decides whether the nine under-represented modes are weak or the judge is blind to them; no demotion beyond `trap_circle` until it has run. Record `reports\mode_sheet_report.md`.
-2. **The retrain that can rank the top.** The calibration rows and the mode rows are its evidence, and it is the only thing that fixes the gate/ranker limit rather than working around it. Winner rule and restatement modes → fractal-corpus.
-3. **Set the bar.** After (1), (2) and more mining. Also unbuilt and required before any real solve: the floor must be re-scored at shipping geometry rather than read off the candidate column (→ `preserve\selection_design.md`).
-4. **`autolevel`'s Python half** — 33.5% of the candidate loop, 53.4% where the mode is held. The largest optimization left and worth building before another long mine. Record `reports\field_sharing_report.md`.
-5. **The two-layer composite dump.** Composites cannot share a field and are a permanent output requirement, so their cost is paid forever until this is built. Record `reports\depth_curve_report.md` §0.
-6. **The correction sheet on the first real solve** — ruled ckpt 83, still not run; the solver has never been crossed against eyes.
-7. **Collections · Atlas (a) maker and (c) prose · run11 (proven channel ON, UNSCHEDULED).** Unchanged from ckpt 84.
+1. **The judge retrain, adoption grade.** The ckpt-85 screen was a null on 43 rows (±0.19) and its declared cut gave 13 — not a measurement. Re-declare the bar on the UNBANDED 3-vs-4 statistic; carry `input_detail` further (every arm so far reads 384×224 of a 1280×720 picture) against a selection rule nearer the ranking peak; four folds are already dealt; TWO seeds, because nothing yet separates an arm from its seed. Evidence and dead ends → fractal-corpus.
+2. **Set the bar.** Needs (1) and more mining. TWO parts now: the ≥4 cut, and a ≥3 criterion for the q3-target modes — the per-mode floor cuts on `P(≥4) ≥ 0.50` and no instrument looks below 0.60, so those modes' seats fill on a scale that barely applies to them. The floor must be re-scored at shipping geometry, never read off the candidate column (→ `preserve\selection_design.md`).
+3. **Mine.** Cheaper per candidate now; every prime count is RAW unless it says CALIBRATED, and the winner's-curse multiplier is k-dependent (→ fractal-discovery §Mining economics).
+4. **The correction sheet on the first real solve** — ruled ckpt 83, still not run; the solver has never been crossed against eyes. Merge it with the retrain's sitting rather than spending two.
+5. **The two-layer composite dump — DEFERRED with a trigger** (`depth_curve` §0C): composites now draw only their floor deficit, ~1,900 a cycle, so the dump's prize is ~29 min of repaint against a two-layer format plus a two-field recolour spec. Revisit only if the composite floor rises.
+6. **The gallery-pass code decision.** Its SEATING and SELECTION role is retired by propose-then-solve; the SOLVE and RELEASE RENDER are critical and stay (Matt, ckpt 86). Whether the retired half comes out of the tree is unruled and unscheduled — nothing blocks on it.
 
 ## RULINGS THIS ERA (Matt)
-- **`trap_circle` is DEMOTED TO NICHE**; composite modes are a HARD output requirement never cut on cost; nine modes are Q3-ADMITTED; the per-mode floor is ~N/100. All four → `preserve\settled_rulings.md` §ckpt 85.
-- **Hunting for labels draws the judge's own TOP, unfiltered.** The population's bad examples come along inside it; no spread or systematic draw for its own sake.
-- **Drive edits split by edit size** — wholesale by claude.ai, small and targeted by a trivial CC prompt (→ fractal-operating §Tier 0.5).
-- Depth runs on shareable field modes; composites get a reduced draw share, never zero.
+- **THE THREE PHASES** (above) — the plan's spine and the site's structure.
+- **`trap_circle` DEMOTED; the other eight under-seen modes stay Q3-ADMITTED.** Novelty is worth a 3: `gaussian_int` and `curvature` are "3s will have to do" and keep their floor seats. → `preserve\settled_rulings.md` §ckpt 86.
+- **The gallery pass's seating role is dead; the solve and release render are not.** 1280×720 ss2 is Matt's DESIGN-PHASE eval geometry, not the release regime — full wallpaper resolution is phase 3, on his say-so.
+- **`reports\` and `prompts\` are SCRATCH, wiped at every checkpoint boundary** (→ fractal-operating §Tier 0.5).
+
+## KEEP LIST — survives this boundary
+`prompts\`: nothing. `reports\`: nothing. Everything else in both folders is wiped at this closeout. The era's own reports are on the keep list by default until their hunks land, which is what this closeout does.
 
 ## INVALIDATED WITHOUT AN EDIT
-- **Every "primed" count quoted before ckpt 85 is raw and optimistic.** Not wrong, uncorrected.
-- **`p_ge4_calibration_*` is not a clean-blind sheet** — the page carried the mode name and the score. Its near-null result is conservative rather than void (→ fractal-corpus).
-- The ~1,164 in-band candidate figure describes today's ledger, never the reachable pool: 18,097 admitted locations have no candidates because nothing has rendered them yet.
+- **The docs said the gallery pass was deleted at ckpt 84. It never was** — `curate gallery`, seating, radius, seat-identity pinning and step 5a are all live, 4,606 lines. Every gallery-pass line in the docs was read as history and is not. Corrected in tutorial this closeout; assume any pre-ckpt-86 statement about what was removed is unverified.
+- **Every "primed" count quoted before ckpt 85 is raw and optimistic**, and the ×0.70 correction only applies at k≥20.
+- **`p_ge4_calibration_*` is not a clean-blind sheet** — the page carried the mode name and the score. Its near-null is conservative, and it was band-restricted, which weakens it further.
 
 ## SESSION-SIDE CHORES
-None owed. `preserve\` edits now go through CC prompts; `selection_design.md` and `atlas_design.md` were brought current at ckpt 84 and are edited by hunk in this closeout.
+None owed. `preserve\` edits go through CC prompts; `gallery_pass_design.md` and `maker_transfer_cautions.md` were retired this era and `INDEX.md` is current.
 
 ## PARKED / SETTLED
-Parked → `preserve\parked.md`. Declined and never-re-raise → `preserve\settled_rulings.md`; the ckpt-85 block carries this era's.
+Parked → `preserve\parked.md` (gained this era: the regime-robustness re-measure; Collections; Atlas (a) maker and (c) prose; run11). Declined and never-re-raise → `preserve\settled_rulings.md`.
 
-## CLOSED (records = Drive `reports\`)
-preserve_chores_ckpt84 · primed_supply_mine · field_sharing · calibration_sheet · calibration_fit · depth_curve · mode_sheet · cleanup_batch.
+## CLOSED (records were `reports\`, now wiped — verdicts are in the docs)
+mode_sheet_ingest_fit · autolevel_measure · render_judge_cv · AUDIT_record_pointers · AUDIT_doc_claims · wipe_exchange_scratch · exchange_tidy · fix_ci_digest_pin.
 
 ## SCRATCH/ARTIFACT FLAGS
-KEEP: `artifacts/curation/candidate_ledger/` (now 85,129 recipes) · the candidate JPEGs (archive tier — **the overnight run multiplied this; check free space before sizing another**) · `artifacts/curation/calibration/paired.jsonl` and `artifacts/curation/mode_sheet/paired.jsonl` (both readings per row, the only record of the regime pairing) · `artifacts/under_seen_modes/` until its drop is ingested · `artifacts/curation/` (HOT) · `artifacts/node_views/`.
+KEEP: `artifacts/curation/candidate_ledger/` · the candidate JPEGs (archive tier — **check free space before sizing another mine**) · `artifacts/curation/calibration/paired.jsonl`, `artifacts/curation/calibration/bars.json` and `artifacts/curation/mode_sheet/paired.jsonl` (both readings per row and the bar table — the only records of the regime pairing) · `artifacts/render_cv/` (four folds dealt and unfitted; the adoption run fills them in without re-deriving) · `artifacts/curation/` (HOT) · `artifacts/node_views/`.
 
-Nothing else under `scratch/` must survive. `scratch/cleanup_batch_group225_contact_sheet.html` is Matt's to keep or wipe once he accepts or overrides the gallery4 choice.
+Nothing else under `scratch/` must survive.
 
-## LOOSE END
-`prompts\AUDIT_readme_homes (1).md` is NOT a conflict copy — it is a separate prompt whose name collides case-insensitively with `audit_readme_homes.md`, and fractal-discovery cites `AUDIT_readme_homes` for the julia ∂M-screen question. Renaming either breaks something; needs a name that is not a case-variant. Untouched deliberately.
-
-## ROSTER — sizes at ckpt 85
-state ~4.5k (wholesale) · tutorial, corpus, discovery, engine, operating edited by hunk. Preserve: `settled_rulings` APPEND (ckpt-85 block) and `selection_design` by hunk, both in this apply prompt.
+## ROSTER — sizes at ckpt 86
+state ~5k (wholesale) · discovery (wholesale) · corpus, engine, operating, tutorial edited by hunk. Preserve: `settled_rulings` and `parked` APPEND, both in this apply prompt.
