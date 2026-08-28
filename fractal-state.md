@@ -1,45 +1,53 @@
-# fractal-state — checkpoint 86 (2026-08-27)
+# fractal-state — checkpoint 87 (2026-08-28)
 
 ## Where we are
-**THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE (Matt, ckpt 86):** (1) the high-quality LOCATION hunt · (2) the high-quality WALLPAPER hunt · (3) the final curation SOLVE + release render. This is the spine of the plan and of the website write-up. This era worked phase 2: the mode question closed, the candidate loop's largest optimization landed, the judge retrain was screened, and the exchange folder became wipeable. Seven prompts closed it.
+**THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE (Matt, ckpt 86):** (1) the high-quality LOCATION hunt · (2) the high-quality WALLPAPER hunt · (3) the final curation SOLVE + release render. This era did not advance a phase; it closed the gap between what the docs said the pipeline does and what it does. Two audits, a judge grade, a preserve edit and the alignment build closed it.
 
-**The judge's ceiling is NARROWER than ckpt 85 said.** Unbanded, over rows a human called 3 or 4, the head orders at AUC 0.650 out-of-sample — 3-vs-4 is not irreducible from the picture. What resists is ordering inside the head's OWN uncertainty band, and a band-restricted AUC strips most of the variance it reads. → fractal-corpus §Judge method.
+**The production mining loop is `curate depth run`, not `curate hunt run`.** `hunt` has made 644 of the ledger's 85,129 rows; `depth` made 48,994 in one night. The docs named the wrong command for two eras, and both of this era's audits had to correct for it before they could answer anything. **Assume any pre-ckpt-87 statement about "the hunt" describes a loop that is not in production.**
 
-## OPEN (ordered)
-1. **The judge retrain, adoption grade.** The ckpt-85 screen was a null on 43 rows (±0.19) and its declared cut gave 13 — not a measurement. Re-declare the bar on the UNBANDED 3-vs-4 statistic; carry `input_detail` further (every arm so far reads 384×224 of a 1280×720 picture) against a selection rule nearer the ranking peak; four folds are already dealt; TWO seeds, because nothing yet separates an arm from its seed. Evidence and dead ends → fractal-corpus.
-2. **Set the bar.** Needs (1) and more mining. TWO parts now: the ≥4 cut, and a ≥3 criterion for the q3-target modes — the per-mode floor cuts on `P(≥4) ≥ 0.50` and no instrument looks below 0.60, so those modes' seats fill on a scale that barely applies to them. The floor must be re-scored at shipping geometry, never read off the candidate column (→ `preserve\selection_design.md`).
-3. **Mine.** Cheaper per candidate now; every prime count is RAW unless it says CALIBRATED, and the winner's-curse multiplier is k-dependent (→ fractal-discovery §Mining economics).
-4. **The correction sheet on the first real solve** — ruled ckpt 83, still not run; the solver has never been crossed against eyes. Merge it with the retrain's sitting rather than spending two.
-5. **The two-layer composite dump — DEFERRED with a trigger** (`depth_curve` §0C): composites now draw only their floor deficit, ~1,900 a cycle, so the dump's prize is ~29 min of repaint against a two-layer format plus a two-field recolour spec. Revisit only if the composite floor rises.
-6. **The gallery-pass code decision.** Its SEATING and SELECTION role is retired by propose-then-solve; the SOLVE and RELEASE RENDER are critical and stay (Matt, ckpt 86). Whether the retired half comes out of the tree is unruled and unscheduled — nothing blocks on it.
+**The judge was graded and NOT adopted.** `input_detail` at 768×448 is a real, seed-stable +0.0393 on the whole strange ≥4 boundary and clears every guard, but adoption moves the CORN scale and costs a re-score for a gain that may not survive at candidate geometry. Everything a future retrain needs → `preserve\judge_training.md`. **Read that before specifying any retrain.**
+
+## OPEN (ordered) — the alignment plan
+1. **P2 — selection alignment.** The census with a score floor (counts must be DISTINCT LOCATIONS, not rows), per-constraint headroom *and* the marginal cost of buying it, `curate seat` as a greedy over the ledger with a ledger-backed `Lens`, the rejection ledger as the product, and neutral pre-selection so pairwise diversity stops being a coupled constraint. Design, rulings and the fitted bars → `preserve\selection_design.md` §Greedy-first selection. Cite, never restate.
+2. **P3 — does conditioning move the QUALITY column?** The dominance column is answered (→ fractal-discovery §Mining economics). Whether the `P(≥4) ≥ 0.50` rate survives conditioning is unmeasured, and it is what decides whether a colour target is cheap. One conditioned arm beside a control, ~1 h.
+3. **Mine**, sized by P2's census rather than by a wall-clock budget. **The pool supports N≈150 and is nowhere near N≈1000** — 1,254 distinct locations clear 0.50 in total, against 1,000 seats before the diversity radius takes its cut.
+4. **P4 — delete the old pre-solver gallery curation phase**, and the colour map with it (→ fractal-tutorial). The SOLVE and the RELEASE RENDER stay. Check first: the website's held `gallery-*` figure makers, and the 1,591 ledger rows backfilled from the release store.
+5. **P5 — repo-side doc riders.** Most doc drift was absorbed this closeout; what remains is README-side and named in the audits' disagreement lists.
+6. **The correction sheet on the first real solve** — ruled ckpt 83, still not run; the solver has never been crossed against eyes.
+7. **Judge adoption** — deferred, not rejected. Re-entry instrument is the candidate-geometry check (→ `preserve\judge_training.md`).
 
 ## RULINGS THIS ERA (Matt)
-- **THE THREE PHASES** (above) — the plan's spine and the site's structure.
-- **`trap_circle` DEMOTED; the other eight under-seen modes stay Q3-ADMITTED.** Novelty is worth a 3: `gaussian_int` and `curvature` are "3s will have to do" and keep their floor seats. → `preserve\settled_rulings.md` §ckpt 86.
-- **The gallery pass's seating role is dead; the solve and release render are not.** 1280×720 ss2 is Matt's DESIGN-PHASE eval geometry, not the release regime — full wallpaper resolution is phase 3, on his say-so.
-- **`reports\` and `prompts\` are SCRATCH, wiped at every checkpoint boundary** (→ fractal-operating §Tier 0.5).
+- **GREEDY FIRST.** A trivial greedy satisfies the current need: find which hard constraints are unsatisfiable so mining can target them, and what the worst results are so the soft objectives can be tuned. Tighter optimization only once a reasonable satisfying solution exists. **A slow solve that reports "there are no light greens at all" is a MAJOR FAILURE** — that answer comes from a cheap pre-solve census. **Do not engage a solver until every constraint is individually easy** (not 5 light greens for 5 seats, but ~25). → `preserve\selection_design.md`.
+- **Pairwise diversity moves to POOL CONSTRUCTION** via the neutral descriptors — if the neutral descriptors differ enough, the coloured ones almost certainly will.
+- **NOT SHIPPING THE JUDGE.** Deferred on cost, not rejected.
+- **RETENTION: store the successes.** Keep the top 5 per (location, mode) by within-mode rank, every human-labeled row, and a 1-in-200 reservoir. **Rows are never dropped, only pictures** (test-pinned). Storage scales with locations explored, not attempts made.
+- **The colour map is deleted** — superseded by measurement (→ fractal-tutorial).
+- **The old pre-solver gallery curation phase goes; the solve and release render stay.**
 
 ## KEEP LIST — survives this boundary
-`prompts\`: nothing. `reports\`: nothing. Everything else in both folders is wiped at this closeout. The era's own reports are on the keep list by default until their hunks land, which is what this closeout does.
+**Nothing.** `prompts\` and `reports\` are wiped entire at this closeout. Every fact worth keeping from this era's reports has landed in a doc line or in `preserve\`; the per-mode crossover table — the only thing too numeric for these docs — is in `selection_design.md` §Greedy-first selection, and the retrain method is in `judge_training.md`.
 
 ## INVALIDATED WITHOUT AN EDIT
-- **The docs said the gallery pass was deleted at ckpt 84. It never was** — `curate gallery`, seating, radius, seat-identity pinning and step 5a are all live, 4,606 lines. Every gallery-pass line in the docs was read as history and is not. Corrected in tutorial this closeout; assume any pre-ckpt-86 statement about what was removed is unverified.
-- **Every "primed" count quoted before ckpt 85 is raw and optimistic**, and the ×0.70 correction only applies at k≥20.
-- **`p_ge4_calibration_*` is not a clean-blind sheet** — the page carried the mode name and the score. Its near-null is conservative, and it was band-restricted, which weakens it further.
+- **Every "the hunt does X" statement** predating this checkpoint. The production loop is `depth`, which is location-blocked with the roster cycled inner (one palette per mode per turn), terminates nothing adaptively, and knows no "cycle" — that word names nothing in code and meant "one overnight run".
+- **The palette head is not in the production mining loop at all.** `depth` draws colormaps uniformly from the 822-map collapsed pool. The 0.17× green-carrier pick deficit is a true fact about the retired gallery pass and **cannot explain anything in the current ledger**.
+- **`AUC(≥4)` does not peak at epoch 11–13** on a lineage-grouped stop slice; it peaks at 5–6. Never re-quote "87% of each run's wall is past the kept epoch".
+- **The 7× per-mode cost spread and the 1.6× flat-vs-ranked signal** are both wrong as stated — one is roster-dependent, the other is a mean-vs-median confusion. Corrected in fractal-discovery §Mining economics; never re-quote either from an older doc.
 
 ## SESSION-SIDE CHORES
-None owed. `preserve\` edits go through CC prompts; `gallery_pass_design.md` and `maker_transfer_cautions.md` were retired this era and `INDEX.md` is current.
+None owed. `preserve\judge_training.md` was created this era and `selection_design.md` gained §Greedy-first selection; both INDEX entries and the two INDEX corrections land in this apply prompt.
 
 ## PARKED / SETTLED
-Parked → `preserve\parked.md` (gained this era: the regime-robustness re-measure; Collections; Atlas (a) maker and (c) prose; run11). Declined and never-re-raise → `preserve\settled_rulings.md`.
+Parked → `preserve\parked.md` (gained this era: the judge adoption with its re-entry instrument; the aspect-ratio training arm). Declined and never-re-raise → `preserve\settled_rulings.md`.
 
 ## CLOSED (records were `reports\`, now wiped — verdicts are in the docs)
-mode_sheet_ingest_fit · autolevel_measure · render_judge_cv · AUDIT_record_pointers · AUDIT_doc_claims · wipe_exchange_scratch · exchange_tidy · fix_ci_digest_pin.
+AUDIT_mine_loop_cost · AUDIT_targeted_supply · render_judge_grade · edit_selection_design · loop_alignment.
 
 ## SCRATCH/ARTIFACT FLAGS
-KEEP: `artifacts/curation/candidate_ledger/` · the candidate JPEGs (archive tier — **check free space before sizing another mine**) · `artifacts/curation/calibration/paired.jsonl`, `artifacts/curation/calibration/bars.json` and `artifacts/curation/mode_sheet/paired.jsonl` (both readings per row and the bar table — the only records of the regime pairing) · `artifacts/render_cv/` (four folds dealt and unfitted; the adoption run fills them in without re-deriving) · `artifacts/curation/` (HOT) · `artifacts/node_views/`.
+KEEP: `artifacts/curation/candidate_ledger/` · the candidate JPEGs (archive tier — **check free space before sizing another mine**; a retention prune would free 3.735 GiB of 12.18) · `artifacts/curation/neutral_embeddings.jsonl` (29,381 rows, complete) · `artifacts/render_cv/` (five folds dealt and reusable) · `artifacts/curation/` (HOT).
+
+⚠ **`artifacts/node_views/` does not exist** and previous keep lists were wrong to name it; the location head's own view is `models/location_view.py`.
 
 Nothing else under `scratch/` must survive.
 
-## ROSTER — sizes at ckpt 86
-state ~5k (wholesale) · discovery (wholesale) · corpus, engine, operating, tutorial edited by hunk. Preserve: `settled_rulings` and `parked` APPEND, both in this apply prompt.
+## ROSTER — sizes at ckpt 87
+state ~5k (wholesale) · tutorial, discovery, corpus edited by hunk · operating one hunk · **engine CLEAN, not emitted**. Preserve: `settled_rulings` and `parked` APPEND, `INDEX` and `selection_design` by hunk, all in this apply prompt.
