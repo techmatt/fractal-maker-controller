@@ -1,59 +1,71 @@
-# fractal-state — checkpoint 88 (2026-08-28)
+# fractal-state — checkpoint 89 (2026-08-29)
 
 ## Where we are
-**THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE (Matt, ckpt 86):** (1) the high-quality LOCATION hunt · (2) the high-quality WALLPAPER hunt · (3) the final curation SOLVE + release render. This era built selection alignment end to end, mined against it, and — for the first time — crossed the output against Matt's eyes.
+**THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE:** (1) the high-quality LOCATION hunt · (2) the high-quality WALLPAPER hunt · (3) the final curation SOLVE + release render. This era built a rank key, adopted it on Matt's eyes, deleted the pre-solver pass, and **emitted the first solver gallery.**
 
-**THE HEADLINE: the render judge's `P(≥4)` is a well-calibrated THIRD-cutpoint screen wearing a fourth-cutpoint name, and hard selection preferentially picks its false positives.** Both were measured on one 200-row correction sheet. Calibration gap +0.573 on `P(≥4)` against +0.060 on `P(≥3)`; no threshold anywhere on the column buys tier-4 precision (0.309 / 0.309 / 0.298 / 0.364 at ≥0.50 / 0.99 / 0.999 / 0.9999) while every threshold buys `≥3` purity (0.913 → 1.000). `AUC(≥4)` inside the seats is **0.499**. **Read the column as a ≥3 screen and nothing more.**
+**THE HEADLINE: `g1_n150` EXISTS.** 150/150 seats, 18/18 modes, 48/48 cells, `unmet` empty, released at 1280×720 ss2 in 9.4 minutes. Re-seated after an hour of mining: 23 seats in, 23 out. Sheets at `scratch/gallery_n150/` and `scratch/mine1h/`. **Matt now iterates from the gallery** — what is bad, he names; distribution, quality and retrains follow from looking.
 
-**The first absolute reading on a seated floor.** `p2b_n150` is tier 4 at **30.7%** [23.8, 38.5], tier ≥3 at **91.3%** [85.7, 94.9], mean tier 3.21. Its top 20 by head score are 6/20 tier 4 and 20/20 ≥3: a twenty-seat gallery cut off this seating is all-good and mostly-not-excellent, **and the head cannot pick which six.**
+**The rank key is shipped and default.** Shared weights over five columns — location `P(≥4)`, `P(≥3)`, `P(≥4)`, the calibration stratum, and `flat16` (Matt's density idea, the only feature earning on both kinds). Out of fold **0.779 smooth / 0.850 strange** against the incumbent's 0.671 / 0.826. Accepted by eye against `incumbent.html`, not by a bar.
 
-**Selection costs quality at matched score.** Seats 0.307 tier-4 against a rule-free control block's 0.640; matched on head score and stratified by store, 0.309 vs 0.640 (`p = 0.0009`), decisive on the smooth side. Mechanism, as far as 200 rows name one: the seating capped palette groups at 1, so its 150 rows sat on 150 distinct maps where the control's 50 sat on 40 — it reaches into worse maps (mean prior map tier 2.53 vs 2.78) *and* stays worse at matched map quality. **A map's own human label history predicts tier 4 inside the seats at AUC 0.643 where the head's `P(≥4)` reads 0.489.** A statistic the head does not use beats the head at its own top.
+**⚠ The incumbent reference line is inflated by train-side contamination.** `P(≥4)` reads 0.804 / 0.873 on the 851 train-side rows and **0.552 / 0.576** on the 200 eval-only ones. Every AUC taken off the joined population is measured against that inflated line — the rank key's win is conservative, and no clean estimate of either exists.
 
-Saturation is real and smaller: inside the control's two-thousandth-wide band the head has no ordering (Spearman −0.116), but the level is worth 4–7× the corpus base rate. The head's top is worth having; the seating gives most of it back.
+**The palette group cap is built and ruled but is not the quality lever.** Mean prior map tier moves **+0.035**; it buys 16 fewer distinct maps, not better ones, and at n=150 realizes a max of 2 against an allowance of 3.
+
+**The colour ceiling is the binding constraint.** `cell_allowance` is the largest refusal in every arm; 28 of 48 cells sat exactly at their allowance of 7 before the mine, 27 after.
+
+**Mining works and is now 1.92× faster.** One hour, two legs: four modes moved on `best_rank` (`direct_trap_ring` 0.435→0.666, `direct_trap_screen` 0.503→0.709, `gaussian_int`, `direct_trap_multiply`); **no colour cell moved.** `curate depth` runs on the locked three workers, partitioned by LOCATION so the field dump amortises.
 
 ## OPEN (ordered)
-1. **The palette group cap — RULED, unbuilt.** `max(1, floor(0.025·n))`: 1 up to n=40, 3 at n=150, 25 at n=1000. Build it, re-seat at n=150, and report the realized max-per-map and the map-quality distribution of the seats. This is the cheapest half of the quality gap and it retires `palette_group_cap` as a binding block permanently.
-2. **A map-quality term in the seating.** The map's own human label history reads AUC 0.643 where the head reads 0.489, and it needs no weights and no retrain. Cheapest instrument this era produced.
-3. **P4 — delete the old pre-solver gallery curation phase.** The SOLVE and the RELEASE RENDER stay. Check first: the website's held `gallery-*` figure makers, and the 1,591 ledger rows backfilled from the release store.
-4. **The tracked ledger manifest is stale by 112,362 rows.** `data/curation/candidate_ledger/rows.manifest.json` records 16,006 rows dated 2026-08-26 and predates several merges, so `curate candidate-ledger check` cannot pass. A durability manifest that silently stopped tracking its file needs a decision.
-5. **P5 — repo-side doc riders**, README-side only, named in the ckpt-87 audits' disagreement lists.
-6. **Judge adoption — OPEN, needs discussion, do not specify a retrain first.** Three things changed. The pinned strange holdout went **4 → 27 tier-4 rows** and ≥3 from 6 to 68, the first material feed for the boundary that starves it. But `input_detail`'s +0.0393 was measured on an *unselected* holdout, and this sheet says the operating point that matters — the top of a hard-selected pool — has `AUC(≥4) = 0.499`; a +0.04 on a broad AUC is not evidence about a population where the incumbent reads chance. And the cheapest instrument here is not weights at all (item 2). Everything a retrain needs → `preserve\judge_training.md`.
-7. **Mine**, sized by the census rather than by a wall-clock budget.
+1. **Implement the scoring ruling.** Mining owns scoring; selection never re-scores. Needs: the second-stage leg priced (release-geometry scoring over the retention keep set — top 5 per (location, mode), labeled rows, reservoir), and per-mode bars fitted at whichever regime selection reads. ⚠ **The release-geometry column will be a SELECTED sample** — retention ranks on the cheap column, so only rows the cheap column liked ever get the expensive reading. Never read an unbiased AUC off it.
+2. **Matt examines `g1_n150`** and names what is bad. Everything below reorders around that.
+3. **Mine**, sized by the census. Aim at MODES, not colour cells — cells did not move. Merge between legs, not after both (two legs drew 47 places in common). Concurrency is available now.
+4. **The colour ceiling's allowance of 7** — binding at n=150. The extra-picks-shaped question is written up in `preserve\selection_design.md`.
+5. **Judge retrain — deferred, not refused.** Everything a retrain needs → `preserve\judge_training.md`. An adoption re-scales every probability and invalidates the score sidecar, so it is cheapest after the gallery, never before.
+6. **P5 — repo-side doc riders**, README-side only, named in the ckpt-87 audits' disagreement lists.
+7. **n=1000 is not demonstrably feasible** — constructive lower bound on non-twin capacity 532 against an upper of 1,038. A mining question, not a solver one.
 
 ## RULINGS THIS ERA (Matt)
-- **DIVERSITY IS TWO RULES, NEITHER IN THE SOLVER.** Neutral pre-selection at pool construction (geometric distinctness, cosine radius **0.02**) plus the pixel-cloud twin test as sequential state in `curate seat` (**`ceiling.TAU` = 0.0586**). `solve.RADIUS` is RETIRED — one number for one fact.
-- **`solve.MODE_FLOOR` = `floor(N/100)`** — 0 at n=20, 1 at 150, 10 at 1000 — replacing the flat 1-per-mode, with a flag for an artificial floor in debug.
-- **The palette group cap becomes `max(1, floor(0.025·n))`.** Slack, not identity. **There is NO coverage requirement on palettes and never will be** — nothing asks that every palette be used; the cap is a ceiling against repetition, and the colour distribution is a separate mechanism over dominant cells read off the finished picture.
-- **`teal_conditioned` is MERGED** (Matt): the supply is real, and `hunt.drawn_for` keeps it separable.
-- **The slow test lane is OFF by default in prompts** — on only when a prompt says a specific task needs it. A separate prompt to speed it up is planned.
+- **★ MINING OWNS SCORING. SELECTION READS SCORES OFF ROWS AND NEVER RE-SCORES.** A candidate's score is recorded by the leg that made it, at the regime appropriate then. **The old candidate-column rule — "re-score the shortlist at shipping geometry and floor on that" — is DELETED, not deferred**; it was never implemented and the docs asserted it for eras. What is live: candidate-column throughout with per-mode bars, 11 of 18 modes on the `P(≥3)` fallback, no bar at release.
+- **★ RUN DURATION (replaces N−2 entirely).** "An N-hour mine/crawl" means **N hours of that leg**, wall clock; build, merge, readout and report sit OUTSIDE it. "Finish by X" means the ENVELOPE: reserve the build and readout actually expected for that prompt, state the reservation so Matt can correct it, size the leg to land on the deadline. The budget is a TARGET, not a cap. A follow-up leg of any length is a new budget question.
+- **The rank key: smooth MIRRORS strange** — same form both kinds. No colormap identity, no colormap label history, ever. **A colour DESCRIPTOR read off the finished picture is a legitimate future feature**; the colormap index is not.
+- **Shared weights, not per kind.** Per-kind read +0.018 [−0.002,+0.039] on the shipped form — not worth the complexity. Settled.
+- **The flatness sidecar stays undurable** — regenerable by `curate flatness sweep` (~33 s per 8,192 rows, ~7 min for the store), no manifest, no copy on merge. ⚠ Regenerable only while the pictures are on disk; a pruned row's flatness cannot be recomputed, and a pruned row is not seatable anyway.
+- **An unresolvable picture name REFUSES.** A *missing* picture is expected and is filtered at the pool; an *unresolvable name* is a broken invariant and stops the pass. Applies to `solve.picture_of` and the cloud readers.
+- **Colour conditioning is mode-dependent by design**, not defective: it works where the colormap determines the picture's colour, not where a trap does. Field leg delivered 38.4% against 1.27%; composites 10.9% against 0.85%.
+- `ceiling.Seating` / `Lens` / `Rule.begin` **pruned**. Three-worker rule now universal. `curate manufacture --step knobs` re-dumps on absence and selects on what a row **is**, never on what is still cached.
+- **P4 executed** — the pre-solver curation phase is gone.
 
 ## INVALIDATED WITHOUT AN EDIT
-- **The "39% tier-4" rate over all 200 sheet rows is a rate about NEITHER block.** Quote 0.307 seats / 0.640 control, never the pooled number.
-- **"108 of the 200 places carry train-side rows, 92 pinnable"** was counted off the candidate ledger. The labeled stores hold a prior same-store row at **66** of the 200 places; the realized pin is **150 of 200**, and all 50 unpinned rows sit on a contested place.
-- **"Pairwise diversity moves to pool construction" as a COMPLETE rule.** Neutral descriptor distance against pixel-cloud W1 is Pearson 0.034; the twin pairs sit at a median neutral distance of 0.226, three times the loosest radius. The neutral rule cannot cover colour twins and never could.
-- **The ~940 s teal figure is not a conditional cost.** It is total render history over wins and decomposes 17.2 × 3.47 × 40.8; conditioning attacks only the third factor.
-- **The 6.96% ledger-wide clear rate is not a draw rate.** It is dominated by near-band and mode-floor draws on already-proven places. A fresh breadth draw on never-opened locations clears **4.70%**, and that is the denominator a new arm is read against.
-- **Any `headroom` marginal cost read after the teal merge without a `drawn_for` filter.** `headroom._row` under-prices a teal win by 16% on renders and 24% on seconds; there is no scalar correction, because the two move by different factors.
-- **"12 new teal locations against the 35 the ledger held"** is 13 against 42.
+- **The ckpt-88 map-history AUC 0.643 is a CROSS-STORE POOLED read.** Split: **+0.248 smooth / −0.217 strange**, both CI-excluding. Never quote the pooled number.
+- **"The cap is the cheapest half of the quality gap."** It moves map tier +0.035.
+- **4.70% / 1.41% are ROSTER figures, not constants** — measured on a smooth-heavy roster. On weak modes the sign flips: the field leg's conditioned arm cleared 2.7× its own control.
+- **A best-available percentile is not a mining readout.** The denominator moves — `trap_circle`, aimed at by nothing, rose 1.86 points. Only `best_rank` separates a move.
+- **The incumbent's 0.826 / 0.731 AUCs** are train-side inflated and not carryable.
+- **"The combination demoted the tier-4s"** was a pooled-across-store read and does not stand.
+- **The scarcity leg is not the seating tail** — `general_pool` holds 34 of the bottom 38. The ckpt-88 "18 of 150" did not generalize.
+- **A concurrency ratio is not a speedup** — engine-seconds over wall reads 2.94× on a leg delivering 1.92×.
+- **Every rate in the depth table is ONE ENGINE'S**, all measured single-engine. A rate read off a three-worker leg over-prices a serial one by ~1.6×.
+- **`128,317` vs `128,368`** was pool vs ledger, no discrepancy. The ledger is **136,560** now.
+- **1280×720 ss2 was measured** (gallery4, 3.45 s/row); the candidate render is 640×360 **ss2**, so release is 4× its field samples, not 16×.
 
 ## KEEP LIST — survives this boundary
-**Nothing.** `prompts\` and `reports\` are wiped entire. Every finding worth keeping is a doc line, or sits in `preserve\selection_design.md` and `preserve\judge_training.md`.
+**Nothing.** `prompts\` and `reports\` are wiped entire.
 
 ## SESSION-SIDE CHORES
 None owed.
 
 ## PARKED / SETTLED
-Parked → `preserve\parked.md`. Declined and never-re-raise → `preserve\settled_rulings.md`; gained this era: no palette coverage requirement, `solve.RADIUS`, and exact optimization below n=150 (the census–greedy gap is zero at every size tested).
+Parked → `preserve\parked.md`. Declined and never-re-raise → `preserve\settled_rulings.md`; gained this era: per-kind rank-key weights, the colormap identity / label-history route, the render-block join hypothesis, and the N−2 reserve.
 
 ## CLOSED (records were `reports\`, now wiped — verdicts are in the docs)
-P2_selection_alignment · P2b_diversity_placement · P3_correction_sheet_and_conditioned_arm (+ addendum 1) · overnight_breadth_mine · read_correction_sheet · merge_teal_conditioned.
+rank_key_replay · label_join_recovery · disk_reclaim · rank_key_fit · pool_picture_guard · seating_cap_and_key · gallery_n150 · P4_delete_gallery_phase · mine1h · ceiling_prune · cleanup.
 
 ## SCRATCH/ARTIFACT FLAGS
-KEEP: `artifacts/curation/candidate_ledger/` (128,368 rows) · the candidate JPEGs (archive tier **18.41 GiB** = 14.38 keep + 4.032 prunable; free space 90 GB of 937) · `artifacts/curation/neutral_embeddings.jsonl` · `artifacts/render_cv/` · `artifacts/curation/` (HOT).
+KEEP: `artifacts/curation/candidate_ledger/` (**136,560 rows**) · the flatness sidecar (regenerable, ~7 min) · `artifacts/curation/neutral_embeddings.jsonl` · `artifacts/render_cv/` · `artifacts/curation/` (HOT) · the `g1_n150` release rows · `scratch/gallery_n150/` and `scratch/mine1h/` (Matt is still looking at these).
 
-⚠ `artifacts/node_views/` does not exist; the location head's own view is `models/location_view.py`.
+Deleted this era: `manufacture` and `runs` `.f32` dumps (24.05 GiB); `depth` and `mine` dumps KEPT — those legs revisit places. `artifacts/node_views/` was 5.7 GiB and is archived to E: (the old flag saying it does not exist was wrong). 98.56 GiB of Intel XTU logs in `C:\ProgramData` were the real disk problem and will accumulate again.
 
 Nothing else under `scratch/` must survive.
 
-## ROSTER — sizes at ckpt 88
-state ~6k (wholesale) · tutorial, discovery, corpus edited by hunk · **operating and engine CLEAN, not emitted**. Preserve: `selection_design` by hunk plus one appended section; `settled_rulings`, `parked` and `judge_training` APPEND; `INDEX` clean (no new files).
+## ROSTER — sizes at ckpt 89
+state ~7k (wholesale) · tutorial, corpus, discovery, operating edited by hunk · **engine CLEAN, not emitted**. Preserve: `selection_design`, `settled_rulings` and `parked` APPEND; `judge_training` unchanged; `INDEX` clean (no new files).
