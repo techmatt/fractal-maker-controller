@@ -1,65 +1,60 @@
-# fractal-state — checkpoint 92 (2026-08-30)
+# fractal-state — checkpoint 93 (2026-08-31)
 
 ## Where we are
 **THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE:** (1) the high-quality LOCATION hunt · (2) the high-quality WALLPAPER hunt · (3) the final curation SOLVE + release render. A solver gallery exists and is live; `MODE_POLICY` is the one place a mode carries a standing; the colour ceiling is still the binding constraint and no era has touched it. **Matt iterates from pictures, not counts.**
 
-This era did one thing: **the candidate ledger stopped growing with work.** Rows per location are bounded by `RETAIN_PER_PAIR` × the modes tried there plus four protections, and are no longer a function of the attempts made. 30 GiB came off the hot tier and the rule runs from `merge`. A render-judge retrain is IN FLIGHT across this boundary.
+This era did two things. **The judge programme was rebuilt from the question end** — the ckpt-92 retrain adopted nothing, and the reason it could not have is that everything it measured was average ranking quality over labeled rows while the decision is about the extreme tail on the mining distribution. Matt's replacement is one run, all the data, and the artifact ships. **And the ledger's hygiene closed out** — the eval side can no longer shrink silently, ~14 GiB of unreferenced colormaps are gone, and two piles that looked like waste turned out not to be.
 
 ## ★ IN FLIGHT ACROSS THIS BOUNDARY
-**`prompts\RETRAIN_render_judge.md` is running. Its report is this era's FIRST READ** — plan nothing around a retrain outcome before reading it. It trains and grades three arms and adopts nothing.
+**`prompts\TRAIN_render_judge.md` is running. Its report is this era's FIRST READ.** One training run on all label data, 80/20 grouped by lineage, early-stopped on top-slice precision over ≥3, and **the artifact ships from it**. It is the first judge work in three eras that produces a deployable head rather than fold models.
 
-⚠ **Also unverified at the boundary:** a recovery leg re-renders ~57,000 candidate pictures a test deleted, then re-runs seat and solve. Until it reports, **`solve.pool` is 50,673 where it was 97,519**, and every seat/solve figure recorded anywhere predates the accident. Matt reports the outcome only if it fails; otherwise the recovery leg's own numbers stand.
+⚠ **Still unverified at the boundary:** the picture restore. **Matt has DEPRIORITIZED it** ("I'll do it later"). Until it lands, `solve.pool` is far below its recorded figure and **every seat, solve and pool number anywhere in these docs predates the accident.** The restore and OPEN 1 are ONE decision, not two — the flip needs a real seating and the twin test opens pictures.
 
 ## NEXT CHECKPOINT GOAL
-**Matt's to set**, after the retrain report. Dependency-ordered candidates: OPEN 1 (which unblocks both ckpt-90 rulings), then OPEN 2–3 together, then judge ADOPTION if an arm won.
+**Matt's to set**, after the training report.
 
 ## OPEN (ordered)
-1. **The mode floor cannot exceed 1, and it blocks both ckpt-90 rulings.** UNENFORCED and verified: `seating.py:629` is the `break`, `scarcity()` yields one `(mode, subpool)` per mode so the outer `continue` at 622 can never see a second, and no test runs floor ≥ 2. Until it lands, "promoted" changes no seat. Fix + what reads the leg → fractal-tutorial §Selection.
-2. **Matt's emission-weight design, unbuilt.** Within the strange share, `2·promoted + 1·normal` defines a fully-distributed target and the floor is half of it, so floors sum to exactly half the strange budget by construction. It needs a floor rule for `normal` too (or `direct_trap_multiply`, which Matt wants present, keeps a bare 1), and a measurement of the floored seats against a `cell_allowance` that is already the largest refusal.
-3. **Make the smooth/strange emission split EXPLICIT** (Matt). `run.STRANGE_SHARE` is a SUPPLY split in `budget.head_slots`; **seating enforces nothing by kind** and the realized smooth share is emergent, though stable across four seatings. Every number in OPEN 2 hangs off this.
-4. **`itinerary` composites — 2–3 new strange modes (Matt).** The engine already allows it; mechanism and the two real constraints → fractal-engine.
-5. **`direct_trap_screen` needs a flat draw before any standing is written for it** — the widest on-arm/off-arm gap of the nine modes ever aimed at.
-6. **Judge retrain — IN FLIGHT.** Method and evidence → `preserve\judge_training.md`. **The missing eval instrument no longer blocks (Matt, ckpt 92):** the retrain grades arms on identical rows and makes no level claim, so an eval-eligible draw is deferred, not required. ⚠ `judge_training.md` is OWED three rulings, held this era so the running instance was not reading a moving file — the rank-key primary, per-mode-as-readout, and the deploy-geometry answer. Apply them with the retrain's own evidence next era.
-7. **Implement the scoring ruling.** Mining owns scoring; selection never re-scores. Needs the second-stage leg priced and per-mode bars fitted at whichever regime selection reads. **The second stage is no longer unpriced** — retention keeps about a third, so re-scoring only what it keeps is roughly 1.33× the base render bill, not 4×. ⚠ The release-geometry column will be a SELECTED sample — never read an unbiased AUC off it.
-8. **The colour ceiling's allowance is binding at n=150.** Write-up → `preserve\selection_design.md`.
-9. **n=1000 is not demonstrably feasible** — the constructive lower bound on non-twin capacity sits far below the upper. A mining question.
+1. **The mode-floor FLIP.** The greedy fix landed and the floor rule is BUILT AND INERT behind `mode_policy.STRANGE_SEAT_SHARE = 0.60` with `seat_floors(n)` over the 13 accepted strange modes (weights sum 20), the ILP taking the same mapping. What remains is enabling it against a pre-registered bar and measuring the floored seats against `cell_allowance`, already the largest refusal. **Blocked on the restore.** ⚠ The ILP's floor is SOFT and third in a lexicographic objective, below the count above the bar and the worst seated score — so greedy/ILP agreement means something only where the floor is free.
+2. **Does the solve enforce a realized strange share?** `STRANGE_SEAT_SHARE` is declared and is the floor DENOMINATOR only; `run.STRANGE_SHARE` remains a separate supply split in `budget.head_slots`. Seating still enforces nothing by kind and the realized share is emergent. Matt has not decided whether it should be a constraint; he will judge 0.60 from galleries.
+3. **`itinerary` composites — 2–3 new strange modes (Matt).** The engine already allows it; mechanism and the two real constraints → fractal-engine. **The only item on this queue that adds pictures rather than machinery.** Needs a design conversation, not a prompt.
+4. **`direct_trap_screen` needs a flat draw before any standing is written for it** — the widest on-arm/off-arm gap of the nine modes ever aimed at.
+5. **The forward-draw sitting, still deferred (Matt: not now).** Two candidate judges each propose their top k from a live pool, Matt labels the union blind, and the comparison is how many fours each slice held. It is the only instrument that measures what the judge is FOR rather than a proxy for it, and it needs no holdout, no AUC and no level claim. It costs Matt's evening, which is why it keeps being deferred.
+6. **The colour ceiling's allowance is binding at n=150.** Write-up → `preserve\selection_design.md`.
+7. **n=1000 is not demonstrably feasible** — the constructive lower bound on non-twin capacity sits far below the upper. A mining question.
 
 ## RULINGS THIS ERA (Matt)
-- **★ A DURABLE RECORD'S SIZE MUST SCALE WITH KNOWLEDGE GAINED, NEVER WITH WORK DONE.** The full standing position, with its corollaries → fractal-operating.
-- **The ckpt-86 pool rule is RELAXED.** What accumulates across runs and is never pruned is admitted LOCATIONS and the recipes that primed them, not every judged render. A run still never refuses a place because an earlier run released it. **Immortality attaches to human labels and deep-net training data only** — candidate rows and candidate pictures are prunable, replaceable, and re-derivable from their keys.
-- **Retention is mode-only, K=3.** Top-3 per (location, mode) by the rank key. No cell arm — a row is dominant in about two cells of forty-eight, so a per-cell arm opens more arms than a location has rows and refuses almost nothing.
-- **A picture is kept if and only if its row is.** One ranking, one constant.
-- **The wide ledger is DELETED, not archived** — nobody should have to work out later what it was.
-- **The retrain proceeds on the grouped holdout over the grown stores, with no level claim made.**
-- **Grade on the refit rank key, not the judge's AUC.** The key is what orders seats and refitting it per arm makes the CORN scale shift drop out. Per-mode is a pre-declared readout that gates nothing — per-mode tier-4 counts are single digits and a bar there would fit noise.
-- **Deploy geometry does NOT change.** Label-geometry and candidate-geometry columns are indistinguishable on both boundaries; the problem is not where the head reads. Model input resolution is a separate axis from deploy render geometry.
-
-## ★ TWO COMMITS IN ONE REPO COLLIDE EVEN WHEN BOTH PROMPTS OBEY THE RULE
-Second instance, and the first one's lesson was written too weakly. **Explicit-path staging does NOT make the index private** — a concurrent `git commit` takes whatever is staged, by whoever staged it. `548506c` carried six files across two authors; it was recovered only because the other instance noticed and reset. **"Read-only audits beside anything" is WRONG as written: an audit commits its report.** The only mechanism is not overlapping two commits in time. → fractal-operating §WORKING STYLE.
+- **★ EVERYTHING STAYS AT CANDIDATE GEOMETRY. There is no promoted render.** The `input_detail` edge read the same at label geometry and at candidate geometry, and it is spatial resolution for the network to compute over, not detail from the source — so rendering larger and downsampling to network input cannot buy it. **Render geometry is not an axis worth spending on; model input size is a separate axis and the only one with a measured effect.**
+- **★ A JUDGE EXPERIMENT MUST NAME THE DECISION ITS NUMBER CHANGES, BEFORE IT RUNS.** The ckpt-92 retrain's number changed none: a ranking win over labeled rows does not imply a better gallery. Full statement → fractal-corpus §Judge method.
+- **The scoring ruling (old OPEN 7) is SATISFIED, not implemented.** With no promoted render there is no second stage, no promotion bar and no cross-regime question. Mining already owns scoring and selection already re-scores nothing — `features_for` opens no picture and renders nothing. ⚠ The release-geometry column will be a SELECTED sample; never read an unbiased AUC off it.
+- **Train on all the data and ship the head.** 80/20 grouped by lineage, pinned places eval-side, stop on top-slice precision over ≥3, no folds, no seeds, no arms. Calibration is not the goal — quality is. The refit on train+holdout is the right close for a FINAL head and this is not it.
+- **Mixed-vintage scores are ACCEPTED; the ledger is re-scored lazily.** A score row must carry which head produced it.
+- **Precompute and store per-candidate features at mining time.** They cost under a tenth of the render they describe and all record stores together are ~1.7% of a candidate's disk. **Exception: the pixel-cloud twin signature stays lazy** — a seating makes a couple of hundred, and storing them per candidate would be tens of GB.
+- **Leg records are one run's measurement sample, retired WHOLE.** `prune` must never reach them row by row: retention keeps the winners, so dropping the pruned rows would leave every curve, clear rate and stage cost computed over survivors, reading far too high, silently and irreversibly.
+- **`eval_only` outranks the clock** — reader-side, nothing stored moved.
+- Missing flatness does NOT count as a build failure. · The website's `palette-` prefix keeps its named carve-out; the rule is not absolute. · `depth.contact_sheet` over a pruned leg is a SETTLED non-issue — the arc is shelved and the sheet is a temporary thing built for a live leg; anyone who ever builds one over an old leg should check whether it says it is showing survivors.
 
 ## INVALIDATED WITHOUT AN EDIT
-- Every seat, solve and pool figure anywhere in these docs predates the picture accident. See IN FLIGHT.
+- Every seat, solve and pool figure anywhere in these docs. See IN FLIGHT.
+- **`preserve\judge_training.md` is substantially superseded** and is the era's one owed doc. It is owed: the three ckpt-92 rulings (rank-key primary, per-mode-as-readout, deploy geometry); a correction that **"arm B" names two different arms across the retrain's own commits** — 768×448 at one, 384×216 at another — so neither its headline table nor its `input_detail` section can be quoted without saying which; and the ckpt-86 stopping-rule stability claim, now INVERTED (cross-entropy chose epochs 4–7 where AUC chose 3–16 including the cap). Its whole method frame is superseded by the ruling above.
 
 ## KEEP LIST — survives this boundary
-`prompts\RETRAIN_render_judge.md` (a live instance's contract) · `reports\label_ingest_tiers.csv` (Matt's working CSV). Both folders are otherwise wiped entire.
+`prompts\TRAIN_render_judge.md` (a live instance's contract) · `reports\label_ingest_tiers.csv` (Matt's working CSV). Both folders are otherwise wiped entire.
 
 ## OWED FIXES — ride the next prompt into each repo
-1. fractal-wallpapers: `CLAUDE.md:27-34` is a seven-line paragraph whose whole subject is `tests/test_banned_vocabulary.py`, now deleted. Every clause is false and it is the last place in the repo describing the term list.
-2. fractal-wallpapers: `labeling/corpus_import.py:91` points at the same deleted file. The two `SOURCES` keys it excuses are still there and still correct; nothing names them as exceptions any more.
-3. fractal-website: two entries in `explorer/README.md`'s departure list still open with a quotation from a retired design doc and no longer stand alone.
+1. `preserve\judge_training.md` as above — authored session-side, not by a code prompt.
 
-Done this era and not to be re-raised: `ceiling.GROUP_CAP_RATE`'s comment, `LABEL_RESOLUTION`'s double spelling, and the two stale ledger sizes in `hunt.py` and `rank_key.py`.
+Done this era and not to be re-raised: `merge` now saves the flatness manifest · `rank_key`'s `hunt.seconds` docstring, whose exclusion stands for a better reason (a wall-clock reading of a loaded machine, 1.53× inflated under three workers, unreproducible as a sort key) · `delete_pictures` takes the sibling levelled colormap · CLAUDE.md's lane figures · the website's five departure entries, its CI atlas suite, its palette-count clause and the `wallpapers-` figure rename.
 
 ## PRESERVE
-Nine files, unchanged this era. `judge_training.md` is owed the three rulings named in OPEN 6.
+Nine files. `judge_training.md` is owed as above; `INDEX.md` unchanged otherwise.
 
 ## SCRATCH/ARTIFACT FLAGS
-Standing KEEP: `artifacts/curation/candidate_ledger/` · the flatness sidecar, now durable with a manifest · `artifacts/curation/neutral_embeddings.jsonl` · `artifacts/render_cv/` · `artifacts/curation/` HOT · the live release rows. Fourteen unmerged depth legs keep their own `rows.jsonl` because the ledger does not hold their recipes.
+Standing KEEP: `artifacts/curation/candidate_ledger/` · the flatness sidecar and its manifest · `artifacts/curation/neutral_embeddings.jsonl` (per LOCATION, read not recomputed) · `artifacts/render_cv/` · `artifacts/curation/` HOT · the live release rows · **`artifacts/renders`, which now EXISTS** — rebuilt whole in 3.69 h when the last retrain found it on no tier at all. Fourteen unmerged depth legs keep their own `rows.jsonl` and their pictures and colormaps were excluded from every sweep.
 
-⚠ **`artifacts/renders` does not exist on this machine.** A head's training cache must be built before it trains, and that build may dominate any retrain's wall.
+Scratch preservation notice: **nothing under `scratch/` must survive this boundary.**
 
 ## CLOSED (records wiped — verdicts are in the docs)
-`AUDIT_record_growth` · `AUDIT_guards_and_names` + addendum 1 · `PRUNE1_replay_bestk` · `PRUNE2_compact_ledger` · `PRUNE3_delete_and_wire`.
+`RETRAIN_render_judge` (nothing adopted) · `SEATING_floor_fix` · `AUDIT_candidate_features` · `PRICE_input_detail` · `DIAGNOSE_split_pin_and_transfer` · `GUARD_and_orphans` · the website's `FIX_explorer_departures` + two addenda and `FIX_claude_md_drift`.
 
 ## PARKED / SETTLED
-Parked → `preserve\parked.md`. Declined and never-re-raise → `preserve\settled_rulings.md`.
+Parked → `preserve\parked.md`. Declined and never-re-raise → `preserve\settled_rulings.md`. **`input_detail` is PARKED, not closed** — adopting it means training at 768 and shipping those weights, which is a judge adoption invalidating every sidecar score, for ~+0.02 strange `AUC(≥3)` plus +7.2% of every mining leg. Carry the input size along free if a future retrain happens for another reason.
