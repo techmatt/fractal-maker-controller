@@ -1,60 +1,50 @@
-# fractal-state — checkpoint 93 (2026-08-31)
+# fractal-state — checkpoint 94 (2026-08-31)
 
 ## Where we are
-**THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE:** (1) the high-quality LOCATION hunt · (2) the high-quality WALLPAPER hunt · (3) the final curation SOLVE + release render. A solver gallery exists and is live; `MODE_POLICY` is the one place a mode carries a standing; the colour ceiling is still the binding constraint and no era has touched it. **Matt iterates from pictures, not counts.**
+THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE: (1) the LOCATION hunt · (2) the WALLPAPER hunt · (3) the final curation SOLVE + release render. `MODE_POLICY` is the one place a mode carries a standing; Matt iterates from pictures, not counts.
 
-This era did two things. **The judge programme was rebuilt from the question end** — the ckpt-92 retrain adopted nothing, and the reason it could not have is that everything it measured was average ranking quality over labeled rows while the decision is about the extreme tail on the mining distribution. Matt's replacement is one run, all the data, and the artifact ships. **And the ledger's hygiene closed out** — the eval side can no longer shrink silently, ~14 GiB of unreferenced colormaps are gone, and two piles that looked like waste turned out not to be.
+This era: **weights-v5 shipped** (all-data retrain, Matt's design after the ckpt-93 holdout error) and the whole scoring plane moved onto it — the flip emptied the pool by design and the full rescore closed it. **The picture accident closed better than pre-accident** (PRUNE3 + the pool re-render; 0 absent anywhere; guard green). **The mode floor was measured by flag.** And **`itinerary` was exposed: 55.3% of its entire record — and 9 of its 14 current gallery seats — is bit-for-bit `smooth` + `transfer:{"kind":"rank"}`** (all 1,962 rows shift-pair rendered), and Matt's labels are indifferent to the difference within any one batch.
 
-## ★ IN FLIGHT ACROSS THIS BOUNDARY
-**`prompts\TRAIN_render_judge.md` is running. Its report is this era's FIRST READ.** One training run on all label data, 80/20 grouped by lineage, early-stopped on top-slice precision over ≥3, and **the artifact ships from it**. It is the first judge work in three eras that produces a deployable head rather than fold models.
-
-⚠ **Still unverified at the boundary:** the picture restore. **Matt has DEPRIORITIZED it** ("I'll do it later"). Until it lands, `solve.pool` is far below its recorded figure and **every seat, solve and pool number anywhere in these docs predates the accident.** The restore and OPEN 1 are ONE decision, not two — the flip needs a real seating and the twin test opens pictures.
+## IN FLIGHT ACROSS THIS BOUNDARY
+Nothing. Every prompt reported and committed.
 
 ## NEXT CHECKPOINT GOAL
-**Matt's to set**, after the training report.
+Matt's to set. The queue's head is OPEN 1.
 
 ## OPEN (ordered)
-1. **The mode-floor FLIP.** The greedy fix landed and the floor rule is BUILT AND INERT behind `mode_policy.STRANGE_SEAT_SHARE = 0.60` with `seat_floors(n)` over the 13 accepted strange modes (weights sum 20), the ILP taking the same mapping. What remains is enabling it against a pre-registered bar and measuring the floored seats against `cell_allowance`, already the largest refusal. **Blocked on the restore.** ⚠ The ILP's floor is SOFT and third in a lexicographic objective, below the count above the bar and the worst seated score — so greedy/ILP agreement means something only where the floor is free.
-2. **Does the solve enforce a realized strange share?** `STRANGE_SEAT_SHARE` is declared and is the floor DENOMINATOR only; `run.STRANGE_SHARE` remains a separate supply split in `budget.head_slots`. Seating still enforces nothing by kind and the realized share is emergent. Matt has not decided whether it should be a constraint; he will judge 0.60 from galleries.
-3. **`itinerary` composites — 2–3 new strange modes (Matt).** The engine already allows it; mechanism and the two real constraints → fractal-engine. **The only item on this queue that adds pictures rather than machinery.** Needs a design conversation, not a prompt.
-4. **`direct_trap_screen` needs a flat draw before any standing is written for it** — the widest on-arm/off-arm gap of the nine modes ever aimed at.
-5. **The forward-draw sitting, still deferred (Matt: not now).** Two candidate judges each propose their top k from a live pool, Matt labels the union blind, and the comparison is how many fours each slice held. It is the only instrument that measures what the judge is FOR rather than a proxy for it, and it needs no holdout, no AUC and no level claim. It costs Matt's evening, which is why it keeps being deferred.
-6. **The colour ceiling's allowance is binding at n=150.** Write-up → `preserve\selection_design.md`.
-7. **n=1000 is not demonstrably feasible** — the constructive lower bound on non-twin capacity sits far below the upper. A mining question.
+1. **The itinerary ROUTING RULING (Matt).** What a degenerate row is: `smooth`-with-rank (moves 110 labeled rows across judge stores — `finished.check` refuses that without a ruling; `hunt.kind_of:847` is the router) versus flagged-but-still-itinerary. Blocks 2–4. Matt's stated principle: itinerary only counts as itinerary if it actually modulates something.
+2. **The flat-texture FLAG build.** The engine computes the degeneracy exactly and throws it away: `Stretch::over`'s span else-branch (`coloring.rs:748-754`) at the modulate call; wire it up the `RenderReport.interior_fraction` precedent (`colorize.render` currently DISCARDS the report at `curation/colorize.py:609`); carry it on the ledger row as a bare boolean (`at_candidate_regime`'s shape per `candidate_ledger.row:294-299`, NOT the flatness sidecar — `flat16` measured blind to it, 0.182 vs 0.170). Readers that route on it: `solve.py:405`, `headroom.bars/clearing`, `mode_policy`, the label-store router. The near band never sees itinerary (not shareable).
+3. **`tail_itinerary` — the first NEW mode.** "Last `depth` symbols before escape": a third `AddressStart` variant, exact only at `weight_base` 4 (rolling window `frac(value·base)+sector·base^-k`), nothing renamed (`skip_serializing_if` default), NECESSARILY a new catalog mode — changing itinerary's own constants renames every cached itinerary picture. Two ruling spots, not hacks: `Symbols.spells_z0` bool→three-valued; `agrees_with_family` matches `start: Z1` by name, so a third variant is silently legal on both planes (correct for a tail start). The only pictures-adding item on the queue.
+4. **The mode-floor FLIP — now MEASURED** (report on KEEP). Floors fill, `starved` empty, census bound met exactly (45 = 45); 3 of 13 floors bind (`itinerary` +7, two direct traps +1); the rule moved 52 of 150 seats, not 7 — the 45 early scarcity seats drain cells/locations/groups from the general leg; `cell_allowance` 2,111→3,012, twins 97→73; floored is BETTER on raw p̂₄ (127 vs 123 above 0.90, sum +0.89) and WORSE on the fitted key (−2.02, floor 0.4217 vs 0.4564). An eye call — and it waits on 1–3, since itinerary's binding floor is ~half wrong-named rows on the measured base rate.
+5. Does the solve enforce a realized strange share? Unchanged; Matt judges 0.60 from galleries.
+6. **The forward-draw sitting** (the only instrument for what the judge is FOR). New this era: the restored ledger rows carry BOTH v4 and v5 scores (sidecar is per-artifact), so the top-k disagreement is computable offline — caveat: the pool was retained under v4.
+7. **The colour ceiling binds at n=150** — still the largest live refusal either side of the floor flag. → `preserve\selection_design.md`.
+8. n=1000 not demonstrably feasible — a mining question.
 
 ## RULINGS THIS ERA (Matt)
-- **★ EVERYTHING STAYS AT CANDIDATE GEOMETRY. There is no promoted render.** The `input_detail` edge read the same at label geometry and at candidate geometry, and it is spatial resolution for the network to compute over, not detail from the source — so rendering larger and downsampling to network input cannot buy it. **Render geometry is not an axis worth spending on; model input size is a separate axis and the only one with a measured effect.**
-- **★ A JUDGE EXPERIMENT MUST NAME THE DECISION ITS NUMBER CHANGES, BEFORE IT RUNS.** The ckpt-92 retrain's number changed none: a ranking win over labeled rows does not imply a better gallery. Full statement → fractal-corpus §Judge method.
-- **The scoring ruling (old OPEN 7) is SATISFIED, not implemented.** With no promoted render there is no second stage, no promotion bar and no cross-regime question. Mining already owns scoring and selection already re-scores nothing — `features_for` opens no picture and renders nothing. ⚠ The release-geometry column will be a SELECTED sample; never read an unbiased AUC off it.
-- **Train on all the data and ship the head.** 80/20 grouped by lineage, pinned places eval-side, stop on top-slice precision over ≥3, no folds, no seeds, no arms. Calibration is not the goal — quality is. The refit on train+holdout is the right close for a FINAL head and this is not it.
-- **Mixed-vintage scores are ACCEPTED; the ledger is re-scored lazily.** A score row must carry which head produced it.
-- **Precompute and store per-candidate features at mining time.** They cost under a tenth of the render they describe and all record stores together are ~1.7% of a candidate's disk. **Exception: the pixel-cloud twin signature stays lazy** — a seating makes a couple of hundred, and storing them per candidate would be tens of GB.
-- **Leg records are one run's measurement sample, retired WHOLE.** `prune` must never reach them row by row: retention keeps the winners, so dropping the pruned rows would leave every curve, clear rate and stage cost computed over survivors, reading far too high, silently and irreversibly.
-- **`eval_only` outranks the clock** — reader-side, nothing stored moved.
-- Missing flatness does NOT count as a build failure. · The website's `palette-` prefix keeps its named carve-out; the rule is not absolute. · `depth.contact_sheet` over a pruned leg is a SETTLED non-issue — the arc is shelved and the sheet is a temporary thing built for a live leg; anyone who ever builds one over an old leg should check whether it says it is showing survivors.
+- **★ STOP CONSTRUCTING HOLDOUTS.** The ckpt-93 TRAIN design withheld every post-cut row (634 fours, more than train held) into a comparison slice the incumbent had saturated — so the head never saw the new fours and the comparison had no headroom. Retrain = ALL data, random 80/20 grouped by lineage, no date carve-out, no pin-driven construction; early-stop on AP(≥3) (AUC(≥3) fallback), patience 6 cap 20, precision@k as readout only; THREE split seeds, ship the best by stopping-slice AP; NO incumbent comparison — the forward draw is the comparison.
+- **★ A JUDGE FLIP EMPTIES THE POOL** (measured, twice): `scores_by_recipe` reads live-artifact rows only. Adoption + floor refit + FULL rescore are ONE act. "Mixed vintages accepted / lazy rescore" is RETRACTED as a description of the code; score rows do carry `judge_artifact` and old rows persist beside new.
+- **The rank key STAYS AS SHIPPED; the complexity question is CLOSED.** The preference is not in the labels: within kind, tier runs marginally AGAINST busyness (grad_energy −0.14/−0.18); conditional on the judge `bpp` is +0.003 AUC. Matt: no strong motivation to change. `curation/detail.py` deleted.
+- **Itinerary counts as itinerary only if it modulates something** — OPEN 1 operationalizes this.
+- **★ UNATTENDED PROMPTS NEVER CONTAIN A STOP-AND-ASK GATE** (an overnight envelope was wasted on one). Wrong-repo guard is the only STOP; every other gate is a branch; stop time may arrive in the launch message.
 
-## INVALIDATED WITHOUT AN EDIT
-- Every seat, solve and pool figure anywhere in these docs. See IN FLIGHT.
-- **`preserve\judge_training.md` is substantially superseded** and is the era's one owed doc. It is owed: the three ckpt-92 rulings (rank-key primary, per-mode-as-readout, deploy geometry); a correction that **"arm B" names two different arms across the retrain's own commits** — 768×448 at one, 384×216 at another — so neither its headline table nor its `input_detail` section can be quoted without saying which; and the ckpt-86 stopping-rule stability claim, now INVERTED (cross-entropy chose epochs 4–7 where AUC chose 3–16 including the cap). Its whole method frame is superseded by the ruling above.
+## CLOSED CAVEATS
+The ckpt-93 "every seat, solve and pool figure predates the accident" caveat is CLOSED: PRUNE3 verified the pre-accident numbers at v4 (pool 97,557; floor 0.994846; `direct_trap_screen` gained a seat), then the plane moved to v5 (97,423 candidates, 11,137 clearing, 4,480 places; `smoke5_v5` at 150/150, 14 modes, is the floor-inert baseline).
 
 ## KEEP LIST — survives this boundary
-`prompts\TRAIN_render_judge.md` (a live instance's contract) · `reports\label_ingest_tiers.csv` (Matt's working CSV). Both folders are otherwise wiped entire.
+`reports\TRAIN_render_judge_v5_report.md` · `reports\AUDIT_itinerary_degenerate_report.md` · `reports\CLOSE_pool_rescore_and_floor_measure_report.md` (the material for OPEN 1–4 and the owed doc) · `reports\label_ingest_tiers.csv`. Both Drive folders otherwise wiped entire.
 
-## OWED FIXES — ride the next prompt into each repo
-1. `preserve\judge_training.md` as above — authored session-side, not by a code prompt.
+## OWED
+1. `preserve\judge_training.md` — still owed, now with its material on the KEEP list: the three ckpt-92 rulings, the all-data method above, the saturation finding, and the stopping-resolution law. Session-authored, never by a code prompt.
+2. Two module-README notes ride the next wallpapers prompt: `curation/flatness.py` must say its column is blind to a dead TEXTURE layer as distinct from dead space (0.182 vs 0.170); `models/renders.py` `FIELD_IDENTITY` block records that an itinerary field is never cached (mode not shareable).
 
-Done this era and not to be re-raised: `merge` now saves the flatness manifest · `rank_key`'s `hunt.seconds` docstring, whose exclusion stands for a better reason (a wall-clock reading of a loaded machine, 1.53× inflated under three workers, unreproducible as a sort key) · `delete_pictures` takes the sibling levelled colormap · CLAUDE.md's lane figures · the website's five departure entries, its CI atlas suite, its palette-count clause and the `wallpapers-` figure rename.
-
-## PRESERVE
-Nine files. `judge_training.md` is owed as above; `INDEX.md` unchanged otherwise.
+Done this era, not re-raised: `curate re-render` exists (`recipes.live_stamp` is the one autolevel-stamp spelling; a pool row is not a picture — `origin_of` chains) · `mode_policy`'s census basis corrected (per RENDER, row basis stated beside; flat-draw counterweight in) · `engine_fingerprint` docstring honest · the floor guard is `test_the_floor_rule_is_reachable_only_by_naming_it` (cli.py only, parser default off) · slow lane re-priced by data, recorded in the lane entry.
 
 ## SCRATCH/ARTIFACT FLAGS
-Standing KEEP: `artifacts/curation/candidate_ledger/` · the flatness sidecar and its manifest · `artifacts/curation/neutral_embeddings.jsonl` (per LOCATION, read not recomputed) · `artifacts/render_cv/` · `artifacts/curation/` HOT · the live release rows · **`artifacts/renders`, which now EXISTS** — rebuilt whole in 3.69 h when the last retrain found it on no tier at all. Fourteen unmerged depth legs keep their own `rows.jsonl` and their pictures and colormaps were excluded from every sweep.
-
-Scratch preservation notice: **nothing under `scratch/` must survive this boundary.**
+Standing KEEP unchanged: `artifacts/curation/candidate_ledger/` · flatness sidecar + manifest · `neutral_embeddings.jsonl` · `artifacts/render_cv/` · `artifacts/curation/` HOT · live release rows · `artifacts/renders`. **Nothing under `scratch/` survives this boundary.**
 
 ## CLOSED (records wiped — verdicts are in the docs)
-`RETRAIN_render_judge` (nothing adopted) · `SEATING_floor_fix` · `AUDIT_candidate_features` · `PRICE_input_detail` · `DIAGNOSE_split_pin_and_transfer` · `GUARD_and_orphans` · the website's `FIX_explorer_departures` + two addenda and `FIX_claude_md_drift`.
+`TRAIN_render_judge` (nothing adopted; design superseded) · `TRAIN_render_judge_v5` (SHIPPED, floors refit in-run) · the PRUNE3 recovery · `MINE_v5_first_seating` v1/v2+addendum (superseded unrun) · `SMOKE_v5_first_seating` · `DESCRIBE_rank_key_complexity` (closed, no change) · `AUDIT_itinerary_modulate` · `SHEET_itinerary_texture_axes` · `AUDIT_itinerary_degenerate` · `CLOSE_pool_rescore_and_floor_measure`.
 
 ## PARKED / SETTLED
-Parked → `preserve\parked.md`. Declined and never-re-raise → `preserve\settled_rulings.md`. **`input_detail` is PARKED, not closed** — adopting it means training at 768 and shipping those weights, which is a judge adoption invalidating every sidecar score, for ~+0.02 strange `AUC(≥3)` plus +7.2% of every mining leg. Carry the input size along free if a future retrain happens for another reason.
+Unchanged → `preserve\parked.md`, `preserve\settled_rulings.md`. `input_detail` stays PARKED on its ckpt-93 terms.
