@@ -1,7 +1,7 @@
 # CLAUDE.md — handoff-docs folder
 
 ## What this folder is
-The 10 `fractal-*.md` files are claude.ai's cross-session working memory for the
+The six `fractal-*.md` files are claude.ai's cross-session working memory for the
 fractal-wallpaper project. Their SOLE AUTHOR is claude.ai. They are written for a future
 claude.ai instance, in deliberately compressed, telegraphic style. They are not
 documentation, not yours to improve, and their apparent errors, terseness, or oddities
