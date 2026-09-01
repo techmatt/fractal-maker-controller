@@ -1,41 +1,48 @@
-# fractal-state — checkpoint 95 (2026-08-31)
+# fractal-state — checkpoint 96 (2026-09-01)
 
 ## Where we are
 THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE: (1) the LOCATION hunt · (2) the WALLPAPER hunt · (3) the final curation SOLVE + release render. `MODE_POLICY` is the one place a mode carries a standing; Matt iterates from pictures, not counts.
 
-This era (ckpt 94→95): the itinerary question RESOLVED end to end — the flat-texture flag built engine-side and routed everywhere (degenerate rows are smooth-with-rank, label stores included: 107 renders reader-side, strange train population 4,616→4,509, no eval pin touched) · `tail_itinerary` built, eyed, RULED OUT (weight 0) · **THE MODE FLOORS ARE THE DEFAULT of both gallery legs** (ruled; measured price at n=150: 23 floor-only seats, autopsy accepted by eye; `--flat-floor` is the way off) · `headroom.census` bounds the shipped floors (schema 3 — a schema-2 census is NOT a comparable reading) · `preserve\judge_training.md` WRITTEN (corpus §Judge method absorbed) · guard-inventory passes ran over BOTH repos, READMEs promoted, docs cut at this closeout.
+This era (ckpt 95→96), four moves:
+- **The colour ceiling at n=150 was the CAP acting, not a shortage** — every cell holds ≥37 clearing locations, a 1,034-candidate leg moved zero seats. CLOSED; the allowance (7/cell at n=150) is Matt's knob and stays.
+- **The exact solver is RETIRED.** `curate solve run` — stratified view → greedy seed → 1-swap to exhaustion, anytime — is the ONE selection leg at every N; `curate seat` and `seating.py` are gone. Tier order filled → floor shortfall → worst → sum; one spelling per rule (`rules.py`); `Demand` unifies floors and targets; census schema 4; a signature sidecar for `headroom --twin`. Single home → `preserve\solver_design.md`.
+- **Themed galleries are viable at q3 grade** and the wall is the colour-cloud twin rule, not supply, bar or cap — ruled geometry-only diversity for themed. `--target` exists. Nothing built yet.
+- **The minibrot demotion is OVERTURNED.** The reframe channel is BUILT (`fractal-wallpapers reframe`): operators fire at `proven` roots, the operator's own view is a candidate, one nucleus = one `centered` location with rungs as framings. 20-minute smoke: 792 nuclei, 58 head-q4, 290× the pool's median P(≥4); Matt's eye: very strong. Seeds, not clock, were the constraint.
+Also: `curate depth run` had been dead since a texture_flat commit (KeyError read as a hang) — fixed with a boundary test.
 
 ## IN FLIGHT ACROSS THIS BOUNDARY
-Nothing. Every prompt reported and committed.
+**HARVEST_reframe_generations** (fractal-wallpapers, 8h overnight, unattended): merge+embed the smoke ledger · `centered` · rungs 16/24/32/48/64 · seed priority Matt-q4 → Matt-q3 → head-q4 → head-keeper · `MAX_PERIOD` 256 · generations FIRE · a ~500-row stratified sheet cut at the end (Matt labels when he chooses). Its report is the next era's FIRST READ and gets its carry then.
 
 ## NEXT CHECKPOINT GOAL
 Matt's to set.
 
 ## OPEN (ordered)
 1. Does the solve enforce a realized strange share? Unchanged; Matt judges 0.60 from galleries.
-2. **The colour ceiling binds at n=150** — the largest live refusal beside the floors. → `preserve\selection_design.md`.
-3. **n=1000: the mode-floor block is SHORT BY 4 on the current pool** (`smooth_mean_angle` 27/30, `smooth_angle_min` 29/30), and slack is exactly ZERO at every rung below 1000 by construction (a mode's supply is capped at its own floor) — the tightest block after the group cap. Cheap to relieve (~201 unconditioned render-seconds for the four places; an aimed leg beats that rate). The census (schema 3) is the instrument.
+2. **n=1000: the pool holds 653 seats under the shipped rules** — four mode floors short by 18 total, NO ceiling binding (the old "cap short 248" was a schema-3 artifact). The expand hook's per-constraint shortfall and the schema-4 census are the instruments.
+3. **The themed-gallery leg** — a target `Demand` + the geometry-only diversity rule + `--flat-floor` over a `P(≥3) ≥ 0.50` pool; both pieces exist, one prompt. Lime (`dark_vivid_lime`, stocked by the mine's pilot) and green are the cells in hand.
+4. **Walk-triggered operator admission** — the walk's own nucleus frames (~6,519 a run, ~24% of the clock) still go to the frontier as nodes only. Same admission as the reframe channel, other trigger. Small build.
+5. The reframe sheet's labeling — Matt's, whenever.
 
 ## STATUS / KNOWN REDS
-- **Website `builder check` is RED on main:** `bake: explorer/catalog.js` diverges from the engine beside it — cause: `tail_itinerary` widened the engine catalog (19→20 entries) under the path dep. DEFERRED (Matt; the site is draft). Resolve at the next engine↔website seam touch; a rebake is a PICKER-RECORD decision (roster widening is a deliberate edit of Matt's), not drift repair.
+- Website `builder check` RED on main (`bake: catalog.js` diverges, 19→20 entries). Unchanged, DEFERRED; resolve at the next engine↔website seam touch; a rebake is a picker-record decision.
 
 ## RULINGS THIS ERA
-All recorded in `preserve\settled_rulings.md` §ckpt 94: the routing ruling · itinerary stays 2 · `tail_itinerary` out · floors default · stop-constructing-holdouts (→ judge_training.md) · four ratified tombstones · a CORRECTION to the ckpt-87 colour-map entry (its path was wrong; `color_mass` is live, never deleted). The forward-draw sitting (old OPEN 6) is PARKED → `preserve\parked.md` (re-entry: before any retrain — the forward draw is the comparison a retrain will need; the dual-scored restored rows keep the offline v4↔v5 top-k read computable any time).
+→ `preserve\settled_rulings.md` §ckpt 96: ILP retired · tier order · group cap = count · colour ceiling = cap · themed diversity = geometry-only · the minibrot demotion overturned, `centered` locations · parallel decoding closed · the sidecar's use · the concurrency rule. Parked → `preserve\parked.md`: the last-pass neighbourhood, the 8× rung.
 
 ## KEEP LIST
-Empty. Both Drive folders wiped entire. Nothing under `scratch/` survives this boundary.
+Drive `prompts\`: **HARVEST_reframe_generations.md** (in flight). `reports\`: nothing. `scratch/`: nothing survives (the harvest's outputs belong to the next era).
 
 ## OWED
-Nothing.
+OPEN 3 and OPEN 4 above.
 
 ## ROSTER (soft size targets, chars)
-operating 27k · tutorial 22k · corpus 15k · discovery 15k · engine 10k · state 5k (post-ckpt-95 cut; targets move only with Matt).
+operating 27k · tutorial 18k (solver material moved to `preserve\solver_design.md`, ckpt 96) · corpus 15k · discovery 15k · engine 10k · state 5k.
 
 ## SCRATCH/ARTIFACT FLAGS
-Standing KEEP unchanged: `artifacts/curation/candidate_ledger/` · flatness sidecar + manifest · `neutral_embeddings.jsonl` · `artifacts/render_cv/` · `artifacts/curation/` HOT · live release rows · `artifacts/renders` · `data/coloring/texture_flat.jsonl` (tracked — the label corpus depends on it). **Nothing under `scratch/` survives.**
+Standing KEEP unchanged: `artifacts/curation/candidate_ledger/` · flatness sidecar + manifest · `neutral_embeddings.jsonl` · `artifacts/render_cv/` · `artifacts/curation/` HOT · live release rows · `artifacts/renders` · `data/coloring/texture_flat.jsonl`. NEW: `artifacts/reframe_g1` (the smoke ledger, merged by the harvest) · the signature sidecar (247 MB, rebuildable by `curate signatures sweep`).
 
-## CLOSED (records wiped — verdicts in the docs and settled_rulings)
-BUILD_flat_texture_flag · BUILD_tail_itinerary · FLIP_mode_floors · FIX_headroom_census_floor · AUDIT_website_doc_claims (+ addendum1) · AUDIT_wallpapers_doc_claims · FIX_bench_file_list.
+## CLOSED (records wiped — verdicts in the docs, solver_design and settled_rulings)
+MINE_color_ceiling_test (+addendum1) · READ_green_gallery_feasibility (+addendum1) · PROBE_ilp_n1000 · FIX_under_fill_and_solve_record · BUILD_greedy_swap_solve (+ the speedups) · AUDIT_minibrot_pipeline · BUILD_minibrot_reframing · FIX_solve_tiers_census_sidecar.
 
 ## PARKED / SETTLED
-→ `preserve\parked.md` (now including the forward-draw sitting), `preserve\settled_rulings.md`. `input_detail` stays PARKED on its ckpt-93 terms, recorded in `preserve\judge_training.md`.
+→ `preserve\parked.md`, `preserve\settled_rulings.md`. `input_detail` PARKED on its ckpt-93 terms (→ `preserve\judge_training.md`).
