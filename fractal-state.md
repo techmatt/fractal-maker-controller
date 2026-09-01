@@ -1,48 +1,48 @@
-# fractal-state — checkpoint 96 (2026-09-01)
+# fractal-state — checkpoint 97 (2026-09-01)
 
 ## Where we are
 THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE: (1) the LOCATION hunt · (2) the WALLPAPER hunt · (3) the final curation SOLVE + release render. `MODE_POLICY` is the one place a mode carries a standing; Matt iterates from pictures, not counts.
 
-This era (ckpt 95→96), four moves:
-- **The colour ceiling at n=150 was the CAP acting, not a shortage** — every cell holds ≥37 clearing locations, a 1,034-candidate leg moved zero seats. CLOSED; the allowance (7/cell at n=150) is Matt's knob and stays.
-- **The exact solver is RETIRED.** `curate solve run` — stratified view → greedy seed → 1-swap to exhaustion, anytime — is the ONE selection leg at every N; `curate seat` and `seating.py` are gone. Tier order filled → floor shortfall → worst → sum; one spelling per rule (`rules.py`); `Demand` unifies floors and targets; census schema 4; a signature sidecar for `headroom --twin`. Single home → `preserve\solver_design.md`.
-- **Themed galleries are viable at q3 grade** and the wall is the colour-cloud twin rule, not supply, bar or cap — ruled geometry-only diversity for themed. `--target` exists. Nothing built yet.
-- **The minibrot demotion is OVERTURNED.** The reframe channel is BUILT (`fractal-wallpapers reframe`): operators fire at `proven` roots, the operator's own view is a candidate, one nucleus = one `centered` location with rungs as framings. 20-minute smoke: 792 nuclei, 58 head-q4, 290× the pool's median P(≥4); Matt's eye: very strong. Seeds, not clock, were the constraint.
-Also: `curate depth run` had been dead since a texture_flat commit (KeyError read as a hang) — fixed with a boundary test.
+This era (ckpt 96→97), three moves:
+- **HARVEST_reframe_generations landed** — 6,590 nucleus locations, 1,305 head-q4, 5,247 keepers, 28 generations, 8.1 h of operator time; the channel is NEWTON-BOUND with `--reprobe`, not seed-bound; the head-q4 rate RISES with generation and every q4 is head-on-head. Laws → fractal-discovery §MINIBROTS. **Matt looks first; labels only on divergence** (ruled). Rates → `curation/README.md`'s table.
+- **The whole-site prose refresh began** (Matt): a drift audit, then Overview v1 and Rendering modes v1 placed and LIVE with no pre-review; the article split into twelve sections (Finding good wallpapers = the renamed (b) page; Gallery curation = new stub). State and rulings → fractal-tutorial §Website.
+- Drive `prose\` cleaned: `Running at scale` is DEAD (trashed); superseded drafts → `old\`.
 
 ## IN FLIGHT ACROSS THIS BOUNDARY
-**HARVEST_reframe_generations** (fractal-wallpapers, 8h overnight, unattended): merge+embed the smoke ledger · `centered` · rungs 16/24/32/48/64 · seed priority Matt-q4 → Matt-q3 → head-q4 → head-keeper · `MAX_PERIOD` 256 · generations FIRE · a ~500-row stratified sheet cut at the end (Matt labels when he chooses). Its report is the next era's FIRST READ and gets its carry then.
+**DRAW_reframe_nuclei_1h** (fractal-wallpapers): the wallpaper hunt over the ~1,252 head-q4 nuclei surviving the radius — one hour of the draw itself, standard one-smooth-two-strange, merged to the ledger, per-mode readout against the last fresh breadth draw, three contact sheets for Matt's eye (top ~120, top ~40 per mode, worst ~40 from head-q4 locations). Its report is the next era's FIRST READ and gets its carry then.
 
 ## NEXT CHECKPOINT GOAL
 Matt's to set.
 
 ## OPEN (ordered)
 1. Does the solve enforce a realized strange share? Unchanged; Matt judges 0.60 from galleries.
-2. **n=1000: the pool holds 653 seats under the shipped rules** — four mode floors short by 18 total, NO ceiling binding (the old "cap short 248" was a schema-3 artifact). The expand hook's per-constraint shortfall and the schema-4 census are the instruments.
-3. **The themed-gallery leg** — a target `Demand` + the geometry-only diversity rule + `--flat-floor` over a `P(≥3) ≥ 0.50` pool; both pieces exist, one prompt. Lime (`dark_vivid_lime`, stocked by the mine's pilot) and green are the cells in hand.
-4. **Walk-triggered operator admission** — the walk's own nucleus frames (~6,519 a run, ~24% of the clock) still go to the frontier as nodes only. Same admission as the reframe channel, other trigger. Small build.
-5. The reframe sheet's labeling — Matt's, whenever.
+2. **n=1000: the pool holds 653 seats under the shipped rules** (four mode floors short by 18) — re-read the schema-4 census AFTER the nuclei draw merges; nuclei are locations, not seats, until drawn.
+3. **The themed-gallery leg** — unchanged (target `Demand` + geometry-only diversity + `--flat-floor` over a `P(≥3) ≥ 0.50` pool; lime and green in hand).
+4. **The website refresh, next batch: Finding good wallpapers + Gallery curation** off `prose\From locations to wallpapers v6.md` — a FRESH-SESSION job (→ fractal-tutorial §Website for the map and the carried fixes).
+5. The reframe sheet (`artifacts/sheet_reframe_nuclei`, 538 rows) — Matt looks; labels only if it diverges from his intent.
+
+PARKED this era: walk-triggered operator admission (was OPEN 4) — reprobe removed the seed bound it was meant to relieve (→ `preserve\parked.md`).
 
 ## STATUS / KNOWN REDS
-- Website `builder check` RED on main (`bake: catalog.js` diverges, 19→20 entries). Unchanged, DEFERRED; resolve at the next engine↔website seam touch; a rebake is a picker-record decision.
+- Website `builder check` RED on main — TWO faults under one line: the `bake: catalog.js` divergence (19→20 entries) AND `builder explorer` can no longer build the wasm half (the website crate is behind the engine's `modulate` returning `texture_flat`). A both-repo prompt; DEFERRED to the next engine↔website seam touch. A rebake is a picker-record decision — and the frozen picker offers four modes the site now never names (niche by `MODE_POLICY`), so the rebake is also a picker-roster question.
 
 ## RULINGS THIS ERA
-→ `preserve\settled_rulings.md` §ckpt 96: ILP retired · tier order · group cap = count · colour ceiling = cap · themed diversity = geometry-only · the minibrot demotion overturned, `centered` locations · parallel decoding closed · the sidecar's use · the concurrency rule. Parked → `preserve\parked.md`: the last-pass neighbourhood, the 8× rung.
+→ `preserve\settled_rulings.md` §ckpt 97: niche modes never on the site · no mode counts in prose · refresh pages go live unreviewed · look-first, label-on-divergence · no number-upkeep prompts · Running at scale dead · the stub class. Parked → `preserve\parked.md`: walk-triggered operator admission.
 
 ## KEEP LIST
-Drive `prompts\`: **HARVEST_reframe_generations.md** (in flight). `reports\`: nothing. `scratch/`: nothing survives (the harvest's outputs belong to the next era).
+Drive `prompts\`: **DRAW_reframe_nuclei_1h.md** (in flight). `reports\`: **AUDIT_website_prose_drift_report.md** — KEEP until the refresh's last page lands (its Part A is the rewrite's input); HARVEST and the two PLACE reports — absorbed, wipe. Website `scratch/`: nothing. Wallpapers `scratch/`: `reframe_night_sheets/` KEEP until Matt has looked.
 
 ## OWED
 OPEN 3 and OPEN 4 above.
 
 ## ROSTER (soft size targets, chars)
-operating 27k · tutorial 18k (solver material moved to `preserve\solver_design.md`, ckpt 96) · corpus 15k · discovery 15k · engine 10k · state 5k.
+operating 27k · tutorial 18k · corpus 15k · discovery 15k · engine 10k · state 5k.
 
 ## SCRATCH/ARTIFACT FLAGS
-Standing KEEP unchanged: `artifacts/curation/candidate_ledger/` · flatness sidecar + manifest · `neutral_embeddings.jsonl` · `artifacts/render_cv/` · `artifacts/curation/` HOT · live release rows · `artifacts/renders` · `data/coloring/texture_flat.jsonl`. NEW: `artifacts/reframe_g1` (the smoke ledger, merged by the harvest) · the signature sidecar (247 MB, rebuildable by `curate signatures sweep`).
+Standing KEEP unchanged: `artifacts/curation/candidate_ledger/` · flatness sidecar + manifest · `neutral_embeddings.jsonl` · `artifacts/render_cv/` · `artifacts/curation/` HOT · live release rows · `artifacts/renders` · `data/coloring/texture_flat.jsonl` · the signature sidecar. NEW KEEP: `artifacts/reframe_g1`, `g2`, `g4`, `g5` (the channel's four standing ledgers, zero cross-ledger atom collisions) · `artifacts/sheet_reframe_nuclei` · `scratch/reframe_night_sheets/`.
 
-## CLOSED (records wiped — verdicts in the docs, solver_design and settled_rulings)
-MINE_color_ceiling_test (+addendum1) · READ_green_gallery_feasibility (+addendum1) · PROBE_ilp_n1000 · FIX_under_fill_and_solve_record · BUILD_greedy_swap_solve (+ the speedups) · AUDIT_minibrot_pipeline · BUILD_minibrot_reframing · FIX_solve_tiers_census_sidecar.
+## CLOSED (records wiped — verdicts in the docs and settled_rulings)
+HARVEST_reframe_generations · AUDIT_website_prose_drift · PLACE_overview_and_split · PLACE_rendering_modes.
 
 ## PARKED / SETTLED
 → `preserve\parked.md`, `preserve\settled_rulings.md`. `input_detail` PARKED on its ckpt-93 terms (→ `preserve\judge_training.md`).
