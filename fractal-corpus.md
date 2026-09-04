@@ -38,6 +38,6 @@ Mechanics → `labeling/README.md`; assume proper randomization. Suggestions com
 - **★ A q3+ VERDICT IN ANY STORE IS A PROVEN ROOT (ruled ckpt 103)** — `supply.proven.derive` unions the location store and both finished stores, credited on `provenance.store` (→ discovery). Every sitting grows the proven channel.
 
 ## The accumulator — things Matt needs to label (merge into one sitting; don't over-label)
-- **★ ⚠ AN AIMED SITTING IS NOT A BASE RATE, AND THE GAP IS THE MEASUREMENT.** Never rank an aimed mode's pooled rate against an unaimed mode's. Per-mode figures → `curation/README.md`. Closed sittings (dtm variants · phoenix band · judge band S1/S2/S3 · phoenix:classic 20m) → settled_rulings §ckpt 103; their rows are in the stores (smooth 6,180 / strange 5,614).
+- **★ ⚠ AN AIMED SITTING IS NOT A BASE RATE, AND THE GAP IS THE MEASUREMENT.** Never rank an aimed mode's pooled rate against an unaimed mode's. Per-mode figures → `curation/MEASUREMENTS.md`. Closed sittings (dtm variants · phoenix band · judge band S1/S2/S3 · phoenix:classic 20m) → settled_rulings §ckpt 103; their rows are in the stores (smooth 6,180 / strange 5,614).
 - **Nothing pending.** Matt raises the next sitting.
 - No blind rare-color instrument exists; S3 (60 aimed cards) is the only rare-colour read and is not blind.
