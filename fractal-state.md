@@ -1,17 +1,17 @@
-# fractal-state — checkpoint 103 (2026-09-03)
+# fractal-state — checkpoint 104 (2026-09-04)
 
 ## Where we are
-THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE: (1) the LOCATION hunt · (2) the WALLPAPER hunt · (3) the final curation SOLVE + release render. `MODE_POLICY` is the one place a mode carries a standing; Matt iterates from pictures, not counts.
+THREE PHASES, EACH DEPENDING STRICTLY ON THE ONE BEFORE: (1) the LOCATION hunt · (2) the WALLPAPER hunt · (3) the final curation SOLVE + release render. `MODE_POLICY` is the one place a mode carries a standing; Matt iterates from pictures, not counts. **Phase 3 is Matt's eye on the final seating — no label-feedback loop, not tracked (ruled ckpt 104).**
 
-**STANDING DIRECTION (Matt): THE SIMPLE LOOP.** Mine until the pool is healthy across palettes, modes, locations and families → solve at whatever n → if a gallery comes up short, mine longer until it looks good to Matt's eye. General mining = breadth to OPEN places (full roster, a large cheap smooth/field share — ≥50% is fine), the near band to make them pay, the dear kinds on the floor draw (→ discovery §Mining economics); the phoenix planes at 0.25 weight in breadth (kept for now, ruled ckpt 103); the palette draw filtered away from the full colour cells when composition is the goal. **K stands and pool quality is Matt's read.** **At n=2000 the constraints choose the gallery, not the judge** (→ discovery §What binds) — the top end is bought by labels on seats, if and when Matt raises it.
+**STANDING DIRECTION (Matt): THE SIMPLE LOOP.** Mine until the pool is healthy across palettes, modes, locations and families → solve at whatever n → if a gallery comes up short, mine longer until it looks good to Matt's eye. General mining = breadth to OPEN places (full roster, a large cheap smooth/field share — ≥50% is fine), the near band ONCE to make fresh places pay, the dear kinds on the floor draw (→ discovery §Mining economics); the phoenix planes at SECONDS shares (`phoenix:classic` 3%, `phoenix` 15%); the palette draw narrowed by `--draw-cells` when composition is the goal. **K stands; the spiral cap is 10%; pool quality is Matt's read.** The constraints choose the gallery, not the judge (→ discovery §What binds); the thin colour cells are JUDGE-bound, and the one instrument that buys a rare-cell SEAT — breadth to fresh places + the sparse cell list — has never been run (OPEN 1).
 
-This era (ckpt 102→103, one day): twelve prompts, all reported and absorbed.
-- **Render judge v6 SHIPPED** on v5's recipe over 722 new rows (four sittings ingested: dtm 188, phoenix band 200, judge band 300, classic 34); adoption unconditional, no eval instrument, Matt is the instrument (→ corpus §Judge method; `preserve\judge_training.md §v6`). Flip at n=2000: 1,578 → 1,635 seats with three quarters of the seats turned over; Matt's eye: fine.
-- **The judge has no order inside its own top, on any kind** — every sitting this era said so (→ corpus).
-- **Roots law widened:** a finished-render q3+ verdict is a proven root (→ discovery).
-- **The near band is 24× cheaper per clear than breadth** — MINE_diverse_0903: 18,940 candidates, seats 1,635 → 1,669, the whole gain in OPEN cells; the palette filter is a composition instrument (→ discovery).
-- Phoenix downweight in code (`draw_weights.py`); candidate rows stamped at intake; `depth` records keep the whole autolevel stamp; `--draw-maps`, `--explain-seats-of`, by-(mode, settings) records (→ tutorial, engine).
-- **The box leaks commit charge** — reboot cadence is the rule (→ operating). Matt rebooted at this boundary.
+This era (ckpt 103→104, one day): nine prompts, all reported and absorbed.
+- **The spiral cap SHIPPED**: a 500-location sitting `[human n=500, 28.0% spiral]`, a numpy linear probe on the neutral DINOv2 vector (94% / 91.9% balanced on the pinned 100, saturated at 100 labels), scored over all 40,734 admitted locations at 40 µs each, a fourth set constraint in the solve at X = 0.10 (→ corpus, discovery, tutorial). The seating was already 6 points under the pool's spiral share before any cap.
+- **`--draw-cells` built; the thin cells are judge-bound, not supply-bound** — three aimed legs bought zero rare-cell seats for three different reasons (→ discovery §Mining economics).
+- **Phoenix weights are seconds shares** per (partition, band) with a live price; `phoenix` was being STARVED at 0.25 (→ discovery).
+- **Reframe leg decides its own priors and re-probe**; 1,518 proven roots have never fired (→ discovery §Run side).
+- Flat-texture routing: the register self-extends; 120 flat rows revised into smooth, 3 stay by design; `render_cv` DELETED; dtm both-knobs cell reinstated; `ASKED_FOR` restored with a guard (→ corpus, tutorial, engine).
+- Two committed tentative stamps at n=1000: `20260903T234205Z` (941/59, uncapped) and `20260904T023748Z` (914/86, capped) — Matt's comparison pair.
 
 ## IN FLIGHT ACROSS THIS BOUNDARY
 Nothing.
@@ -20,35 +20,28 @@ Nothing.
 Matt's to set. Nothing is assumed or scheduled.
 
 ## OPEN (ordered)
-1. **The empty-cell leg (Matt's TODO, not scheduled).** Design, Matt's: the draw takes a sparse list of the 48 chromatic cells (default all = today's behaviour); maps whose carrier/`color_mass` probability for a listed cell clears a cutoff form the palette neighbourhood; mode-conditional mass where it exists, the carrier prior where not; run it through the near band so a recolour costs a colour pass. First read wanted: per empty cell (light/dark lime, yellow, magenta ~24–30 seats), carriers in the library, clearing rows in the pool, seats — if lime has three carriers the ceiling is the library, not the draw.
-2. **`phoenix:classic` at 0.25 weight** while it clears 15.3% in a breadth arm (best partition by 2×) — Matt keeps 0.25 for now.
-3. **dtm under v6 — Matt's read of the sheets** (`scratch/retrain_v6/c_…`, `scratch/mine_diverse_0903/d_…`): the four variants clear at half their v5 rate, bare rose; the leg's 16 clears were flat across settings (n tiny). Expected the opposite. His eye decides whether v6 learned the sitting.
-4. **`models/render/README.md` says "no leak to chase, only a baseline to live under"** — wrong (the baseline IS the leak); one-line fix rides the next wallpapers prompt.
-5. **`texture_flat` register has no entry at label geometry (1280×720 ss2)** — flat-texture modulates at label geometry route strange while being smooth material by rule; fired twice (9 of 300, then 4 of 6 `itinerary` cards). Ruling wanted: extend the register or accept.
-6. **Phase 3 — Matt-curation of seats** (design question, his): 19.8% of seats sit at labelled PLACES, zero seated PICTURES carry a label; the judge does not order inside its top, so the top end is bought by labels on seats — seat, label the seats, demote non-fours, re-seat, repeat.
-7. **Website review pile** (→ `docs/page-review.md`): unchanged from ckpt 102 (two false Gallery-curation claims; `palette-moods` caption; `judges`/`render-maxiter` repetition; `pool.py`'s two prose claims; the 16:46 standardization). The site stands on two v5 seatings — NOTHING IS LIVE; not a concern until Matt raises it.
-8. `pipeline-growth` re-bake over 700/1000/2000 when the pool seats 2000.
-9. Website consistency pass — DEFERRED until Matt raises it.
-
-WATCH (no action owed): the next reframe leg MUST `--reprobe` · growth rerun wants a "freeze bars at the full pool" option · `Twins.hold` is lazy · **the fast lane never runs beside a leg** (commit, not time — CLAUDE.md) · ~1,470 leaked process objects on the box (separate from the commit leak, unexplained) · Drive Desktop lagged `reports\` by ~2 h once · `renders/` was restored HOT for the retrain (re-archive is Matt's).
+1. **Rare-cell seats — the un-run instrument.** Breadth to FRESH places, full roster, `--draw-cells` listing the under-allowance cells from the latest tentative record, the near band once over the leg's own fresh places, an unconditioned control arm, readout = seats per listed cell at n=1000 before → after. Sizing is a pilot question; the smoke's numbers say hours, not days. Matt raises it.
+2. **The reframe channel is live again**: 1,518 of 2,153 proven roots unfired (977 from the ckpt-103 root widening); their nucleus yield is unread. Matt raises it.
+3. **Spiral at the walk**: whether the location head's top tier is spiral-heavier than the pool (27.75%) is unread; if it is, the score belongs in the draw as a downweight, not only in the solve. Scoring is free (embedding store). Matt raises it.
+4. **Website** (→ `docs/page-review.md` for the pile): the site stands on two v5 seatings; NOTHING IS LIVE; not a concern until Matt raises it. `pipeline-growth` re-bake at the final pool, if ever.
 
 ## STATUS / KNOWN REDS
-None. Wallpapers fast lane 157 s / 3,345 tests run alone after the leg; `cargo test` 216; slow lane 6:27 stands, not re-run. Website `builder check` 16/16 (untouched this era).
+None. Wallpapers fast lane 165 s / 3,437, idle; `cargo test` clean; slow lane 6:27 stands, not re-run (the 8 dose/grade reds are fixed at the fixture). Website `builder check` 16/16 (untouched this era). Box rebooted at ckpt 103; uptime under a week.
 
 ## RULINGS THIS ERA
-→ `preserve\settled_rulings.md §ckpt 103`: v6 adopted unconditionally, Matt is the instrument, no eval bar · K stands · phoenix planes 0.25 for now · finished-store q3+ verdicts are proven roots, repo-wide · dtm roster = four entries, both-knobs excluded · boundary sittings are ±k around the crossing · "far-draw arm" deleted (no referent) · the unexported smooth card is forgotten · empty-cell leg on the TODO, unscheduled.
+→ `preserve\settled_rulings.md §ckpt 104`: phase 3 = Matt's eye · a settings cell leaves the roster only at zero clears (dtm both-knobs reinstated) · phoenix planes 3% / 15% of engine-seconds, per band · spiral cap 10% at the probe manifest's cut (0.3) · `render_cv` deleted · `near band once per fresh place` is NOT a rule (a second pass is a `RETAIN_PER_PAIR` question) · the 3 pinned flat rows stay in strange by design · attribute stores don't assert the pin at ingest.
 
 ## KEEP LIST
-Drive `prompts\`: nothing in flight — Matt wipes everything (dead: `READ_n2000_gallery_shortfall`, `SHEET_judge_band_300_addendum1`, `MINE_open_cells_overnight`). `reports\`: everything absorbed — wipe everything. Wallpapers `scratch/`: **KEEP `retrain_v6/` and `mine_diverse_0903/`** until Matt has looked at the dtm sheets (OPEN 3); wipe `dtm_variants/`, `phoenix_q3q4/`, `judge_band/`, `phoenix_classic_20m/`. Website `scratch/`: nothing new.
+Drive `prompts\`: nothing in flight — Matt wipes everything (dead: `SHEET_spiral_500_addendum1`, superseded by `EXTEND_flat_107`). `reports\`: everything absorbed — wipe everything. Wallpapers `scratch/`: nothing load-bearing — wipe (`probe_spiral/` is Matt's to keep or not; `draw_cells/read.md` extracted to `curation/README.md`; `retrain_v6/`, `mine_diverse_0903/` released by the dtm ruling). Website `scratch/`: nothing new.
 
 ## OWED
-Nothing. The README one-liner (OPEN 4) rides the next wallpapers prompt.
+Nothing.
 
 ## SCRATCH/ARTIFACT FLAGS
-Standing KEEP: `artifacts/curation/candidate_ledger/` (201,174 recipes) · the FIVE Durables · `neutral_embeddings.jsonl` · `artifacts/curation/` HOT · live release rows · `artifacts/reframe_g1,g2,g4…g6` · `artifacts/curation/tentative/<stamp>/` (tracked; the site stands on `20260902T161757Z` AND `20260902T164622Z`, both v5 seatings) · `artifacts/curation/growth/20260902T150756Z/` · `data/coloring/texture_flat.jsonl` · this era's `curation/depth/` run records · **`models/render/` weights-v6 (`481fe058…`) beside v5 (`deploy_seed1` = revert)** · solve records `v5_control_n2000` · `v6_flip_n2000` · `mine_diverse_0903` (the n=2000 baselines `empty_modes_n2000` and the `_2026-09-01` siblings are v5-era, superseded). ARCHIVED (RESTORE before reuse): `renders/` is HOT this boundary (see WATCH) · `sheet_reframe_nuclei` · nine unreferenced legs/sheets · `mode_sheet` · `calibration` · `correction` · `palette_mass_sweep_calib`. Walk ledgers: seven hot, nine archive.
+Standing KEEP: `artifacts/curation/candidate_ledger/` · the FIVE Durables · `neutral_embeddings.jsonl` (ADMITTED locations, 40,734 — the spiral score reads it) · `artifacts/curation/` HOT · live release rows · `artifacts/reframe_g1,g2,g4…g6` · `artifacts/curation/tentative/<stamp>/` (tracked; the site stands on `20260902T161757Z` and `20260902T164622Z`; Matt's pair `20260903T234205Z` and `20260904T023748Z`) · `artifacts/curation/growth/20260902T150756Z/` · `data/coloring/texture_flat.jsonl` · `data/spiral/` (store + `eval_split.jsonl`) · `models/spiral/` · `models/render/` weights-v6 beside v5 · `artifacts/render_folds/` (the fold deal; `render_cv/` is DELETED, 68 MB) · solve records `v6_flip_n2000` · `mine_diverse_0903` · `draw_cells_smoke` · `tentative_n1000_<stamp>`. ARCHIVED (RESTORE before reuse): `sheet_reframe_nuclei` · nine unreferenced legs/sheets · `mode_sheet` · `calibration` · `correction` · `palette_mass_sweep_calib`. Walk ledgers: seven hot, nine archive; no reframe leg is archived.
 
 ## CLOSED (records wiped — verdicts in the docs and settled_rulings)
-INGEST_dtm_variants_labels · FIX_phoenix_downweight_and_STAMP_candidate_provenance · SHEET_phoenix_q3q4_breadth · INGEST_phoenix_q3q4_labels · SHEET_judge_band_300 · INGEST_judge_band_labels · MINE_phoenix_classic_20m (+addendum1) · INGEST_phoenix_classic_labels · RETRAIN_render_v6 · READ_box_commit_charge · MINE_diverse_0903 · TIDY addendum1 (18 seats = flat-texture routing, closed).
+BUILD_draw_cells_smoke_0903 · GALLERY_tentative_n1000_0903 · TIDY_texture_routes_askedfor_0903 · SHEET_spiral_500 · PROBE_spiral_fit · REFRAME_defaults · TIDY_render_cv_and_two_reads · SPIRAL_cap_and_phoenix_seconds (+addendum1) · EXTEND_flat_107.
 
 ## PARKED / SETTLED
-→ `preserve\parked.md`, `preserve\settled_rulings.md`, `preserve\sourcing_channel_laws.md`. `input_detail` PARKED on its ckpt-93 terms (→ `preserve\judge_training.md`). The `mine` leg's autolevel stamp gap (`profile.jsonl` boolean; `mine.make` returns the stamp) PARKED.
+→ `preserve\parked.md` (this era: `Twins.hold` lazy · the growth rerun's "freeze bars at the full pool" option · ~1,470 leaked process objects on the box, unexplained), `preserve\settled_rulings.md`, `preserve\sourcing_channel_laws.md`. `input_detail` PARKED on its ckpt-93 terms. The `mine` leg's autolevel stamp gap PARKED.
