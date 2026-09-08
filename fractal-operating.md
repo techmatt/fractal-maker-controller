@@ -94,5 +94,7 @@ The closing act is the CHECKPOINT CLOSEOUT ("distill" is banned). `CLOSEOUT_ckpt
 - **Hunk rules:** no OLD text overlaps text an earlier step of the same file deletes or moves; edits to moved content target the destination; MOVE steps sort last.
 - **Citations:** every `reports\`/`prompts\` citation is DROPPED, EXTRACTED (into a doc or `preserve\`, pointer follows) or KEPT (open item; report on state's keep list); the apply prompt greps survivors against the list.
 - State the scratch-preservation notice (default nothing). Grep each bolded numeral across emitted docs; assert single occurrence.
+- ⚠ **`preserve\` is NOT in the controller folder.** The controller holds `CLAUDE.md`, `.gitattributes`, `.gitignore` and the six `fractal-*.md` docs, and nothing else. `preserve\` is `C:\Code\fractal-drive-sync\preserve\`, which is where `parked.md`, the `rulings_*.md` set, `retention_design.md`, `solver_design.md` and `leveled_identity.md` live. A closeout script that says otherwise is wrong about the layout, not describing a move.
+- ⚠ **A closeout DOES commit.** The controller folder is a git repo and `CLAUDE.md` asks for a clean working tree before applying, so the closeout ends with one commit whose message is `ckpt N`. Leaving the applied docs uncommitted breaks the next prompt's precondition.
 
 Carry this document forward, amended or preserved, never eroded.
