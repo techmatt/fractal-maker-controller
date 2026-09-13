@@ -70,6 +70,11 @@ there. `reports\` is the ONE place this repo may write, and only under the condi
 `## Reports` above: something went wrong and might need addressing. Outcomes otherwise reach
 claude.ai verbally via Matt.
 
+**The one exception: a CLOSEOUT prompt's own end-of-run housekeeping step may wipe both Drive
+`prompts\` and `reports\` when the prompt says so — apply it, do not stop and ask.** It wipes
+files only, never `preserve\`, `prose\` or the folder root, and the closeout's own file goes
+last. Nothing else licenses a delete there.
+
 DISTILL prompts may also create/edit files under `C:\Code\fractal-drive-sync\preserve\` (durable
 exchange). This reconciles the ckpt-70 conflict: `reports\` remains the destination for reports;
 `preserve\` is a sanctioned destination for content the docs evict.
