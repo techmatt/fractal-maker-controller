@@ -65,6 +65,8 @@ Fractal conventions: no tappable multiple-choice; correction sheets pre-labeled,
 
 ---
 
+**★ A PROMPT'S SHAPE MUST MATCH THE VERB'S REACH (2026-09-17).** `curate depth run` cannot open a place; a scored-but-unopened place is `curate hunt --places` (then `--floor-places` to deepen). `--partition-weights` is inert on a deepening unit. `--phase-draw` is a flag off by default; hunts have no phase. `--per-location 1` draws a random mode unless `curate hunt --mode` holds it. A unit stopped short by budget is not resumed by a same-seed rerun (`mine.taken_maps` is outside the seed). A tuned walk saturates at ~16 batches — plan it by places wanted, not clock. **A read-only audit that runs beside nothing still omits the commit line when nothing tracked changes.**
+
 ## READING A REPORT
 
 **Do not summarize it back** — say what it CHANGES, what Claude got WRONG, what's next, plus a "carry:" delta for the docs; trivial outcomes ≤2 sentences. **CC's spec-deviations with stated reasons are consistently right — read before overriding.** A report opening with premises that did not survive is the normal case: carry the corrected figure, never the prompt's. Check supply claims, don't transcribe them. No "unreviewed by Matt" tracking; flag only what BLOCKS upcoming work. The site is draft — argue toward the final product, never from churn. **Figures are Matt's (ckpt 109)** — he checks every figure himself; never carry "which figures look wrong" as an open, and never spend a prompt confirming one.
@@ -74,6 +76,8 @@ Fractal conventions: no tappable multiple-choice; correction sheets pre-labeled,
 Judge-method, split and labeling rules → fractal-corpus.
 
 ---
+
+**⚠ A STREAMED READ OF A RECORD BEING REWRITTEN UNDER IT REPORTS A MISSING KEY, NOT AN ERROR (2026-09-17)** — website `builder check` failed twice on "not in the candidate ledger" while `rows.jsonl` was rewritten by a live leg next door; a re-resolve was complete. Treat a missing-key failure during a live merge as transient before anything else. **`score-pool`'s first pass after a cold cache runs ~3.5× slower** (2,214 s then 627 s over the same 56k pictures). **Chrome `--screenshot` cannot photograph the explorer** (it never waits for the wasm module and workers; every shot is "Starting the renderer…") — drive CDP over Node's WebSocket. **Measuring cancel latency**: draw the cheap view first (cache), switch into the expensive mode once, wait for the supersampled stage, switch to a mode nothing has drawn, time to the first changed pixel — re-picking a drawn mode, re-drawing the same view and timing to the finished picture all measure something other than waiting.
 
 ## EXCHANGE FOLDER & DRIVE
 
