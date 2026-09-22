@@ -62,3 +62,6 @@ Prompts → Drive `prompts\` (delivery + concurrency → fractal-operating); TAR
 
 ## DEPTH
 Single home = fractal-engine §Deep render.
+
+## THE EXPLORER'S TABS (ckpt 140)
+Gallery (twenty-one collections; *General gallery · 1000* default, *· 2000* beside it) · Atlas · Walk (a 14-step demo; Planes / Render modes / Palettes; Current/Previous candidates; *Quality* = the render judge's P(≥4)) · Deep (degrees 2–6 + Julias, 1× with auto-render, cap ceiling 1,000,000) · Phoenix (the `phoenix_plane` parameter plane with a p slider; click → the Phoenix Julia) · Saved. Keys `r j p h b`; a box zoom by `b` or a right/shift-click; `j` = Julia at the cursor (in Deep, the tab's own *Julia at this c*). Every behaviour → website `explorer/README.md`.
