@@ -50,6 +50,7 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
   - Compare maps by sampling through the bake; `data/palettes` never stores the table size.
   - `release.Task` carries `mode_params`, `curve` and `palette`. Time a render pilot in seat order.
 - **The f64 floor is relative** (`RESOLUTION_ULPS` 4), and failure is clean-then-refused. The full audit → `preserve\deep_shelf.md`.
+- **★ A spec render may opt out of the f64 refusal** with `"allow_unresolvable_in_f64": true` (ckpt 144). This applies to spec renders only: the pipeline never emits it, it enters no identity, and the tile path keeps its refusal. It exists for §Deep zoom's f64-versus-perturbation figure (→ `engine/README.md`).
 
 ## Deep render — the single home for deep/depth
 - **DEEP (perturbation) is EXPLORER-ONLY:** the website's `explorer/perturb-wasm` crate plus the Deep tab. Nothing deep enters the pipeline (Matt).
