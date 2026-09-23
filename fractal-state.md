@@ -1,150 +1,209 @@
-# fractal-state — checkpoint 141 (2026-09-22/23: an explorer-polish checkpoint — the Deep tab's stranded pool found and fixed, a screensaver, Phoenix starting points, an Atlas link↔tile agreement guard, the Walk's root frame, an index-page picture; the owed K constant landed)
+# fractal-state — checkpoint 142 (2026-09-23: a doc-shrink checkpoint — mining laws and the minibrot census moved verbatim to `preserve\`; tutorial and engine rewritten to pointers; the website READMEs took over the explorer's facts; Deep undo/Cancel/zoom-out polish; `REFERENCE` is a kept record)
 
 ## Where we are
-Three phases, each depending strictly on the one before → fractal-discovery. Matt iterates from pictures, not counts; phase 3 is his eye on the final seating — **every planned collection has a viewer at its official size.**
+Three phases, each depending strictly on the one before (→ fractal-discovery). Matt iterates from pictures, not counts. Phase 3 is his eye on the final seating, and **every planned collection has a viewer at its official size.**
 
-**★ MINING IS CLOSED (Matt, 2026-09-21) UNTIL HE REOPENS IT.** The pool as merged on 2026-09-21 is the population and the `final139_*` solves (§RECORDS) are the semi-final galleries. Everything a reopening needs — the four open arms, their prices, what is closed — lives in ONE place: wallpapers `curation/LEGS.md §Mining is CLOSED (2026-09-21) — reopen inventory`, every line citing a `MEASUREMENTS.md` row. State carries none of it. Nothing is committed until Matt says "truly finalized"; nothing is published.
+**★ MINING IS CLOSED (Matt, 2026-09-21) UNTIL HE REOPENS IT.**
+- The pool as merged on 2026-09-21 is the population, and the `final139_*` solves (§RECORDS) are the semi-final galleries.
+- On a reopen, read `preserve\mining_laws.md` whole, then wallpapers `curation/LEGS.md §Mining is CLOSED (2026-09-21) — reopen inventory`, which lists the open arms and prices, every line citing `MEASUREMENTS.md`. State carries none of it.
+- Nothing is committed until Matt says "truly finalized". Nothing is published.
 
-**★ EVERY COLLECTION HAS A TARGET AND THE TARGETS LIVE IN `curation/targets.py` (2026-09-15) — NINETEEN COLLECTIONS: twelve families, seven modes.** `TARGETS`, reached by `curate solve run --collection NAME`; `--n` still overrides; a collection with no target REFUSES. The table: the nine ordinary families at **400**, `green` and `cyan` at **300**, `lime` at **150**, `tia` at **1000**, `smooth` and `stripe` at **800**, `threads` 500, `smooth_mean_angle` 300, `smooth_angle_min` 150, `smooth_stripe` 200. Changing one is a one-line edit there, never a number retyped into a prompt. **⚠ The GENERAL gallery's size is NOT a `targets.py` entry — it is `tentative.RECORDED_SEATS` (1,000); `curate solve record --n` overrides it.** **There is no per-partition collection; every partition, d=6 included, enters the general gallery (Matt, 2026-09-16).** Everything that enumerates the collections derives from the table — except the website's `builder/seats.py`, which hand-lists them (`COLLECTIONS`) and reads records by stamp, matching the solve name by EQUALITY on `final139_<collection>` with `SOLVE_NAMES` spelling the one exception, `final140_general2000` (→ website `builder/README.md`). **Matt has said the sizes are essentially final.**
+**★ EVERY COLLECTION HAS A TARGET, AND THE TARGETS LIVE IN `curation/targets.py` — NINETEEN COLLECTIONS: TWELVE FAMILIES, SEVEN MODES.**
+- Reached by `curate solve run --collection NAME`; `--n` overrides; a collection with no target REFUSES. A change is a one-line edit there, never a number retyped into a prompt.
+- **⚠ The GENERAL gallery's size is NOT a `targets.py` entry.** It is `tentative.RECORDED_SEATS` (1,000).
+- There is no per-partition collection: every partition, d=6 included, enters the general gallery.
+- Matt has said the sizes are essentially final.
+- The website's `builder/seats.py` hand-lists the collections (→ website `builder/README.md`).
 
-**★ ⚠ GALLERY SIZE IS MATT'S DECISION ALONE.** Never raise it, never queue it, never reason about the tradeoffs of shrinking `n`. **"Final gallery quality" is NOT the median** — it is his judgement over many factors; never reframe the goal as maximising a summary statistic. **★ RE-SOLVING AT A LARGER `n` RESHUFFLES, AND THAT IS EXPECTED (Matt, 2026-09-18).** **★ AN n=2000 GENERAL RECORD EXISTS (Matt, 2026-09-22): `final140_general2000` (§RECORDS) — the website offers it as a second general collection; the n=1000 stays the default.** Its reading: 790 of the 1,000 carried over, 1,210 new; mode and family shares within about a point of the n=1000; all 49 cells present; seated `p_fine` median 0.41 / worst 0.041 against 0.59 / 0.13.
+**★ ⚠ GALLERY SIZE IS MATT'S DECISION ALONE.**
+- Never raise it, never queue it, never reason about shrinking `n`.
+- "Final gallery quality" is his judgement, not a median.
+- **Re-solving at a larger `n` reshuffles, and that is expected.**
+- `final140_general2000` (n=2000) is offered on the site beside the n=1000 default.
 
-**★ NOTHING IS PUBLISHED: `tentative.PUBLISHED` IS EMPTY, so `tentative.latest()` REFUSES and every unstamped read needs a stamp named.** **Matt raises any further publishing himself; never ask, never list it.** The bookmarked viewer `artifacts/curation/viewer/index.html` shows `final139_general`; **every planned gallery has a viewer: `curate solve viewers STAMP…`** (`curation/viewers.py`) → `artifacts/curation/viewer/<label>/index.html` and `viewer/all.html`.
+**★ NOTHING IS PUBLISHED.**
+- `tentative.PUBLISHED` is empty, so `tentative.latest()` refuses and every unstamped read names a stamp.
+- Matt raises publishing himself; never ask, never list it.
+- Viewers: `curate solve viewers STAMP…` → `artifacts/curation/viewer/<label>/index.html` and `viewer/all.html`.
 
-**★ PINNED SEATS — A STANDING LIST EVERY SOLVE SEATS FIRST (Matt, 2026-09-19).** `data/curation/pins.txt` (explorer links, tracked, edited only through prompts) → `curate pins resolve` → `pins.json`. Ten pins; seated before the seed, prune-proof; `--no-pins` for comparisons → `curation/GALLERY.md §Pinned seats`. **`pins.query_of` (ckpt 140) is `parse`'s inverse — gallery links are written, never hand-spelled.**
+**★ PINNED SEATS.** `data/curation/pins.txt` → `curate pins resolve` → `pins.json`. Ten pins, seated before the seed and prune-proof; `--no-pins` for comparisons (→ `curation/GALLERY.md §Pinned seats`). `pins.query_of` writes gallery links; they are never hand-spelled.
 
-**★ THE SUMMARY METRICS ARE SETTLED AT THIS HORIZON** (general median `p_fine` ~0.585, 643 seats ≥ 0.50 at the close). The 10,000-hour frame stays as the way to JUDGE a product choice (→ fractal-operating). Records-only retention is not needed at this scale → `preserve\retention_design.md`.
+**★ THE SUMMARY METRICS ARE SETTLED AT THIS HORIZON.** The 10,000-hour frame stays as the way to JUDGE a product choice (→ fractal-operating).
 
-**★ THE BAR: `DEFAULT_FINE_BAR = 0.030242` ON THE FINE COLUMN**, under `fine_head = twelve_sheets_drop_high_asymmetric_auc_ge4_more_k3` (a k=3 seed ensemble averaged on the probability scale, shipped). **★ ⚠ A BAR IS UNREADABLE WITHOUT ITS HEAD.** **★ ⚠ 0.50 IS NOT THE SEATING BAR** — `solve.Q4_BAR = 0.50` is the RENDER judge's constant on `p_ge4`. ⚠ `--fine-bar 0` still excludes unread rows. **★ ⚠ TWO QUALITY COLUMNS: `p_ge4` is the render judge's GATE reading; `p_fine` is the fine head's own column, the one the bar lives on and THE quality reading (compressed scale: read q1 and the fraction above a mark, not the bare median).** **★ ⚠ ONE SEED OF THE FINE HEAD IS NOT THE MEAN.** Provenance → `models/gallery_grade/README.md`.
+**★ THE BAR: `DEFAULT_FINE_BAR = 0.030242` ON THE FINE COLUMN**, under `fine_head = twelve_sheets_drop_high_asymmetric_auc_ge4_more_k3`, a k=3 seed ensemble averaged on the probability scale.
+- **⚠ A bar is unreadable without its head.**
+- **⚠ 0.50 is NOT the seating bar.** `solve.Q4_BAR = 0.50` is the RENDER judge's constant on `p_ge4`.
+- **⚠ There are two quality columns.** `p_ge4` is the render judge's GATE reading. `p_fine` is the fine head's own column, where the bar lives, and it is THE quality reading. Its scale is compressed: read q1 and the fraction above a mark, not the bare median.
+- ⚠ One seed of the fine head is not the mean. ⚠ `--fine-bar 0` still excludes unread rows. Provenance → `models/gallery_grade/README.md`.
+- **★ `p_fine`, `p_coarse` and the bars are all operating well; every task that would alter them is CLOSED (Matt, 2026-09-12).**
 
-**★ ⚠ THE GENERAL MEDIAN SITS NEAR THE POOL'S 96.5th PERCENTILE.** Census → `curation/GALLERY.md`.
+**★ THE HUMAN VETO IS SHIPPED** (→ `curation/README.md`). The rejection pass is a labeling mode: Matt marks ONLY `1`s, and an unmarked tile is NOT a label.
 
-**★ `p_fine`, `p_coarse` AND THE QUALITY BARS ARE ALL OPERATING WELL — EVERY TASK THAT WOULD ALTER THEM IS CLOSED (Matt, 2026-09-12).**
+**★ A THEMED PASS RELAXES THE BAR INSIDE ITS OWN CELL.** `solve.themed_fine_bar` = the lower of the shipped bar and the `p_fine` of the 4n-th best dominant row, floored at 0.01. Mining moves a family's bar. **⚠ `--themed CELL` names a codebook colour cell, not the family bar; the family pass is `--collection <family>`.**
 
-**★ THE HUMAN VETO IS SHIPPED (Matt, 2026-09-14)** → `curation/README.md`. **★ THE REJECTION PASS IS A LABELING MODE: Matt marks ONLY `1`s and an unmarked tile is NOT a label.**
+**★ FAMILY PASSES FLOOR AT `mode_policy.seat_floors(n)`; A MODE PASS FLOORS AT 0.** `--flat-floor` is the door back. ⚠ The floor is NOT monotone. The recurring family holes are `itinerary`, `curvature` and `direct_trap_lines`, and they are supply, not rule.
 
-**★ A THEMED PASS RELAXES THE BAR INSIDE ITS OWN CELL (shipped).** `solve.themed_fine_bar` = the lower of the shipped bar and the `p_fine` of the 4n-th best dominant row, floored at 0.01 → `curation/GALLERY.md`. Mining moves a family's bar: the green cell's went 0.0125 → 0.0159 between 09-16 and 09-21, which is what broke `REFERENCE` (§RECORDS). **⚠ `--themed CELL` names a codebook colour cell, NOT the family bar; the family pass is `--collection <family>`.**
+**★ COLOUR:**
+- ⚠ A hue family is NOT the union of its four cells (→ `palettes/README.md`).
+- The palette group cap is `0.075·n` themed and `0.025·n` general.
+- ⚠ The colour allowance is proportional to `n`.
+- K is Matt's; Claude never proposes reopening it.
 
-**★ FAMILY PASSES FLOOR AT `mode_policy.seat_floors(n)`; a MODE pass floors at 0** (`cli.collection_pass`); `--flat-floor` is the door back. **⚠ The floor is NOT monotone.** **The recurring family holes are `itinerary`, `curvature`, `direct_trap_lines` — supply, not rule.**
+**★ A GALLERY PAGE IS PRESENTED STRATIFIED** (`curation/page_order.py`).
 
-**★ ⚠ A HUE FAMILY IS NOT THE UNION OF ITS FOUR CELLS** → `palettes/README.md`. **★ THE PALETTE GROUP CAP IS `0.075·n` THEMED, `0.025·n` GENERAL.** **★ ⚠ THE COLOUR ALLOWANCE IS PROPORTIONAL TO `n`.** **★ MATT REOPENED K HIMSELF AND SET IT; CLAUDE STILL NEVER PROPOSES REOPENING IT.**
+**★ GUARD RULINGS: loosening only, and nothing was loosened.** The solver is not at its optimum, and Matt says that is not a concern. There is no honest score column over the seated population; Matt's eye is the only independent read. Every other standing fact of the solve → `curation/GALLERY.md`.
 
-**★ A GALLERY PAGE IS PRESENTED STRATIFIED, NOT IN QUALITY ORDER** (`curation/page_order.py`).
+**★ `pool_scores.jsonl` IS ONE-SHOT: mine → merge → `gallery-grade score-pool` → solve.**
 
-**★ GUARD RULINGS (Matt, 2026-09-10): LOOSENING ONLY, AND NOTHING WAS LOOSENED.** **★ THE SOLVER IS NOT AT ITS OPTIMUM — Matt: not a concern.** **★ THERE IS NO HONEST SCORE COLUMN OVER THE SEATED POPULATION — Matt's eye is the only independent read.** Every other standing fact of the solve is owned by `curation/GALLERY.md`.
+## MODES, PHASE, PALETTE
+- **★ The targeted-gallery modes are seven.** Smooth is special and special-cased. `curvature` is `UNMINED`. A stored `smooth` score does not order a `tia` yield.
+- **★ The explorer's render-mode roster is thirteen** (`listedModes()`), and the Walk's roster is that list. `gaussian_int`, `trap_circle`, `smooth_trap_circle` and `direct_trap_ring` are pipeline-only.
+- **★ Texture weight is a drawn recipe parameter, [0.2, 0.9], on by default. Closed.**
+- **★ Rotation and phase are CLOSED:** one random phase per candidate, `--phase-draw`, OFF by default (→ `curation/LEGS.md`, `preserve\rotation_phase_economics.md`).
+- **★ Palette replication is PARKED (Matt, 2026-09-12).** `data/palettes/palettes_for_random_choice.csv` (232 maps) feeds the explorer's Random palette and the Walk's "All palettes".
 
-**★ `pool_scores.jsonl` IS ONE-SHOT: Mine → merge → `gallery-grade score-pool` → solve** (~10 min warm, ~35 cold). **Attribute seats to a leg by joining on the leg's own row keys** → `curation/LEGS.md`. **★ ⚠ WEIGH A MEASUREMENT AGAINST THE COST OF THE ACTION IT DECIDES.**
-
-## ROTATION AND PHASE — CLOSED
-**★ THE FORWARD DRAW IS ONE RANDOM PHASE PER CANDIDATE (Matt, 2026-09-13)** — `--phase-draw`, OFF by default → `curation/LEGS.md §--phase-draw`, `preserve\rotation_phase_economics.md`.
-
-## THE PALETTE AXIS — PARKED, EXCEPT PHASE
-**★ MATT PARKED PALETTE REPLICATION ENTIRELY (2026-09-12).** `data/palettes/palettes_for_random_choice.csv` (232 maps) is what the explorer's Random palette and the Walk tab's "All palettes" draw from.
-
-## MODES AND COLOUR
-**★ THE TARGETED-GALLERY MODES ARE SEVEN (Matt, 2026-09-17).** **★ SMOOTH IS SPECIAL AND IS SPECIAL-CASED.** **★ `curvature` is `UNMINED`;** its family hole is a supply hole. **★ A STORED `smooth` SCORE DOES NOT ORDER A `tia` YIELD (2026-09-21).** **★ THE EXPLORER'S RENDER-MODE ROSTER IS THIRTEEN (the viewer's dropdown, `listedModes()`); the Walk tab's roster is that list and nothing else (Matt, 2026-09-22)** — `gaussian_int`, `trap_circle`, `smooth_trap_circle`, `direct_trap_ring` are pipeline modes the explorer does not offer.
-
-**★ TEXTURE WEIGHT IS A DRAWN RECIPE PARAMETER, ON BY DEFAULT AT [0.2, 0.9] (Matt, 2026-09-18) — closed.**
-
-## SOURCING — CLOSED; THE INVENTORY IS IN THE REPO
-**→ wallpapers `curation/LEGS.md §Mining is CLOSED (2026-09-21) — reopen inventory`.** Laws state still carries:
-- **★ THE DEGREE-6 PLANE IS NEVER LABELLED (Matt, 2026-09-16)** (`partitions.NEVER_LABELLED`).
-- **★ A BUDGET-CUT HUNT IS A SEEDED SAMPLE OF ITS MANIFEST, NEVER A PREFIX (2026-09-21).**
-- **★ SUPPLY IS ROOT-BOUND ON THE TWINS** → `preserve\julia_supply.md`; phoenix → `preserve\phoenix_sampling.md`. **★ ⚠ A STALE MANIFEST LOOKS EXACTLY LIKE RECOLOUR SATURATION — rebuild the manifest.**
-- **★ PARABOLIC AIMING IS ANSWERED ABOVE ε ≈ 3e-3 (2026-09-21): dead — 21 of 24 strata.** Below that ε it is UNTESTED (→ fractal-engine, OPEN 8). **Matt's eye confirmed the island strata (2026-09-21): the nucleus-rooted island rows are good `[by-eye]`, the low-period island strata dead `[by-eye]`; the `cardioid_*` / `disc_p2_*` strata remain head-only reads.** The nucleus-rooted Julia walk (2.0× the control, 8 general seats at median 0.717) stays count-first in the reopen inventory.
-- **★ INSIDE A MINIBROT COPY IS A NAMED PHENOMENON NOW (ckpt 140)** → fractal-discovery §Inside a minibrot copy; its examples file is the writeup's figure source (OPEN 9).
+## LAWS STATE STILL CARRIES
+- **★ The degree-6 plane is never labelled** (`partitions.NEVER_LABELLED`).
+- **★ Inside a minibrot copy is a named phenomenon** → `preserve\minibrot_copies.md` (the §Deep zoom source, OPEN 9).
+- **★ Parabolic aiming is answered above ε ≈ 3e-3: dead.** Below that ε it is untested (OPEN 8, fractal-engine).
 
 ## RETENTION
-**★ THE KEEP IS FIVE PER `(place, mode)` PLUS ONE FAMILY ALLOWANCE (`retention.FAMILY_ALLOWANCE = 1`).** Forward-only; colour-blind → `curation/README.md`. Pinned rows and every kept record's seats are prune-proof via `tentative.kept()` (`protected_keys()` **6,299** since `final140_general2000`).
+**★ The keep is five per `(place, mode)` plus one family allowance.** Forward-only and colour-blind (→ `curation/README.md`). Pinned rows and every kept record's seats are prune-proof via `tentative.kept()`.
 
-## RECORDS — THE SEMI-FINAL SET, AND HOW IT IS PRESERVED
-**★ THE SAVED SET IS TWENTY-ONE RECORDS ON THE KEEP LIST (`tentative.KEPT_UNPUBLISHED`): the twenty `final139_*` (stamps `20260922T012627Z` general n1000 … `20260922T015138Z` smooth_stripe; 9,000 seats) plus `final140_general2000` (`20260922T220551Z`, n=2000, same pool stamp `e0cf00ba…`, same config but `n`; solve ~3 min).** The store also holds `fractal_wallpapers.portable.REFERENCE` (`20260916T182649Z`, n=300 themed — off the keep list BY DESIGN, travels through the export roster). **⚠ `REFERENCE` NO LONGER RE-SEATS: 230/300 on the 2026-09-21 pool `[measured]`, a bar move (the green cell's themed bar) and not a judge change; a fresh-box restore cannot distinguish that from a real disagreement. RULED (Matt, 2026-09-22): leave it, re-cut it at the next `storage export`.** **`portable.GENERAL_CHECK` = `final139_general`, verified 1000/1000 same set same order, is the working check** (the README the export writes carries both invocations; ⚠ `reference/README.md` is GENERATED by `portable._write_reference`, not a tracked file). Every superseded record was deleted on 2026-09-21 (1.43 GiB); **`git grep <stamp>` before calling any record stray.**
-
-**★ THE RECIPES EXIST AND ARE UNTRACKED: `artifacts/curation/tentative/<stamp>/recipes.jsonl` for the twenty `final139_*`** (`curate solve recipes --write --stamp <stamp>` is a SEPARATE step; `final140_general2000` has none yet). **★ TRACKING A RECIPE FILE IS PUBLISHING ITS STAMP** — the kept records stay untracked by ruling. **★ PRESERVATION IS A PORTABLE INSTANCE MATT BACKS UP, NOT A COMMIT: the 2026-09-22 export (`20260922T030159Z`, 753 files, 4.04 GiB) is BACKED UP OFF-BOX AND DELETED from `fractal-drive-sync\portable\` (Matt, 2026-09-22); a restore reads from his backup.** ⚠ That export PREDATES `final140_general2000`, which lives on this box only until the next `storage export` (`CLAUDE.md` says so). Restore: `fractal-wallpapers storage import --from <path> --root <hot root> [--archive-root <archive>]`. Procedure → wallpapers `src/fractal_wallpapers/README.md §Continuing on a fresh box`.
-
-**★ ⚠ A RECORD IS DISCARDED BY DEFAULT; PRESERVATION DERIVES FROM THE KEEP LIST ALONE.** **★ ⚠ A RECORD IS TWO DIRECTORIES**; `solve.write_record` refuses to overwrite; **`record` never renders.** `backfill.DEFAULT_RECORD` → `20260922T012627Z`. **★ PRE SOLVES (ruled 2026-09-19):** the `final139_*` set IS the PRE baseline until something merges → `curation/LEGS.md`.
-
-## THE RECORD'S OWN PROSE
-**★ A RECORD CARRIES ITS PROSE WHOLE, AND THE SOURCE CARRIES ONE COPY** (`SCHEMA_NOTES`).
+## RECORDS — THE SEMI-FINAL SET
+- **★ The store is exactly the twenty-one records on the keep list (`tentative.KEPT_UNPUBLISHED`):** the twenty `final139_*` (general n=1000 plus the nineteen collections, 9,000 seats) and `final140_general2000` (n=2000, same pool and config apart from `n`).
+- **Every kept record carries its `recipes.jsonl`, and all are untracked.** ★ Tracking a recipe file IS publishing its stamp.
+- **Check records are kept records:** `portable.GENERAL_CHECK` = `final139_general`, and `portable.REFERENCE` = `final139_green`. Nothing is re-cut while the pool is closed.
+- **★ BACKUPS ARE MATT'S.** `storage export` runs only at his direction and is never proposed. He holds the copies off-box and deletes the local instance at once, so nothing expects one on disk. Restore → wallpapers `src/fractal_wallpapers/README.md §Continuing on a fresh box`.
+- **★ ⚠ A record is discarded by default; preservation derives from the keep list alone.**
+  - ⚠ A record is two directories.
+  - `solve.write_record` refuses to overwrite. `record` never renders.
+  - `git grep <stamp>` before calling any record stray.
+  - `backfill.DEFAULT_RECORD` → `final139_general`.
+  - The `final139_*` set is the PRE baseline until something merges.
+- **★ A record carries its prose whole, and the source carries one copy** (`SCHEMA_NOTES`).
 
 ## THE REPO AS A CLONE SEES IT
-**★ A FRESH BOX CONTINUES EVERY STAGE FROM `storage export` ALONE** → `preserve\fresh_box.md`. **★ THE INSTALL IS `uv sync` NAMING ALL THREE EXTRAS.** **★ ⚠ `p_fine` ROWS ARE STAMPED WITH A WEIGHTS SHA AND A CLONE'S ROWS DIFFER BY DESIGN.** ⚠ Drive the makers through `.venv/Scripts/fractal-wallpapers.exe`. ⚠ The module is `fractal_wallpapers.portable`.
+- **★ A fresh box continues every stage from a `storage export` alone** (→ `preserve\fresh_box.md`).
+- The install is `uv sync` naming all three extras.
+- ⚠ `p_fine` rows are stamped with a weights sha, and a clone's rows differ by design.
+- ⚠ Drive the makers through `.venv/Scripts/fractal-wallpapers.exe`.
 
 ## WEBSITE — THE EXPLORER STUDIO AND THE ARTICLE
-**Nothing is live; the site never needs preserving or keeping in sync.** Every fact about the site is owned by the website repo: the explorer (all tabs, keys, contracts) → `explorer/README.md`; the Atlas tab → `atlas/README.md`; `seats.py`, the staged (untracked) deploy set and the staging rule → `builder/README.md §What is staged` + `CLAUDE.md`; the figure registry, panel seams and the split rules → `builder/README.md` + `CLAUDE.md`; per-page status → `docs/page-review.md`. **★ STAGING RULE (Matt): no gallery-sized or library-sized commits until he says deploy.** Shallow contract **v3 unmoved** (the Phoenix plane and Deep degrees were widenings under its own v2 rule); deep contract **v3** (`f` added, v1–v2 still read). `engine.manifest.json` and `perturb.manifest.json` are read for their pins, never a doc line.
+**Nothing is live; the site never needs preserving or keeping in sync.** Every fact about the site is owned by the website repo, and state keeps no copy:
 
-**★ THE SITE IS RE-BASED ON `final139_*` + `final140_general2000` — DATA ONLY; PROSE AND CAPTIONS WAIT FOR "READY FOR PUBLISHING".** `builder/seats.py` `COLLECTIONS` (twenty-one; both general collections carry `axis: "general"` and the dropdown labels *General gallery · n* from the axis; 1000 default); the staged gallery is **6,299** tiles / 62.8 MB. Re-baked in ckpt 140: `atlas-places` (figure + caption numbers), `palettes.jsonl`, `popular.json` (five of eleven Popular places moved), the palette counts. **Held for "ready for publishing": `gallery-curation.html`'s prose (it describes a mode-floor shortfall `final139_general` does not have) and its `gallery-pool` chart, whose maker reads `places_refused` — a stage `fold: pool` records do not write, so the funnel it draws is of a solve that no longer exists (decide whether the chart still belongs, then).** `gallery-twins` / `gallery-output` stand as they are — their panels draw from stored recipes; re-picking is only for showing the current solve's seats, which Matt does not need. `fundamentals.py`'s provenance sentence is a frozen frame's origin, correctly left. ⚠ **CDN / history rewrite / favicon exist ONLY here (OPEN 5), not in `docs/page-review.md`.**
+| Topic | Owner |
+|---|---|
+| Explorer: tabs, keys, Deep/Cancel/undo, zoom-out stop, screensaver, Walk, Phoenix | `explorer/README.md` |
+| Deep kernel, oracle, calibration, closed verdicts | `explorer/perturb-wasm/README.md` |
+| Atlas | `atlas/README.md` |
+| Builder, figures, the split rule, `seats.py`, the staged set, site size | `builder/README.md` |
+| Traps: native exe rebuild, perturb rebake, repo links | `CLAUDE.md` |
+| Per-page status | `docs/page-review.md` |
 
-**★ FIGURE RECIPES ARE NEVER LOST (Matt, 2026-09-21): `article/figure-recipes.jsonl` is site-owned and TRACKED** — for seat/candidate panels; a `spec`-sourced panel's recipe IS its registry row in `article/figures.jsonl` (`recipes.load_all` refuses other kinds). `caption` is optional (ckpt 141; a captionless row gets no `<figcaption>`); `index-hero` at the top of `index.html` is the first such figure (`builder front`). **★ EVERY COMPOSITE FIGURE THAT CAN BE SPLIT IS SPLIT (Matt, 2026-09-22): 62 figures — 21 split into 217 explorer-linked panels (the Overview + 20), 41 kept as composites because the juxtaposition is the point (before/after pairs, contact sheets, drawn charts; `pipeline-themed-galleries` ruled keep).** The panel seam: `panels` + `columns` rows, `figures.Panel`, a panel names its own record per panel (`seat` through its ledger recipe, or `spec` through `links._view`), a panel may open a **band** (title, stage text, judge chips, its own column count, hand-off arrow), `--figure-across` sizing; an annotated panel links to the un-annotated picture; pixels are the tiles the sheet pasted (`escape-families` is the one exception — its tiles sat at fractional origins, so its panels are the 640-wide tiles as composed); `figure-stage` is a `div` (a `section` closes the prose region). Rules → website `builder/README.md`, `CLAUDE.md`. **The README is reader-facing; the site header's GitHub link → `techmatt/fractal-website`, pipeline mentions → `techmatt/fractal-wallpapers`.**
+- **★ STAGING RULE (Matt):** no gallery-sized or library-sized commits until he says deploy.
+- Shallow contract **v3**; deep contract **v3**.
 
-**★ THE SITE'S SIZE (ckpt 140):** tracked ~37 MB + 6.2 MB of collection records; staged ~130 MB (6,299 seat tiles 62.8 MB; atlas slots 27.5 MB; `explorer/judges/` now WITHOUT `fine.onnx`; `engine.wasm` 785 KB raw / 231 KB gz; `perturb.wasm` 199 KB raw / 78 KB gz; the Walk placement ~34 MB). The exposure is bandwidth, not size; a CDN in front of the wasm/ONNX fetches and a history rewrite before the final commit are the deploy-preparation choices (OPEN 5). Figures are WebP q88 transcodes.
+**★ THE SITE IS RE-BASED ON `final139_*` + `final140_general2000` — DATA ONLY. Prose and captions wait for "ready for publishing".** Held until then:
+- `gallery-curation.html`'s prose, which describes a mode-floor shortfall the current record lacks.
+- Its `gallery-pool` chart. Its maker reads `places_refused`, a stage `fold: pool` records do not write, so decide then whether the chart still belongs.
 
-**★ THE EXPLORER'S FEATURE BAR (Matt, 2026-09-20): COMPLEXITY IS A COST TO THE PERSON USING A TOOL — ONLY CLEAR WINS ARE ADDED** → `preserve\rulings_website.md §2026-09-20`. **★ ITS TEXT IS FOR THE ARTIST (Matt, 2026-09-21): a string stays only if an artist would DO something with it; every keyed button wears its key.** Keys are the bare letters **`r j p h b`** (`Reset to seat` has none; `Random phase` is `h`; `Box` is `b`); the UI says **Render mode** everywhere (Matt, 2026-09-22 — "Render mode" is the article's term).
+**★ Figure recipes are never lost.** `article/figure-recipes.jsonl` is site-owned and tracked; a `spec` panel's recipe is its registry row. ★ Every composite figure that can be split is split (Matt).
 
-**★ SHIPPED IN ckpt 141, ALL OWNED BY website `explorer/README.md` (facts below are pointers; verify there):**
-- **Deep tab, rewritten seam:** the "hang" at `w≈2.8e-13` beside −0.75 was a STRANDED WORKER POOL, not a slow probe (`cancel()` dropped busy workers off a hand-kept idle list; probe/orbit round trips swapped `onmessage`). Now: one request per worker matched by id, idle DERIVED never kept, one permanent router; the reference orbit runs in a worker; **Cancel terminates and restarts every busy worker** (idle in ~50 ms). `perturb-wasm` imports `env.progress(done,total)` (every 4,096 orbit steps and per probe cell; ≤1 msg/100 ms) — byte-identical output. **Screen is ALWAYS 1 spp** (quarter pass + full pass; samples picker on Download only, 16× still refused); the render bar, spinner and activity line live on the Render line; a **10 s watchdog** writes *no progress for N s* and offers Cancel; **auto-render and link-open never run the cap probe** (only Render and a download escalate); **`n` is written to the link only when the cap is settled** (`capFrom` ∈ width/probe/reader/tile; an `n`-less link parsed before the module loads gets the engine cap, re-asked once the kernel is up); the FRAME block is gone — a **Details** fold under the picture (stat line incl. *at the ceiling: x% undecided*, set/degree, `c`, editable `x`/`y`/`w`, cap + source); Iterations / Julia at this c / Nearby minibrots / Save / Back sit UNDER THE PICTURE in the Render group (left panel = the sentence only); the shallow zoom-stop offer clears on entering Deep by any route. Debug: `localStorage.setItem("explorer.deep-log","1")`.
-- **Walk tab:** once stage one has a root, the walk shows the plane's full HOME frame (384×216 smooth, the walk's way) with one **root** box floored at 6% of the frame width, held 500 ms (`HOME_HOLD_MS`) while the root's picture computes; the strip's card reads *<plane> · root found*.
-- **Box tool:** the *Box (b)* button had NO click listener and the armed style equalled `:hover`; now wired, **armed = green glow** (`--state-final`), cleared when the box lands, on a second `b`/press, or Esc.
-- **Screensaver (Gallery tab, one button):** random seats from the current collection + pressed filters; interval *Fastest(=4 s)·10 s·30 s·1 m·5 m·10 m·30 m* (`explorer.screensaver-every`); priced by the Download row's `COST` prior × a learned correction (median measured÷priced of the last 15, clamped 0.5–4), ladder 4× → 1× at screen size and **never below 1 spp** (over budget at 1× = skipped); overrun limit 2×max(price, interval); own pool (`Renderer.over`); 500 ms cross-fade; `panel=screensaver&every=…` with filters as link keys `collection`/`modes`/`hue`; Space pauses, Esc exits onto the last seat; *Full screen (F11)* button / `F`; **wake lock** held while up; log flag `explorer.screensaver-log`. ⚠ At 4K, stripe (~28 s at 1×) is skipped at 10 s rather than shrunk — by rule.
-- **Phoenix tab — Starting points:** a 3-across grid of 8 tiles under the plane, each a `(p, c)` KEYPOINT = the whole set at its home view (not a seat's frame); `explorer/phoenix-points.json` + tiles are written by `python -m builder phoenix-points` (NOT in build/check; needs the wallpapers checkout for `p_ge4`) from the gallery's phoenix seats that start at z₋₁ = 0 (140 of 404 seats, 11 distinct `(p,c)`), farthest-first in `p` from the classic, with an `OVERRIDES` table (the `p = 0` point sits at Matt's `c = 0.25004942312325246 − 0.0000035532977390801417i`). A click sets the full complex `p` (shown as Re + `+ i`; the slider is Re and zeroes Im), **frames the plane to box the filled set at that `p`** (two sets open at w 1.68 / 0.85), rings `c`, and opens the set in the viewer's mode/palette. **The whole left panel is ONE STYLE: `STYLE` in `builder/phoenix_points.py` = smooth · `twilight_shifted` (Violet Rosewood) · gamma 0.38**; the plane no longer follows the viewer's palette. ⚠ The native `fractal-engine.exe` must be REBUILT after engine-crate edits — the website builder shells to it (it refused `phoenix_m` until rebuilt at ckpt 141).
-- **Atlas — the link↔tile agreement guard:** an Atlas gallery slot's link dropped `texture_weight` (the ingest copied `mode_params` in the engine's word; `atlas/links.js` filtered to the contract's `weight`; the page settled 0.85) — 28 slots, 0 gallery tiles, 0 figures. Now `builder/links.py::contract_params` is the ONE renamer every writer uses, `permalink.js::settledParams` REFUSES a key the mode does not spell, and **`builder check` = 19 incl. `agreement`**: every slot/tile/panel link parsed back through the contract and held to its recipe member for member (caps included — 46 slots drawn at a non-policy cap now carry *cannot carry: cap N*), plus a per-plane pixel sample (tol 20/255). Wasm = native byte-for-byte at both weights.
-- **Atlas page:** `/atlas/` was already a redirect stub since 2026-09-21; ckpt 141 added the mark colour key (blue = parameter-plane place, red = dynamical-plane place) above the tab's frame.
-- **Index page:** `index-hero` (spec panel of the `julia4` glowdon view) between the masthead and the intro. Wallpapers README: FIVE example thumbnails (third = `examples/julia_multibrot4_smooth.jpg`, allowlisted).
+**★ THE EXPLORER'S BAR (Matt):**
+- Complexity is a cost to the person using a tool; only clear wins are added (→ `preserve\rulings_website.md §2026-09-20`).
+- Its text is for the artist, and every keyed button wears its key. "Render mode" is the term everywhere.
+- Left panel changes the view; right panel manipulates this view.
+- It targets the desktop.
+- Explorer-only fast paths are allowed only where the pixel difference from the pipeline is easy to bound. Wasm threads are out.
+- ⚠ This box drifts ~30% between identical runs; alternate before/after.
 
-**★ SHIPPED IN ckpt 140, ALL OWNED BY website `explorer/README.md`:**
-- **Shallow explorer:** the **box tool** (`b`, or a right/shift-click as the centring press; sized by moving, finished by a plain click; zooms through the wheel's route so undo/redo and the link see it; Deep has its own `reframe`; ⚠ canvas *Save image as* is gone with right-click, redundant with the downloads); **`j` = Julia at the c under the cursor** (pointer over the canvas; the button keeps the centre; uses the hover card's own `c` when it is up); the **render bar** replaces the state dot (stops 1.2% / 20.7% / 100% for the three stages; `#render-state` keeps `data-state` for the bench seam); Download row `↓ PNG` / `↓ JPG` (inline SVG arrows), `Screen (…)`, `Reset palette` without its count; Random palette/phase on the Palette header; the Julia preview checkbox beside *Julia here*.
-- **Deep tab (degrees 2–6 + their Julia sets, smooth only) — ⚠ SUPERSEDED IN PART by the ckpt-141 block above (no samples picker, no FRAME block, controls under the picture):** 1× on entry; **auto-render** (`explorer.deep-auto-render`, ON by default, a settled frame change cancels the pass in flight — the "preview never appeared" bug was a cancellation gap); Render/Cancel/status live under the picture; **`j` presses the tab's *Julia at this c (j)***; the cap sentence has a ceiling variant (*At the ceiling (1,000,000): x% of this frame is still undecided*) — **`cap::CEILING` = 1,000,000 binds on degree-6 near-parabolic body frames; RULED keep the limit, flag it**; the Minibrots button is offered at every degree; the tab's sentence links the writeup at `escape-time-fractals.html#locations` as a STAND-IN until §Deep zoom is written (OPEN 9). Engine facts → fractal-engine §Deep render.
-- **Walk tab:** the top sentence ("…the best results after running it continuously for many weeks. For more, read *Finding good locations*"); Planes / **Render modes** (the 13) / Palettes only (Depth, At a place, the hints, "N found", *Save all found* all gone; their seven values are frozen module constants); **Current candidates / Previous candidates** (flips when a new walk starts); badges read **Quality** (= `P(≥4)` of the render judge; the fine head is CUT from the page — `fine.onnx` is no longer shipped; the walk scores as the pipeline's walk does); the **finish** = three extra pictures per mined place in modes the burst did not draw (`FINISH_MODES`), ~12 s median on screen; a spinner beside *Back to walk* and a `7 of 14` step bar.
-- **Phoenix tab** (after Deep): an Atlas-style live plane of `phoenix_plane` (engine `phoenix_m`: p fixed, c over the plane, z₀ = z₋₁ = 0; home (−0.69, 0) w 2.8; drawn in `smooth` as an aiming map) with a real **p** slider ([−1, 1], default −0.5); click → that Phoenix Julia on the right, *Back to Phoenix plane*; **Preview** checkbox OFF by default; `phoenix_plane` is also in the main family list so `j`/Back work there. **⚠ The classic Ushiki instance (c = 0.5667, p = −0.5) lies just OUTSIDE the plane's filled set (re ≤ 0.5425); it is marked, never said to be "in".** Links: `f=phoenix_plane&px&py`; `phoenix` already carried `cx cy px py zx zy`. A z₋₁ ≠ 0 set has no Back. The judge-score overlay is an OPTIONAL second step (OPEN 11).
-
-**★ THREE CLEAR WINS SHIPPED (ckpt 137):** Julia under the pointer; undo / redo; every download carries its link. **★ THE EXPLORER WAS BUG-HUNTED (ckpt 138)** — harness `explorer/bench/hunt/`, "Last hunt covered" in `explorer/README.md`; ⚠ one site server per hunt; ⚠ a hand-typed explorer query without `v` is refused and lays out with a zero-size canvas; the address bar is written when a pass settles, not at the gesture.
-
-**★ THE EXPLORER TARGETS THE DESKTOP (Matt, 2026-09-19). ★ EXPLORER-ONLY FAST PATHS ARE PERMITTED ONLY WHERE THE PIXEL DIFFERENCE FROM THE PIPELINE RENDER IS EASY TO BOUND.** Wasm threads are out. ⚠ This box drifts ~30% between identical runs — alternate before/after. Parked → `preserve\parked.md`.
-
-**★ THE DEEP TAB (ckpt 135–140) — PERTURBATION RENDERING BELOW THE f64 FLOOR, EXPLORER-ONLY; NOTHING DEEP ENTERS THE PIPELINE (Matt).** Its own crate and lazily loaded `perturb.wasm`; `engine.wasm` untouched by it. ⚠ **ANY source edit in `perturb-wasm` moves `perturb.wasm`'s bytes — every such edit is a rebake**, and `builder check`'s `bake` does not cover that module. **★ BLA WAS BUILT, MEASURED AND REMOVED (ckpt 137) — DO NOT REBUILD IT; there is no known speed step for the Deep render.** **★ THE INFLECTION TAB WAS BUILT AND PAGED OUT (Matt, 2026-09-20)** → `explorer/paged-inflection/`; RULED 2026-09-22: not worth integrating, worth a mention in the article's *Future work / Other artistic techniques* section (OPEN 9).
-
-**★ THE WALK IS A SHORT DEMONSTRATION OF HOW THE GALLERIES WERE MADE (Matt, 2026-09-20)** — 14 steps + 5 for the Julia twin; a place is ONE rendered field in recolourings, judged at 384×216 → `explorer/README.md`.
+**★ Deep (perturbation) is explorer-only; nothing deep enters the pipeline (Matt)** (→ fractal-engine §Deep render). The Inflection tab is paged out (`explorer/paged-inflection/`), and gets an article mention only (OPEN 9). **★ The Walk is a short demonstration of how the galleries were made.** Parked → `preserve\parked.md`.
 
 ## IN FLIGHT ACROSS THIS BOUNDARY
 Nothing.
 
 ## QUEUED IN DRIVE `prompts\`
-Nothing.
+`lanes_log_ckpt142.md` (wallpapers: delete the lane readings log from `CLAUDE.md`), unless it ran beside this closeout. Its report needs no carry.
 
 ## NEXT CHECKPOINT GOAL
 Matt raises it at the top of the checkpoint.
 
 ## OPEN (ordered) — Matt raises each
-1. **MINING IS CLOSED (Matt, 2026-09-21); he reopens it.** Inventory and prices → wallpapers `curation/LEGS.md §Mining is CLOSED — reopen inventory`; the `final139_*` set is the PRE baseline until something merges; reserve `gallery-grade score-pool`.
-2. **"Truly finalized" — the commits (Matt raises it).** What waits on it: the twenty-one kept records and their recipes (tracking = publishing); the staged website assets; the pre-final history rewrite and the CDN question. Preservation meanwhile is Matt's off-box backup of the 2026-09-22 export — which predates `final140_general2000`.
-3. **The decode cache — a storage decision for Matt** (~33 GB hot; Matt: not yet).
-4. **Website — the section-by-section review pass** (Matt brings a section's review doc).
-5. **Deploy preparation (Matt: preparing, not deploying)** → `builder/README.md §What is staged`. The choices left — a CDN in front of the big fetches, whether to rewrite history before the final commit, embedded links in full-size wallpapers, a real favicon (Matt's tile pick) — are listed HERE only.
-6. **Whether `data/palette_choice/rows/` belongs in a clone** (Matt: leave it entirely). `REFERENCE` is re-cut at the next `storage export` (ruled).
-7. **The DEEP tab's follow-ups** — Matt raises each. A hand-picked Deep-tab gallery of ~20 deep links inside the tab (unblocked); what a Nearby-minibrots entry should show at depth (Matt is testing); stopping a Newton jump early at a 2^k-fold symmetry stage (needs the feature bar's verdict); whether a nucleus reference pays on an off-nucleus frame (unmeasured). Fractional degrees and Phoenix at depth are CLOSED (→ fractal-engine).
-8. **LONG-TERM: rich SHALLOW Julia pictures at `c` near a parabolic point.** The explorer half exists (Julia preview under the pointer). The pipeline residue, carried by Matt's ruling: the sub-floor regime (ε 1e-3 → 1e-5) needs a cap field on `expand.rs`'s `Node` and the route from the seed row, then ungated spot renders per stratum as the primary read, the walk second (sheets in wallpapers `scratch/parabolic_c_pilot_ckpt139/`). The accumulating source list is `preserve\art_techniques_links.md`.
-9. **THE WRITEUP (Matt raises it; article prose = prose master + placement, authored by the session).** (a) **§Deep zoom is unwritten** (`article/deep-zoom.html` reads "Not written yet"; the Deep tab's sentence points at `escape-time-fractals.html#locations` and is retargeted when it exists). Its claims, as corrected by the censuses (→ fractal-discovery §Inside a minibrot copy): going inside a minibrot copy — or a chain of copies — is a technique for fine-scale detail; an ordinary walk does it by accident by going deep (median seven rungs, three decades; ~1 in 17 places at the geometric cut, ~1 in 400 at the tight one); it can be done explicitly (the tuned seahorse descents), but the head scored those worse and they took no seats — the case is Matt's eye on the named row; to sit 100–1000× inside a copy the copy must be wider than ~1e-7 (the rate peaks at 1e-10 and is gone by 1e-12), so smaller copies are Deep-tab territory. **Figure source: wallpapers `artifacts/discovery/minibrot_examples.jsonl`** (K = 2.0, 2,714 rows incl. the four satellite descent chains rung by rung; hot-tier artifact rebuilt in 9 s by `fractal-wallpapers minibrots examples`). (b) A ***Future work / Other artistic techniques*** section listing approaches looked at but not integrated — inflection (Inflector Gadget-style; "not worth integrating in Matt's experience") first.
-10. **A PROFILING PASS (Matt, 2026-09-22; overnight, when he says — the prompt is NOT yet written).** Native and wasm, engine and explorer as they stand: time every anchor per family and mode, flag anything unusually slow or that would benefit from a quick optimisation, and where cheap, do it. NOT a regression hunt against an older build (Matt: parse it generally). Seed classes still worth a look: an arm past LLVM's inline threshold (the ckpt-140 2× cliff), wasm losing an optimisation native keeps, a specialization arm falling back to the generic loop, cap/escalation changes that move time not pixels. Unattended-prompt rules apply (no stop-and-ask gates).
-11. **Phoenix tab, second step (optional):** a precomputed judge-score grid over the plane (P(≥3) per gate-size Julia at the default p) shipped as a small PNG overlay with a checkbox and its local maxima as suggested markers — a wallpapers job then a website one. Look at the plane first.
+1. **Mining is CLOSED; he reopens it.** Read `preserve\mining_laws.md`, then the reopen inventory in wallpapers `curation/LEGS.md`. The `final139_*` set is the PRE baseline, and `gallery-grade score-pool` runs before any solve.
+2. **"Truly finalized": the commits (Matt raises it).** What waits on it: the twenty-one kept records and their recipes (tracking = publishing), the staged website assets, and the pre-final history rewrite and CDN question.
+3. **The decode cache** — a storage decision for Matt (~33 GB hot; Matt: not yet).
+4. **Website: the section-by-section review pass** (Matt brings a section's review doc).
+5. **Deploy preparation (preparing, not deploying).** The choices left — a CDN in front of the big fetches, a history rewrite before the final commit, embedded links in full-size wallpapers, and a real favicon (Matt's tile pick) — are listed HERE only.
+6. **Whether `data/palette_choice/rows/` belongs in a clone** (Matt: leave it entirely).
+7. **The Deep tab's follow-ups:**
+   - A hand-picked Deep gallery of ~20 links inside the tab (unblocked).
+   - What a Nearby-minibrots entry should show at depth (Matt is testing).
+   - Stopping a Newton jump early at a 2^k-fold symmetry stage (needs the feature bar's verdict).
+   - Whether a nucleus reference pays on an off-nucleus frame (unmeasured).
+8. **LONG-TERM: rich SHALLOW Julia pictures at `c` near a parabolic point.** The explorer half exists (the Julia preview under the pointer). The pipeline residue: the sub-floor regime needs a cap field on `expand.rs`'s `Node` and the route from the seed row. After that, ungated spot renders per stratum are the primary read, and the walk comes second (sheets in wallpapers `scratch/parabolic_c_pilot_ckpt139/`). The source list is `preserve\art_techniques_links.md`.
+9. **THE WRITEUP (Matt raises it; the session authors a prose master plus a placement prompt).**
+   - (a) **§Deep zoom is unwritten** (`article/deep-zoom.html`). Its claims, figure source and numbers → `preserve\minibrot_copies.md` (delete that file once the section is placed). The Deep tab's sentence gains its link to the section then (→ `explorer/README.md`).
+   - (b) A ***Future work / Other artistic techniques*** section, with inflection first ("not worth integrating in Matt's experience").
+10. **A PROFILING PASS (overnight, when Matt says; the prompt is not yet written).** Native and wasm, engine and explorer as they stand: time every anchor per family and mode, flag anything unusually slow, and where cheap, fix it. General, NOT an A/B. Seed classes worth a look:
+    - an arm past LLVM's inline threshold;
+    - wasm losing an optimisation native keeps;
+    - a specialization arm falling back to the generic loop;
+    - cap/escalation changes that move time, not pixels.
+
+    Unattended rules apply, and it locks both repos.
+11. **Phoenix tab, second step (optional):** a precomputed judge-score grid over the plane, shipped as a small PNG overlay with a checkbox and suggested markers. A wallpapers job, then a website one. Look at the plane first.
 
 Parked → `preserve\parked.md`.
 
 ## STATUS / KNOWN REDS
-None. Website `builder check` 19/19, nothing skipped (`agreement` ~8 s). ⚠ A website `builder check` beside a wallpapers merge can throw a transient "not in the candidate ledger" red — retry. ⚠ A report just copied to Drive `reports\` can read back EMPTY for a minute (twice on 2026-09-22) — re-read, don't re-write. Box: reboot before the next overnight per fractal-operating.
+None.
+- ⚠ A website `builder check` beside a wallpapers merge can throw a transient "not in the candidate ledger" red; retry.
+- ⚠ A report just copied to Drive `reports\` can read back EMPTY for minutes; re-read, don't re-write.
+- Reboot the box before the next overnight (per fractal-operating).
 
 ## RULINGS THIS ERA
-ckpt 141 (2026-09-22/23): an explorer-polish checkpoint — fourteen prompts (thirteen website, one wallpapers), all reported. **Rulings (Matt):** the profiling pass is general, not an A/B (OPEN 10); the Walk opens on the base plane with a floor-size root box, ~500 ms; Deep screen is always 1 spp and samples belong to Download alone; the Deep FRAME block goes and a Details fold mirrors the shallow one; "left = change the view, right = manipulate this view" for the explorer's panels; a screensaver on the Gallery tab (intervals as listed, coarse fit, 500 ms fade, F11-ready; Fastest = 4 s, never below 1 spp, full-screen button, wake lock); Phoenix starting points = the classic + a diverse few, plane stays on top, tiles are WHOLE sets at home view, one panel style (smooth · Violet Rosewood · γ 0.38), `p = 0` moved to his `c`; the atlas discrepancy is fixed AND guarded by class; the index page gets a captionless picture; the README's third example; `ENCLOSE_K` 2.0. **What Claude got wrong:** it said the Atlas-page deprecation had fallen out of the ckpt-140 docs (it had landed on 2026-09-21; the docs were right); it read the Deep "hang" as a slow near-parabolic probe (it was a stranded pool — measure before diagnosing from the status text); it wrote a wrapped URL into a prompt (fixed before delivery); it asked for `figure-recipes.jsonl` to hold a spec panel's recipe (the registry row is the recipe); it proposed a `zoom in here` label that could not fit a 6% box (CC chose *root*). **What worked:** reproduce → name the mechanism with the two spec diffs → fix → count the population → guard the class, as one prompt; a dictated-value prompt with an `OVERRIDES` table rather than a hand JSON edit; small follow-up prompts per screenshot; the `[stated]`-style questions block at PREPARE FOR CLOSEOUT.
+ckpt 142 (2026-09-23), six prompts. All are reported except `lanes_log_ckpt142`, which is queued above.
+- **Doc shrink (Matt):**
+  - Mining laws and the minibrot census move verbatim to `preserve\`.
+  - The explorer's facts are owned by the website READMEs.
+  - Operating is canonical, and the preference lines stay terse.
+  - State no longer carries a per-checkpoint "what Claude got wrong"; a pattern that repeats becomes one line in operating.
+  - Verbatim moves are script steps. Only newly authored large text is presented.
+- **Backups are Matt's:** exports run only at his direction and are never proposed.
+- **`REFERENCE` = the kept `final139_green`.**
+- **The Deep tab:**
+  - Undo is a recolour.
+  - Cancel after an auto-started pass reverts to the last finished picture.
+  - Zoom-out stops at the family's home (Julia and the Phoenix plane at 2× home), with the centre eased home.
+  - A new tab sentence, with no link until §Deep zoom exists.
+  - A palette change mid-pass lands in the new palette.
+- **`CLAUDE.md` holds rules only**, so the lane log goes.
 
 ## KEEP LIST
-Drive `prompts\`: **wipe everything**. `reports\`: **wipe everything**.
+Drive `prompts\`: wipe everything except `lanes_log_ckpt142.md` if still unrun. `reports\`: wipe everything.
 
-Wallpapers `scratch/`: KEEP `place_radius_sheet/`, `retired_tentative/`, `preclose_ckpt125/off_list_stamps.txt`, `tuning_test/`, `leg_numbers.py`, `parabolic_c_pilot_ckpt139/` (OPEN 8's non-model read), and **`mbc140/`** (`descents.html`, `enclosed.html` — the writeup's picking sheets until §Deep zoom is written); **WIPE everything else.** Website `scratch/`: wipe all (`audit_deep_families_ckpt140/`, `deep_degrees_ckpt140/`, the probe scripts included — their oracle checks moved into `tests/oracle.rs`); the untracked staged set is NOT cleaned. Wallpapers records: the twenty-one kept + `REFERENCE` are the whole store; the untracked `recipes.jsonl` under each `final139_*` stamp STAY. Hot artifacts that stay: **`artifacts/discovery/minibrot_examples.jsonl`**; `artifacts/tuned129x_*`; the d=6 harvest and depth directories; every 2026-09-18/19/21 leg's directories; the parabolic pilot's legs. Sweepable when Matt sweeps: superseded `gallery_grade_head/pool_scores_*`; `curation_backup/`, `tiles/` manifests, `render_dose/*.pt`. The portable folder `fractal-drive-sync\portable\` is empty by design.
+Wallpapers `scratch/`:
+- KEEP `place_radius_sheet/`, `retired_tentative/`, `preclose_ckpt125/off_list_stamps.txt`, `tuning_test/`, `leg_numbers.py`, `parabolic_c_pilot_ckpt139/` (OPEN 8) and `mbc140/` (§Deep zoom's picking sheets).
+- WIPE everything else.
+
+Website `scratch/`: wipe all. The untracked staged set is NOT cleaned.
+
+Wallpapers records: the twenty-one kept are the whole store, and their `recipes.jsonl` stay.
+
+Hot artifacts:
+- Stay: `artifacts/discovery/minibrot_examples.jsonl`, `artifacts/tuned129x_*`, the d=6 harvest and depth directories, every 2026-09-18/19/21 leg's directories, and the parabolic pilot's legs.
+- Sweepable when Matt sweeps: superseded `gallery_grade_head/pool_scores_*`, `curation_backup/`, `tiles/` manifests and `render_dose/*.pt`.
 
 ## OWED
-Nothing. (`ENCLOSE_K` = 2.0 landed at ckpt 141; 0.82 kept as `minibrot.TIGHT_ENCLOSE_K`, still reported as a cut.)
+Nothing.
 
 ## SCRATCH/ARTIFACT FLAGS
-**★ THE STANDING KEEP ROSTER LIVES IN THE REPO — `src/fractal_wallpapers/README.md §The standing keep roster`.** ⚠ `.leveled/` directories are sweepable → `preserve\leveled_identity.md`. `artifacts/atlas/<plane>/thumbs/` stays while the atlas may be re-ingested. ⚠ `curation/repetition/*/sequence.jsonl` exists and nothing reads it — left alone. ⚠ CRLF drift is real; `git ls-files --eol`. ARCHIVED (RESTORE before reuse): unchanged from ckpt 106.
+- **★ The standing keep roster lives in the repo:** `src/fractal_wallpapers/README.md §The standing keep roster`.
+- ⚠ `.leveled/` directories are sweepable (→ `preserve\leveled_identity.md`).
+- `artifacts/atlas/<plane>/thumbs/` stays while the atlas may be re-ingested.
+- ⚠ CRLF drift is real; check with `git ls-files --eol`.
+- ARCHIVED (restore before reuse): unchanged from ckpt 106.
 
 ## PARKED / SETTLED
 → `preserve\INDEX.md`, which lists every file. Never re-list them here.

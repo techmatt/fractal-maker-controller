@@ -14,4 +14,4 @@ Changes when: labeling returns. **The whole method — sampling regime, judge-re
 - **★ THE RENDER JUDGE IS A GATE, NOT A TOP-END RANKER**: no order inside its own top on any kind. `P(≥4) ≥ 0.5` is a TRUSTED quality gate (Matt) and reads as a well-calibrated ≥3 screen. The top end is Matt's eye on the final seating.
 - **★ THE FINE HEAD'S LEVEL IS TRUSTED, NOT ONLY ITS ORDER (Matt, 2026-09-07)**; `p_fine`, `p_coarse` and the bars are closed (→ fractal-state). **The hue-bias worry is CLOSED (Matt, ckpt 115).**
 - **★ A JUDGE FLIP IS ONE ACT** — adoption + floor refit + FULL rescore (→ `preserve\judge_training.md`). The render judge is NOT regime-robust: fit and read on the label-geometry column.
-- **★ A q3+ VERDICT IN ANY STORE IS A PROVEN ROOT** (`supply.proven.derive`; → fractal-discovery).
+- **★ A q3+ VERDICT IN ANY STORE IS A PROVEN ROOT** (`supply.proven.derive`; → `preserve\mining_laws.md`).
