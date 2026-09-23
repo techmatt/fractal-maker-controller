@@ -1,4 +1,4 @@
-# fractal-state — checkpoint 142 (2026-09-23: a doc-shrink checkpoint — mining laws and the minibrot census moved verbatim to `preserve\`; tutorial and engine rewritten to pointers; the website READMEs took over the explorer's facts; Deep undo/Cancel/zoom-out polish; `REFERENCE` is a kept record)
+# fractal-state — checkpoint 143 (2026-09-23: §Deep zoom outlined and its facts audited; the deep zoom video's first cut and tooling; explorer palette modes (Leveled | Absolute, `lambda`, `period`); Deep-tab stall fixed; screensaver polish)
 
 ## Where we are
 Three phases, each depending strictly on the one before (→ fractal-discovery). Matt iterates from pictures, not counts. Phase 3 is his eye on the final seating, and **every planned collection has a viewer at its official size.**
@@ -61,10 +61,11 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ Texture weight is a drawn recipe parameter, [0.2, 0.9], on by default. Closed.**
 - **★ Rotation and phase are CLOSED:** one random phase per candidate, `--phase-draw`, OFF by default (→ `curation/LEGS.md`, `preserve\rotation_phase_economics.md`).
 - **★ Palette replication is PARKED (Matt, 2026-09-12).** `data/palettes/palettes_for_random_choice.csv` (232 maps) feeds the explorer's Random palette and the Walk's "All palettes".
+- **★ The explorer's palette modes are EXPLORER-ONLY (ckpt 143).** `scale` (leveled | absolute), `lambda` and `period` are omitted at default, and the pipeline's key whitelist never emits them. Leveled stays the default everywhere (→ `engine/README.md`, `explorer/README.md`).
 
 ## LAWS STATE STILL CARRIES
 - **★ The degree-6 plane is never labelled** (`partitions.NEVER_LABELLED`).
-- **★ Inside a minibrot copy is a named phenomenon** → `preserve\minibrot_copies.md` (the §Deep zoom source, OPEN 9).
+- **★ Inside a minibrot copy is a named phenomenon** → `preserve\minibrot_copies.md`. It is a §Deep zoom source, with `preserve\deep_zoom_section.md` (OPEN 9).
 - **★ Parabolic aiming is answered above ε ≈ 3e-3: dead.** Below that ε it is untested (OPEN 8, fractal-engine).
 
 ## RETENTION
@@ -94,15 +95,15 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 
 | Topic | Owner |
 |---|---|
-| Explorer: tabs, keys, Deep/Cancel/undo, zoom-out stop, screensaver, Walk, Phoenix | `explorer/README.md` |
-| Deep kernel, oracle, calibration, closed verdicts | `explorer/perturb-wasm/README.md` |
+| Explorer: tabs, keys, Deep/Cancel/undo/recolour, palette modes, zoom-out stop, screensaver, Walk, Phoenix | `explorer/README.md` |
+| Deep kernel, oracle, calibration, closed verdicts (BLA included) | `explorer/perturb-wasm/README.md` |
 | Atlas | `atlas/README.md` |
-| Builder, figures, the split rule, `seats.py`, the staged set, site size | `builder/README.md` |
-| Traps: native exe rebuild, perturb rebake, repo links | `CLAUDE.md` |
+| Builder, figures, the split rule, `seats.py`, the staged set, site size, the zoom-video tooling (`zoom.py`) | `builder/README.md` |
+| Traps: native exe rebuild, perturb rebake, repo links, the no-`<video>` rule | `CLAUDE.md` |
 | Per-page status | `docs/page-review.md` |
 
 - **★ STAGING RULE (Matt):** no gallery-sized or library-sized commits until he says deploy.
-- Shallow contract **v3**; deep contract **v3**.
+- Shallow contract **v3**; deep contract **v3** (the ckpt 143 palette keys needed no bump).
 
 **★ THE SITE IS RE-BASED ON `final139_*` + `final140_general2000` — DATA ONLY. Prose and captions wait for "ready for publishing".** Held until then:
 - `gallery-curation.html`'s prose, which describes a mode-floor shortfall the current record lacks.
@@ -124,7 +125,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 Nothing.
 
 ## QUEUED IN DRIVE `prompts\`
-`lanes_log_ckpt142.md` (wallpapers: delete the lane readings log from `CLAUDE.md`), unless it ran beside this closeout. Its report needs no carry.
+`lanes_log_ckpt142.md` (wallpapers: delete the lane readings log from `CLAUDE.md`), unless it has run. Its report needs no carry.
 
 ## NEXT CHECKPOINT GOAL
 Matt raises it at the top of the checkpoint.
@@ -134,20 +135,36 @@ Matt raises it at the top of the checkpoint.
 2. **"Truly finalized": the commits (Matt raises it).** What waits on it: the twenty-one kept records and their recipes (tracking = publishing), the staged website assets, and the pre-final history rewrite and CDN question.
 3. **The decode cache** — a storage decision for Matt (~33 GB hot; Matt: not yet).
 4. **Website: the section-by-section review pass** (Matt brings a section's review doc).
-5. **Deploy preparation (preparing, not deploying).** The choices left — a CDN in front of the big fetches, a history rewrite before the final commit, embedded links in full-size wallpapers, and a real favicon (Matt's tile pick) — are listed HERE only.
+5. **Deploy preparation (preparing, not deploying).** The choices left are listed HERE only:
+   - a CDN in front of the big fetches;
+   - a history rewrite before the final commit;
+   - embedded links in full-size wallpapers;
+   - a real favicon (Matt's tile pick);
+   - the deep zoom video's YouTube upload and its 4K master (7680-wide fields, about 4× the cost). Both wait until the ideal fractal is settled, then final deployment.
 6. **Whether `data/palette_choice/rows/` belongs in a clone** (Matt: leave it entirely).
 7. **The Deep tab's follow-ups:**
    - A hand-picked Deep gallery of ~20 links inside the tab (unblocked).
    - What a Nearby-minibrots entry should show at depth (Matt is testing).
-   - Stopping a Newton jump early at a 2^k-fold symmetry stage (needs the feature bar's verdict).
+   - Stopping a Newton jump early at a 2^k-fold symmetry stage (needs the feature bar's verdict). ⚠ Nothing in either repo computes the stages today.
    - Whether a nucleus reference pays on an off-nucleus frame (unmeasured).
 8. **LONG-TERM: rich SHALLOW Julia pictures at `c` near a parabolic point.** The explorer half exists (the Julia preview under the pointer). The pipeline residue: the sub-floor regime needs a cap field on `expand.rs`'s `Node` and the route from the seed row. After that, ungated spot renders per stratum are the primary read, and the walk comes second (sheets in wallpapers `scratch/parabolic_c_pilot_ckpt139/`). The source list is `preserve\art_techniques_links.md`.
 9. **THE WRITEUP (Matt raises it; the session authors a prose master plus a placement prompt).**
-   - (a) **§Deep zoom is unwritten** (`article/deep-zoom.html`). Its claims, figure source and numbers → `preserve\minibrot_copies.md` (delete that file once the section is placed). The Deep tab's sentence gains its link to the section then (→ `explorer/README.md`).
+   - (a) **§Deep zoom (`article/deep-zoom.html`): the outline is agreed, and the facts are audited.** Everything lives in `preserve\deep_zoom_section.md`: the outline with Matt's edits, the zoom's path, the f64 floor, the kernel, the same-box speed table, the BLA verdict and links, and the figure slots. Read it and `prose\writing-guidance.md` whole, then write the prose master.
+     - Figure blockers:
+       - The f64-versus-deep pair needs an opt-in `RenderSpec` field that skips the f64 check. This is a wallpapers prompt, byte-identical for every existing spec (Matt ruled yes).
+       - Every deep figure needs a small deep-figure maker in `builder/`, built at placement.
+       - The colouring stills of the final frame are Matt's picks in the Deep tab.
+     - **The video:**
+       - The first cut exists (`builder/zoom.py`, record `builder/data/deep-zoom-descent.keyframes.json`, three MP4s in `artifacts/deep-zoom/video/`).
+       - Paused on Matt's colour choice and ending. He is exploring a recentred cut that ends on the period-6263 core.
+       - On the page it is a poster WebP linking out, never a `<video>` embed.
+     - When the section is placed:
+       - delete `preserve\minibrot_copies.md` and `preserve\deep_zoom_section.md`;
+       - the Deep tab's sentence gains its link (→ `explorer/README.md`).
    - (b) A ***Future work / Other artistic techniques*** section, with inflection first ("not worth integrating in Matt's experience").
 10. **A PROFILING PASS (overnight, when Matt says; the prompt is not yet written).** Native and wasm, engine and explorer as they stand: time every anchor per family and mode, flag anything unusually slow, and where cheap, fix it. General, NOT an A/B. Seed classes worth a look:
     - an arm past LLVM's inline threshold;
-    - wasm losing an optimisation native keeps;
+    - wasm losing an optimisation native keeps (`simd128` has never been tried on `perturb.wasm`);
     - a specialization arm falling back to the generic loop;
     - cap/escalation changes that move time, not pixels.
 
@@ -163,31 +180,45 @@ None.
 - Reboot the box before the next overnight (per fractal-operating).
 
 ## RULINGS THIS ERA
-ckpt 142 (2026-09-23), six prompts. All are reported except `lanes_log_ckpt142`, which is queued above.
-- **Doc shrink (Matt):**
-  - Mining laws and the minibrot census move verbatim to `preserve\`.
-  - The explorer's facts are owned by the website READMEs.
-  - Operating is canonical, and the preference lines stay terse.
-  - State no longer carries a per-checkpoint "what Claude got wrong"; a pattern that repeats becomes one line in operating.
-  - Verbatim moves are script steps. Only newly authored large text is presented.
-- **Backups are Matt's:** exports run only at his direction and are never proposed.
-- **`REFERENCE` = the kept `final139_green`.**
+ckpt 143 (2026-09-23), seven prompts, all reported: `deepzoom_audit`, `deepzoom_video`, `screensaver_polish`, `deep_stall`, `palette_audit`, `palette_modes` and `deepspeed_facts`.
+- **§Deep zoom outline edits (Matt):**
+  - the census is described in words only;
+  - Wikipedia is paraphrased and linked;
+  - no bulb-size law;
+  - no "making the video" section, just one sentence linking `builder/zoom.py`;
+  - colouring stills of the final frame follow the video;
+  - the speed paragraph links BLA without its math;
+  - GPUs are stated to be clearly faster, and the CPU was kept for portability.
+- **The video:**
+  - The field is computed once and coloured many times.
+  - The mapping is a function of ν alone, so overlapping keyframes agree.
+  - Interior is black.
+  - Placement is YouTube plus a poster, with no rewrite of the no-video rule.
+  - 4K and YouTube wait for final deployment.
+- **Palette modes (explorer-first):**
+  - The Leveled | Absolute switch swaps the controls shown.
+  - Box–Cox `lambda` applies under both scales; `period` applies under absolute only.
+  - At default, nothing moved: 315 native renders and 212 wasm shades are byte-identical, and the anchors are unchanged.
+  - The video's three mappings are reachable exactly.
 - **The Deep tab:**
-  - Undo is a recolour.
-  - Cancel after an auto-started pass reverts to the last finished picture.
-  - Zoom-out stops at the family's home (Julia and the Phoenix plane at 2× home), with the centre eased home.
-  - A new tab sentence, with no link until §Deep zoom exists.
-  - A palette change mid-pass lands in the new palette.
-- **`CLAUDE.md` holds rules only**, so the lane log goes.
+  - A colour change recolours the picture on screen, whatever is running.
+  - The bar is red (nothing up), yellow (finer coming) or green (final).
+- **The screensaver:** every interval draws at ss2. Timed intervals show a slow picture late rather than skipping it. A still pointer fades the bar.
+- **The f64-versus-deep figure** gets an opt-in `RenderSpec` field (Matt).
+- **Placement default (Matt):** when it is unclear whether a Claude-side write will work, Matt places the file, given explicit paths (→ fractal-operating).
 
 ## KEEP LIST
-Drive `prompts\`: wipe everything except `lanes_log_ckpt142.md` if still unrun. `reports\`: wipe everything.
+Drive `prompts\`: wipe everything except `lanes_log_ckpt142.md` if it is still unrun. `reports\`: wipe everything (their facts are extracted to `preserve\deep_zoom_section.md`).
 
 Wallpapers `scratch/`:
 - KEEP `place_radius_sheet/`, `retired_tentative/`, `preclose_ckpt125/off_list_stamps.txt`, `tuning_test/`, `leg_numbers.py`, `parabolic_c_pilot_ckpt139/` (OPEN 8) and `mbc140/` (§Deep zoom's picking sheets).
 - WIPE everything else.
 
-Website `scratch/`: wipe all. The untracked staged set is NOT cleaned.
+Website:
+- `scratch/`: wipe all. The untracked staged set is NOT cleaned.
+- **KEEP `artifacts/deep-zoom/`** (the fields, the coloured keyframes and the three MP4s; about 5 GB, untracked). The video is recoloured from those fields.
+
+Outside both repos: `C:\Tools\fraktaler-3\` (the benchmark install) stays until Matt removes it.
 
 Wallpapers records: the twenty-one kept are the whole store, and their `recipes.jsonl` stay.
 

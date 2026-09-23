@@ -33,6 +33,7 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
   - `mirror` is a bake and `cycles` an index, and they multiply.
   - The axis is a byte-for-byte no-op on the four direct traps.
   - Adding maps never moves an existing bake.
+  - `scale` (leveled | absolute), `lambda` (Box–Cox, before the stretch) and `period` (ckpt 143) are EXPLORER-ONLY keys, omitted at default and never emitted by the pipeline's key whitelist (→ `engine/README.md`).
 - **★ A flat texture is smooth-with-rank** (`mode_policy.routed_mode`). `data/coloring/texture_flat.jsonl` is a tracked register with geometry in the key.
 - **★ The direct traps:**
   - `direct_trap_multiply` whitewashes because it is read through sRGB. Fixes are mode-param variants, never engine edits (→ `engine/README.md`).
