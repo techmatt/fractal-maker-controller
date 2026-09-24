@@ -9,7 +9,7 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
 
 ## Rules a future session must not get wrong
 - **★ Never gate on clip share; use in-mask chroma** (→ `engine/README.md §The direct traps`). UF shape names do not transfer by name.
-- **★ Every renderer draws the same picture for the same recipe.** There is one builder (`release.task_for`, `engine_spec.spec_of`), guarded by `tests/test_renderer_agreement.py`. A new spec site goes through the builder, never through a longer keyword list.
+- **★ Every renderer draws the same picture for the same recipe.** There is one builder (`release.task_for`, `engine_spec.spec_of`), guarded by `tests/test_renderer_agreement.py`. A new spec site goes through the builder, never through a longer keyword list. The website keeps a copy of the coloring builder; its `builder check` `coloring` check holds that copy equal to `engine_spec.coloring_of` over every collection seat (ckpt 146, after the copy drifted once).
 - **★ A coloring field spelled flat on a manifest row is legitimate** (→ wallpapers `README.md §One shape for a place`).
 - **★ Identity:**
   - Any new field-side render axis must enter the field-cache/replay identity key; a variant through `mode_params` needs none.
@@ -44,6 +44,7 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
   - `pins.query_of` is the recipe→link writer.
 - **★ `Family::PhoenixM` (`phoenix_m`; explorer name `phoenix_plane`).** At p = 0 it is the Mandelbrot set. It is not mined. ⚠ The classic Ushiki c = 0.5667 lies just OUTSIDE the p = −0.5 filled set.
 - **★ Zero-behaviour is not bytes alone:** time the three anchors as well as hashing them. An enum arm once pushed `Family::step` past LLVM's inline threshold and doubled the Mandelbrot anchor.
+- **★ Interior samples are answered without iterating** wherever every field of the pass is escape-only (ckpt 146): the cardioid, bulb and disk tests on the Mandelbrot and multibrot planes, a proven basin disk on Julia planes of degree 2–6 at their shipped `c`, and exact Brent repeat detection on every family. The fingerprint did not move. Prove any engine change with `fractal-wallpapers identity TAG --against TAG --edges`. The interior-orbit modes (traps, lattice, the addresses) still iterate to the cap; extending the seam to them is OPEN in fractal-state.
 - **Heuristics:**
   - Production mirrors non-cyclic maps; treat that as a suspect, but check before assuming.
   - Genericity, not multiplicity, is the perf trap, and family spread dwarfs mode spread (live numbers → website `explorer/README.md §Measured`).
@@ -56,9 +57,9 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
 - **DEEP (perturbation) is EXPLORER-ONLY:** the website's `explorer/perturb-wasm` crate plus the Deep tab. Nothing deep enters the pipeline (Matt).
   - Its kernel, oracle, per-degree speeds, calibration, minibrots at degree d, link v3 and the closed verdicts (fractional degrees; Phoenix at depth) are owned by `explorer/perturb-wasm/README.md` and `explorer/README.md`.
   - Its traps (rebuild the native exe; any `perturb-wasm` edit is a rebake) are in website `CLAUDE.md`.
-  - **★ BLA was built, measured and removed; do not rebuild it.**
+  - **★ BLA was built, measured and removed; do not rebuild it.** Also measured and closed with no gain (ckpt 146): `simd128` on `perturb.wasm`, and a nucleus reference on an off-nucleus frame.
   - **★ A twin inside a copy is solved by multiple shooting, not placed by formula** (`twin` in `builder/deep-gallery-native`; ckpt 145). The first-order point `c_A + s_A·c_B` misses the copy of B inside copy A by 0.04–0.34% of the offset, which is too far for Newton at period p_A·p_B: Newton escapes, or finds the wrong nucleus. Periods multiply down a descent, so the iteration ceiling, not precision, ends it.
-  - **★ `cap::CEILING` = 1,000,000 binds on degree-6 near-parabolic frames; RULED keep.**
+  - **★ Two ceilings (ckpt 146):** `cap::AUTOMATIC_CEILING` = 1,000,000 (the depth rule and the probe; it binds on degree-6 near-parabolic frames; RULED keep) and `cap::EXPLICIT_CEILING` = 2,000,000 for a typed or linked `n` (→ `explorer/README.md §Two ceilings`).
 - **DEPTH (the f64 pipeline) stays SHELVED.** ⚠ In wallpapers, `deep/` and `cli/deep_commands.py` are DEPTH; the perturbation kernel is named `perturb`.
 - **Un-shelving DEPTH, or any entry of deep pictures into the pipeline,** reads:
   - `preserve\deep_shelf.md`
