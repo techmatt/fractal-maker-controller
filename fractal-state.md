@@ -1,4 +1,4 @@
-# fractal-state — checkpoint 144 (2026-09-23: §Deep zoom placed as v2 with figure placeholders; the f64 opt-out on `RenderSpec`; the Deep tab's gallery; Deep tab undo, controls grid and shallow↔deep parity; the absolute palette tidied)
+# fractal-state — checkpoint 145 (2026-09-24: §Deep zoom placed as v3; the deep-figure maker and automatic minibrot descents; shallow link v4 with `n`; Find minibrots copies-first at 32 periods; Hold look; favicon; embedded links)
 
 ## Where we are
 Three phases, each depending strictly on the one before (→ fractal-discovery). Matt iterates from pictures, not counts. Phase 3 is his eye on the final seating, and **every planned collection has a viewer at its official size.**
@@ -95,16 +95,17 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 
 | Topic | Owner |
 |---|---|
-| Explorer: tabs, keys, Deep/Cancel/undo/recolour, palette modes, zoom-out stop, screensaver, Walk, Phoenix | `explorer/README.md` |
+| Explorer: tabs, keys, Deep/Cancel/undo/recolour, palette modes and Hold look, the fade table, Find minibrots (copies before bulbs, 32 periods, measured framing), zoom-out stop, screensaver, Walk, Phoenix | `explorer/README.md` |
 | Deep kernel, oracle, calibration, closed verdicts (BLA included) | `explorer/perturb-wasm/README.md` |
 | Atlas | `atlas/README.md` |
-| Builder, figures, the split rule, `seats.py`, the staged set, site size, the zoom-video tooling (`zoom.py`) | `builder/README.md` |
+| Builder, figures, the split rule, `seats.py`, the staged set, site size, the zoom-video tooling (`zoom.py`), the deep-figure maker (`builder deep`), automatic minibrot descents (`builder descent`), the site's icon | `builder/README.md` |
+| Explorer links embedded in downloaded and released files | `stamp.js` · wallpapers `explorer_link`; the `stamps` check |
 | The Deep tab's gallery: its register (`explorer/deep-gallery.jsonl`), maker (`builder/deep_gallery.py`) and method | `builder/README.md §How the first set was found` |
 | Traps: native exe rebuild, perturb rebake, repo links, the no-`<video>` rule | `CLAUDE.md` |
 | Per-page status | `docs/page-review.md` |
 
 - **★ STAGING RULE (Matt):** no gallery-sized or library-sized commits until he says deploy.
-- Shallow contract **v3**; deep contract **v3** (the ckpt 143 palette keys needed no bump).
+- Shallow contract **v4** (an optional `n`, omitted at the width rule; ckpt 145); deep contract **v3**.
 
 **★ THE SITE IS RE-BASED ON `final139_*` + `final140_general2000` — DATA ONLY. Prose and captions wait for "ready for publishing".** Held until then:
 - `gallery-curation.html`'s prose, which describes a mode-floor shortfall the current record lacks.
@@ -124,54 +125,63 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 **★ Deep (perturbation) is explorer-only; nothing deep enters the pipeline (Matt)** (→ fractal-engine §Deep render). The Inflection tab is paged out (`explorer/paged-inflection/`), and gets an article mention only (OPEN 9). **★ The Walk is a short demonstration of how the galleries were made.** Parked → `preserve\parked.md`.
 
 ## IN FLIGHT ACROSS THIS BOUNDARY
-Nothing.
+- **`double_descent_ckpt145` + addendum 1 (website).** Its interim report is read and carried here. The favicon-seat movie's fields were still rendering at the boundary (a 960×540 cut, then colour and encode). Its final report may arrive after this closeout; read it for the movie and whatever changed since.
 
 ## QUEUED IN DRIVE `prompts\`
-Nothing.
+Both run after `double_descent` commits, in either order (Matt's):
+- **`cap_split_ckpt145` (website; may lock both).** Two ceilings, separately named: automatic 1e6 (the depth rule and the probe; the `cap::CEILING` ruling) and explicit 2e6 (a typed or linked `n`, Halve/Double, Find minibrots' `32·p`, descent pins). The `n` range widens to 2e6 in both contracts. It also measures orbit memory per worker and renders the movie's M₂ at its full 32 periods.
+- **`deep_zoom_slots_ckpt145` + addendum 1 (website).**
+  - The BLA line becomes "about 20% slower … to about 2.6 times faster".
+  - Placeholders `deep-descent-video` and §The multibrots (`deep-multibrots`) are added.
+  - Two corrections go into §Automatic minibrot descents.
 
 ## NEXT CHECKPOINT GOAL
 Matt raises it at the top of the checkpoint.
 
 ## OPEN (ordered) — Matt raises each
+Items 3, 6 and 11 were closed at ckpt 145; the numbering is kept.
 1. **Mining is CLOSED; he reopens it.** Read `preserve\mining_laws.md`, then the reopen inventory in wallpapers `curation/LEGS.md`. The `final139_*` set is the PRE baseline, and `gallery-grade score-pool` runs before any solve.
 2. **"Truly finalized": the commits (Matt raises it).** What waits on it: the twenty-one kept records and their recipes (tracking = publishing), the staged website assets, and the pre-final history rewrite and CDN question.
-3. **The decode cache** — a storage decision for Matt (~33 GB hot; Matt: not yet).
 4. **Website: the section-by-section review pass** (Matt brings a section's review doc).
-5. **Deploy preparation (preparing, not deploying).** The choices left are listed HERE only:
-   - a CDN in front of the big fetches;
-   - a history rewrite before the final commit;
-   - embedded links in full-size wallpapers;
-   - a real favicon (Matt's tile pick);
-   - the deep zoom video's YouTube upload and its 4K master (7680-wide fields, about 4× the cost). Both wait until the ideal fractal is settled, then final deployment.
-6. **Whether `data/palette_choice/rows/` belongs in a clone** (Matt: leave it entirely).
-7. **The Deep tab's follow-ups:**
-   - **The gallery is BUILT (31 frames, Matt's picks).** Matt adds frames over time, including frames centred away from any minibrot. He sends links, and a one-line prompt appends each row and bakes its thumbnail (→ `builder/README.md`). The count is open-ended.
-   - **Should Find minibrots pin 32 periods when it opens a framed minibrot at depth?** At the settled cap (about 13 periods) the body is a black blob, and it resolves at about 32 [measured, ckpt 144]. It is Matt's call, and he is testing.
-   - Stopping a Newton jump early at a 2^k-fold symmetry stage (needs the feature bar's verdict). ⚠ Nothing in either repo computes the stages today.
-   - Whether a nucleus reference pays on an off-nucleus frame (unmeasured).
+5. **Deploy preparation (preparing, not deploying).**
+   - **Done at ckpt 145:**
+     - **The favicon** is F08, cropped from seat `dff7e280effc3aa3` (→ `builder/README.md §The site's icon`). The Galleries page opens on its source picture.
+     - **Embedded links.** Every explorer download and every release render carries its explorer link as invisible metadata: PNG `iTXt`, and JPG XMP `dc:source` plus EXIF. The base URL is one constant per repo, held to `pages.SITE_URL`. Release files already on disk are unstamped; there is no backfill.
+   - **Left:**
+     - a CDN in front of the big fetches;
+     - a history rewrite before the final commit;
+     - the deep zoom video's YouTube upload and 4K master, which wait until the ideal fractal is settled, then final deployment.
+   - **After deployment:** post the site to fractalforums.org.
+7. **The Deep tab's follow-ups.**
+   - **The gallery (31 frames, Matt's picks).** Matt adds frames over time, including frames centred away from any minibrot. He sends links, and a one-line prompt appends each row and bakes its thumbnail (→ `builder/README.md`).
+   - **Resolved at ckpt 145:**
+     - Find minibrots opens a copy at 32 periods, lists copies before bulbs (bulbs only when the view holds no copy), and frames by the measured body.
+     - Halve and Double stay live mid-pass.
+   - **Closed:** the Newton early-stop at symmetry stages. Smaller framing lets the user zoom out to the stages.
 8. **LONG-TERM: rich SHALLOW Julia pictures at `c` near a parabolic point.** The explorer half exists (the Julia preview under the pointer). The pipeline residue: the sub-floor regime needs a cap field on `expand.rs`'s `Node` and the route from the seed row. After that, ungated spot renders per stratum are the primary read, and the walk comes second (sheets in wallpapers `scratch/parabolic_c_pilot_ckpt139/`). The source list is `preserve\art_techniques_links.md`.
 9. **THE WRITEUP (Matt raises it; the session authors a prose master plus a placement prompt).**
-   - (a) **§Deep zoom (`article/deep-zoom.html`): the prose is PLACED (master `prose\Deep zoom v2.md`, Matt's review applied, no divergences), with seven `figure-placeholder` blocks (`grep -rn figure-placeholder`).**
-     - What remains is the figure round. `preserve\deep_zoom_section.md` holds the figure facts, and `minibrot_copies.md` holds the descent chains.
-     - The f64-versus-perturbation pair is UNBLOCKED: the spec field is `"allow_unresolvable_in_f64": true`, and the proof spec is wallpapers `scratch/f64_optout/spec_on.json`.
-     - Every deep figure needs a small deep-figure maker in `builder/`, built at the figure round.
-     - The colouring stills of the final frame are Matt's picks in the Deep tab.
-     - `deep-shallow-and-deep` is a shallow frame and a deep frame inside it.
-     - The J panel beside the stage strip is J(u), with u the target's position relative to the period-221 copy.
-     - **The video:**
-       - The first cut exists (`builder/zoom.py`, record `builder/data/deep-zoom-descent.keyframes.json`, three MP4s in `artifacts/deep-zoom/video/`).
-       - It is paused on Matt's colour choice and ending. He is exploring a recentred cut that ends on the period-6263 core; the period-12451 nucleus is also located (Deep gallery tile 14).
-       - On the page it is a poster WebP linking out, never a `<video>` embed.
-     - When the figure round finishes, delete `preserve\minibrot_copies.md` and `preserve\deep_zoom_section.md`.
+   - (a) **§Deep zoom (`article/deep-zoom.html`) is placed as v3** (master `prose\Deep zoom v3.md`).
+     - **Placed figures:**
+       - `deep-f64-and-perturbation`;
+       - `deep-shallow-and-deep` (its two panels do NOT share a colouring, on purpose);
+       - `deep-descent-rungs` (six, 2×3);
+       - `deep-misiurewicz-pairs`;
+       - `deep-descent-pairs`.
+     - **Placeholders:**
+       - `deep-zoom-video`: the first cut exists (`builder/zoom.py`, three MP4s in `artifacts/deep-zoom/video/`). It is paused on Matt's colour and ending. On the page it is a poster WebP linking out, never a `<video>` embed.
+       - `deep-final-colorings`: Matt's picks in the Deep tab.
+       - Once `deep_zoom_slots` lands, `deep-descent-video` and `deep-multibrots`. Matt writes the multibrots section.
+     - **The double-descent movie** is the favicon seat, rendered `smooth`, chain [A, A], ending on M₂ at period 32,761. It is rendering under `double_descent`, and its full 32 periods need `cap_split`'s explicit ceiling.
+     - **When the figure round finishes,** delete `preserve\minibrot_copies.md` and `preserve\deep_zoom_section.md`.
    - (b) A ***Future work / Other artistic techniques*** section, with inflection first ("not worth integrating in Matt's experience").
 10. **A PROFILING PASS (overnight, when Matt says; the prompt is not yet written).** Native and wasm, engine and explorer as they stand: time every anchor per family and mode, flag anything unusually slow, and where cheap, fix it. General, NOT an A/B. Seed classes worth a look:
     - an arm past LLVM's inline threshold;
     - wasm losing an optimisation native keeps (`simd128` has never been tried on `perturb.wasm`);
     - a specialization arm falling back to the generic loop;
-    - cap/escalation changes that move time, not pixels.
+    - cap/escalation changes that move time, not pixels;
+    - whether a nucleus reference pays on an off-nucleus frame (unmeasured).
 
     Unattended rules apply, and it locks both repos.
-11. **Phoenix tab, second step (optional):** a precomputed judge-score grid over the plane, shipped as a small PNG overlay with a checkbox and suggested markers. A wallpapers job, then a website one. Look at the plane first.
 
 Parked → `preserve\parked.md`.
 
@@ -182,41 +192,60 @@ None.
 - Reboot the box before the next overnight (per fractal-operating).
 
 ## RULINGS THIS ERA
-ckpt 144 (2026-09-23), eleven prompts, all reported: `f64_check_optout`, `deep_gallery_sheet`, `PLACE_deep_zoom_v1`, `deep_gallery_build`, `deep_tab_undo_and_layout`, `palette_absolute_tidy`, `deep_zoom_gallery_para_and_review`, `deep_tab_controls_grid`, `PLACE_deep_zoom_v2`, `explorer_shallow_deep_parity`, `deep_zoom_blurb` (and `lanes_log_ckpt142`, which had run before).
-- **§Deep zoom (Matt's review):**
-  - The lead carries the f64 figure.
-  - §Where double precision runs out is cut.
-  - There is a higher-precision paragraph (quad floats, `rug`, `mpmath`).
-  - A gallery section describes the rough search and why a deep search must be more precise.
-  - The page is reviewed from the site, through the `review\deep-zoom.docx` round trip.
-  - The front-page blurb is Claude's replacement.
+ckpt 145 (2026-09-24). Reported prompts:
+`deep_figures`, `explorer_nav_layout`, `palette_hold`, `deep_zoom_edits`, `readme_image4`, `iter_buttons_live`, `favicon_sheet`, `find_minibrots_cap2`, `embedded_links`, `favicon_wire`, `find_minibrots_bulbs` (+1), `PLACE_deep_zoom_v3`; `double_descent` (+1) is interim.
+
 - **Explorer:**
-  - Zoom-out clamps its width about the current centre.
-  - Autolevel does not apply under Absolute, and Phase comes first in both palette rows.
-  - The iteration arrows step by 5000.
-  - The Deep tab holds 4 rendered frames, so Cancel and Ctrl+Z return without a recompute.
-  - Cancel shows whenever a pass runs.
-  - Save lives in the Download row.
+  - Render-mode parameters wrap, so the Navigation column never shrinks.
+  - Julia is the last Navigation button, beside its preview box.
+  - The Deep gallery is always open.
+  - "Back to the explorer" is now **Shallow mode**. It fades (with its tooltip kept) when the frame is too deep.
+  - **Nothing fades for a render in progress:** a press stops the pass and acts. Halve and Double restart the pass at the new cap and keep the reference orbit.
+- **Hold look (Absolute only; UI state, on by default).**
+  - Dragging λ re-solves period and phase, holding band density and colour at the frame's median ν.
+  - Dragging period re-solves phase.
+  - The maths and links are unchanged.
+- **Shallow link v4 carries an optional `n`** (Matt). `pins.query_of` writes it.
+- **Find minibrots** (Matt: an all-black minibrot is a failure):
+  - It pins `n = 32·p` (`nuclei::open_cap`).
+  - It frames the copy at about a quarter of the height, from the measured body.
+  - It lists copies before bulbs, and bulbs, labelled, only when the view holds no copy.
+- **Two iteration ceilings (Matt):** automatic 1e6 and explicit 2e6, as separate constants. Queued as `cap_split`.
+- **§Deep zoom v3 (Matt's review):**
+  - "Julia sets inside the Mandelbrot set" (Tan Lei at Misiurewicz points) replaces the embedded-Julia section.
+  - The seahorse-valley and deep-gallery sections are cut. §Automatic minibrot descents is added, and §The deep gallery becomes a placeholder.
+  - "The tab" becomes "the fractal explorer" throughout.
+  - The rebasing credit links to Zhuoran's thread.
+- **Deploy:**
+  - The favicon is F08.
+  - Embedded links are invisible metadata.
+  - `data/palette_choice/rows/` stays: it is large and regenerable, but not something to commit casually.
+  - The decode cache and the Phoenix score grid are closed.
+- **Wallpapers README:** `examples/julia_smooth.jpg` is removed from the strip. Its pin stays.
 
 ## KEEP LIST
-Drive `prompts\`: wipe everything. `reports\`: wipe everything. The review doc's canonical copy is website `review\deep-zoom.docx`.
+**Drive `prompts\`:** wipe everything EXCEPT `double_descent_ckpt145.md` and its `_addendum1.md` (in flight), `cap_split_ckpt145.md`, and `deep_zoom_slots_ckpt145.md` and its `_addendum1.md` (queued).
 
-Wallpapers `scratch/`:
-- KEEP `place_radius_sheet/`, `retired_tentative/`, `preclose_ckpt125/off_list_stamps.txt`, `tuning_test/`, `leg_numbers.py`, `parabolic_c_pilot_ckpt139/` (OPEN 8), `mbc140/` (§Deep zoom's picking sheets) and `f64_optout/` (the proof spec for the f64 figure).
-- WIPE everything else.
+**Drive `reports\`:** wipe everything. `double_descent`'s final report is written after the wipe.
 
-Website:
-- `scratch/`: wipe all except `deep_gallery_sheet/` (the 65-tile sheets, for further picks). The untracked staged set is NOT cleaned; it now also holds `explorer/deep-gallery/` (31 thumbnails).
-- **KEEP `artifacts/deep-zoom/`** (the fields, the coloured keyframes and the three MP4s; about 5 GB, untracked). The video is recoloured from those fields.
-- `artifacts/deep-gallery/` (the generator's stage outputs) is sweepable.
+The review doc's canonical copy is website `review\deep-zoom.docx`.
 
-`preserve\`: `deep_zoom_section.md` and `minibrot_copies.md` stay until the figure round finishes.
+**Wallpapers `scratch/`:**
+- KEEP `place_radius_sheet/`, `retired_tentative/`, `preclose_ckpt125/off_list_stamps.txt`, `tuning_test/`, `leg_numbers.py`, `parabolic_c_pilot_ckpt139/` (OPEN 8) and `mbc140/` (§Deep zoom's picking sheets).
+- WIPE everything else. The f64 proof spec now lives site-side.
 
-Outside both repos: `C:\Tools\fraktaler-3\` (the benchmark install) stays until Matt removes it.
+**Website:**
+- `scratch/`: wipe all except `deep_gallery_sheet/` (the 65-tile sheets, for further picks). The untracked staged set is NOT cleaned; it also holds `explorer/deep-gallery/` (31 thumbnails).
+- **KEEP `artifacts/deep-zoom/`** (fields, coloured keyframes, three MP4s; about 5 GB) and **`artifacts/double-descent/`** (the movie's fields, stills and cut). Both are untracked.
+- `artifacts/deep-gallery/` is sweepable.
 
-Wallpapers records: the twenty-one kept are the whole store, and their `recipes.jsonl` stay.
+**`preserve\`:** `deep_zoom_section.md` and `minibrot_copies.md` stay until the figure round finishes.
 
-Hot artifacts:
+**Outside both repos:** `C:\Tools\fraktaler-3\` stays until Matt removes it.
+
+**Wallpapers records:** the twenty-one kept records are the whole store, and their `recipes.jsonl` stay.
+
+**Hot artifacts:**
 - Stay: `artifacts/discovery/minibrot_examples.jsonl`, `artifacts/tuned129x_*`, the d=6 harvest and depth directories, every 2026-09-18/19/21 leg's directories, and the parabolic pilot's legs.
 - Sweepable when Matt sweeps: superseded `gallery_grade_head/pool_scores_*`, `curation_backup/`, `tiles/` manifests and `render_dose/*.pt`.
 

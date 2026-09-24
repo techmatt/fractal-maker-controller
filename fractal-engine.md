@@ -39,7 +39,7 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
   - `direct_trap_multiply` whitewashes because it is read through sRGB. Fixes are mode-param variants, never engine edits (→ `engine/README.md`).
   - `threshold` is an absolute iterate-plane distance, unnormalised against `maxiter`.
   - In the angle modes, `weight` is an AMPLITUDE mix, drawn per candidate since 2026-09-18 (the default is 0.85).
-- **★ An explicit iteration cap is keyed end to end, EXCEPT at `expand.rs`'s `Node` and the shallow link.** That is why parabolic aiming below ε ≈ 3e-3 is untested (fractal-state OPEN 8).
+- **★ An explicit iteration cap is keyed end to end, EXCEPT at `expand.rs`'s `Node`** (the shallow link carries `n` since permalink v4, ckpt 145). That is why parabolic aiming below ε ≈ 3e-3 is untested (fractal-state OPEN 8).
   - `maxiter::for_width` reads the width only. Above the cap a sample is painted interior, so two caps are two pictures.
   - `pins.query_of` is the recipe→link writer.
 - **★ `Family::PhoenixM` (`phoenix_m`; explorer name `phoenix_plane`).** At p = 0 it is the Mandelbrot set. It is not mined. ⚠ The classic Ushiki c = 0.5667 lies just OUTSIDE the p = −0.5 filled set.
@@ -57,6 +57,7 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
   - Its kernel, oracle, per-degree speeds, calibration, minibrots at degree d, link v3 and the closed verdicts (fractional degrees; Phoenix at depth) are owned by `explorer/perturb-wasm/README.md` and `explorer/README.md`.
   - Its traps (rebuild the native exe; any `perturb-wasm` edit is a rebake) are in website `CLAUDE.md`.
   - **★ BLA was built, measured and removed; do not rebuild it.**
+  - **★ A twin inside a copy is solved by multiple shooting, not placed by formula** (`twin` in `builder/deep-gallery-native`; ckpt 145). The first-order point `c_A + s_A·c_B` misses the copy of B inside copy A by 0.04–0.34% of the offset, which is too far for Newton at period p_A·p_B: Newton escapes, or finds the wrong nucleus. Periods multiply down a descent, so the iteration ceiling, not precision, ends it.
   - **★ `cap::CEILING` = 1,000,000 binds on degree-6 near-parabolic frames; RULED keep.**
 - **DEPTH (the f64 pipeline) stays SHELVED.** ⚠ In wallpapers, `deep/` and `cli/deep_commands.py` are DEPTH; the perturbation kernel is named `perturb`.
 - **Un-shelving DEPTH, or any entry of deep pictures into the pipeline,** reads:
