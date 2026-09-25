@@ -10,6 +10,7 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
 ## Rules a future session must not get wrong
 - **★ Never gate on clip share; use in-mask chroma** (→ `engine/README.md §The direct traps`). UF shape names do not transfer by name.
 - **★ Every renderer draws the same picture for the same recipe.** There is one builder (`release.task_for`, `engine_spec.spec_of`), guarded by `tests/test_renderer_agreement.py`. A new spec site goes through the builder, never through a longer keyword list. The website keeps a copy of the coloring builder; its `builder check` `coloring` check holds that copy equal to `engine_spec.coloring_of` over every collection seat (ckpt 146, after the copy drifted once).
+- **★ `fractal-engine render-link --link … --size WxH [--ss N] [--out FILE] [--data DIR]` draws an explorer link with no Python (ckpt 149).** It was pixel-identical to the pipeline on ten seats, one per mode, and `tests/test_render_link.py` holds it to a tolerance, since byte identity is not promised. Deep links parse and route to a `NotBuilt` backend, whose trait doc names the parity points (→ `engine/README.md`).
 - **★ A coloring field spelled flat on a manifest row is legitimate** (→ wallpapers `README.md §One shape for a place`).
 - **★ Identity:**
   - Any new field-side render axis must enter the field-cache/replay identity key; a variant through `mode_params` needs none.
@@ -17,7 +18,7 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
   - Every `KEYED` member reaches the digest (`recipes._KEYED_THROUGH`).
   - ⚠ `renders.job_name` is NOT a durable identity: it digests the checkout path. Never pin it in a test.
 - **★ Levelling is decided once and replayed upward.** Nothing entered identity except the band sha in `recipes.KEYED`. Re-derivation is faithful.
-  - The replay and derivation halves live in the website's `explorer/engine-wasm/src/level.rs`.
+  - The replay and derivation halves live in the engine (`autolevel`, `derive`, `mode::tune`), which `render-link` uses. The website's `explorer/engine-wasm/src/level.rs` is a second copy until engine-wasm imports the engine's (fractal-state OPEN 13).
   - ⚠ The engine's `coloring::percentile` is nearest-rank, while the operator uses numpy linear interpolation; they cannot be swapped.
   - Owner → wallpapers `curation/README.md §Levelling is decided once and replayed upward`. `.leveled/` → `preserve\leveled_identity.md`.
 - **★ The field is dumpable, and a recolour is byte-identical to a render.** Composites, direct traps and the angle modes cannot dump. `colorize.render` refuses a curve override together with a fields directory, and that refusal is correct.
