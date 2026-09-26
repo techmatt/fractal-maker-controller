@@ -18,7 +18,7 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
   - Every `KEYED` member reaches the digest (`recipes._KEYED_THROUGH`).
   - ⚠ `renders.job_name` is NOT a durable identity: it digests the checkout path. Never pin it in a test.
 - **★ Levelling is decided once and replayed upward.** Nothing entered identity except the band sha in `recipes.KEYED`. Re-derivation is faithful.
-  - The replay and derivation halves live in the engine (`autolevel`, `derive`, `mode::tune`), which `render-link` uses. The website's `explorer/engine-wasm/src/level.rs` is a second copy until engine-wasm imports the engine's (fractal-state OPEN 13).
+  - The replay and derivation halves live in the engine (`autolevel`, `derive`, `mode::tune`), which both `render-link` and the explorer's engine-wasm use (since ckpt 151). The website keeps only the shared level fixtures, which the engine's tests read in place.
   - ⚠ The engine's `coloring::percentile` is nearest-rank, while the operator uses numpy linear interpolation; they cannot be swapped.
   - Owner → wallpapers `curation/README.md §Levelling is decided once and replayed upward`. `.leveled/` → `preserve\leveled_identity.md`.
 - **★ The field is dumpable, and a recolour is byte-identical to a render.** Composites, direct traps and the angle modes cannot dump. `colorize.render` refuses a curve override together with a fields directory, and that refusal is correct.

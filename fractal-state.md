@@ -1,4 +1,4 @@
-# fractal-state — checkpoint 150 (2026-09-26: Full pipeline cut to v6 with the hue and growth figures; a link now always draws the same picture, deep links carry their scale, and the recolour races are fixed; Deep zoom's figure round advanced; Wallpaper packs in the rail; `curate growth` reads the gallery judge)
+# fractal-state — checkpoint 151 (2026-09-26: four section cuts placed (Finding good locations v8, Training judges v7, Color palettes v7, Rendering modes v5); the double-descent 4K60 master finished and its settings became the video baseline; engine-wasm imports the engine's levelling code)
 
 ## Where we are
 Three phases, each depending strictly on the one before (→ fractal-discovery). Matt iterates from pictures, not counts. Phase 3 is his eye on the final seating, and **every planned collection has a viewer at its official size.**
@@ -25,7 +25,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 **★ NOTHING IS PUBLISHED.**
 - `tentative.PUBLISHED` is empty, so `tentative.latest()` refuses and every unstamped read names a stamp.
 - Matt raises publishing himself; never ask, never list it.
-- Viewers: `curate solve viewers` with no stamp builds every kept record and a complete `viewer/all.html` (ckpt 150); named stamps still work.
+- Viewers: `curate solve viewers` with no stamp builds every kept record and a complete `viewer/all.html`; named stamps still work.
 
 **★ PINNED SEATS.** `data/curation/pins.txt` → `curate pins resolve` → `pins.json`. Ten pins, seated before the seed and prune-proof; `--no-pins` for comparisons (→ `curation/GALLERY.md §Pinned seats`). `pins.query_of` writes gallery links; they are never hand-spelled.
 
@@ -35,10 +35,10 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **⚠ A bar is unreadable without its head.**
 - **⚠ 0.50 is NOT the seating bar.** `solve.Q4_BAR = 0.50` is the RENDER judge's constant on `p_ge4`.
 - **⚠ There are two quality columns.** `p_ge4` is the render judge's GATE reading. `p_fine` is the fine head's own column, where the bar lives, and it is THE quality reading. Its scale is compressed: read q1 and the fraction above a mark, not the bare median.
-- **Reader names (ckpt 148):** on the site the render judge is **the wallpaper judge** and the fine head is **the gallery judge**; with the location and palette judges the site counts four (→ fractal-tutorial).
+- **Reader names:** on the site the render judge is **the wallpaper judge** and the fine head is **the gallery judge**; with the location and palette judges the site counts four (→ fractal-tutorial).
 - ⚠ One seed of the fine head is not the mean. ⚠ `--fine-bar 0` still excludes unread rows. Provenance → `models/gallery_grade/README.md`.
 - **★ `p_fine`, `p_coarse` and the bars are all operating well; every task that would alter them is CLOSED (Matt, 2026-09-12).**
-- ⚠ The palette relabel-and-retrain touched the WALLPAPER judge only; the gallery judge was fitted later from its own sheets (verified from git history, ckpt 150).
+- ⚠ The palette relabel-and-retrain touched the WALLPAPER judge only; the gallery judge was fitted later from its own sheets.
 
 **★ THE HUMAN VETO IS SHIPPED** (→ `curation/README.md`). The rejection pass is a labeling mode: Matt marks ONLY `1`s, and an unmarked tile is NOT a label.
 
@@ -60,7 +60,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 
 **★ `pool_scores.jsonl` IS ONE-SHOT: mine → merge → `gallery-grade score-pool` → solve.**
 
-**`curate growth`** records the seated and eligible `p_fine` spreads and counts the pool inside the fine bar (ckpt 150); it agrees with the website's pool study seat for seat. The site's `pipeline-growth` figure bakes from the website's own `builder/pool_study.py`.
+**`curate growth`** records the seated and eligible `p_fine` spreads and counts the pool inside the fine bar; it agrees with the website's pool study seat for seat. The site's `pipeline-growth` figure bakes from the website's own `builder/pool_study.py`.
 
 ## MODES, PHASE, PALETTE
 - **★ The targeted-gallery modes are seven.** Smooth is special and special-cased. `curvature` is `UNMINED`. A stored `smooth` score does not order a `tia` yield.
@@ -68,13 +68,14 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ Texture weight is a drawn recipe parameter, [0.2, 0.9], on by default. Closed.**
 - **★ Rotation and phase are CLOSED:** one random phase per candidate, `--phase-draw`, OFF by default (→ `curation/LEGS.md`, `preserve\rotation_phase_economics.md`).
 - **★ Palette replication is PARKED (Matt, 2026-09-12).** `data/palettes/palettes_for_random_choice.csv` (232 maps) feeds the explorer's Random palette and the Walk's "All palettes".
-- **★ The explorer's palette modes are EXPLORER-ONLY (ckpt 143).** `scale` (leveled | absolute), `lambda` and `period` are omitted at default, and the pipeline's key whitelist never emits them. Leveled stays the pipeline's default and the shallow view's (→ `engine/README.md`, `explorer/README.md`).
+- **★ The explorer's palette modes are EXPLORER-ONLY.** `scale` (leveled | absolute), `lambda` and `period` are omitted at default, and the pipeline's key whitelist never emits them. Leveled stays the pipeline's default and the shallow view's (→ `engine/README.md`, `explorer/README.md`).
 - ⚠ A seat's `mode` in `gallery.jsonl` is ROUTED; render at `recipe["mode"]` (→ fractal-tutorial). A seat recorded `smooth` whose recipe draws another mode is routing, not a record bug.
 
 ## FULL-RESOLUTION WALLPAPERS
 - **★ The shipped setting is 2560×1440 at ss3 (a 3×3 grid per pixel), saved as JPEG q95 with 4:4:4 chroma (Matt, ckpt 148).** ss2 was nearly indistinguishable; ss3 costs about 2.2× ss2. WebP is out because Windows 10 does not open it natively. Every file carries its explorer link as metadata.
 - **The population is 6,299 distinct recipes** across the 21 kept records. Measured on ten seats: ss4 costs 3.64× ss2, and the production pool buys only about 5% at this size. The ss3 run is projected at about 46 wall hours and roughly 13–14 GB.
-- **`fulls_ss3_ckpt148` is QUEUED** (§QUEUED). It is resumable: the same prompt is the resume prompt, Matt may pause it by telling CC, and the whole CC instance may be killed and resumed. It first checks ss3 against the ss4 renders in `E:\FractalWallpapers\ss_test_ckpt148\` and warns (without stopping) if any picture is not closer to ss4 than ss2 was. Output: `E:\FractalWallpapers\full\`, with `membership.jsonl` for pack assembly.
+- **`fulls_ss3_ckpt148` is QUEUED; Matt launches it at the start of the next checkpoint** (§QUEUED). It is resumable: the same prompt is the resume prompt, Matt may pause it by telling CC, and the whole CC instance may be killed and resumed. It first checks ss3 against the ss4 renders in `E:\FractalWallpapers\ss_test_ckpt148\` and warns (without stopping) if any picture is not closer to ss4 than ss2 was. Output: `E:\FractalWallpapers\full\`, with `membership.jsonl` for pack assembly.
+- ⚠ **The native production binary is a rustc 1.98.1 build, and its timing against the 1.96.0 build was never measured.** Rust 1.97's correctly rounded `hypot` made the WASM `tia` and lattice modes up to 3.5× slower; native `hypot` comes from the MSVC runtime and is expected to be unaffected, but that is untested. The check is `fulls_ss3`'s own early rate against the 46-hour projection, not a separate measurement. The fingerprint is unmoved, so pixels are not in question.
 - Until that prompt promotes it, the tree's phase-3 default is still ss4; fractal-tutorial's geometry line follows the code, not this decision.
 - **★ Pack hosting (Matt, ckpt 149):** GitHub Releases for the smaller packs; Matt's Google Drive for general-2000 and anything else too large. Most people will take the best 100–200.
 
@@ -104,56 +105,58 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 ## THE REPO AS A CLONE SEES IT
 - **★ A fresh box continues every stage from a `storage export` alone** (→ `preserve\fresh_box.md`).
 - **★ CUDA is opt-in (Matt, ckpt 148): nothing heavy installs unless asked for.** The `models` extra is CPU torch on every platform; the conflicting `cuda` extra is cu124 on Windows and Linux x86_64 (→ wallpapers README §Install). ⚠ **This box syncs `--extra cuda`**; a plain `uv sync --extra models` here would swap its torch to CPU.
-- **★ People should be able to run both repos on Windows, Linux and macOS (Matt, ckpt 148).** Wallpapers CI runs one job on `ubuntu-latest`, `macos-latest` (arm64) and `windows-latest`; its first run comes on Matt's next git step. ⚠ The watch item is the exact-pixel digest checks on arm64 macOS: a red there is the first real platform difference, and the choice is per-platform digests or a tolerance, never a skip. Intel Macs get no `models` extra. The website's CI matrix waits on the video (OPEN 13).
+- **★ People should be able to run both repos on Windows, Linux and macOS (Matt, ckpt 148).** Wallpapers CI runs one job on `ubuntu-latest`, `macos-latest` (arm64) and `windows-latest`; its first run comes on Matt's next git step. ⚠ The watch item is the exact-pixel digest checks on arm64 macOS: a red there is the first real platform difference, and the choice is per-platform digests or a tolerance, never a skip. Intel Macs get no `models` extra. The website's CI matrix is OPEN 13.
 - **★ The Rust-only renderer SHIPPED (ckpt 149):** `fractal-engine render-link` (→ fractal-engine). A render-only user needs no Python.
 - ⚠ `p_fine` rows are stamped with a weights sha, and a clone's rows differ by design.
 - ⚠ Drive the makers through `.venv/Scripts/fractal-wallpapers.exe`.
+- **Concurrent prompts in one checkout commit with a pathspec** (`git commit -- <paths>`); both repos' `CLAUDE.md` own the rule (ckpt 151, after a bare commit swept in another prompt's staged deletions).
 
 ## WEBSITE — THE EXPLORER STUDIO AND THE ARTICLE
 **Nothing is live; the site never needs preserving or keeping in sync.** Every fact about the site is owned by the website repo, and state keeps no copy:
 
 | Topic | Owner |
 |---|---|
-| Explorer: tabs, keys, Deep/Cancel/undo/recolour, Deep auto-render and its switch, palette modes, Fit (f) and the arrival refit, Hold look, the fade table, Find minibrots, zoom-out stop, screensaver, Walk, Phoenix, the two iteration ceilings, `panel=` and `collection=` links, link round-trips and orbit reuse, measured timings | `explorer/README.md` |
+| Explorer: tabs, keys, Deep/Cancel/undo/recolour, Deep auto-render and its switch, palette modes, Fit (f) and the arrival refit, Hold look, the fade table, Find minibrots, zoom-out stop, screensaver, Walk, Phoenix, the two iteration ceilings, `panel=` and `collection=` links, link round-trips and orbit reuse, measured timings, the WASM toolchain pin (rustc 1.96.0, because of 1.97's slow `hypot`), the operator being the engine's | `explorer/README.md` |
 | Deep kernel, oracle, calibration, closed verdicts (BLA included), `sameOrbit` | `explorer/perturb-wasm/README.md` |
 | Atlas, and the live `atlas-live` figure with its miniatures | `atlas/README.md` |
-| Builder, figures, the split rule, `seats.py`, the staged set, site size, the zoom-video tooling (`zoom.py`), the deep-figure maker (`builder deep`), automatic minibrot descents (`builder descent`), the `start-*` maker (`builder/start.py`), display formulas (`builder formulas`), the pool study (`builder/pool_study.py`), every `builder check` check, the rail groups, the site's icon | `builder/README.md` |
+| Builder, figures, the split rule, `seats.py`, the staged set, site size, the zoom-video tooling (`zoom.py`) and its defaults, the deep-figure maker (`builder deep`), automatic minibrot descents (`builder descent`), the `start-*` maker (`builder/start.py`), display formulas (`builder formulas`), the pool study (`builder/pool_study.py`), every `builder check` check, the rail groups, the site's icon | `builder/README.md` |
 | The recolour-race harness (`explorer/bench/recolour-race.mjs`, about an hour, outside `builder check`) | `explorer/README.md` |
 | Explorer links embedded in downloaded and released files | `stamp.js` · wallpapers `explorer_link`; the `stamps` check |
 | The Deep tab's gallery: its register (`explorer/deep-gallery.jsonl`), maker (`builder/deep_gallery.py`) and method | `builder/README.md §How the first set was found` |
-| Traps: native exe rebuild, perturb rebake, repo links, the no-`<video>` rule, the one script kind an article page may carry, the rail | `CLAUDE.md` |
+| Traps: native exe rebuild, perturb rebake, repo links, the no-`<video>` rule, the one script kind an article page may carry, the rail, pathspec commits | `CLAUDE.md` |
 | Style and voice: no italics, no em-dashes, the Oxford comma, American spelling, vocabulary, §Voice | `prose\writing-guidance.md` · website `CLAUDE.md` |
-| Per-page status | `docs/page-review.md` |
+| Per-page status, and deliberate simplifications (the pool gate's per-mode fallback is left off Training judges on purpose) | `docs/page-review.md` |
 
 - **★ STAGING RULE (Matt):** no gallery-sized or library-sized commits until he says deploy.
 - **Hosting:** the site deploys to GitHub Pages at `techmatt.github.io/fractal-website` (`pages.yml`), about 156 MiB, every asset by relative path. Pages is its CDN. The packs' host is decided (§FULL-RESOLUTION WALLPAPERS).
-- Shallow contract **v4** (an optional `n`, omitted at the width rule; ckpt 145); deep contract **v3**. `n` runs 50 to 2e6 in both. **Deep links always write `scale`, `scale=leveled` included (Matt, ckpt 150)**; a deep link with no `scale` still means the Absolute fit on arrival, so no older link changed.
-- **★ A LINK IS A PICTURE (ckpt 150):** the same link draws the same picture whatever the explorer did before, and an idle canvas equals a fresh render of the address-bar URL. The arrival fit yields to the reader's colour edits, controls lock while the Deep view opens, the Deep handover stops the shallow draw, and a kept reference orbit is reused only at the exact centre with a cap no smaller. The recolour bug Matt saw on 2026-09-25 is closed with these fixes.
+- Shallow contract **v4** (an optional `n`, omitted at the width rule); deep contract **v3**. `n` runs 50 to 2e6 in both. **Deep links always write `scale`, `scale=leveled` included (Matt, ckpt 150)**; a deep link with no `scale` still means the Absolute fit on arrival, so no older link changed.
+- **★ A LINK IS A PICTURE (ckpt 150):** the same link draws the same picture whatever the explorer did before, and an idle canvas equals a fresh render of the address-bar URL.
 - **★ No figure reuses a picture shown elsewhere on the site unless the reuse is intentional (Matt).** An intentional reuse carries a `reuse_reason` that names the figure it repeats.
 - **★ The site reads as its final form (Matt, ckpt 147):** no "under construction" wording. Matt's own "yet"s are his to keep.
 - **★ The Oxford comma everywhere (Matt, ckpt 148). Site prose uses American spelling.**
-- **★ THE VOICE (Matt, ckpt 149; `prose\writing-guidance.md` §Voice):** first person, plain, conversational; what Matt did and why. No spec or essay register, no punchlines, no coined rules. **The article describes the design as intended: a rule that never had to bind (a floor or cap never hit) is written as existing, and is never flagged or "verified" as untrue.** New prose is written to this standard; a green that paraphrases must keep every fact. The voice-pass leftovers are all applied (ckpt 150).
+- **★ THE VOICE (Matt, ckpt 149; `prose\writing-guidance.md` §Voice):** first person, plain, conversational; what Matt did and why. No spec or essay register, no punchlines, no coined rules. **The article describes the design as intended: a rule that never had to bind (a floor or cap never hit) is written as existing, and is never flagged or "verified" as untrue. A semi-idealized description is preferred where the real detail is a distraction (Matt, ckpt 151).** New prose is written to this standard; a green that paraphrases must keep every fact.
 - **★ Display formulas are typeset (ckpt 149):** a master writes `$$ … $$` on its own line; the builder renders it to inline SVG with MathJax, fetched and never committed. Inline math stays HTML. The `formulas` check holds each SVG to a fresh typesetting.
 - **★ The judges' reader names (Matt, ckpt 148):** the location judge, the wallpaper judge, the palette judge, and the gallery judge. "Render judge" no longer appears in reader-facing prose; code keeps its names.
 - **★ Links (ckpt 148):** each thing a reader can go and use is linked once per page, at its first natural mention. `?panel=<tab>` opens a tab and `?panel=gallery&collection=<name>` opens one collection.
 - **The article runs to fourteen sections plus Start here.**
-  - The rail shows START HERE, then **WALLPAPER PACKS** (a peer group, ckpt 150), then CONTENTS.
+  - The rail shows START HERE, then **WALLPAPER PACKS** (a peer group), then CONTENTS.
   - Start here (`start-here.html`, master `Start here v2.md`) has h1 "Start here" and four h2 parts: Fractal wallpapers, Fractal explorer, Deep zoom rendering, Future work.
   - §9 Gallery curation is v2 (`article/gallery-curation.html`, master `Gallery curation v2.md`). Its figures are `gallery-top-scored` (the gallery judge's strict top 24), `gallery-twins` and `gallery-output`.
-  - **Full pipeline is v6 (`Full pipeline v6.md`, ckpt 150):** the three parts, then "How I ran it" in Matt's words (cycling between finding locations, finding candidates and quick solves; the colour story). Figures: `pipeline-overview` (a flow figure with rounded counts: about 518k candidates, 56k locations, 19k above the bar), `pipeline-hue-shares` and `pipeline-hue-extremes` (ranked by clear rate), and `pipeline-growth` (one box-and-whisker chart of seated `p_fine` per pool fraction, on the gallery judge). All four bake from `builder/pool_study.py`, whose measurement lives in `artifacts/pool-study/` (kept).
-  - §12 is "Deep zoom rendering" (`article/deep-zoom.html`, master `Deep zoom v3.md`). The "Automatic minibrot descents" heading is gone; its content folds into Minibrot descents (Matt: descents are an artistic composition, automation optional).
+  - **Full pipeline is v6 (`Full pipeline v6.md`):** the three parts, then "How I ran it" in Matt's words. Figures: `pipeline-overview`, `pipeline-hue-shares`, `pipeline-hue-extremes`, and `pipeline-growth`. All four bake from `builder/pool_study.py`, whose measurement lives in `artifacts/pool-study/` (kept).
+  - **Finding good locations is v8, Training judges v7, Color palettes v7, and Rendering modes v5 (ckpt 151)**; each kept every figure in order. Finding good locations writes multibrot and twin degrees as 3 to 6 (Matt).
+  - §12 is "Deep zoom rendering" (`article/deep-zoom.html`, master `Deep zoom v3.md`). Minibrot descents holds what was "Automatic minibrot descents" (Matt: descents are an artistic composition, automation optional).
   - §14 is "Fractal math" (`article/fractal-math.html`, master `Fractal math v2.md`); its Pi section is two displayed limits.
   - The front page carries hand-written intro and Contents blurbs, with no master and no ✓ marks; the voice pass did not reach them.
   - `escape-families` has 18 panels: five planes (degree 2 to 6), each with two of Matt's Julia picks, then Phoenix.
 - **★ The download page is "Wallpaper packs" (`wallpaper-packs/`),** distinct from the explorer's Gallery tab. Its icon-source figure carries no caption. The Gallery tab's staged images stay under `assets/images/galleries/`; where the packs' own images live is decided when packs exist.
 
-**★ THE SECTION-CUT TEMPLATE (Matt, ckpt 148). Done: Gallery curation (v2), Full pipeline (v6). Next: other sections as Matt names them.**
+**★ THE SECTION-CUT TEMPLATE (Matt, ckpt 148). Done: Gallery curation (v2), Full pipeline (v6), Finding good locations (v8), Training judges (v7), Color palettes (v7), Rendering modes (v5, a prose pass only: Matt had reviewed it by hand). Next: other sections as Matt names them.**
 - **The test for every passage:** would a reasonably intelligent CS undergrad think of this unprompted? If so, it collapses to a sentence or goes.
 - **What stays:** the non-obvious insight that motivates the section, shown with a figure; Matt's own judgement calls; facts invisible from outside; honest notes on what was considered and turned out unnecessary.
 - **What collapses:** each rule becomes one bullet with its number in it, and the algorithm becomes two sentences plus links to the code files.
 - **What goes:** mechanism detail; plumbing another section covers; figures that illustrate a mechanism rather than a result.
-- **Shape:** the problem with its figure, the fix in one paragraph, the rules as a list, the one judgement worth dwelling on, the algorithm in brief, the result figure, a link onward.
-- **Process:** Matt may skip the review docx and ask Claude to cut directly (Full pipeline was cut that way twice). Claude drafts in chat, Matt corrects the facts, then Claude writes the master in §Voice (small enough to go straight into Drive `prose\`, trashing the old one) and a placement prompt with a verify list at its foot.
+- **Default when Matt says "keep the figures, tighten the text":** every figure and its caption stay, in order; headings may merge.
+- **Process:** Claude reads the live master from Drive `prose\`, drafts the cut in chat with a list of what was cut and the facts to confirm; Matt corrects; Claude trashes the old master, creates the new one in `prose\` (these are small enough), and writes a placement prompt with a verify list at its foot. The placing CC checks the list from source and corrects the prose, reporting each change.
 - **A sentence-level review uses a coloured docx:** numbered blocks of black context, red current text, green proposed text, and black context. Matt deletes the blocks he rejects and edits the greens; an apply prompt swaps by red text, found exactly once or skipped.
 
 **★ THE SITE IS RE-BASED ON `final139_*` + `final140_general2000` — DATA ONLY. Prose and captions wait for "ready for publishing".**
@@ -173,12 +176,13 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 
 **★ Deep (perturbation) is explorer-only; nothing deep enters the pipeline (Matt)** (→ fractal-engine §Deep render). The Inflection tab is paged out (`explorer/paged-inflection/`); §13 mentions it. **★ The Walk is a short demonstration of how the galleries were made.** Parked → `preserve\parked.md`.
 
+**★ ZOOM VIDEOS (Matt, ckpt 151):** the double-descent 4K60 master's settings are the baseline for every new video (owned by `builder/README.md`): 7680×4320 fields for 3840×2160 at 60 fps, CRF 12 slow film yuv420p with full BT.709 tags, and the monotone undercap rule (a 480×270 probe at the 2M ceiling, cap = 2×need at 1e-5 black-but-exterior, never falling down a descent). Every new record also gets a 960×540 `preview` variant at a sixteenth of the cost. Speed and path stay per video.
+
 ## IN FLIGHT ACROSS THIS BOUNDARY
-Matt left it running across the closeout; it reports at the start of the next checkpoint.
-- **`double_descent_4k_ckpt148` (website, about 24 hours):** re-renders the favicon descent `double-descent_power_L0.38_a0.15_along-the-starry-way-25` at 3840×2160 60 fps, 1.27× faster along the same path, with a monotone, generous per-keyframe iteration cap checked by measured cap-hit fractions. It reports what supersampling the k26–k28 aliasing stretch would cost; that choice is Matt's. Its movie tooling is already committed; output stays untracked under `artifacts/double-descent/`.
+None.
 
 ## QUEUED IN DRIVE `prompts\`
-- **`fulls_ss3_ckpt148` (wallpapers):** launch after `double_descent_4k` has finished, so it has the box to itself. The engine is settled. Reboot the box first if its uptime is past a week.
+- **`fulls_ss3_ckpt148` (wallpapers):** Matt launches it at the start of the next checkpoint. The engine is settled (the engine-wasm import left `engine/` and the fingerprint untouched). The box crashed and rebooted during the video render on 2026-09-25/26, so its uptime is short; reboot only if it has been up past a week.
 
 ## NEXT CHECKPOINT GOAL
 Matt raises it at the top of the checkpoint.
@@ -187,72 +191,67 @@ Matt raises it at the top of the checkpoint.
 Items 3, 6, 8, 10 and 11 are closed; the numbering is kept.
 1. **Mining is CLOSED; he reopens it.** Read `preserve\mining_laws.md`, then the reopen inventory in wallpapers `curation/LEGS.md`. The `final139_*` set is the PRE baseline, and `gallery-grade score-pool` runs before any solve. Retake any headroom census taken before 2026-09-26 (§Where we are).
 2. **"Truly finalized": the commits (Matt raises it).** What waits on it: the twenty-one kept records and their recipes (tracking = publishing), the staged website assets, and the pre-final history rewrite.
-4. **Website: the section-by-section review pass** (Matt brings a section's review doc, or asks for a direct cut).
+4. **Website: the section-by-section review pass** (Matt brings a section's review doc, or asks for a direct cut; → OPEN 12).
 5. **Deploy preparation (preparing, not deploying).**
-   - Done: the favicon (F08); explorer links embedded in every download and release render; the two repo READMEs' funnels; the packs' host decided; Wallpaper packs in the rail.
+   - Done: the favicon (F08); explorer links embedded in every download and release render; the two repo READMEs' funnels; the packs' host decided; Wallpaper packs in the rail; the double-descent 4K60 master (ckpt 151).
    - **Left:**
      - building the packs from `fulls_ss3`'s output and `membership.jsonl`, and uploading them (Releases for the smaller packs, Drive for the large);
      - a history rewrite before the final commit;
-     - **cross-platform support:** both repos build and run on Linux and macOS as well as Windows, proven by a CI OS matrix (wallpapers done, first run pending; website waits);
-     - the zoom videos' YouTube uploads and 4K masters (the double-descent 4K60 master is in flight), then final deployment. **★ A final video render raises the iteration cap on intermediate keyframes: Matt sees jumps where a keyframe's cap was too low.**
+     - **cross-platform support:** both repos build and run on Linux and macOS as well as Windows, proven by a CI OS matrix (wallpapers done, first run pending; website → OPEN 13);
+     - the zoom videos' YouTube uploads (Matt is trying the double-descent master's encode on YouTube), then final deployment.
    - **After deployment:** post the site to fractalforums.org.
 7. **The Deep tab's follow-ups.**
-   - **The gallery (33 frames, Matt's picks).** Matt adds frames over time, including frames centred away from any minibrot. He sends links, and a one-line prompt appends each row, pins `n` from the width rule, and bakes its thumbnail (→ `builder/README.md`). Julia frames are supported. One Filigree place now appears twice, in two colourings, as asked.
+   - **The gallery (33 frames, Matt's picks).** Matt adds frames over time, including frames centred away from any minibrot. He sends links, and a one-line prompt appends each row, pins `n` from the width rule, and bakes its thumbnail (→ `builder/README.md`). Julia frames are supported. One Filigree place appears twice, in two colourings, as asked.
 9. **THE WRITEUP (Matt raises it; the session authors a prose master plus a placement prompt).**
    - **§Deep zoom rendering (`article/deep-zoom.html`, master `prose\Deep zoom v3.md`).**
-     - **Placed figures:** `deep-f64-and-perturbation` (Porcelain Field, phase 0.41, absolute, period 0.295; ckpt 150); `deep-shallow-and-deep` (its two panels do NOT share a colouring, on purpose); `deep-final-colorings` (a 2×2 of Matt's four links on the video's final frame: Final frame, Leveled, Higher period, Palette switch; ckpt 150); `deep-descent-rungs` (Chalcedony, absolute, λ 0, period 0.5); `deep-descent-pairs` (seats `afdb47c0`, `9c6a3d87`, glowdon; caption "Two frames, A and B (top), and the four ways to nest one inside the other (bottom)."); `deep-misiurewicz-pairs`: three rows (a shallow degree-2 point, then tuned degree-3 and degree-4 points deep) by three columns (whole Julia set, Julia at c, that row's Mandelbrot or multibrot set at c), caption final. Its per-row palettes are placeholders for Matt.
+     - **Placed figures:** `deep-f64-and-perturbation` (Porcelain Field, phase 0.41, absolute, period 0.295); `deep-shallow-and-deep` (its two panels do NOT share a colouring, on purpose); `deep-final-colorings` (a 2×2 of Matt's four links on the video's final frame: Final frame, Leveled, Higher period, Palette switch); `deep-descent-rungs` (Chalcedony, absolute, λ 0, period 0.5); `deep-descent-pairs` (seats `afdb47c0`, `9c6a3d87`, glowdon; caption "Two frames, A and B (top), and the four ways to nest one inside the other (bottom)."); `deep-misiurewicz-pairs`: three rows (a shallow degree-2 point, then tuned degree-3 and degree-4 points deep) by three columns (whole Julia set, Julia at c, that row's Mandelbrot or multibrot set at c), caption final. Its per-row palettes are placeholders for Matt.
      - **Placeholders:** `deep-zoom-video` (first cut exists, paused on Matt's colour and ending; on the page a poster WebP linking out, never a `<video>` embed); `deep-descent-video`; `deep-multibrots` (Matt writes the multibrots section).
-     - **The double-descent movie** (the favicon seat, `smooth`, ending on M₂ at period 32,761, at its full 32 periods). Matt's baseline is `double-descent_power_L0.38_a0.15_along-the-starry-way-25`; its 4K60 re-render is in flight. Supersampled fields for the k26–k28 grain are Matt's call.
+     - **The double-descent movie is FINAL (Matt, ckpt 151):** the favicon seat `double-descent_power_L0.38_a0.15_along-the-starry-way-25`, `smooth`, 4K60, 85 s, at `artifacts/double-descent/4k60/video/` (linked to `E:\FractalStorage\fractal-website\double-descent-4k60`). Under the monotone cap rule its ending opens M₂ at about 61 periods, not 32; Matt accepted that. It is not supersampled; supersampling k25–k29 would cost about 38 hours.
      - **When the figure round finishes,** delete `preserve\minibrot_copies.md` and `preserve\deep_zoom_section.md`.
-   - **Start here:** `start-video` waits on Matt's new video. `start-pink-gallery` (six magenta, six rose) is a placeholder for his daughter's final picks. `start-modes` is two Mandelbrot rows Matt picked (ckpt 147). The other `start-*` figures are placeholders Matt adjusts. The "darker pink gallery" link opens `magenta`; `rose` is the other honest choice (Matt's call).
-   - **After `fulls_ss3` reports:** finalize §4's mode table. The wallpaper-render column is a placeholder scaled from candidate time; fill it from real ss3 times (`E:\FractalWallpapers\full\progress.jsonl`), change the text's "supersampled 4×" to 3×, and drop the caption's "placeholder… pending a measurement". Reword the sentence after the lower-base-quality sentence, which now reads as pointing at the longer search. **Rendering fundamentals' "The production setting is s = 4, so sixteen orbits" becomes s = 3 and nine, in the same prompt.**
-   - Training judges' Evaluating paragraph could name which sets were actually held out, but only from Matt's facts.
-12. **The section-cut pass:** other sections as Matt names them.
-13. **Small follow-ups, each a short prompt:**
-    - **Website, after the video finishes:** engine-wasm imports `fractal_engine::{autolevel, derive, mode::tune}`, deletes its own copies, and repoints `level-cases.json` / `level-derive-cases.json` (the engine's tests already read them in place). This touches the engine crate next door, so it cannot run while `fulls_ss3` does. Also: the `stamps` check may add render-link as a third embedder; the website CI and OS matrix.
-    - **Wallpapers, runnable now:** `growth.py`'s docstring still says the site bakes `pipeline-growth` from `growth.jsonl`; it bakes from the website's `builder/pool_study.py`. A one-line fix.
+   - **Start here:** `start-video` waits on Matt's new video. `start-pink-gallery` (six magenta, six rose) is a placeholder for his daughter's final picks. `start-modes` is two Mandelbrot rows Matt picked. The other `start-*` figures are placeholders Matt adjusts. The "darker pink gallery" link opens `magenta`; `rose` is the other honest choice (Matt's call).
+   - **After `fulls_ss3` reports:** finalize Rendering modes' mode table. The wallpaper-render column is a placeholder scaled from candidate time; fill it from real ss3 times (`E:\FractalWallpapers\full\progress.jsonl`), change the text's "supersampled 4×" to 3×, and drop the placeholder note under the table. **Rendering fundamentals' "The production setting is s = 4, so sixteen orbits" becomes s = 3 and nine, in the same prompt.**
+12. **The section-cut pass:** other sections as Matt names them. Not yet cut: Overview, Escape-time fractals, Rendering fundamentals, Make your own palettes, Finding good wallpapers, Fractal atlases, Deep zoom rendering, Other artistic techniques, Fractal math, and Start here.
+13. **Small follow-ups, each a short prompt (website):** the `stamps` check may add render-link as a third embedder; the website CI and OS matrix.
 
 Parked → `preserve\parked.md`.
 
 ## STATUS / KNOWN REDS
 - ⚠ A website `builder check` beside a wallpapers merge can throw a transient "not in the candidate ledger" red; retry.
-- ⚠ A report just copied to Drive `reports\` can read back EMPTY for minutes; re-read once, then ask Matt to paste it.
-- `builder check` was all green at the end of ckpt 150; its only note is the one figure still to make (`start-video`).
-- Reboot the box before `fulls_ss3` or the next overnight (per fractal-operating).
+- ⚠ A report just copied to Drive `reports\` can read back EMPTY, or not appear in search, for minutes; retry once, then ask Matt to paste it.
+- `builder check` was all green at the end of ckpt 151; its only note is the one figure still to make (`start-video`).
 
 ## RULINGS THIS ERA
-ckpt 150 (2026-09-25/26). Reported prompts (all `_ckpt150`): `deep_opening_palette` (+ addendum), `deep_leveled_link_and_recolour`, `minibrot_halo_figure` (+ addendum), `deep_orbit_history`, `place_full_pipeline_v6`, `website_sweep` (+ addenda 1 and 2), `preclose_website` (+ addendum), `preclose_wallpapers`.
+ckpt 151 (2026-09-26). Reported prompts: `double_descent_4k_ckpt148`, `place_finding_locations_v8_ckpt151`, `video_defaults_ckpt151`, `place_training_judges_v7_ckpt151`, `place_color_palettes_v7_ckpt151`, `place_rendering_modes_v5_ckpt151`, `engine_wasm_import_ckpt151`, `preclose_ckpt151`.
 
-- **Deep links carry their scale (Matt):** `scale=leveled` is explicit, so a Leveled deep view round-trips.
-- **A link is a picture:** the same link draws the same picture whatever came before; every race that broke this is fixed.
-- **Full pipeline (Matt):** cut again to v6; the loop and "What more work buys" became "How I ran it" in his words, Future work went, the growth study became one box chart, and two hue figures ranked by clear rate were added.
-- **Deep zoom (Matt):** the opening figure recoloured; `deep-final-colorings` placed as his four picks; "Automatic minibrot descents" folded into Minibrot descents and "automatic" dropped across the site; the Misiurewicz caption and the two-frame paragraph rewritten.
-- **Finding good locations (Matt):** the minibrot figure is his three picks under their home views; the six-wallpaper style-spectrum figure is deleted.
-- **Wallpaper packs is a top-level rail entry (Matt).**
+- **Four section cuts (Matt):** Finding good locations, Training judges, and Color palettes cut to about half, keeping every figure; Rendering modes given a prose pass only.
+- **Degrees up to 6 (Matt):** Finding good locations writes the multibrot planes and the twin channel as degree 3 to 6.
+- **Semi-idealized over exact (Matt):** Training judges writes the pool gate as even odds of a 4 with no per-mode fallback, and prints no score constant.
+- **The double-descent master is final at about 61 periods, and its settings are the video baseline (Matt).**
+- **Engine-wasm imports the engine's levelling code** in the gap before `fulls_ss3` (Matt); the engine did not move.
 
 ## KEEP LIST
-**Drive `prompts\`:** keep `double_descent_4k_ckpt148.md` and `fulls_ss3_ckpt148.md`; wipe everything else.
+**Drive `prompts\`:** keep `fulls_ss3_ckpt148.md`; wipe everything else.
 
-**Drive `reports\`:** wipe everything.
+**Drive `reports\`:** wipe everything. (`interesting_rust_change.md` beside the engine-wasm report goes too; its finding lives in `explorer/README.md`.)
 
-**Drive `prose\`:** unchanged by the closeout. The live masters are `Start here v2.md`, `Overview v2.md`, `Escape-time fractals v1.md`, `Rendering fundamentals v1.md`, `Color palettes v6.md`, `Make your own palettes v4.md`, `Rendering modes v4.md`, `Training judges v6.md`, `Finding good locations v7.md`, `Finding good wallpapers v3.md`, `Gallery curation v2.md`, `Full pipeline v6.md`, `Fractal atlases v2.md`, `Deep zoom v3.md`, `Other artistic techniques v1.md` and `Fractal math v2.md`, plus `writing-guidance.md`.
+**Drive `prose\`:** unchanged by the closeout. The live masters are `Start here v2.md`, `Overview v2.md`, `Escape-time fractals v1.md`, `Rendering fundamentals v1.md`, `Color palettes v7.md`, `Make your own palettes v4.md`, `Rendering modes v5.md`, `Training judges v7.md`, `Finding good locations v8.md`, `Finding good wallpapers v3.md`, `Gallery curation v2.md`, `Full pipeline v6.md`, `Fractal atlases v2.md`, `Deep zoom v3.md`, `Other artistic techniques v1.md` and `Fractal math v2.md`, plus `writing-guidance.md`.
 
 The review docs' canonical copies are website `review\deep-zoom.docx` and `review\gallery-curation.docx`; the applied voice pass is archived in Drive `review\applied\voice-pass-2026-09-25.docx`.
 
 **Wallpapers `scratch/`:**
-- KEEP `place_radius_sheet/`, `retired_tentative/`, `preclose_ckpt125/off_list_stamps.txt`, `tuning_test/`, `leg_numbers.py`, `mbc140/` (§Deep zoom's picking sheets) and `cpu_default_and_rust_audit_ckpt148_findings.md` (until the engine-wasm switch in OPEN 13 lands).
-- WIPE everything else.
+- KEEP `place_radius_sheet/`, `retired_tentative/`, `preclose_ckpt125/off_list_stamps.txt`, `tuning_test/`, `leg_numbers.py` and `mbc140/` (§Deep zoom's picking sheets).
+- WIPE everything else (`cpu_default_and_rust_audit_ckpt148_findings.md` goes: the engine-wasm switch landed).
 
 **Website:**
 - `scratch/`: wipe all except `deep_gallery_sheet/` (the 65-tile sheets, for further picks). The untracked staged set is NOT cleaned; it also holds `explorer/deep-gallery/` (33 thumbnails) and the atlas slot pictures.
-- **KEEP `artifacts/deep-zoom/`** (fields, coloured keyframes, MP4s), **`artifacts/double-descent/`** (the movie's fields, stills and cuts, the in-flight 4K60 render among them), **`artifacts/mathjax/`** (the fetched typesetter) and **`artifacts/pool-study/`** (the measurement behind the four Full pipeline figures, kept until "ready for publishing"). All are untracked.
+- **KEEP `artifacts/deep-zoom/`** (fields, coloured keyframes, MP4s), **`artifacts/double-descent/`** (the movie's fields, stills and cuts, including the final 4K60 master and its untagged original), **`artifacts/mathjax/`** (the fetched typesetter) and **`artifacts/pool-study/`** (the measurement behind the four Full pipeline figures, kept until "ready for publishing"). All are untracked.
 - `artifacts/deep-gallery/` and `artifacts/cap-split/` are sweepable.
 
 **`E:\FractalWallpapers\`:** KEEP `ss_test_ckpt148\` (the ss4 references `fulls_ss3`'s check compares against). `full\` is `fulls_ss3`'s output.
 
 **`preserve\`:** `deep_zoom_section.md` and `minibrot_copies.md` stay until the figure round finishes. `art_techniques_links.md` stays until Matt rules.
 
-**Outside both repos:** `C:\Tools\fraktaler-3\` stays until Matt removes it.
+**Outside both repos:** `C:\Tools\fraktaler-3\` stays until Matt removes it. The rustc 1.96.0 toolchain installed beside stable stays: WASM bakes need it.
 
 **Wallpapers records:** the twenty-one kept records are the whole store, and their `recipes.jsonl` stay.
 
@@ -261,7 +260,7 @@ The review docs' canonical copies are website `review\deep-zoom.docx` and `revie
 - Sweepable when Matt sweeps: the parabolic pilot's legs, superseded `gallery_grade_head/pool_scores_*`, `curation_backup/`, `tiles/` manifests and `render_dose/*.pt`.
 
 ## OWED
-Nothing beyond the `double_descent_4k` report.
+Nothing.
 
 ## SCRATCH/ARTIFACT FLAGS
 - **★ The standing keep roster lives in the repo:** `src/fractal_wallpapers/README.md §The standing keep roster`.
