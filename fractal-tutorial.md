@@ -58,7 +58,7 @@ Homes:
 The repo owns its own rules: website `CLAUDE.md`, `builder/README.md`, `docs/page-review.md`, `explorer/README.md` and `explorer/perturb-wasm/README.md`. **Cite them; never restate them here, and keep no per-page list of any kind.**
 - **★ Editorial authority is `prose\writing-guidance.md`** (with website `CLAUDE.md`). It sits outside the repo on purpose.
 - **Prose path:** Claude drafts a wholesale master → `prose\` → a PLACE prompt places it verbatim. A superseded master is trashed.
-- **★ NOTHING IS LIVE (Matt).** He reviews from the site. Outdated figures and prose are not refreshed until "ready for publishing".
+- **★ The site is LIVE BUT UNADVERTISED (ckpt 152)** at `techmatt.github.io/fractals/` (repo `techmatt/fractals`; the local folder stays `C:\Code\fractal-website`). Until Matt advertises it, it never needs preserving or keeping in sync. He reviews from the site. Outdated figures and prose are not refreshed until "ready for publishing".
 - The wasm lock and the pool-adjacent `builder check` → fractal-operating §ONE COMMIT AT A TIME.
 
 ## WORKFLOW
