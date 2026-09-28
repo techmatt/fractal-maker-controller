@@ -46,7 +46,7 @@ Homes:
   - Bars derive at read time.
   - Unfilled beats padded, and the bar outranks the guarantee.
   - `--explain-seats-of NAME` writes per-key refusal reasons.
-- **Geometry:** the design phase is 1280×720 ss2, and phase 3 is 2560×1440 ss4. A tentative record never renders. The votes kit → fractal-corpus.
+- **Geometry:** the design phase is 1280×720 ss2, and phase 3 is 2560×1440 ss3. A tentative record never renders. Friend votes → fractal-corpus.
 
 ## Caveats that would cause a misread
 - **No head ever scores the wallpaper that ships.** Judges read the 640×360 candidate, while a release row is a cold render with autolevel inside it.
