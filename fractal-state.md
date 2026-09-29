@@ -1,4 +1,4 @@
-# fractal-state — checkpoint 154 (2026-09-28: gallery tone gaps closed; the Dive block rebuilt as slots with a generator-matched mixture, true-copy landings and Dive results; friend-vote ingest built; Deep zoom figure round closed; README and duplicate-key link fixes; `fulls_ss3` still in flight)
+# fractal-state — checkpoint 155 (2026-09-28: the Period slider moves in cycles across the frame; `nuclei::classify` 5–8× faster at degree 6; Random dives (1,000) shipped; the final prose pass placed and prose CLOSED; the pink picks list; seat links carry `n`; `fulls_ss3` still in flight)
 
 ## Where we are
 Three phases, each depending strictly on the one before (→ fractal-discovery). Matt iterates from pictures, not counts. Phase 3 is his eye on the final seating, and **every planned collection has a viewer at its official size.**
@@ -43,11 +43,12 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ Exponential smoothing reads as "smooth" on the site (Matt, ckpt 152)**; recipes keep `exp_smoothing`.
 - **★ Texture weight, rotation and phase are CLOSED; palette replication is PARKED.** `data/palettes/palettes_for_random_choice.csv` (232 maps) is the approved-for-random list.
 - **★ The explorer's palette modes are EXPLORER-ONLY** (`scale`, `lambda`, `period`; → `engine/README.md`, `explorer/README.md`).
+- **★ THE PERIOD SLIDER MOVES IN CYCLES ACROSS THE FRAME (Matt, ckpt 155)** (→ `explorer/README.md`, `explorer/period-range.js`). `period` stays stored in absolute units. The log range is anchored per frame (navigation, arrival, Fit, dive), never while dragging. Its dense end is on the right, at a tenth of a turn per pixel. Moving Lambda rescales `period` to hold the look. Only the slider clamps; the text box takes any value. Phase is unchanged.
 - ⚠ A seat's `mode` in `gallery.jsonl` is ROUTED; render at `recipe["mode"]`.
 
-## TONE CURVES (ckpt 154)
-- **★ Every gallery seat's tone curve is recorded.** A `--record all` backfill re-derived the 1,527 missing curves into wallpapers' `artifacts/curation/autolevel_backfill.jsonl` (553 agreed with a shipped ramp, 0 differed). Every one of the 6,299 gallery links carries its curve or is in band. The site's readers prefer a run's recorded stamp over a `rederived` one.
-- The full set inherits the candidate's curve from the sidecar (`stamps.for_release`). The 22 fulls drawn with another tone were deleted and redrawn.
+## TONE CURVES
+- **★ Every gallery seat's tone curve is recorded** (`artifacts/curation/autolevel_backfill.jsonl` in wallpapers). Every gallery link carries its curve or is in band. The site's readers prefer a run's recorded stamp over a `rederived` one.
+- The full set inherits the candidate's curve from the sidecar (`stamps.for_release`).
 - Nine atlas `lost` dots are replayable after a `curate atlas --plane` rebuild (optional; 4 have no curve anywhere).
 
 ## FULL-RESOLUTION WALLPAPERS AND PACKS
@@ -60,7 +61,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ The wallpapers are licensed CC BY 4.0, credit Matt Fisher.** Both repos' code stays MIT.
 - **★ Hosting: every pack goes on one GitHub Release on `techmatt/fractals`.**
 - **After the build:** Matt uploads the zips, then the website's `builder packs --import` and a build fill the sizes onto the packs page.
-- **★ FRIEND VOTES ARE INGESTED (ckpt 154):** friends send Saved links; Matt says "ingest NAME <links>" to CC in fractal-website, which runs `builder votes ingest`.
+- **★ FRIEND VOTES:** friends send Saved links; Matt says "ingest NAME <links>" to CC in fractal-website, which runs `builder votes ingest`.
   - The store is `C:\Code\fractal-drive-sync\votes\events.jsonl`: append-only, never in a repo, and losing it is a major failure. It is created on the first real ingest.
   - Matching ignores `level`. `votes export-order` writes the packs `--order` file (all thousand, likes first, ties in seeded order).
   - The local viewer is `artifacts/votes/index.html` under `builder serve`.
@@ -85,49 +86,47 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ Both repos build and run on Windows, Linux and macOS, and CI proves it.** ⚠ `engine.wasm` embeds absolute paths, so CI reports hashes without asserting them (→ OPEN 13).
 - **★ `fractal-engine render-link` is the Rust-only renderer.**
 - ⚠ Drive the makers through `.venv/Scripts/fractal-wallpapers.exe`. Concurrent prompts in one checkout commit with a pathspec. `gh` is logged in as techmatt.
-- **★ README thumbnail strips:** both root READMEs open with four thumbnails in `examples/`, each linking to its view. **Every README link is the full writer's link, and `builder check`'s `readmes` holds both READMEs to it (ckpt 154).**
-- ⚠ `perturb.wasm` builds on rustc 1.96.0 (`RUSTUP_TOOLCHAIN=1.96.0`); the box default is 1.98.1. A committed module once lagged its own source by a prompt; a rebake brings it back in line.
+- **★ README thumbnail strips:** both root READMEs open with four thumbnails in `examples/`, each linking to its view. Every README link is the full writer's link, and `builder check`'s `readmes` holds both READMEs to it.
+- ⚠ `perturb.wasm` builds on rustc 1.96.0 (`RUSTUP_TOOLCHAIN=1.96.0`); the box default is 1.98.1. A build on the wrong toolchain once shipped and was caught a prompt later; a rebake brings it back in line.
 
 ## WEBSITE: THE EXPLORER STUDIO AND THE ARTICLE
-**★ The site is LIVE BUT UNADVERTISED** at `techmatt.github.io/fractals/` (repo `techmatt/fractals`; the local folder stays `C:\Code\fractal-website`). Until Matt advertises it, it never needs preserving or keeping in sync. Every fact about the site is owned by the website repo:
+**★ The site is LIVE BUT UNADVERTISED** at `techmatt.github.io/fractals/` (repo `techmatt/fractals`; the local folder stays `C:\Code\fractal-website`). Until Matt advertises it, it never needs preserving or keeping in sync. **Matt's homepage (`techmatt.github.io`, repo `C:\Code\techmatt.github.io`) has a Fractals button to `/fractals/` (ckpt 155);** the fractal site's header links back. A prompt there changes only what it asks and adds no files. Every fact about the site is owned by the website repo:
 
 | Topic | Owner |
 |---|---|
-| Explorer: tabs, keys, Deep, **the Dive block and Dive results**, palette modes, New coloring and its aliasing guard, Fit, Find minibrots, screensaver, Walk, Phoenix, the ceilings, `panel=` and `collection=` links, link parsing and reader messages, undo, Browse, measured timings, the WASM toolchain pin | `explorer/README.md` |
-| Deep kernel, oracle, calibration, `nuclei::classify`, `dive::`, the twin, closed verdicts | `explorer/perturb-wasm/README.md` |
+| Explorer: tabs, keys, Deep, the Dive block, **Dive results and Random dives**, palette modes, **the Period slider**, New coloring and its aliasing guard, Fit, Find minibrots, screensaver, Walk, Phoenix, the ceilings, `panel=` and `collection=` links, link parsing and reader messages, undo, Browse, measured timings, the WASM toolchain pin | `explorer/README.md` |
+| Deep kernel, oracle, calibration, `nuclei::classify` (perturbed root solve, ckpt 155), `dive::`, the twin, closed verdicts | `explorer/perturb-wasm/README.md` |
 | Atlas | `atlas/README.md` |
-| Builder, figures, `seats.py`, the packs page, **`votes`**, **`dive-candidates`**, **`screenshot`**, `zoom.py`, `builder deep`, `builder descent`, `start.py`, `go/`, every `builder check` check (27, incl. `readmes` and `repeats`), the Deep gallery's method | `builder/README.md` |
+| Builder, figures, `seats.py`, the packs page, `votes`, `dive-candidates`, **the Random dives generator**, `screenshot`, `zoom.py`, `builder deep`, `builder descent`, `start.py` and the pink picks list, `go/`, every `builder check` check (28, incl. `readmes`, `repeats` and `deep`), the Deep gallery's method | `builder/README.md` |
 | The hunt harness `explorer/bench/hunt/` (u1–u10) | its `lib.mjs` header, `explorer/README.md` |
-| Traps: native exe rebuild, perturb rebake, the one video form, pathspec commits, CI, the checks a bare clone skips, the "ingest NAME" rule | `CLAUDE.md` |
+| Traps: native exe rebuild, perturb rebake, the one video form, pathspec commits, CI, the checks a bare clone skips, the "ingest NAME" rule, the `link` panel field | `CLAUDE.md` |
 | Style and voice | `prose\writing-guidance.md` · website `CLAUDE.md` |
 | Per-page status | `docs/page-review.md` |
 
-- **★ THE DIVE BLOCK (ckpt 154, Matt's design):**
+- **★ THE DIVE BLOCK (Matt's design):**
   - *Search for minibrots near [A] then [dive into | zoom out to symmetry point | save those minibrots] [B] Go*. Go has no key.
-  - A is Here (live by default), Paste or Random. B is None, Here, Paste or Random.
+  - A is Here (live by default), Paste or Random. B is None, Here, Paste or Random. **A Random slot shows its plane's atlas plate**, unfaded and never recoloured.
   - Defaults: A Random, B Random, with New coloring on arrival and Keep diving ticked.
   - B = Random draws the candidate generator's mixture: carry 70% (30% of carries are A itself), center 15%, halfway 15%, 60% of those two first descending 1–8 rungs.
-  - Results go to the Deep tab's **Gallery | Dive results** switch: newest first, Clear, gone on reload.
-  - Keep diving stops only on Stop or on leaving the Deep tab.
-  - Only true copies are landed on (`nuclei::classify`).
-  - **The reference look** is `artifacts/dive-reference/` (the 3-hour candidate sheet plus the mixture sheet).
-- **★ The site never tells a reader a view is "not exact."** Reader-facing link refusals are plain sentences (ckpt 154). Paste and Saved import read only the first link in pasted text.
+  - The Deep tab's switch is **Gallery | Dive results | Random dives**. Dive results are newest first, with Clear, and are gone on reload.
+  - Keep diving stops only on Stop or on leaving the Deep tab. Only true copies are landed on (`nuclei::classify`).
+  - **`artifacts/dive-reference/` is the reference LOOK, not a replay:** compare by eye, never unit by unit.
+- **★ RANDOM DIVES (Matt, ckpt 155):** 1,000 pre-computed dives in `explorer/random-dives.jsonl` (links only, no place twice), with Gallery-size tiles tracked beside it. They are shown all at once, lazily loaded, and shuffled on each page load. No full-size renders are stored. `artifacts/random-dives/` is ignored provenance.
+- **★ Seat links carry `n` (ckpt 155):** collection link gaps went from 423 to 8. The 8 left are mode-curve gaps that no link can express.
+- **★ The site never tells a reader a view is "not exact."** Reader-facing link refusals are plain sentences. Paste and Saved import read only the first link in pasted text.
 - **★ Every video we launch gets "Midway" and "Final frame" picture links under its player, through its own `go/` redirects.**
 - Every served asset is tracked. Shallow contract **v4**, deep contract **v3**. **★ A LINK IS A PICTURE.**
 - **★ No figure reuses a picture unless the reuse is intentional.** The Wallpaper packs page has one blanket exception (Matt).
 - **★ Figures are never changed because they drifted from the records.**
 - **★ The site reads as its final form; the Oxford comma; American spelling; THE VOICE** (`prose\writing-guidance.md` §Voice). The article describes the design as intended.
 - **★ Display formulas are typeset; the judges' reader names; each usable thing is linked once per page.**
-- **The article runs to fourteen sections plus Start here and the Wallpaper packs page.**
-  - Start here (`Start here v2.md`): `start-video` is the Double Descent embed with Midway and Final frame links. ⚠ `start-here.html` has no `prose.jsonl` row.
-  - Wallpaper packs (`Wallpaper packs v1.md`, generated from `builder/packs.py` `PROSE`): the different-size sentence is placed; 11 of the old 15 unlinked tiles gained links, and the 4 left are cap gaps.
-  - **§12 Deep zoom (`Deep zoom v4.md`): the figure round is CLOSED.** `deep-multibrots` has five parameter/Julia pairs with the Misiurewicz-contrast caption. `deep-final-colorings` is Leveled, Higher period, Palette switch and Another palette. `deep-dive-block` is a tracked screenshot (`builder screenshot`). **`deep-zoom-video` is a "Video pending" well** with Midway and Final frame links (`go/seahorse-mid`, `go/seahorse-end`); adding its YouTube id swaps in the player.
-  - Rendering fundamentals v1 and Rendering modes v5 now state ss3 and real wallpaper times.
-  - Gallery curation v2, Full pipeline v6, Finding good locations v8, Training judges v7, Color palettes v7, Fractal math v2.
 
-**★ THE SECTION-CUT TEMPLATE (Matt, ckpt 148). Done:** Gallery curation, Full pipeline, Finding good locations, Training judges, Color palettes, Rendering modes. The process is unchanged: a prose master in `prose\`, a placement prompt with a verify list, a coloured docx for sentence review, and an HTML sheet in `scratch/` for figure review.
+**★ PROSE IS CLOSED (Matt, ckpt 155) UNTIL HE REOPENS IT. FIGURES ARE NOT.** The final read-through's 13 items were placed at ckpt 155, into the site and into the masters in place. The download sentences already read as available. The one prose item still open is Deep zoom's speed sentence (→ OPEN 9).
+- **The article runs to fourteen sections plus Start here and the Wallpaper packs page.** The contents page (`index.html`, no master) leads with "New here? Start here…". Start here ends with a hand-off to the explorer, the Gallery tab and the packs.
+- **★ Start here's pink figure is Matt's daughter's PICKS, not a gallery** (`article/pink-gallery.jsonl`: 10 picks, then 2 placeholders). To add a pick, append a row and run `builder start start-pink-gallery --replace`; it takes the first remaining placeholder's cell. The phrase reads "final darker pink picks", unlinked.
+- `deep-zoom-video` is a "Video pending" well with Midway and Final frame links (`go/seahorse-mid`, `go/seahorse-end`); adding its YouTube id swaps in the player. `deep-dive-block` was retaken at ckpt 155.
 
-**★ Figure recipes are never lost** (`article/figure-recipes.jsonl`, tracked).
+**★ Figure recipes are never lost** (`article/figure-recipes.jsonl`, tracked; a `kind: "link"` row carries a link verbatim). Landing a figure writes its links before the page, so no heal pass is needed.
 
 **★ THE EXPLORER'S BAR (Matt):**
 - Complexity is a cost to the person using a tool; only clear wins are added.
@@ -151,52 +150,48 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 Nothing.
 
 ## OPEN (ordered): Matt raises each
-Items 3, 6, 8, 10, 11 and 14 are closed; the numbering is kept.
+Items 3, 6, 7, 8, 10, 11, 12, 14 and 15 are closed; the numbering is kept.
 1. **Mining is CLOSED; he reopens it.** Read `preserve\mining_laws.md`, then the reopen inventory in wallpapers `curation/LEGS.md`.
 2. **"Truly finalized": the commits (Matt raises it).** What waits on it: the twenty-one kept records and their recipes, and the pre-final history rewrite.
-4. **The section-by-section review pass** (→ OPEN 12).
+4. **Prose is CLOSED until Matt reopens it.** The review pass and the section cuts wait on that. Not yet cut: Overview, Escape-time fractals, Rendering fundamentals, Make your own palettes, Finding good wallpapers, Fractal atlases, Deep zoom rendering, Other artistic techniques, Fractal math, and Start here.
 5. **Deploy preparation (preparing, not deploying).** Left:
    - collect friends' votes → `ingest` → `votes export-order`;
    - `curate packs build` when `fulls_ss3` ends, then the upload, then `builder packs --import` and a build;
    - `deep-zoom-video`: Matt's colour and ending, render, YouTube, then its id into the pending row;
    - the history rewrite before the final commit;
-   - flip the videos public, hook the site up to Matt's personal website, advertise it, then post to fractalforums.org and other fractal forums.
-7. **The Deep tab gallery (48 frames, Matt's picks).** He sends links; a one-line prompt appends each row and bakes its thumbnail.
-9. **THE WRITEUP (Matt raises it; the session authors a prose master plus a placement prompt).**
-   - **Start here:** `start-pink-gallery` awaits his daughter's picks; the other `start-*` placeholders are Matt's to adjust.
-   - **"Ready for publishing":** only Deep zoom's speed sentence (remeasure) is left. The download promises become true when the packs ship.
-12. **The section-cut pass:** not yet cut are Overview, Escape-time fractals, Rendering fundamentals, Make your own palettes, Finding good wallpapers, Fractal atlases, Deep zoom rendering, Other artistic techniques, Fractal math, and Start here.
+   - flip the videos public, advertise the site, then post to fractalforums.org and other fractal forums.
+9. **Figures and the one prose sentence (Matt raises each):**
+   - Start here's other `start-*` placeholders are Matt's to finalize. The pink picks' 2 placeholders fill as his daughter picks.
+   - Deep zoom's speed sentence: remeasure after `fulls_ss3` ends, when the box is quiet.
 13. **Small follow-ups (all optional):**
     - `--remap-path-prefix` for a byte-reproducible `engine.wasm` (a rebake; after `fulls_ss3`);
-    - a loading state while a large collection's record arrives;
-    - the atlas rebuild for the nine replayable tone dots;
-    - `nuclei::classify` is slow at degree 6 and at large periods; perturbation from the nucleus orbit is the untried fix;
-    - `perturb-wasm/README.md` §11's twin-mapping numbers may have been measured on the period-15 non-nucleus.
-15. **The Deep tab's palette scroll range** (Matt's ckpt 153 goal 1, not yet done).
+    - the atlas rebuild for the nine replayable tone dots (after `fulls_ss3`);
+    - a figure panel addressed by seat still builds its link without the cap (`links._panel_links`); no link moved, and it is unsurveyed;
+    - the Period slider's one-decade minimum travel may leave deep frames' left end near a flat colour. Matt looks first; if so, it is one constant.
 
 Parked → `preserve\parked.md`.
 
 ## STATUS / KNOWN REDS
-- `builder check`: 27 checks green at the end of ckpt 154.
+- `builder check`: 28 checks green at the end of ckpt 155.
 - ⚠ A website `builder check` beside a wallpapers merge can throw a transient ledger red; retry.
 - ⚠ A report just copied to Drive `reports\` can read back empty for minutes; retry once, then ask Matt to paste it.
 
 ## RULINGS THIS ERA
-ckpt 154 (2026-09-26 to 09-28). Reported prompts:
-- tone: `gallery_tone_backfill` (and addendum 1);
-- explorer: `screensaver_first_frame`, `deep_dive_block`, `keep_diving`, `keep_diving_anchor`, `dive_slots`, `dive_primitive_only`, `dive_mixture`, `dive_defaults` (and addendum 1), `duplicate_key_links`;
-- votes: `friend_votes_ingest`;
-- Deep zoom: `deep_multibrots_gallery`, `deep_zoom_v4_place`, `deep_multibrots_pairs`, `deep_multibrots_final_rows` (and addendum 1), `publish_prep`;
-- READMEs: `readme_links_complete` (superseding `wallpapers_readme_links_fix_ckpt153`);
-- housekeeping: `dive_reference_keep`.
+ckpt 155 (2026-09-28). Reported prompts:
+- explorer: `period_slider`, `classify_speed` (and addendum 1), `random_dives` (and addendum 1);
+- prose: `final_pass_review`, `final_pass_place`;
+- figures: `start_pink_gallery` (and addenda 1–2), `preclose_website`;
+- homepage: `homepage_fractals_link`. `start_here_pink_wording` is a micro-task, assumed handled.
 
 Matt's rulings:
-- **The Dive block is slots, not buttons.** Random draws always come from `all`, ignoring the Gallery selection. Results are their own Dive results, not a gallery collection. The defaults are Random / Random with New coloring and Keep diving on, and its loop should roughly match the candidate sheet.
-- **Only true copies are dive landings.**
-- **Keep diving is stopped only by Stop or by leaving the Deep tab.**
-- **`deep-multibrots` pairs a multibrot location with a view of the Julia set for its c.** It uses "zoomed in close", not the point itself, and its caption contrasts the pairs with Misiurewicz points.
-- **Everything drawn without its tone curve is redrawn.**
-- **Small parked edits ride the very next prompt to that repo.**
+- **Period slider:** it moves in cycles across the frame; Lambda rescales `period` to hold the look; only the slider clamps; Phase is unchanged.
+- **The Deep tab gallery (the old OPEN 7) is closed;** it was never meant to be comprehensive.
+- **Random dives:** 1,000, Gallery-size tiles only, all shown in one grid, shuffled per page load.
+- **A Random slot shows the atlas plate,** never the palette.
+- **Prose is CLOSED until he reopens it; figures are not.**
+- **The homepage links straight to `/fractals/`; `index.html` stays the contents page, led by a Start here line.**
+- **Micro-tasks are assumed handled** once delivered; no report is tracked.
+- **Start here's pink figure is picks, not a gallery,** and is unlinked.
 
 ## KEEP LIST
 **Drive `prompts\`:** keep `fulls_ss3_ckpt148.md` (in flight). Matt wipes the rest himself.
@@ -217,16 +212,17 @@ Matt's rulings:
 **Wallpapers `scratch/`:** KEEP `fulls_ss3_ckpt148/`, `place_radius_sheet/`, `retired_tentative/`, `preclose_ckpt125/off_list_stamps.txt`, `tuning_test/`, `leg_numbers.py` and `mbc140/`. WIPE everything else.
 
 **Website:**
-- `scratch/`: wipe all except `deep_gallery_sheet/`.
-- KEEP `artifacts/deep-zoom/`, `artifacts/double-descent/`, `artifacts/mathjax/`, `artifacts/pool-study/` and **`artifacts/dive-reference/`**. `artifacts/deep-gallery/`, `artifacts/cap-split/` and `artifacts/dive-candidates/` are sweepable. `artifacts/votes/` regenerates.
+- `scratch/`: wipe all except `deep_gallery_sheet/` and `deep_minibrot_candidates/`.
+- KEEP `artifacts/deep-zoom/`, `artifacts/double-descent/`, `artifacts/mathjax/`, `artifacts/pool-study/` and `artifacts/dive-reference/`. `artifacts/deep-gallery/`, `artifacts/cap-split/`, `artifacts/dive-candidates/` and `artifacts/random-dives/` are sweepable. `artifacts/votes/` regenerates.
+- `temp-pics/` is Matt's (untracked); leave it.
 
 **`E:\FractalWallpapers\`:** KEEP `ss_test_ckpt148\` and `full\`.
 
-**`preserve\`:** `art_techniques_links.md` stays until Matt rules. (`minibrot_copies.md` and `deep_zoom_section.md` were deleted at ckpt 154.)
+**`preserve\`:** `art_techniques_links.md` stays until Matt rules.
 
 **Outside both repos:** `C:\Tools\fraktaler-3\` stays until Matt removes it. The rustc 1.96.0 toolchain stays.
 
-**Wallpapers records:** the twenty-one kept records are the whole store. **Hot artifacts:** unchanged, plus `autolevel_backfill.jsonl` (now covering every gallery seat).
+**Wallpapers records:** the twenty-one kept records are the whole store. **Hot artifacts:** unchanged.
 
 ## OWED
 Nothing.
