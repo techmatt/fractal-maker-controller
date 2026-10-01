@@ -34,7 +34,8 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
   - `mirror` is a bake and `cycles` an index, and they multiply.
   - The axis is a byte-for-byte no-op on the four direct traps.
   - Adding maps never moves an existing bake.
-  - `scale` (leveled | absolute), `lambda` (Box–Cox, before the stretch) and `period` (ckpt 143) are EXPLORER-ONLY keys, omitted at default and never emitted by the pipeline's key whitelist (→ `engine/README.md`).
+  - `scale` (leveled | absolute), `lambda` (Box–Cox, before the stretch), `period` (ckpt 143) and `knee` (ckpt 157) are EXPLORER-ONLY keys, omitted at default and never emitted by the pipeline's key whitelist (→ `engine/README.md`).
+  - **★ `knee` is Box–Cox below the knee and exactly linear above it, with a C¹ join; `period` is then the linear period.** It is one fixed curve of ν, so a zoom never recolours structure already on screen. It has ONE home, `coloring.rs`, which the website's `zoom.py` calls. A link without `knee` means off.
 - **★ A flat texture is smooth-with-rank** (`mode_policy.routed_mode`). `data/coloring/texture_flat.jsonl` is a tracked register with geometry in the key.
 - **★ The direct traps:**
   - `direct_trap_multiply` whitewashes because it is read through sRGB. Fixes are mode-param variants, never engine edits (→ `engine/README.md`).
@@ -43,6 +44,7 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
 - **★ An explicit iteration cap is keyed end to end, EXCEPT at `expand.rs`'s `Node`** (the shallow link carries `n` since permalink v4, ckpt 145). Parabolic Julia sets were judged by eye at ckpt 147 and are not included (Matt), so nothing needs the `Node` cap.
   - `maxiter::for_width` reads the width only. Above the cap a sample is painted interior, so two caps are two pictures.
   - `explorer_link.query_of` is the full recipe→link writer (it carries `mirror`, `level`, `curve` (since ckpt 156, spelled byte for byte like the site) and mode params). `pins.query_of` writes pin lines and drops them, so never use it for a link a reader opens (ckpt 153: it cost a README link its mirror).
+- **★ A Phoenix recipe that omits `c` or `p` means the classic constants, never zero** (ckpt 157: both link writers once wrote zeros and sent 17 seats to a plain disk).
 - **★ `Family::PhoenixM` (`phoenix_m`; explorer name `phoenix_plane`).** At p = 0 it is the Mandelbrot set. It is not mined. ⚠ The classic Ushiki c = 0.5667 lies just OUTSIDE the p = −0.5 filled set.
 - **★ Zero-behaviour is not bytes alone:** time the three anchors as well as hashing them. An enum arm once pushed `Family::step` past LLVM's inline threshold and doubled the Mandelbrot anchor.
 - **★ Interior samples are answered without iterating** wherever every field of the pass is escape-only (ckpt 146): the cardioid, bulb and disk tests on the Mandelbrot and multibrot planes, a proven basin disk on Julia planes of degree 2–6 at their shipped `c`, and exact Brent repeat detection on every family. The fingerprint did not move. Prove any engine change with `fractal-wallpapers identity TAG --against TAG --edges`. Since ckpt 147 an exact repeat also stops the orbit-extreme modes: the traps' min/max, the lattice extremes, `itinerary` and `tail_itinerary` (its window is exact at base 4, depth 26). Means and the direct traps cannot stop there and still iterate (→ `engine/README.md`).
