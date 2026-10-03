@@ -1,4 +1,4 @@
-# fractal-state — checkpoint 158 (2026-10-01: the julia3 and multibrot3 videos, all four videos public; the packs re-uploaded and digest-verified; E: consolidated under `E:\Fractals\`; the pool pictures moved to the E: mirror, with the website's resolver taught the mirror; the daughter's pink picks and the voted-leftovers start gallery; a hand-directed art section crediting two artists; knee as the code default for videos)
+# fractal-state — checkpoint 159 (2026-10-01/03: the site advertised and posted to eight places; the explorer named Mandelnaut, "Mandelnaut Explorer" on first mention; small follow-ups done (byte-reproducible `engine.wasm`, phone labels, atlas tap-cycling); native-vs-Wasm numbers measured; demo mode and a draft 32-second showcase video)
 
 ## Where we are
 Three phases, each depending strictly on the one before (→ fractal-discovery). Matt iterates from pictures, not counts. Phase 3 is his eye on the final seating, and **every planned collection has a viewer at its official size.**
@@ -48,7 +48,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 ## TONE CURVES AND LINKS
 - **★ Every gallery seat's tone curve is recorded** (`artifacts/curation/autolevel_backfill.jsonl`).
 - **★ THE LINK CONTRACT** (owner: website `explorer/README.md`) spells `curve` and `knee`. Wallpapers `explorer_link.query_of` writes links byte for byte like the site. The engine's `link.rs` reads `curve` and a stated `scale=leveled`.
-- **★ A Phoenix recipe that omits `c` or `p` means the classic constants, never zero.** The website's `links.py` now spells `phoenix_m` as `phoenix_plane` with its constants.
+- **★ A Phoenix recipe that omits `c` or `p` means the classic constants, never zero.** The website's `links.py` spells `phoenix_m` as `phoenix_plane` with its constants.
 - **★ A LINK IS A PICTURE**, proven across every tab, mode and family by `explorer/bench/link-fidelity.mjs` (a browser harness, not in `builder check`).
 - **★ Seat-addressed figure panels carry the cap** whenever it differs from the policy; `builder check`'s `caps` check holds them.
 
@@ -66,7 +66,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ FRIEND VOTES:**
   - **The store** is `C:\Code\fractal-drive-sync\votes\events.jsonl`: append-only, never in a repo, and losing it is a major failure.
   - **Ingest:** Matt says "ingest NAME <links or files>" to CC in fractal-website; `builder votes browse` regenerates the browser.
-  - **The final pack rebuild** comes after the last votes: stage → plan → zips → upload.
+  - **★ The votes are sufficient for now (Matt, ckpt 159).** A pack rebuild (stage → plan → zips → upload) happens only when Matt decides enough new votes have arrived; never proposed.
 
 ## ZOOM VIDEOS
 - **★ Four videos, all PUBLIC on YouTube (Matt, 2026-10-01):** Double Descent (`MgmOF7Q-YIA`), the seahorse descent (`N_041iZNHvQ`), the julia3 descent (`GcJnRBlqSHw`) and the multibrot3 descent (`zYHpYwFDQbM`, section "A degree-3 Mandelbrot set spiral"). All four are embedded on Deep zoom videos.
@@ -74,10 +74,16 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ Every video gets Midway and Final frame links** through its own `go/` redirects, and new videos are prototyped on the `preview` variant before the 4K render.
 - `builder descent --direct` takes a single Multibrot link as one stage; without it, a single Multibrot link is read as a twin chain.
 
+## THE SHOWCASE VIDEO (DRAFT)
+- **★ A silent ~30-second 1920×1080 30 fps MP4 of the explorer's real UI**, for Reddit, HN and Mastodon. Shallow renders show at real speed (previews included); only Deep-tab waits are cut, and deep views are cuts (Matt, ckpt 159).
+- **Demo mode** (`demo=1`: drawn cursor with click pulses, a fixed Dive landing hook, hidden Deep progress, a caption bar) and the tour script `explorer/bench/showcase.mjs` are committed; owner website `explorer/README.md §Demo mode`. One take is one command, about 3 minutes.
+- The path (gallery → lime chip → hero D → zoom → palettes → modes on 5B → Julia → Atlas → Dive → deep cuts → caption "Mandelnaut Explorer · techmatt.github.io/fractals/explorer") was picked from `scratch/showcase_plan/`. The draft take is `scratch/showcase/mandelnaut_showcase.mp4` (32.3 s), with frames and `beats.json` beside it.
+
 ## START HERE AND OTHER FIGURES
 - **★ The pink picks are Matt's daughter's twelve**, placed at seed 20260930 from her full list (`article/pink-gallery.jsonl`); a re-pick is a new `chosen` line.
 - **★ Start here's gallery figure is a seeded draw from the voted leftovers** (seed 1): voted pictures from any collection, minus everything shown elsewhere on the site, at most two per hue family, no touching tiles sharing a family. `builder start start-gallery --replace --gallery-seed N` redraws it; a new vote never moves it.
 - **★ A figure panel may show another artist's work** under a CC license that allows non-commercial sharing, credited and linked (panel `credit`, source kind `external`; the rule is in website `CLAUDE.md`). Other artistic techniques opens with the hand-directed art section and two such panels.
+- **★ On phones, the twelve `modes-*` sheets swap to a 640-wide version below 30rem**, and repeated taps on overlapping atlas marks step through the pile (ckpt 159).
 
 ## LAWS STATE STILL CARRIES
 - **★ The degree-6 plane is never labelled** (`partitions.NEVER_LABELLED`).
@@ -104,19 +110,21 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ CUDA is opt-in.** ⚠ This box syncs `--extra cuda`. **★ Both repos build and run on Windows, Linux and macOS, and CI proves it.**
 - ⚠ Drive the makers through `.venv/Scripts/fractal-wallpapers.exe`. Concurrent prompts in one checkout commit by pathspec and stage by hunk.
 - ⚠ `perturb.wasm` builds on rustc 1.96.0 (`RUSTUP_TOOLCHAIN=1.96.0`).
+- **`engine.wasm` carries no local paths since ckpt 159** (`--remap-path-prefix`); builds from different checkout paths still differ through cargo's path-dependency metadata, a known gap left open (→ `explorer/README.md`).
 
 ## WEBSITE
-**★ The site is LIVE BUT UNADVERTISED** at `techmatt.github.io/fractals/` (repo `techmatt/fractals`; the local folder stays `C:\Code\fractal-website`). Until Matt advertises it, it never needs preserving or keeping in sync. Every fact about the site is owned by the website repo:
+**★ The site is LIVE AND ADVERTISED since 2026-10-01** at `techmatt.github.io/fractals/` (repo `techmatt/fractals`; the local folder stays `C:\Code\fractal-website`). Whether it must now be kept in sync is Matt's to rule. Every fact about the site is owned by the website repo:
 
 | Topic | Owner |
 |---|---|
-| Explorer: tabs, Deep, phones, the link contract, Straighten iter, the link-fidelity harness | `explorer/README.md` |
+| Explorer: tabs, Deep, phones, the link contract, Straighten iter, demo mode, the link-fidelity harness, native-vs-Wasm numbers (`§Measured`) | `explorer/README.md` |
 | Deep kernel, `nuclei::classify`, the twin | `explorer/perturb-wasm/README.md` |
 | Builder: figures (incl. credited external panels), packs (staging, ranking, previews, the deep pack, uploads), `votes`, zoom videos, the resolver, head tags, every `builder check` check | `builder/README.md` |
 | Traps, the rail rule, pathspec and hunk staging, the external-image license rule | `CLAUDE.md` |
 | Style and voice | `prose\writing-guidance.md` · website `CLAUDE.md` |
 | Per-page status | `docs/page-review.md` |
 
+- **★ THE EXPLORER IS NAMED MANDELNAUT (Matt, ckpt 159).** On every page, the first mention of the explorer reads "Mandelnaut Explorer" and later mentions stay "the explorer"; the explorer's `<title>` is "Mandelnaut Explorer — Making Fractal Wallpapers" and its H1 "Mandelnaut"; the rail and `go/` titles read "Mandelnaut Explorer". Start here's heading stays "Fractal explorer" (its `#fractal-explorer` fragment). The site manifest keeps the site's name. The "open in fractal explorer" figure mark is unchanged.
 - **★ NAVIGATION:** the rail reads in three groups: Start here | Wallpaper packs, Tools and data, Deep zoom videos | Contents. The site header carries the same links.
 - **★ PHONES: reasonable, not overboard.**
 - **★ PALETTE CREDIT:** pages may say "palettes I made" as long as they link to Make your own palettes, which credits Claude writing them from three checked-in prompts.
@@ -124,7 +132,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ A LINK IS A PICTURE. The site never tells a reader a view is "not exact." No figure reuses a picture unless the reuse is intentional. Figures are never changed because they drifted. Figure recipes are never lost.**
 - **★ The site reads as its final form; the Oxford comma; American spelling; THE VOICE** (`prose\writing-guidance.md` §Voice).
 
-**★ PROSE: MATT REOPENS IT PIECEMEAL, ONE PASSAGE AT A TIME.** This era's prose edits were made in their masters in place: Color palettes, Deep zoom videos and Other artistic techniques.
+**★ PROSE: MATT REOPENS IT PIECEMEAL, ONE PASSAGE AT A TIME.** This era's only prose edits were the Mandelnaut naming sentences, made in their masters in place.
 
 **★ THE EXPLORER'S BAR (Matt):** complexity is a cost; text is for the artist; the left panel changes the view, the right manipulates it; the shallow view and Deep are one tool; Deep auto-renders. Wasm threads are out. ⚠ This box drifts about 30% between identical runs.
 
@@ -135,44 +143,36 @@ Nothing.
 Nothing.
 
 ## OPEN (ordered): Matt raises each
-Items 2, 3, 6, 7, 8, 10, 11, 12, 14, 15, 16 and 17 are closed; the numbering is kept.
+Items 2, 3, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16 and 17 are closed; the numbering is kept.
 1. **Mining is CLOSED; he reopens it.**
 4. **Prose reopens piecemeal (Matt).**
-5. **Deploy preparation (preparing, not deploying).** Left:
-   - more friends' votes, then the final pack rebuild and upload;
-   - more deep zoom videos for the videos page, in the knee style;
-   - advertise the site, then post to fractalforums.org and other fractal forums.
-9. **Figures that are Matt's to supply:** the `pipeline-overview` seeded stand-in, and Start here's other `start-*` placeholders.
+5. **Deploy.** Advertising is under way (2026-10-01): posted to fractalforums.org (topic 5674), r/wallpaper, r/wallpapers, r/fractals, r/computergraphics, r/InternetIsBeautiful and DeviantArt. Left:
+   - still to post: Show HN, mathstodon.xyz, r/creativecoding (a video post with a first comment), r/rust (a Rust-focused text post, one self-promotion post a week);
+   - more deep zoom videos for the videos page, in the knee style.
 13. **Small follow-ups (all optional):**
-    - `--remap-path-prefix` for a byte-reproducible `engine.wasm` (a rebake);
     - the atlas rebuild for the nine replayable tone dots (skip unless Matt notices one);
     - the Period slider's one-decade minimum travel on deep frames (Matt looks first);
-    - `palette-moods`' provenance rule would draw 29 strips if re-run;
-    - on phones, the atlas marks overlap (a tap opens the top one), and 12 composite figures draw their labels at about 3–4 px.
+    - `palette-moods`' provenance rule would draw 29 strips if re-run.
+18. **The showcase video is a draft (Matt, ckpt 159).** Beat 3's zoom into the spiral's eye reads as rotation, not travel: re-aim it toward something that changes as it approaches. The take runs 32.3 s against a ~30 s target. A retake is one command (§THE SHOWCASE VIDEO).
 
 Parked → `preserve\parked.md`.
 
 ## STATUS / KNOWN REDS
-- `builder check`: 31 checks green at `website_resolver_ckpt157`.
+- `builder check`: green at `mandelnaut_explorer_name_ckpt159`.
 - ⚠ A website `builder check` beside a wallpapers merge can throw a transient ledger red; retry.
 - ⚠ A report just copied to Drive `reports\` can read back empty for minutes; retry once, then ask Matt to paste it.
 
 ## RULINGS THIS ERA
-ckpt 158 (2026-09-30/10-01). Reported prompts:
-- **wallpapers:** `e_drive_consolidate`, `pool_pictures_to_e`.
-- **website:**
-  - videos: `julia3_video_4k` (+ addendum 1), `multibrot3_video` (+ addendum 1; interim and final reports), `multibrot3_video_id`;
-  - packs: `packs_release_check`, `packs_reupload`, `packs_preview_reimport`;
-  - pages: `website_polish` (+ addendum 1), `pink_picks`, `start_gallery`, `art_section`;
-  - `preclose2_website`, `website_resolver`.
+ckpt 159 (2026-10-01/03). Reported prompts, all website:
+- `small_followups`, `mandelnaut_name`, `mandelnaut_explorer_name`;
+- `native_vs_wasm_numbers`;
+- `showcase_planning_sheet`, `showcase_video_build`.
 
 Matt's rulings:
-- **All four videos are public.** The multibrot3 section is "A degree-3 Mandelbrot set spiral"; its colour came from `deep-random-dives` panel 10 (Terminal Flare, phase 0.681) with julia3's knee and λ.
-- **The pink picks are his daughter's twelve.**
-- **Start here's gallery** draws from voted pictures in any collection, excluding everything shown anywhere on the site.
-- **Other artists' work may be shown** under any CC license that allows non-commercial sharing, credited and linked.
-- **`preserve\art_techniques_links.md` is trashed:** every term it listed is on Other artistic techniques or Fractal math.
-- **The website's resolver follows the pool-picture mirror**, rather than keeping the figure-pinned records.
+- **The friend votes are sufficient for now;** a pack rebuild only when he decides enough new votes have arrived.
+- **The explorer is named Mandelnaut,** and "Mandelnaut Explorer" leads each page's first mention of it.
+- **The showcase video** is silent, 1080p30, about 30 s, real UI with only the deep waits cut, deep views as cuts, a drawn cursor with click pulses, demo mode committed, MP4 only.
+- **Dropped:** Start here's `start-*` placeholders and the `pipeline-overview` stand-in (the old OPEN 9).
 
 ## KEEP LIST
 **Drive `prompts\`:** nothing to keep. Matt wipes it himself.
@@ -193,7 +193,7 @@ Matt's rulings:
 **Wallpapers `scratch/`:** KEEP whichever of the old keep list still exists (`place_radius_sheet/`, `retired_tentative/`, `preclose_ckpt125/off_list_stamps.txt`, `tuning_test/`, `leg_numbers.py`). WIPE everything else.
 
 **Website:**
-- `scratch/`: KEEP `deep_gallery_sheet/` and `deep_minibrot_candidates/` if present. WIPE the rest.
+- `scratch/`: KEEP `showcase/` and `showcase_plan/` (the showcase draft, OPEN 18), and `deep_gallery_sheet/` and `deep_minibrot_candidates/` if present. WIPE the rest.
 - `artifacts/`:
   - KEEP `deep-zoom/`, `double-descent/`, `julia3-descent/` and `multibrot3-descent/` (with their E: junctions), `mathjax/`, `pool-study/`, `dive-reference/` and `deep-pack/`.
   - `packs-stage/` and `votes/` regenerate.
