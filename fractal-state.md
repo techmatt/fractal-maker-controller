@@ -1,4 +1,4 @@
-# fractal-state — checkpoint 159 (2026-10-01/03: the site advertised and posted to eight places; the explorer named Mandelnaut, "Mandelnaut Explorer" on first mention; small follow-ups done (byte-reproducible `engine.wasm`, phone labels, atlas tap-cycling); native-vs-Wasm numbers measured; demo mode and a draft 32-second showcase video)
+# fractal-state — checkpoint 160 (2026-10-03/04: structured deep-dive pilots run, then closed and parked; a page of about 500 dives and their Julia sets published and linked from Deep zoom; a forum image of the walk; both repos' `scratch/` wiped whole)
 
 ## Where we are
 Three phases, each depending strictly on the one before (→ fractal-discovery). Matt iterates from pictures, not counts. Phase 3 is his eye on the final seating, and **every planned collection has a viewer at its official size.**
@@ -77,7 +77,15 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 ## THE SHOWCASE VIDEO (DRAFT)
 - **★ A silent ~30-second 1920×1080 30 fps MP4 of the explorer's real UI**, for Reddit, HN and Mastodon. Shallow renders show at real speed (previews included); only Deep-tab waits are cut, and deep views are cuts (Matt, ckpt 159).
 - **Demo mode** (`demo=1`: drawn cursor with click pulses, a fixed Dive landing hook, hidden Deep progress, a caption bar) and the tour script `explorer/bench/showcase.mjs` are committed; owner website `explorer/README.md §Demo mode`. One take is one command, about 3 minutes.
-- The path (gallery → lime chip → hero D → zoom → palettes → modes on 5B → Julia → Atlas → Dive → deep cuts → caption "Mandelnaut Explorer · techmatt.github.io/fractals/explorer") was picked from `scratch/showcase_plan/`. The draft take is `scratch/showcase/mandelnaut_showcase.mp4` (32.3 s), with frames and `beats.json` beside it.
+- The path (gallery → lime chip → hero D → zoom → palettes → modes on 5B → Julia → Atlas → Dive → deep cuts → caption "Mandelnaut Explorer · techmatt.github.io/fractals/explorer") is in the committed tour script. The draft take (32.3 s) and its planning sheet were wiped with `scratch/` at ckpt 160; a retake regenerates it.
+
+## THE PAGE OF DIVES AND THEIR JULIA SETS (ckpt 160)
+- **★ Published at `deep-zoom/dives-and-julia-sets/`** and linked by one sentence at the end of Deep zoom's Random dives passage. It stays out of the rail and the header and has no text beyond section headings and two controls (Fixed / Random coloring; Show Julia twin).
+- **What it holds:** about 500 existing random dives that land on a gallery view placed inside a minibrot, the location judge's top picks per degree (200 / 100 / 100 / 50 / 50 for degrees 2–6), plus the Deep zoom figure's panels and the deep gallery forced in. Each has a Julia twin at its centre.
+- **★ "Carried" is internal shorthand for that landing kind and never appears in reader-facing text** (the folder and title were renamed for it).
+- **★ The twin's rules (Matt):** a twin with a central black disk is zoomed out until the disk is about 5% of the frame's width, never to the whole Julia set; every twin is coloured by a fresh absolute fit on its own field, palette kept.
+- **★ Its images are tracked (Matt's ruling; about 100 MB)** so the page loads fast.
+- **It rebuilds from the record alone:** `builder/data/julia-dives-picks.jsonl` and `python -m builder.julia_dives page`. Owner: website `builder/README.md §The page of dives and their Julia sets`. The saved fields were wiped with `scratch/`, so a recolour is a re-render.
 
 ## START HERE AND OTHER FIGURES
 - **★ The pink picks are Matt's daughter's twelve**, placed at seed 20260930 from her full list (`article/pink-gallery.jsonl`); a re-pick is a new `chosen` line.
@@ -88,6 +96,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 ## LAWS STATE STILL CARRIES
 - **★ The degree-6 plane is never labelled** (`partitions.NEVER_LABELLED`).
 - **★ Parabolic Julia sets are CLOSED (ckpt 147); Douady–Hubbard tuning is PARKED (ckpt 148); BLA stays removed (ckpt 149).**
+- **★ Structured deep dives are CLOSED AND PARKED (Matt, ckpt 160):** copy-in-copy chains and minibrots framed at a fixed screen size (→ `preserve\parked.md`, fractal-engine §Deep render).
 
 ## RETENTION AND STORAGE
 - **★ Everything fractal on E: lives under `E:\Fractals\`:** `FractalStorage\` (the ARCHIVE tier), `FractalWallpapers\` and `history_undo_ckpt157\`. Every older `E:\FractalStorage` or `E:\FractalWallpapers` spelling is dead.
@@ -118,8 +127,8 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 | Topic | Owner |
 |---|---|
 | Explorer: tabs, Deep, phones, the link contract, Straighten iter, demo mode, the link-fidelity harness, native-vs-Wasm numbers (`§Measured`) | `explorer/README.md` |
-| Deep kernel, `nuclei::classify`, the twin | `explorer/perturb-wasm/README.md` |
-| Builder: figures (incl. credited external panels), packs (staging, ranking, previews, the deep pack, uploads), `votes`, zoom videos, the resolver, head tags, every `builder check` check | `builder/README.md` |
+| Deep kernel, `nuclei::classify`, the twin, the chain cap rule, the low-period catalogue, the count a framed minibrot needs | `explorer/perturb-wasm/README.md` |
+| Builder: figures (incl. credited external panels), packs (staging, ranking, previews, the deep pack, uploads), `votes`, zoom videos, Random dives (generator, survival, judge scores), the page of dives and their Julia sets, the resolver, head tags, every `builder check` check | `builder/README.md` |
 | Traps, the rail rule, pathspec and hunk staging, the external-image license rule | `CLAUDE.md` |
 | Style and voice | `prose\writing-guidance.md` · website `CLAUDE.md` |
 | Per-page status | `docs/page-review.md` |
@@ -128,11 +137,11 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ NAVIGATION:** the rail reads in three groups: Start here | Wallpaper packs, Tools and data, Deep zoom videos | Contents. The site header carries the same links.
 - **★ PHONES: reasonable, not overboard.**
 - **★ PALETTE CREDIT:** pages may say "palettes I made" as long as they link to Make your own palettes, which credits Claude writing them from three checked-in prompts.
-- **★ Head tags** come from each page's own first sentence (`builder/heads.py`); a series is never cut at a list comma.
+- **★ Head tags** come from each page's own first sentence (`builder/heads.py`); a series is never cut at a list comma. A page with no prose carries an authored description.
 - **★ A LINK IS A PICTURE. The site never tells a reader a view is "not exact." No figure reuses a picture unless the reuse is intentional. Figures are never changed because they drifted. Figure recipes are never lost.**
 - **★ The site reads as its final form; the Oxford comma; American spelling; THE VOICE** (`prose\writing-guidance.md` §Voice).
 
-**★ PROSE: MATT REOPENS IT PIECEMEAL, ONE PASSAGE AT A TIME.** This era's only prose edits were the Mandelnaut naming sentences, made in their masters in place.
+**★ PROSE: MATT REOPENS IT PIECEMEAL, ONE PASSAGE AT A TIME.** This era's only prose edit was one sentence added to Deep zoom, linking the page of dives, made in its master in place.
 
 **★ THE EXPLORER'S BAR (Matt):** complexity is a cost; text is for the artist; the left panel changes the view, the right manipulates it; the shallow view and Deep are one tool; Deep auto-renders. Wasm threads are out. ⚠ This box drifts about 30% between identical runs.
 
@@ -146,33 +155,36 @@ Nothing.
 Items 2, 3, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16 and 17 are closed; the numbering is kept.
 1. **Mining is CLOSED; he reopens it.**
 4. **Prose reopens piecemeal (Matt).**
-5. **Deploy.** Advertising is under way (2026-10-01): posted to fractalforums.org (topic 5674), r/wallpaper, r/wallpapers, r/fractals, r/computergraphics, r/InternetIsBeautiful and DeviantArt. Left:
-   - still to post: Show HN, mathstodon.xyz, r/creativecoding (a video post with a first comment), r/rust (a Rust-focused text post, one self-promotion post a week);
-   - more deep zoom videos for the videos page, in the knee style.
+5. **Deploy.** **Matt tracks where the site is posted himself (ckpt 160); the docs carry no posting list.** Left: more deep zoom videos for the videos page, in the knee style.
 13. **Small follow-ups (all optional):**
     - the atlas rebuild for the nine replayable tone dots (skip unless Matt notices one);
     - the Period slider's one-decade minimum travel on deep frames (Matt looks first);
     - `palette-moods`' provenance rule would draw 29 strips if re-run.
-18. **The showcase video is a draft (Matt, ckpt 159).** Beat 3's zoom into the spiral's eye reads as rotation, not travel: re-aim it toward something that changes as it approaches. The take runs 32.3 s against a ~30 s target. A retake is one command (§THE SHOWCASE VIDEO).
+18. **The showcase video is a draft (Matt, ckpt 159).** Beat 3's zoom into the spiral's eye reads as rotation, not travel: re-aim it toward something that changes as it approaches. The last take ran 32.3 s against a ~30 s target. A retake is one command (§THE SHOWCASE VIDEO).
 
 Parked → `preserve\parked.md`.
 
 ## STATUS / KNOWN REDS
-- `builder check`: green at `mandelnaut_explorer_name_ckpt159`.
+- `builder check`: green at `carried_dives_publish_ckpt160`.
 - ⚠ A website `builder check` beside a wallpapers merge can throw a transient ledger red; retry.
 - ⚠ A report just copied to Drive `reports\` can read back empty for minutes; retry once, then ask Matt to paste it.
 
 ## RULINGS THIS ERA
-ckpt 159 (2026-10-01/03). Reported prompts, all website:
-- `small_followups`, `mandelnaut_name`, `mandelnaut_explorer_name`;
-- `native_vs_wasm_numbers`;
-- `showcase_planning_sheet`, `showcase_video_build`.
+ckpt 160 (2026-10-03/04). Reported prompts, all website:
+- `dive_chain_audit_pilot`, `minibrot_size_pilot`, `dive_candidate_sheet`, `random_dives_audit`;
+- `carried_dives_500`, `carried_dives_twins`, `carried_dives_twin_fit`, `carried_dives_publish`;
+- `walk_descent_image` (a one-off forum image; nothing tracked).
+
+Delivered as a micro-task, assumed handled: `pre_closeout_ckpt160` (the page's `noindex` removed; the parked entry written).
 
 Matt's rulings:
-- **The friend votes are sufficient for now;** a pack rebuild only when he decides enough new votes have arrived.
-- **The explorer is named Mandelnaut,** and "Mandelnaut Explorer" leads each page's first mention of it.
-- **The showcase video** is silent, 1080p30, about 30 s, real UI with only the deep waits cut, deep views as cuts, a drawn cursor with click pulses, demo mode committed, MP4 only.
-- **Dropped:** Start here's `start-*` placeholders and the `pipeline-overview` stand-in (the old OPEN 9).
+- **Structured deep dives are closed and parked.**
+- **A view placed inside a minibrot is the landing kind worth showing others;** the published page is built from those.
+- **The page's images are tracked,** and the page is indexed.
+- **The Julia twin's framing and colouring rules** (§THE PAGE OF DIVES AND THEIR JULIA SETS).
+- **A forum image may show rescaled judge scores;** that ruling covered that one image only.
+- **Matt tracks the site's postings himself.**
+- **Both repos' `scratch/` are wiped whole at this closeout;** nothing in either is kept.
 
 ## KEEP LIST
 **Drive `prompts\`:** nothing to keep. Matt wipes it himself.
@@ -190,14 +202,12 @@ Matt's rulings:
 - `Other artistic techniques v1.md`, `Fractal math v2.md`;
 - `writing-guidance.md`.
 
-**Wallpapers `scratch/`:** KEEP whichever of the old keep list still exists (`place_radius_sheet/`, `retired_tentative/`, `preclose_ckpt125/off_list_stamps.txt`, `tuning_test/`, `leg_numbers.py`). WIPE everything else.
+**Wallpapers `scratch/` and website `scratch/`:** wiped whole at ckpt 160 (Matt). Nothing is kept in either.
 
-**Website:**
-- `scratch/`: KEEP `showcase/` and `showcase_plan/` (the showcase draft, OPEN 18), and `deep_gallery_sheet/` and `deep_minibrot_candidates/` if present. WIPE the rest.
-- `artifacts/`:
-  - KEEP `deep-zoom/`, `double-descent/`, `julia3-descent/` and `multibrot3-descent/` (with their E: junctions), `mathjax/`, `pool-study/`, `dive-reference/` and `deep-pack/`.
-  - `packs-stage/` and `votes/` regenerate.
-  - `cap-split/`, `dive-candidates/`, `random-dives/` and `pink-picker/` are sweepable.
+**Website `artifacts/`:**
+- KEEP `deep-zoom/`, `double-descent/`, `julia3-descent/` and `multibrot3-descent/` (with their E: junctions), `mathjax/`, `pool-study/`, `dive-reference/` and `deep-pack/`.
+- `packs-stage/` and `votes/` regenerate.
+- `cap-split/`, `random-dives/` and `pink-picker/` are sweepable.
 - `temp-pics/` is Matt's.
 
 **`E:\Fractals\`:** KEEP everything.
