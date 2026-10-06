@@ -1,4 +1,4 @@
-# fractal-state — checkpoint 160 (2026-10-03/04: structured deep-dive pilots run, then closed and parked; a page of about 500 dives and their Julia sets published and linked from Deep zoom; a forum image of the walk; both repos' `scratch/` wiped whole)
+# fractal-state — checkpoint 161 (2026-10-04/05: the fresh-install reader path built and proven in wallpapers; "Run the pipeline yourself" published under Tools and data; degree 6 capped in the walk; both front-page READMEs reworked)
 
 ## Where we are
 Three phases, each depending strictly on the one before (→ fractal-discovery). Matt iterates from pictures, not counts. Phase 3 is his eye on the final seating, and **every planned collection has a viewer at its official size.**
@@ -8,6 +8,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - On a reopen, read `preserve\mining_laws.md` whole, then wallpapers `curation/LEGS.md §Mining is CLOSED (2026-09-21) — reopen inventory`. State carries none of it.
 - ⚠ A reopened mine reads most pool pictures from the E: mirror (§RETENTION AND STORAGE).
 - ⚠ Before 2026-09-26, `headroom.population` never passed spiral scores to the solve, so every `curate headroom` census and `pool_draw` reading taken before then counted spiral places as uncapped. Production solves were never affected. Retake any such census before relying on it.
+- ⚠ Since ckpt 161 a mixed `harvest` behaves differently on degree 6: it draws viewport-sampler roots by default and the degree-6 pair is capped at a tenth of the walk (→ `curation/LEGS.md`). A reader's toy run in a fresh clone is not a reopen.
 
 **★ EVERY COLLECTION HAS A TARGET, IN `curation/targets.py`: NINETEEN COLLECTIONS, TWELVE FAMILIES AND SEVEN MODES.**
 - Reached by `curate solve run --collection NAME`; `--n` overrides; a collection with no target REFUSES.
@@ -25,6 +26,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - ⚠ 0.50 is NOT the seating bar: `solve.Q4_BAR = 0.50` is the render judge's constant on `p_ge4`.
 - `p_fine` is the fine head's column, where the bar lives: THE quality reading. On the site: the location, wallpaper, palette and gallery judges.
 - **`p_fine`, `p_coarse` and the bars are closed (Matt, 2026-09-12).**
+- **A forced fill exists for early pools (ckpt 161):** it seats past the pool gate and the fine bar, is stamped on its record, and a forced record can never be published (→ `curation/GALLERY.md`, wallpapers `README.md`).
 
 **★ THE HUMAN VETO IS SHIPPED** (→ `curation/README.md`): Matt marks ONLY `1`s; an unmarked tile is not a label.
 
@@ -34,7 +36,14 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 
 **★ COLOUR:** a hue family is not the union of its four cells (→ `palettes/README.md`). Curation constrains the 48 coloured cells only. The palette group cap is `0.075·n` themed and `0.025·n` general. K is Matt's; Claude never proposes reopening K.
 
-**★ A GALLERY PAGE IS PRESENTED STRATIFIED** (`curation/page_order.py`). **★ GUARD RULINGS: loosening only, nothing loosened.** **★ `pool_scores.jsonl` IS ONE-SHOT: mine → merge → `gallery-grade score-pool` → solve.**
+**★ A GALLERY PAGE IS PRESENTED STRATIFIED** (`curation/page_order.py`). **★ GUARD RULINGS: loosening only; one loosened, accepted by Matt at ckpt 161** — the website's `builder check` `endings` check now flags only a file whose committed line endings differ from its endings on disk. **★ `pool_scores.jsonl` IS ONE-SHOT: mine → merge → `gallery-grade score-pool` → solve.**
+
+## THE READER PATH (ckpt 161)
+- **★ A new reader can clone, install with or without CUDA, and walk the whole chain** — render, install check, walk, mine, gallery — from the top wallpapers `README.md` alone. It was proven by fresh clones on this box in both installs; Linux and macOS are left to CI.
+- **★ EVERY LOOK AT INTERMEDIATE STATE IS A WALLPAPERS COMMAND (Matt):** each writes a parseable file and a plain page drawn from it, and one `walkthrough` command exports them all as a small self-contained folder. The website hosts those pages unchanged and builds no visualization of its own.
+- **Homes:** the path and the cost table → wallpapers `README.md`; every file a reader inspects → `FORMATS.md`; the hosted page → website `builder/README.md`. The cost table lives in the README only (Matt).
+- **The page** is "Run the pipeline yourself" at `tools-and-data/run-it-yourself/`: out of the rail and the header, linked by one sentence from Tools and data. Its text was authored in the placing prompts and lives in the website builder, with no prose master.
+- **The sample it shows** is a ten-minute walk and a ten-minute mine, with a forced twelve-seat gallery recorded after a further five-minute mine. Its imported files are tracked, so the page rebuilds without any clone.
 
 ## MODES, PHASE, PALETTE
 - **★ Seven targeted-gallery modes.** `curvature` is `UNMINED`.
@@ -100,14 +109,15 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 
 ## RETENTION AND STORAGE
 - **★ Everything fractal on E: lives under `E:\Fractals\`:** `FractalStorage\` (the ARCHIVE tier), `FractalWallpapers\` and `history_undo_ckpt157\`. Every older `E:\FractalStorage` or `E:\FractalWallpapers` spelling is dead.
-- **★ The keep is five per `(place, mode)` plus one family allowance** (→ `curation/README.md`). Pinned rows and every published record's seats are prune-proof via `tentative.kept()`.
+- **★ The keep is five per `(place, mode)` plus one family allowance** (→ `curation/README.md`). Pinned rows and every kept record's seats are prune-proof via `tentative.kept()`.
 - **★ THE POOL PICTURES LIVE ON THE E: MIRROR (ckpt 158).** A pool picture name resolves from C: first, then from the archive's `pool_pictures/` mirror, and raises `ArchiveUnreachable` when E: is configured but absent. Wallpapers `paths.Tiers` and the website's `builder/renders.py` `Tiers` both follow the rule (→ `picture_mirror.py`, `storage pictures`, website `builder/README.md`).
   - Kept seats and protected rows stayed on C:, as did 56 pictures behind website figures.
   - ⚠ Retraining `gallery_grade` needs its pictures restored to C: first (`require_hot`); most of its corpus is on E:.
 - **Behind junctions to E::** `C:\Code\fractal-maker` and the website's video trees (`deep-zoom`, `double-descent`, `julia3-descent`, `multibrot3-descent`).
 
 ## RECORDS: THE PUBLISHED SET
-- **★ The store is exactly the twenty-one published records:** the twenty `final139_*` and `final140_general2000`, tracked whole.
+- **★ The published store is exactly twenty-one records:** the twenty `final139_*` and `final140_general2000`, tracked whole.
+- **★ `curate solve record` KEEPS BY DEFAULT since ckpt 161 (Matt):** a recorded gallery's seats survive a merge's prune. Kept records are data (`tentative/keep.jsonl`), released with `curate solve release`; a measurement solve records with `--no-keep`. This reverses the 2026-09-13 discard-by-default for that door.
 - `portable.GENERAL_CHECK` = `final139_general`; `portable.REFERENCE` = `final139_green`. Nothing is re-cut while the pool is closed.
 - **★ BACKUPS ARE MATT'S.** `storage export` runs only at his direction and is never proposed.
 - **★ `git grep <stamp>` before calling any record stray.**
@@ -115,7 +125,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 ## THE REPO AS A CLONE SEES IT
 - **★ BOTH HISTORIES WERE REWRITTEN (ckpt 157).** Tags were re-pointed ONCE, to tree-equivalent commits; the never-move rule holds again, and a tag is never deleted and recreated, because that drops its release to a draft. `E:\Fractals\history_undo_ckpt157\` holds the undo mirrors, the commit maps, and the only copy of the first location judge's weights. Matt keeps it.
 - **★ The website's CI checks out wallpapers at `explorer/engine.manifest.json`'s pin.**
-- **★ A fresh box continues every stage from a `storage export` alone** (→ `preserve\fresh_box.md`).
+- **★ A fresh box continues every stage from a `storage export` alone** (→ `preserve\fresh_box.md`). **A fresh clone with no export starts from empty by the README's path** (§THE READER PATH).
 - **★ CUDA is opt-in.** ⚠ This box syncs `--extra cuda`. **★ Both repos build and run on Windows, Linux and macOS, and CI proves it.**
 - ⚠ Drive the makers through `.venv/Scripts/fractal-wallpapers.exe`. Concurrent prompts in one checkout commit by pathspec and stage by hunk.
 - ⚠ `perturb.wasm` builds on rustc 1.96.0 (`RUSTUP_TOOLCHAIN=1.96.0`).
@@ -128,7 +138,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 |---|---|
 | Explorer: tabs, Deep, phones, the link contract, Straighten iter, demo mode, the link-fidelity harness, native-vs-Wasm numbers (`§Measured`) | `explorer/README.md` |
 | Deep kernel, `nuclei::classify`, the twin, the chain cap rule, the low-period catalogue, the count a framed minibrot needs | `explorer/perturb-wasm/README.md` |
-| Builder: figures (incl. credited external panels), packs (staging, ranking, previews, the deep pack, uploads), `votes`, zoom videos, Random dives (generator, survival, judge scores), the page of dives and their Julia sets, the resolver, head tags, every `builder check` check | `builder/README.md` |
+| Builder: figures (incl. credited external panels), packs (staging, ranking, previews, the deep pack, uploads), `votes`, zoom videos, Random dives (generator, survival, judge scores), the page of dives and their Julia sets, Run the pipeline yourself (the walkthrough import, the parameter table, the help folds), the resolver, head tags, every `builder check` check | `builder/README.md` |
 | Traps, the rail rule, pathspec and hunk staging, the external-image license rule | `CLAUDE.md` |
 | Style and voice | `prose\writing-guidance.md` · website `CLAUDE.md` |
 | Per-page status | `docs/page-review.md` |
@@ -141,7 +151,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ A LINK IS A PICTURE. The site never tells a reader a view is "not exact." No figure reuses a picture unless the reuse is intentional. Figures are never changed because they drifted. Figure recipes are never lost.**
 - **★ The site reads as its final form; the Oxford comma; American spelling; THE VOICE** (`prose\writing-guidance.md` §Voice).
 
-**★ PROSE: MATT REOPENS IT PIECEMEAL, ONE PASSAGE AT A TIME.** This era's only prose edit was one sentence added to Deep zoom, linking the page of dives, made in its master in place.
+**★ PROSE: MATT REOPENS IT PIECEMEAL, ONE PASSAGE AT A TIME.** This era's only edit to a master was one sentence added to Tools and data, linking Run the pipeline yourself, made in its master in place.
 
 **★ THE EXPLORER'S BAR (Matt):** complexity is a cost; text is for the artist; the left panel changes the view, the right manipulates it; the shallow view and Deep are one tool; Deep auto-renders. Wasm threads are out. ⚠ This box drifts about 30% between identical runs.
 
@@ -165,26 +175,27 @@ Items 2, 3, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16 and 17 are closed; the numbering 
 Parked → `preserve\parked.md`.
 
 ## STATUS / KNOWN REDS
-- `builder check`: green at `carried_dives_publish_ckpt160`.
+- `builder check`: green at `run_it_yourself_revise_ckpt161`.
 - ⚠ A website `builder check` beside a wallpapers merge can throw a transient ledger red; retry.
 - ⚠ A report just copied to Drive `reports\` can read back empty for minutes; retry once, then ask Matt to paste it.
 
 ## RULINGS THIS ERA
-ckpt 160 (2026-10-03/04). Reported prompts, all website:
-- `dive_chain_audit_pilot`, `minibrot_size_pilot`, `dive_candidate_sheet`, `random_dives_audit`;
-- `carried_dives_500`, `carried_dives_twins`, `carried_dives_twin_fit`, `carried_dives_publish`;
-- `walk_descent_image` (a one-off forum image; nothing tracked).
+ckpt 161 (2026-10-04/05). Reported prompts:
+- wallpapers: `fresh_install_audit`, `fresh_install_build` (+ addendum), `degree6_walk_cap` (+ addendum), `walkthrough_polish` (+ addendum), `render_example_swap`;
+- website: `run_it_yourself_page` (+ addendum), `run_it_yourself_revise` (+ addendum).
 
-Delivered as a micro-task, assumed handled: `pre_closeout_ckpt160` (the page's `noindex` removed; the parked entry written).
+Run by Matt outside the session, nothing to carry: `banned_words_reword`.
 
 Matt's rulings:
-- **Structured deep dives are closed and parked.**
-- **A view placed inside a minibrot is the landing kind worth showing others;** the published page is built from those.
-- **The page's images are tracked,** and the page is indexed.
-- **The Julia twin's framing and colouring rules** (§THE PAGE OF DIVES AND THEIR JULIA SETS).
-- **A forum image may show rescaled judge scores;** that ruling covered that one image only.
-- **Matt tracks the site's postings himself.**
-- **Both repos' `scratch/` are wiped whole at this closeout;** nothing in either is kept.
+- **The reader path is a wallpapers responsibility,** and the site hosts wallpapers' own inspection pages unchanged (§THE READER PATH).
+- **One flat `locations.jsonl` export is the reader's location ledger;** the stores themselves are not restructured.
+- **`solve record` keeps by default.**
+- **A forced fill exists for early pools** and is never publishable.
+- **The degree-6 pair is capped at a tenth of a mixed walk** (the value was left to Claude; a harvest naming only degree 6 is not capped).
+- **The cost table lives in the wallpapers README only,** not on the page.
+- **The page shows a small traced sample,** not the full run; about 5 MB tracked.
+- **The `endings` check's narrowing is accepted.**
+- **The first fresh-install test is this box;** Linux and macOS are left to CI.
 
 ## KEEP LIST
 **Drive `prompts\`:** nothing to keep. Matt wipes it himself.
@@ -193,7 +204,7 @@ Matt's rulings:
 
 **Drive `votes\`: DURABLE, never wiped.**
 
-**Drive `prose\`:** the live masters are unchanged in name (all edits this era were made in place):
+**Drive `prose\`:** the live masters are unchanged in name (the one edit this era was made in place):
 - `Start here v2.md`, `Deep zoom v4.md`, `Wallpaper packs v1.md`, `Tools and data v1.md`, `Deep zoom videos v1.md`;
 - `Overview v2.md`, `Escape-time fractals v1.md`, `Rendering fundamentals v1.md`;
 - `Color palettes v7.md`, `Make your own palettes v4.md`, `Rendering modes v5.md`;
@@ -202,7 +213,9 @@ Matt's rulings:
 - `Other artistic techniques v1.md`, `Fractal math v2.md`;
 - `writing-guidance.md`.
 
-**Wallpapers `scratch/` and website `scratch/`:** wiped whole at ckpt 160 (Matt). Nothing is kept in either.
+**Wallpapers `scratch/` and website `scratch/`:** nothing is kept in either.
+
+**`C:\Code\fresh-install-test\`** (`cpu`, `cuda`, `sample`, `sample2`): sweepable. Nothing reads it; the hosted page rebuilds from tracked files, and a new sample is a fresh clone and about half an hour.
 
 **Website `artifacts/`:**
 - KEEP `deep-zoom/`, `double-descent/`, `julia3-descent/` and `multibrot3-descent/` (with their E: junctions), `mathjax/`, `pool-study/`, `dive-reference/` and `deep-pack/`.
