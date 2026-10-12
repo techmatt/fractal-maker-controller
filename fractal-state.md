@@ -1,4 +1,4 @@
-# fractal-state — checkpoint 161 (2026-10-04/05: the fresh-install reader path built and proven in wallpapers; "Run the pipeline yourself" published under Tools and data; degree 6 capped in the walk; both front-page READMEs reworked)
+# fractal-state — checkpoint 162 (2026-10-07/11: a GPU kernel for the Deep tab, opt-in; deep links to 1e-112; the deep interior proof made sound; an explorer recolour race fixed)
 
 ## Where we are
 Three phases, each depending strictly on the one before (→ fractal-discovery). Matt iterates from pictures, not counts. Phase 3 is his eye on the final seating, and **every planned collection has a viewer at its official size.**
@@ -45,6 +45,15 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **The page** is "Run the pipeline yourself" at `tools-and-data/run-it-yourself/`: out of the rail and the header, linked by one sentence from Tools and data. Its text was authored in the placing prompts and lives in the website builder, with no prose master.
 - **The sample it shows** is a ten-minute walk and a ten-minute mine, with a forced twelve-seat gallery recorded after a further five-minute mine. Its imported files are tracked, so the page rebuilds without any clone.
 
+## THE GPU DEEP KERNEL (ckpt 162)
+- **★ THE RULING (Matt):** where its self-test passes, the GPU draws the final Deep frame and downloads; the CPU kernel draws everything otherwise. There is no strong contract: pictures may differ slightly between machines, at about the level f64 differs from itself.
+- **★ IT IS OPT-IN UNTIL MATT TESTS A SECOND GPU.** The Deep panel's "GPU (experimental)" box is off by default, remembered per browser, never written into a link. Off means no WebGPU at all. `?kernel=cpu|gpu` is a debugging override that a link never carries.
+- **What it is:** WebGPU, double-single arithmetic (pairs of f32) for every pixel, bounded passes of about 12 ms dispatches with one in flight, a CPU tail through `perturb.wasm`'s `compute_samples`, and a lost device sent to the CPU. Downloads draw in strips of whole rows.
+- **Measured on this box** (RTX 2060 SUPER): a reader's total wait 2.40× shorter across 159 Deep frames, frames over 30 s about 3.9× faster; downloads 2.6–5.6× faster. 157 of 159 frames agree with the CPU to 1% of visible pixels.
+- **Owners:** `explorer/README.md` (the path, the box, the numbers); `explorer/deep-gpu-model/README.md` (the native model, which stays tracked as the shader's oracle, and the verdicts: plain f32 is preview-grade because orbit length, not depth, limits it; f32 with BLA was measured and NOT shipped, since no test read off the reference picks it safely).
+- **★ BLA STAYS OUT OF THE SHIPPED CPU KERNEL; it is reopened for the GPU path only (Matt).**
+- ⚠ **17 display-driver resets (Event 4101) hit this box on 2026-10-10/11** while the GPU harnesses ran; one caught with telemetry was a hung card. None in three hours after the dispatch hardening, and none across the downloads prompt, which is not proof. After a reset Chrome refuses a new device until restarted.
+
 ## MODES, PHASE, PALETTE
 - **★ Seven targeted-gallery modes.** `curvature` is `UNMINED`.
 - **★ The explorer's render-mode roster is thirteen** (`listedModes()`). **★ It shows ENGINE NAMES** for modes and families, and the article teaches the same names.
@@ -57,8 +66,9 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 ## TONE CURVES AND LINKS
 - **★ Every gallery seat's tone curve is recorded** (`artifacts/curation/autolevel_backfill.jsonl`).
 - **★ THE LINK CONTRACT** (owner: website `explorer/README.md`) spells `curve` and `knee`. Wallpapers `explorer_link.query_of` writes links byte for byte like the site. The engine's `link.rs` reads `curve` and a stated `scale=leveled`.
+- **★ A DEEP COORDINATE MAY BE 128 CHARACTERS (ckpt 162):** frames reach 1e-112 and Dive landings 1e-116, with no link-version bump; every older link reads and writes back byte for byte. Shallow links keep 64. Going deeper is a costlier tier: the 120-digit centre guard binds near 1e-268, the f64 delta near 1e-300.
 - **★ A Phoenix recipe that omits `c` or `p` means the classic constants, never zero.** The website's `links.py` spells `phoenix_m` as `phoenix_plane` with its constants.
-- **★ A LINK IS A PICTURE**, proven across every tab, mode and family by `explorer/bench/link-fidelity.mjs` (a browser harness, not in `builder check`).
+- **★ A LINK IS A PICTURE**, proven across every tab, mode and family by `explorer/bench/link-fidelity.mjs` (a browser harness, not in `builder check`); since ckpt 162 it carries a depth tab at 1e-60 to 1e-110. It proves the CPU path; GPU-versus-CPU agreement is `bench/deep-gpu-agree.mjs`.
 - **★ Seat-addressed figure panels carry the cap** whenever it differs from the policy; `builder check`'s `caps` check holds them.
 
 ## FULL-RESOLUTION WALLPAPERS AND PACKS
@@ -72,6 +82,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ THE RANKING:** summed votes, one per voter per seat; ties fall to the seeded plan's order (→ website `builder/README.md`).
 - **★ PACK PREVIEWS:** Best 30, 100 and 200 and the main gallery show Matt's hand picks; the colour packs use the voted-only walk (nothing shown elsewhere on the site, at most two per hue family), so a change to what the site shows moves them and `builder packs --import` re-runs the walk; the deep gallery's five are a seeded draw.
 - **★ The wallpapers are licensed CC BY 4.0, credit Matt Fisher.** Both repos' code stays MIT.
+- **★ An iteration cap was checked on a shipped picture (ckpt 162) and is not the problem:** general #71 (`1a6b9f23e0c9f86c.jpg`) drew identically at 64× its cap. What looked off around its minibrots was colouring: the slowest-escaping band clips to one dark tone beside a cyclic palette's black. No re-render of the set is owed.
 - **★ FRIEND VOTES:**
   - **The store** is `C:\Code\fractal-drive-sync\votes\events.jsonl`: append-only, never in a repo, and losing it is a major failure.
   - **Ingest:** Matt says "ingest NAME <links or files>" to CC in fractal-website; `builder votes browse` regenerates the browser.
@@ -83,10 +94,8 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ Every video gets Midway and Final frame links** through its own `go/` redirects, and new videos are prototyped on the `preview` variant before the 4K render.
 - `builder descent --direct` takes a single Multibrot link as one stage; without it, a single Multibrot link is read as a twin chain.
 
-## THE SHOWCASE VIDEO (DRAFT)
-- **★ A silent ~30-second 1920×1080 30 fps MP4 of the explorer's real UI**, for Reddit, HN and Mastodon. Shallow renders show at real speed (previews included); only Deep-tab waits are cut, and deep views are cuts (Matt, ckpt 159).
-- **Demo mode** (`demo=1`: drawn cursor with click pulses, a fixed Dive landing hook, hidden Deep progress, a caption bar) and the tour script `explorer/bench/showcase.mjs` are committed; owner website `explorer/README.md §Demo mode`. One take is one command, about 3 minutes.
-- The path (gallery → lime chip → hero D → zoom → palettes → modes on 5B → Julia → Atlas → Dive → deep cuts → caption "Mandelnaut Explorer · techmatt.github.io/fractals/explorer") is in the committed tour script. The draft take (32.3 s) and its planning sheet were wiped with `scratch/` at ckpt 160; a retake regenerates it.
+## THE SHOWCASE VIDEO
+Parked by Matt at ckpt 162 as not relevant now. Demo mode and the tour script `explorer/bench/showcase.mjs` stay committed (owner website `explorer/README.md §Demo mode`); a take is one command.
 
 ## THE PAGE OF DIVES AND THEIR JULIA SETS (ckpt 160)
 - **★ Published at `deep-zoom/dives-and-julia-sets/`** and linked by one sentence at the end of Deep zoom's Random dives passage. It stays out of the rail and the header and has no text beyond section headings and two controls (Fixed / Random coloring; Show Julia twin).
@@ -104,7 +113,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 
 ## LAWS STATE STILL CARRIES
 - **★ The degree-6 plane is never labelled** (`partitions.NEVER_LABELLED`).
-- **★ Parabolic Julia sets are CLOSED (ckpt 147); Douady–Hubbard tuning is PARKED (ckpt 148); BLA stays removed (ckpt 149).**
+- **★ Parabolic Julia sets are CLOSED (ckpt 147); Douady–Hubbard tuning is PARKED (ckpt 148).**
 - **★ Structured deep dives are CLOSED AND PARKED (Matt, ckpt 160):** copy-in-copy chains and minibrots framed at a fixed screen size (→ `preserve\parked.md`, fractal-engine §Deep render).
 
 ## RETENTION AND STORAGE
@@ -117,7 +126,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 
 ## RECORDS: THE PUBLISHED SET
 - **★ The published store is exactly twenty-one records:** the twenty `final139_*` and `final140_general2000`, tracked whole.
-- **★ `curate solve record` KEEPS BY DEFAULT since ckpt 161 (Matt):** a recorded gallery's seats survive a merge's prune. Kept records are data (`tentative/keep.jsonl`), released with `curate solve release`; a measurement solve records with `--no-keep`. This reverses the 2026-09-13 discard-by-default for that door.
+- **★ `curate solve record` KEEPS BY DEFAULT since ckpt 161 (Matt):** a recorded gallery's seats survive a merge's prune. Kept records are data (`tentative/keep.jsonl`), released with `curate solve release`; a measurement solve records with `--no-keep`.
 - `portable.GENERAL_CHECK` = `final139_general`; `portable.REFERENCE` = `final139_green`. Nothing is re-cut while the pool is closed.
 - **★ BACKUPS ARE MATT'S.** `storage export` runs only at his direction and is never proposed.
 - **★ `git grep <stamp>` before calling any record stray.**
@@ -128,7 +137,7 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ A fresh box continues every stage from a `storage export` alone** (→ `preserve\fresh_box.md`). **A fresh clone with no export starts from empty by the README's path** (§THE READER PATH).
 - **★ CUDA is opt-in.** ⚠ This box syncs `--extra cuda`. **★ Both repos build and run on Windows, Linux and macOS, and CI proves it.**
 - ⚠ Drive the makers through `.venv/Scripts/fractal-wallpapers.exe`. Concurrent prompts in one checkout commit by pathspec and stage by hunk.
-- ⚠ `perturb.wasm` builds on rustc 1.96.0 (`RUSTUP_TOOLCHAIN=1.96.0`).
+- ⚠ `perturb.wasm` builds on rustc 1.96.0: every rebake sets `RUSTUP_TOOLCHAIN=1.96.0`, because stable rustc (1.98.1 at ckpt 162) no longer reproduces the committed module.
 - **`engine.wasm` carries no local paths since ckpt 159** (`--remap-path-prefix`); builds from different checkout paths still differ through cargo's path-dependency metadata, a known gap left open (→ `explorer/README.md`).
 
 ## WEBSITE
@@ -136,8 +145,9 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 
 | Topic | Owner |
 |---|---|
-| Explorer: tabs, Deep, phones, the link contract, Straighten iter, demo mode, the link-fidelity harness, native-vs-Wasm numbers (`§Measured`) | `explorer/README.md` |
-| Deep kernel, `nuclei::classify`, the twin, the chain cap rule, the low-period catalogue, the count a framed minibrot needs | `explorer/perturb-wasm/README.md` |
+| Explorer: tabs, Deep, the GPU kernel and its box, phones, the link contract, Straighten iter, demo mode, the link-fidelity and GPU-agreement harnesses, native-vs-Wasm numbers (`§Measured`) | `explorer/README.md` |
+| The GPU kernel's native model and oracle, and the f32 and f32-with-BLA verdicts | `explorer/deep-gpu-model/README.md` |
+| Deep kernel, the interior proof, `nuclei::classify`, the twin, the chain cap rule, the low-period catalogue, the count a framed minibrot needs | `explorer/perturb-wasm/README.md` |
 | Builder: figures (incl. credited external panels), packs (staging, ranking, previews, the deep pack, uploads), `votes`, zoom videos, Random dives (generator, survival, judge scores), the page of dives and their Julia sets, Run the pipeline yourself (the walkthrough import, the parameter table, the help folds), the resolver, head tags, every `builder check` check | `builder/README.md` |
 | Traps, the rail rule, pathspec and hunk staging, the external-image license rule | `CLAUDE.md` |
 | Style and voice | `prose\writing-guidance.md` · website `CLAUDE.md` |
@@ -150,8 +160,9 @@ Three phases, each depending strictly on the one before (→ fractal-discovery).
 - **★ Head tags** come from each page's own first sentence (`builder/heads.py`); a series is never cut at a list comma. A page with no prose carries an authored description.
 - **★ A LINK IS A PICTURE. The site never tells a reader a view is "not exact." No figure reuses a picture unless the reuse is intentional. Figures are never changed because they drifted. Figure recipes are never lost.**
 - **★ The site reads as its final form; the Oxford comma; American spelling; THE VOICE** (`prose\writing-guidance.md` §Voice).
+- **★ Any colouring control recolours what is on screen, immediately, from the retained field (ckpt 162).** The Deep tab once lost that after any canvas resize; fixed with a sweep of every control against every arrival path (→ `explorer/README.md`).
 
-**★ PROSE: MATT REOPENS IT PIECEMEAL, ONE PASSAGE AT A TIME.** This era's only edit to a master was one sentence added to Tools and data, linking Run the pipeline yourself, made in its master in place.
+**★ PROSE: MATT REOPENS IT PIECEMEAL, ONE PASSAGE AT A TIME.** No master changed this era.
 
 **★ THE EXPLORER'S BAR (Matt):** complexity is a cost; text is for the artist; the left panel changes the view, the right manipulates it; the shallow view and Deep are one tool; Deep auto-renders. Wasm threads are out. ⚠ This box drifts about 30% between identical runs.
 
@@ -162,40 +173,35 @@ Nothing.
 Nothing.
 
 ## OPEN (ordered): Matt raises each
-Items 2, 3, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16 and 17 are closed; the numbering is kept.
+Items 2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 and 18 are closed; the numbering is kept.
 1. **Mining is CLOSED; he reopens it.**
 4. **Prose reopens piecemeal (Matt).**
 5. **Deploy.** **Matt tracks where the site is posted himself (ckpt 160); the docs carry no posting list.** Left: more deep zoom videos for the videos page, in the knee style.
-13. **Small follow-ups (all optional):**
-    - the atlas rebuild for the nine replayable tone dots (skip unless Matt notices one);
-    - the Period slider's one-decade minimum travel on deep frames (Matt looks first);
-    - `palette-moods`' provenance rule would draw 29 strips if re-run.
-18. **The showcase video is a draft (Matt, ckpt 159).** Beat 3's zoom into the spiral's eye reads as rotation, not travel: re-aim it toward something that changes as it approaches. The last take ran 32.3 s against a ~30 s target. A retake is one command (§THE SHOWCASE VIDEO).
+19. **The second-GPU test is the next thing (Matt).** He tries the Deep tab's GPU box on another GPU; the box stays off by default until then. Fold in, when there:
+    - the display-driver resets on this box (§THE GPU DEEP KERNEL): driver fault or marginal card is unsettled;
+    - why no structured frame past 1e-80 drew on the GPU, and interior frames at 1e-110 go mostly to the CPU (undiagnosed; those frames draw correctly on the CPU);
+    - on the 1e-80 interior frame, early dispatches ran to about 26 ms against the 12 ms target (recorded in `explorer/README.md` as unplaced).
 
 Parked → `preserve\parked.md`.
 
 ## STATUS / KNOWN REDS
-- `builder check`: green at `run_it_yourself_revise_ckpt161`.
+- `builder check`: green at `gpu_optin_downloads_ckpt162`.
 - ⚠ A website `builder check` beside a wallpapers merge can throw a transient ledger red; retry.
 - ⚠ A report just copied to Drive `reports\` can read back empty for minutes; retry once, then ask Matt to paste it.
 
 ## RULINGS THIS ERA
-ckpt 161 (2026-10-04/05). Reported prompts:
-- wallpapers: `fresh_install_audit`, `fresh_install_build` (+ addendum), `degree6_walk_cap` (+ addendum), `walkthrough_polish` (+ addendum), `render_example_swap`;
-- website: `run_it_yourself_page` (+ addendum), `run_it_yourself_revise` (+ addendum).
-
-Run by Matt outside the session, nothing to carry: `banned_words_reword`.
+ckpt 162 (2026-10-07/11). Reported prompts, all website (`gpu_deep_ship` also committed the engine's link reader next door by path):
+`explorer_recolor_race`, `itercap_compare`, `gpu_deep_audit`, `gpu_model_stage1`, `interior_switch_fix`, `gpu_ds_probe_stage2`, `gpu_deep_ship`, `gpu_optin_downloads`.
 
 Matt's rulings:
-- **The reader path is a wallpapers responsibility,** and the site hosts wallpapers' own inspection pages unchanged (§THE READER PATH).
-- **One flat `locations.jsonl` export is the reader's location ledger;** the stores themselves are not restructured.
-- **`solve record` keeps by default.**
-- **A forced fill exists for early pools** and is never publishable.
-- **The degree-6 pair is capped at a tenth of a mixed walk** (the value was left to Claude; a harvest naming only degree 6 is not capped).
-- **The cost table lives in the wallpapers README only,** not on the page.
-- **The page shows a small traced sample,** not the full run; about 5 MB tracked.
-- **The `endings` check's narrowing is accepted.**
-- **The first fresh-install test is this box;** Linux and macOS are left to CI.
+- **A GPU kernel for the Deep tab, aimed at very deep and very long frames,** built as WebGPU with the CPU kernel as the fallback.
+- **BLA is reopened for the GPU path only;** the shipped CPU kernel stays without it.
+- **The GPU draws the final frame where its self-test passes;** pictures may differ slightly between machines.
+- **About 4× on busy frames is worth shipping.**
+- **The GPU is opt-in** behind a Deep-panel box, off by default; with it ticked, downloads draw on the GPU too.
+- **Deep links go deeper, the cheap tier only** (to 1e-112).
+- **The interior proof's fix ships** (no site picture was wrong).
+- **The showcase video is parked; OPEN 13's three small follow-ups are cut.**
 
 ## KEEP LIST
 **Drive `prompts\`:** nothing to keep. Matt wipes it himself.
@@ -204,7 +210,7 @@ Matt's rulings:
 
 **Drive `votes\`: DURABLE, never wiped.**
 
-**Drive `prose\`:** the live masters are unchanged in name (the one edit this era was made in place):
+**Drive `prose\`:** the live masters are unchanged:
 - `Start here v2.md`, `Deep zoom v4.md`, `Wallpaper packs v1.md`, `Tools and data v1.md`, `Deep zoom videos v1.md`;
 - `Overview v2.md`, `Escape-time fractals v1.md`, `Rendering fundamentals v1.md`;
 - `Color palettes v7.md`, `Make your own palettes v4.md`, `Rendering modes v5.md`;
@@ -213,9 +219,9 @@ Matt's rulings:
 - `Other artistic techniques v1.md`, `Fractal math v2.md`;
 - `writing-guidance.md`.
 
-**Wallpapers `scratch/` and website `scratch/`:** nothing is kept in either.
+**Wallpapers `scratch/` and website `scratch/`:** nothing is kept in either (the GPU audit's clone, the model's sheets, the iteration-cap comparison and the stale-source list are all done with).
 
-**`C:\Code\fresh-install-test\`** (`cpu`, `cuda`, `sample`, `sample2`): sweepable. Nothing reads it; the hosted page rebuilds from tracked files, and a new sample is a fresh clone and about half an hour.
+**`C:\Code\fresh-install-test\`:** sweepable.
 
 **Website `artifacts/`:**
 - KEEP `deep-zoom/`, `double-descent/`, `julia3-descent/` and `multibrot3-descent/` (with their E: junctions), `mathjax/`, `pool-study/`, `dive-reference/` and `deep-pack/`.
