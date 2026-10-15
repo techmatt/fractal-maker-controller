@@ -1,4 +1,4 @@
-# fractal-engine — render truths that outlive any renderer
+# fractal-engine — render truths that outlive any renderer (§Deep render rewritten at ckpt 163)
 
 The live engine is the `fractal-engine` crate in fractal-wallpapers.
 - **Its canon is `engine/README.md`**: per-family behaviour, symmetry, `fractional_multibrot`, mirror-fold, specialization and perf, the wasm build and the palette bake.
@@ -10,7 +10,11 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
 ## Rules a future session must not get wrong
 - **★ Never gate on clip share; use in-mask chroma** (→ `engine/README.md §The direct traps`). UF shape names do not transfer by name.
 - **★ Every renderer draws the same picture for the same recipe.** There is one builder (`release.task_for`, `engine_spec.spec_of`), guarded by `tests/test_renderer_agreement.py`. A new spec site goes through the builder, never through a longer keyword list. The website keeps a copy of the coloring builder; its `builder check` `coloring` check holds that copy equal to `engine_spec.coloring_of` over every collection seat (ckpt 146, after the copy drifted once).
-- **★ `fractal-engine render-link --link … --size WxH [--ss N] [--out FILE] [--data DIR]` draws an explorer link with no Python (ckpt 149).** It was pixel-identical to the pipeline on ten seats, one per mode, and `tests/test_render_link.py` holds it to a tolerance, since byte identity is not promised. Deep links parse and route to a `NotBuilt` backend, whose trait doc names the parity points (→ `engine/README.md`). Since ckpt 161 the link parser refuses an out-of-range mode parameter by `mode::parameter_range`, the one rule `modes` also prints.
+- **★ `fractal-engine render-link --link … --size WxH [--ss N] [--out FILE] [--data DIR]` draws an explorer link with no Python (ckpt 149).**
+  - It was pixel-identical to the pipeline on ten seats, one per mode, and `tests/test_render_link.py` holds it to a tolerance, since byte identity is not promised.
+  - Since ckpt 161 the link parser refuses an out-of-range mode parameter by `mode::parameter_range`, the one rule `modes` also prints.
+  - **Since ckpt 163 it draws Deep links too** (§Deep render).
+- **★ Any `engine/src` edit moves engine.wasm's bytes, even in code the module does not link (ckpt 163).** The website's pin follows the bytes, so an engine edit is a deliberate pin move.
 - **★ A coloring field spelled flat on a manifest row is legitimate** (→ wallpapers `README.md §One shape for a place`).
 - **★ Identity:**
   - Any new field-side render axis must enter the field-cache/replay identity key; a variant through `mode_params` needs none.
@@ -53,25 +57,40 @@ The live engine is the `fractal-engine` crate in fractal-wallpapers.
   - Genericity, not multiplicity, is the perf trap, and family spread dwarfs mode spread (live numbers → website `explorer/README.md §Measured`).
   - Compare maps by sampling through the bake; `data/palettes` never stores the table size.
   - `release.Task` carries `mode_params`, `curve` and `palette`. Time a render pilot in seat order.
+  - ⚠ On Windows, build with MSVC: a GNU-toolchain engine passes `judges check` but runs up to 17× slower (→ wallpapers `README.md`).
 - **The f64 floor is relative** (`RESOLUTION_ULPS` 4), and failure is clean-then-refused. The full audit → `preserve\deep_shelf.md`.
 - **★ A spec render may opt out of the f64 refusal** with `"allow_unresolvable_in_f64": true` (ckpt 144). This applies to spec renders only: the pipeline never emits it, it enters no identity, and the tile path keeps its refusal. It exists for §Deep zoom's f64-versus-perturbation figure (→ `engine/README.md`).
 
 ## Deep render — the single home for deep/depth
-- **DEEP (perturbation) is EXPLORER-ONLY:** the website's `explorer/perturb-wasm` crate plus the Deep tab. Nothing deep enters the pipeline (Matt).
-  - Its kernel, oracle, per-degree speeds, calibration, minibrots at degree d, link v3 and the closed verdicts (fractional degrees; Phoenix at depth) are owned by `explorer/perturb-wasm/README.md` and `explorer/README.md`.
-  - Its traps (rebuild the native exe; any `perturb-wasm` edit is a rebake) are in website `CLAUDE.md`.
-  - **★ BLA stays out of the shipped CPU kernel; it is reopened for the GPU path only (Matt, ckpt 162).** There, f32 with BLA was measured and NOT shipped: no test read off the reference picks it safely (→ `explorer/deep-gpu-model/README.md`). Also measured and closed with no gain (ckpt 146): `simd128` on `perturb.wasm`, and a nucleus reference on an off-nucleus frame.
-  - **★ The GPU Deep kernel (ckpt 162):** WebGPU, double-single (pairs of f32) on every pixel, bounded passes, a CPU tail. Where its self-test passes it draws the final frame and downloads; the CPU kernel otherwise; pictures may differ slightly between machines (Matt). It is opt-in behind the Deep panel's "GPU (experimental)" box. Plain f32 is preview-grade only: orbit length, not depth, limits it. Owners → `explorer/README.md`, and the native model kept as the shader's oracle → `explorer/deep-gpu-model/README.md`.
-  - **★ The interior proof (ckpt 162):** a contraction only nominates a sample; it is called interior only when a disc around its orbit maps into itself. The old rule called escaping samples interior at every cusp and every origin-anchored imploded Julia set.
-  - **★ A deep coordinate may be 128 characters (ckpt 162):** frames reach 1e-112, with no link-version bump. Deeper is costlier: the 120-digit centre guard binds near 1e-268, the f64 delta near 1e-300.
-  - **★ A twin inside a copy is solved by multiple shooting, not placed by formula** (`twin` in `builder/deep-gallery-native`; ckpt 145). The first-order point `c_A + s_A·c_B` misses the copy of B inside copy A by 0.04–0.34% of the offset, which is too far for Newton at period p_A·p_B: Newton escapes, or finds the wrong nucleus. Periods multiply down a descent, so the iteration ceiling, not precision, ends it.
-  - **★ The twin places every carried view, and dives land only on true copies (ckpt 154).** First-order placement misses by thousands of frames at any real depth, so a carried view is placed by the twin, scaled by σ_B/σ_twin and solved by backward elimination. `nuclei::classify` polishes the nucleus, solves all d−1 roots, and calls a component a satellite when its root cycle collapses onto a lower period q dividing p (read at the collapse centroid where the root is singular). An unconverged solve is `unresolved` and is never landed on (→ `explorer/perturb-wasm/README.md`).
-  - **★ Two ceilings (ckpt 146):** `cap::AUTOMATIC_CEILING` = 1,000,000 (the depth rule and the probe; it binds on degree-6 near-parabolic frames; RULED keep) and `cap::EXPLICIT_CEILING` = 2,000,000 for a typed or linked `n` (→ `explorer/README.md §Two ceilings`).
-  - **★ Chains and framed minibrots were piloted and parked (ckpt 160).** A view placed inside a copy costs the copy's period times the view's own cap, so under the explicit ceiling a chain only fits low-period copies; a minibrot framed on screen needs far more periods than Dive's centre count to settle. The cap rule, the low-period catalogue and the count by screen size are owned by `explorer/perturb-wasm/README.md`; the verdicts are in `preserve\parked.md`.
-  - **★ The Julia twin of a frame centred inside a copy is a round black disk, and it is true interior** (ckpt 160: checked on every re-framed twin, none cap-limited). A twin is framed by zooming out until the disk is small, never to the whole Julia set (→ website `builder/README.md`).
-- **DEPTH (the f64 pipeline) stays SHELVED.** ⚠ In wallpapers, `deep/` and `cli/deep_commands.py` are DEPTH; the perturbation kernel is named `perturb`.
+- **★ ONE CPU PICTURE KERNEL, IN WALLPAPERS (ckpt 163).**
+  - The perturbation core lives in the wallpapers `perturbation/` crate beside `engine/` (owner `perturbation/README.md`).
+  - `render-link` draws Deep links through the engine's `Perturbation` backend (behind the default-on `deep` feature). It is held to `engine/fixtures/deep-cases.json`: counts exact, lanes within 4 ulps, pixels within 1 level. `ln` is the only divergence, and no pixel differs.
+  - A Deep link without `scale` is refused, since the arrival fit is the reader's window (Copy link supplies `scale`).
+  - The website's `explorer/perturb-wasm` is a wrapper over the core and keeps `nuclei`, `dive`, the exports and all GPU code.
+  - **★ Every core-kernel edit is a two-repo lock plus a rebake,** in the order both repos' `CLAUDE.md`s own.
+- **DEEP PICTURES STAY OUT OF THE PIPELINE (Matt).** `render-link` drawing a Deep link is a renderer capability, not pipeline entry.
+- **The CPU kernel:**
+  - It is a hand-vectorized SIMD loop with a scalar module (`perturb-scalar.wasm`) chosen by a validate probe. The ckpt-146 null was the `simd128` compiler flag, not hand vectorization.
+  - The reference orbit is unrolled and byte-identical.
+  - **★ BLA stays out of the CPU kernel.**
+  - Measured and closed with no gain: a nucleus reference on an off-nucleus frame; `simd128` on engine-wasm.
+- **★ The GPU Deep kernel (ckpts 162–163).**
+  - It is WebGPU, double-single (pairs of f32) on every pixel, bounded passes, and a CPU tail. Owners: website `explorer/README.md` (the path, the box, the numbers) and `explorer/deep-gpu-model/README.md` (the native model kept as the shader's oracle).
+  - Double-single BLA SHIPS on the GPU path behind three count rules: no table above 2^-100, none without a live run, and a table is dropped when it skips under 2% of steps. Plain f32 is preview-grade, because orbit length, not depth, limits it; f32 with BLA is not shipped.
+  - **★ It is opt-in and OFF BY DEFAULT for good (Matt, ckpt 163),** after an Intel Arc 140V iGPU passed every gate but ran slower than the CPU everywhere except very deep, heavy frames.
+- **★ NEVER CHOOSE A KERNEL OR PASS BY THE CLOCK (ckpt 163).**
+  - A clock rule let a cold first load and a later load of the same link draw different kernels' pictures on one machine.
+  - The quarter pass goes to the GPU by an iteration census, and a frame waits for the self-test outcome (bounded at 30 s).
+  - Any future speed-based choice is a once-per-device verdict, never a per-frame timing (the parked "slower here" verdict → `preserve\parked.md`).
+- **★ The interior proof (ckpt 162):** a contraction only nominates a sample; it is called interior only when a disc around its orbit maps into itself. The old rule called escaping samples interior at every cusp and every origin-anchored imploded Julia set.
+- **★ A deep coordinate may be 128 characters (ckpt 162):** frames reach 1e-112, with no link-version bump. Deeper is costlier: the 120-digit centre guard binds near 1e-268, the f64 delta near 1e-300.
+- **★ A twin inside a copy is solved by multiple shooting, not placed by formula** (`twin` in `builder/deep-gallery-native`; ckpt 145). The first-order point `c_A + s_A·c_B` misses the copy of B inside copy A by 0.04–0.34% of the offset, which is too far for Newton at period p_A·p_B: Newton escapes, or finds the wrong nucleus. Periods multiply down a descent, so the iteration ceiling, not precision, ends it.
+- **★ The twin places every carried view, and dives land only on true copies (ckpt 154).** First-order placement misses by thousands of frames at any real depth, so a carried view is placed by the twin, scaled by σ_B/σ_twin and solved by backward elimination. `nuclei::classify` polishes the nucleus, solves all d−1 roots, and calls a component a satellite when its root cycle collapses onto a lower period q dividing p (read at the collapse centroid where the root is singular). An unconverged solve is `unresolved` and is never landed on (→ website `explorer/perturb-wasm/README.md`).
+- **★ Two ceilings (ckpt 146):** `cap::AUTOMATIC_CEILING` = 1,000,000 (the depth rule and the probe; it binds on degree-6 near-parabolic frames; RULED keep) and `cap::EXPLICIT_CEILING` = 2,000,000 for a typed or linked `n` (→ website `explorer/README.md §Two ceilings`).
+- **★ Chains and framed minibrots were piloted and parked (ckpt 160).** A view placed inside a copy costs the copy's period times the view's own cap, so under the explicit ceiling a chain only fits low-period copies; a minibrot framed on screen needs far more periods than Dive's centre count to settle. Verdicts → `preserve\parked.md`.
+- **★ The Julia twin of a frame centred inside a copy is a round black disk, and it is true interior** (ckpt 160: checked on every re-framed twin, none cap-limited). A twin is framed by zooming out until the disk is small, never to the whole Julia set (→ website `builder/README.md`).
+- **DEPTH (the f64 pipeline) stays SHELVED.** ⚠ In wallpapers, `deep/` and `cli/deep_commands.py` are DEPTH; the perturbation kernel is the `perturbation/` crate.
 - **Un-shelving DEPTH, or any entry of deep pictures into the pipeline,** reads:
   - `preserve\deep_shelf.md`
-  - `preserve\perturb_seam_audit.md`
   - `preserve\sourcing_measurements.md`
-  - wallpapers `deep/README.md`
+  - wallpapers `deep/README.md` and `perturbation/README.md`

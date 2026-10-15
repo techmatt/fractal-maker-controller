@@ -12,6 +12,7 @@ Homes:
 
 ## THE REPO — `fractal-wallpapers` (PUBLIC on Matt's GitHub)
 - **What it is:** one "make me N wallpapers" pipeline (source → score → colorize → select → full-res), plus render/explore entry points, pretrained judges, training scripts and flat labels. Rust+Python. **Rust makes every pixel; Python never renders.**
+- **★ The Deep picture kernel lives here too (ckpt 163):** the `perturbation/` crate beside `engine/`. `render-link` draws Deep links through it, and the website's `perturb-wasm` is a wrapper over it, so every core-kernel edit locks both repos (→ fractal-engine §Deep render).
 - **Four heads ship in-repo:** location · **render** (the one judge) · palette · **`gallery_grade`** (`p_fine`, a k=3 fp16 ensemble), plus the `spiral` probe. **On the site they are the location, wallpaper, palette, and gallery judges (Matt, ckpt 148):** `render` is the wallpaper judge and `gallery_grade` the gallery judge; "render judge" no longer appears in reader-facing prose.
   - **★ One dated release tag holds all four (`weights-2026-09-14`), and a published tag is never moved.** The ckpt-157 history rewrite re-pointed every tag once, to its tree-equivalent commit; the rule holds again. A change cuts a new dated tag. `roster.TAG` is the one spelling.
 - **★ `CLAUDE.md` IS THE STANDING CONTRACT AND IS RULES ONLY (Matt).** It covers report shape (tests appear only for an unfixed red), README promotion, the lanes, one pool-holding process per box, the artifacts policy, backgrounding and the commit gate. Prompts never restate any of it.
